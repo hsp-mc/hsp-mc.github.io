@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPHERE: Mission Control - Teacher Pedagogical Manual</title>
+  <style>
+    /* Premium Theme variables matching SPHERE Mission Control */
+    :root {
+      --bg-deep: #060913;
+      --bg-panel: #101830;
+      --cyan: #00f2fe;
+      --orange: #ff9f43;
+      --text-bright: #e2e8f0;
+      --text-normal: #94a3b8;
+      --text-dimmed: #64748b;
+      --font-hud: 'Orbitron', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+      --font-mono: 'Roboto Mono', monospace;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;500&display=swap');
+
+    /* Global styling optimized for screen viewing */
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-bright);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: rgba(16, 24, 48, 0.7);
+      border: 1px solid rgba(255, 159, 67, 0.25);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 0 30px rgba(255, 159, 67, 0.08);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-hud);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 1.8em;
+      margin-bottom: 0.8em;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      text-align: center;
+      color: var(--orange);
+      border-bottom: 2px solid rgba(255, 159, 67, 0.3);
+      padding-bottom: 15px;
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: var(--orange);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: var(--cyan);
+    }
+
+    p {
+      color: var(--text-bright);
+      font-size: 0.95rem;
+      margin-bottom: 1.5em;
+    }
+
+    ul, ol {
+      margin-bottom: 1.5em;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      color: var(--text-bright);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(255, 159, 67, 0.1);
+      color: var(--orange);
+      font-family: var(--font-hud);
+      font-size: 0.8rem;
+    }
+
+    .risk-high {
+      color: #f43f5e;
+      font-weight: bold;
+    }
+    .risk-medium {
+      color: #f59e0b;
+      font-weight: bold;
+    }
+    .risk-low {
+      color: #10b981;
+      font-weight: bold;
+    }
+
+    .highlight-box {
+      background: rgba(255, 159, 67, 0.05);
+      border-left: 4px solid var(--orange);
+      padding: 15px 20px;
+      border-radius: 4px;
+      margin: 20px 0;
+    }
+
+    .highlight-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .action-button-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, var(--orange), #ffa800);
+      border: none;
+      color: #060913;
+      padding: 12px 24px;
+      font-family: var(--font-hud);
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 15px rgba(255, 159, 67, 0.3);
+    }
+
+    .btn-print:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(255, 159, 67, 0.5);
+    }
+
+    .footer-bar {
+      text-align: center;
+      margin-top: 40px;
+      font-family: var(--font-hud);
+      font-size: 0.75rem;
+      color: var(--text-dimmed);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 20px;
+    }
+
+    /* Print styles optimized for high-quality white-paper print and PDF generation */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0;
+        margin: 0;
+        font-size: 11pt;
+      }
+
+      .container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+      }
+
+      h1, h2, h3, h4 {
+        color: #000000 !important;
+        text-shadow: none !important;
+        page-break-after: avoid;
+      }
+
+      h1 {
+        font-size: 24pt;
+        border-bottom: 2pt solid #000000 !important;
+        margin-top: 0;
+      }
+
+      h2 {
+        font-size: 16pt;
+        border-bottom: 1pt solid #cccccc !important;
+        margin-top: 25pt;
+      }
+
+      h3 {
+        font-size: 12pt;
+        margin-top: 18pt;
+      }
+
+      p, li {
+        color: #111111 !important;
+      }
+
+      table {
+        border-collapse: collapse !important;
+      }
+
+      th, td {
+        border: 1px solid #666666 !important;
+        color: #000000 !important;
+      }
+
+      th {
+        background: #eeeeee !important;
+      }
+
+      .highlight-box {
+        background: #fdf6ec !important;
+        border-left: 3pt solid #d97706 !important;
+        page-break-inside: avoid;
+      }
+
+      .action-button-container {
+        display: none !important;
+      }
+
+      .page-break {
+        page-break-after: always;
+      }
+
+      .footer-bar {
+        color: #666666 !important;
+        border-top: 1pt solid #dddddd !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="action-button-container">
+    <button class="btn-print" onclick="window.print();">
+      <i data-lucide="printer"></i> SAVE MANUAL TO PDF / PRINT
+    </button>
+  </div>
+
+  <div class="container">
+    
+    <!-- COVER PAGE / HEADER -->
+    <div style="text-align: center; margin-bottom: 40px;">
+      <div style="font-family: var(--font-hud); font-size: 0.9rem; color: var(--cyan); letter-spacing: 0.2em; margin-bottom: 10px;">EUROPEAN UNION STEM LABORATORY INITIATIVE</div>
+      <h1>SPHERE: MISSION CONTROL</h1>
+      <div style="font-family: var(--font-hud); font-size: 1.2rem; color: var(--orange); letter-spacing: 0.1em; margin-top: 15px;">TEACHER PEDAGOGICAL DEPLOYMENT MANUAL</div>
+      <div style="font-size: 0.9rem; color: var(--text-dimmed); margin-top: 10px; font-family: var(--font-mono);">DOCUMENT REF // EU_SPHERE_INSTRUCTOR_V2</div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>Instructor Overview:</strong> This document maps the SPHERE Thermal Suit experiment to standard European secondary physics frameworks. It includes lesson timings, safety protocols, expected analytical constants, and a complete grading rubric to streamline execution in single-session classroom windows.
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 1 -->
+    <h2>1. CURRICULAR ALIGNMENT &amp; LESSON SCHEME</h2>
+    <p>
+      This curriculum is aligned with the <strong>Inquiry-Based Science Education (IBSE)</strong> pedagogy, specifically mimicking the virtual-physical calibration workflows of the <strong>European Union Horizon 2020 SPHERE initiative</strong>. It directly maps to secondary physics curriculum segments covering:
+    </p>
+    <ul>
+      <li><strong>Thermodynamics:</strong> Thermal conduction, convection, radiation, thermal barriers, and specific heat capacity calculations.</li>
+      <li><strong>Mathematical Modeling:</strong> Rate equations, Newtonian decay curves, and parametric modeling.</li>
+      <li><strong>IoT &amp; Digital Twins:</strong> Real-time sensory inputs mapped onto a digital math engine to create predictive twins.</li>
+    </ul>
+
+    <h3>The 45-Minute Lesson Timeline Blueprint:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>TIMING</th>
+          <th>INQUIRY STEP</th>
+          <th>STUDENT ACTIVITIES &amp; MILESTONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>00 - 10 Min</strong></td>
+          <td>Engage &amp; Certify</td>
+          <td>Students review the deep-space context, read the student briefing, and complete the Pre-Flight Quiz to unlock mission telemetry.</td>
+        </tr>
+        <tr>
+          <td><strong>10 - 20 Min</strong></td>
+          <td>Explore &amp; Construct</td>
+          <td>Student crews wrap their physical PET jars with specific insulation configs and thread thermal wire probes through PG7 glands.</td>
+        </tr>
+        <tr>
+          <td><strong>20 - 25 Min</strong></td>
+          <td>Model &amp; Predict</td>
+          <td>Crews open the <strong>Simulator</strong> tab, select their insulation schemes, configure parameters (<code style="font-family: var(--font-mono);">T₀ = 80°C</code>), and execute mathematical predictions.</td>
+        </tr>
+        <tr>
+          <td><strong>25 - 40 Min</strong></td>
+          <td>Explain &amp; Measure</td>
+          <td>Pour 80°C water into PET jars. Submerge in the 0°C ice baths. Start stopwatch. Students log temperatures every 60 seconds.</td>
+        </tr>
+        <tr>
+          <td><strong>40 - 45 Min</strong></td>
+          <td>Elaborate &amp; Grade</td>
+          <td>Analyze the resulting <strong>Thermal Correlation Score</strong>. Discuss convective leaks, and record grading coefficients.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- SECTION 2 -->
+    <h2>2. RISK ASSESSMENT &amp; HAZARD MITIGATION</h2>
+    <p>
+      Enforce these standard safety mandates to guarantee zero accident rates during live laboratory sessions:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>HAZARD</th>
+          <th>LEVEL</th>
+          <th>MANDATED MITIGATION STEPS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hot Water Scalding</strong></td>
+          <td class="risk-high">HIGH</td>
+          <td>Do not allow students to use water &gt; 80°C. Teachers should pre-boil and dispense water pre-mixed with cold tap water to lock thermal limits at exactly 80°C.</td>
+        </tr>
+        <tr>
+          <td><strong>Melted Ice Slippages</strong></td>
+          <td class="risk-medium">MEDIUM</td>
+          <td>Place physical ice baths in high-density plastic trays. Provide moisture absorbent towels. Keep ice bath tables completely segregated from laptops and tablets.</td>
+        </tr>
+        <tr>
+          <td><strong>Electrical Shock</strong></td>
+          <td class="risk-medium">MEDIUM</td>
+          <td>Only permit low-voltage, USB-powered or battery-powered digital sensor readouts. Keep the thermocouple cables long to maximize distance from the computer screen.</td>
+        </tr>
+        <tr>
+          <td><strong>Capsule Deformation</strong></td>
+          <td class="risk-low">LOW</td>
+          <td>Ensure thin PET food jars are not exposed to boiling 100°C temperatures which causes polymer warping. Enforce the strict 80°C limit.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 3 -->
+    <h2>3. ANALYTICAL SOLUTIONS KEY (NEWTONIAN DECAY CONSTANTS)</h2>
+    <p>
+      Crews configure their spacesuits with distinct insulation wraps. Use this analytical key to verify if their physical curves map correctly to physical heat coefficients:
+    </p>
+    
+    <h3>Expected Cooling Rates after 15-Minute Submersion:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>INSULATION DESIGN</th>
+          <th>DECAY CONSTANT (k)</th>
+          <th>EXPECTED END TEMP (15 MIN)</th>
+          <th>DOMINANT COOLING PATHWAY BLOCKED</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>A. Bare Capsule</strong></td>
+          <td>k ≈ 0.082</td>
+          <td>≈ 23°C</td>
+          <td>Baseline Scientific Control. No pathways blocked.</td>
+        </tr>
+        <tr>
+          <td><strong>B. Cotton Padding</strong></td>
+          <td>k ≈ 0.045</td>
+          <td>≈ 40°C</td>
+          <td>Blocks direct thermal conduction through fibers.</td>
+        </tr>
+        <tr>
+          <td><strong>C. Bubble Wrap Rings</strong></td>
+          <td>k ≈ 0.032</td>
+          <td>≈ 49°C</td>
+          <td>Blocks convective thermal transfer via static air pockets.</td>
+        </tr>
+        <tr>
+          <td><strong>D. Multi-Layer MLI</strong></td>
+          <td>k ≈ 0.015</td>
+          <td>≈ 64°C</td>
+          <td>Blocks radiant energy transfer via reflective aluminum layers.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- FIG 3: SOLUTIONS PLOT GRAPH -->
+    <div style="text-align: center; margin: 25px 0;">
+      <svg viewBox="0 0 600 280" style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; margin: 0 auto; display: block; max-width: 600px; width: 100%;">
+        <!-- Temp Grids -->
+        <line x1="60" y1="50" x2="480" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+        <text x="50" y="54" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="end">80°C</text>
+
+        <line x1="60" y1="95" x2="480" y2="95" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+        <text x="50" y="99" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="end">60°C</text>
+
+        <line x1="60" y1="140" x2="480" y2="140" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+        <text x="50" y="144" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="end">40°C</text>
+
+        <line x1="60" y1="185" x2="480" y2="185" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+        <text x="50" y="189" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="end">20°C</text>
+
+        <line x1="60" y1="230" x2="480" y2="230" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+        <text x="50" y="234" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="end">0°C</text>
+
+        <!-- Time Grids -->
+        <line x1="60" y1="50" x2="60" y2="230" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+        <text x="60" y="244" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="middle">0m</text>
+
+        <line x1="165" y1="50" x2="165" y2="230" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+        <text x="165" y="244" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="middle">3.75m</text>
+
+        <line x1="270" y1="50" x2="270" y2="230" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+        <text x="270" y="244" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="middle">7.5m</text>
+
+        <line x1="375" y1="50" x2="375" y2="230" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+        <text x="375" y="244" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="middle">11.25m</text>
+
+        <line x1="480" y1="50" x2="480" y2="230" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+        <text x="480" y="244" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="middle">15m</text>
+
+        <!-- Curves -->
+        <!-- 1. MLI (Gold) -->
+        <path d="M 60 50 Q 270 65 480 86" fill="none" stroke="#f59e0b" stroke-width="2.5" />
+        <circle cx="480" cy="86" r="3.5" fill="#f59e0b" />
+        
+        <!-- 2. Bubble Wrap (Green) -->
+        <path d="M 60 50 Q 270 80 480 120" fill="none" stroke="#10b981" stroke-width="2.5" />
+        <circle cx="480" cy="120" r="3.5" fill="#10b981" />
+
+        <!-- 3. Cotton (Blue) -->
+        <path d="M 60 50 Q 270 95 480 140" fill="none" stroke="#4facfe" stroke-width="2.5" />
+        <circle cx="480" cy="140" r="3.5" fill="#4facfe" />
+
+        <!-- 4. Bare Capsule (Red) -->
+        <path d="M 60 50 Q 270 125 480 179" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="3,2" />
+        <circle cx="480" cy="179" r="3.5" fill="#f43f5e" />
+
+        <text x="270" y="25" fill="#e2e8f0" font-family="var(--font-hud, Orbitron)" font-size="9" font-weight="bold" text-anchor="middle" letter-spacing="1">THEORETICAL EXTREME THERMAL DECAY CURVES</text>
+        
+        <!-- Legend -->
+        <rect x="492" y="45" width="98" height="135" rx="4" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" />
+        
+        <rect x="500" y="55" width="6" height="6" fill="#f59e0b" />
+        <text x="510" y="61" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">MLI (64°C)</text>
+        
+        <rect x="500" y="85" width="6" height="6" fill="#10b981" />
+        <text x="510" y="91" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Bubbles (49°C)</text>
+
+        <rect x="500" y="115" width="6" height="6" fill="#4facfe" />
+        <text x="510" y="121" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Cotton (40°C)</text>
+
+        <rect x="500" y="145" width="6" height="6" fill="#f43f5e" />
+        <text x="510" y="151" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Bare (23°C)</text>
+      </svg>
+      <div style="font-size: 0.8rem; color: var(--text-dimmed); margin-top: 6px; font-family: var(--font-mono);">FIGURE 3: EXPECTED EXPONENTIAL COOLING CURVES (t = 0 to 15m)</div>
+    </div>
+
+    <p>
+      <em>Note: Physical values may deviate by ±5% depending on wrapping tightness and capsule sealing. The real-time <strong>Thermal Correlation Score</strong> computed in the telemetry dashboard will rate how closely they match these digital curves.</em>
+    </p>
+
+    <!-- SECTION 4 -->
+    <h2>4. CLASSROOM EVALUATION &amp; GRADING RUBRIC</h2>
+    <p>
+      Use this standardized 100-point rubric to grade student performance:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>GRADING CRITERIA</th>
+          <th>POINTS</th>
+          <th>EXCELLENT (100% Points)</th>
+          <th>SATISFACTORY (70% Points)</th>
+          <th>INSUFFICIENT (30% Points)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Assembly Precision</strong></td>
+          <td><strong>20 Pt</strong></td>
+          <td>Capsule sealed completely. PG7 gland tightened perfectly. DS18B20 wire is centered without touching PET walls.</td>
+          <td>Capsule sealed, but slight water leakage inside jar lid. Probe touching side wall.</td>
+          <td>Severe leaks. Wire gland is loose or untightened. Complete water ingress.</td>
+        </tr>
+        <tr>
+          <td><strong>2. Telemetry Diligence</strong></td>
+          <td><strong>20 Pt</strong></td>
+          <td>All 15 data points entered precisely every 60 seconds. Active team tracking.</td>
+          <td>Missed 2-3 data points. Data recorded late or values estimated.</td>
+          <td>Missed major telemetry slots. Incomplete logging.</td>
+        </tr>
+        <tr>
+          <td><strong>3. Correlation Score</strong></td>
+          <td><strong>30 Pt</strong></td>
+          <td>Physical curve matches mathematical simulator curve with &gt; 90% correlation score.</td>
+          <td>Thermal correlation falls between 75% and 89%. Small wrapping air gaps.</td>
+          <td>Correlation score is &lt; 70% due to major physical leaks or simulation error.</td>
+        </tr>
+        <tr>
+          <td><strong>4. Analytical Report</strong></td>
+          <td><strong>30 Pt</strong></td>
+          <td>Deep explanation of conduction, convection, and radiation blocks. Precise calculations.</td>
+          <td>Answers standard questions correctly but lacks deep scientific rationale.</td>
+          <td>Incomplete answers. Scientific concepts misunderstood or omitted.</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="action-button-container" style="margin-top: 30px; margin-bottom: 20px;">
+      <button class="btn-print" onclick="window.print();">
+        <i data-lucide="printer"></i> SAVE MANUAL TO PDF / PRINT
+      </button>
+    </div>
+
+    <div class="footer-bar">
+      SPHERE: MISSION CONTROL // INSTRUCTOR PEDAGOGICAL DEPLOYMENT MANUAL // © 2026 PROJECT SPHERE INITIATIVE
+    </div>
+
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
