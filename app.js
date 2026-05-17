@@ -104,6 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Web Audio API Synthesizer (Space Mission UI Sound FX Engine)
   // ==========================================================================
   let audioCtx = null;
+  let ambientHumOsc1 = null;
+  let ambientHumOsc2 = null;
+  let ambientHumGain = null;
 
   function ensureAudioContext() {
     if (!state.audio || !state.audio.isEnabled) return null;
@@ -112,7 +115,11 @@ document.addEventListener('DOMContentLoaded', () => {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
       if (audioCtx && audioCtx.state === 'suspended') {
-        audioCtx.resume();
+        audioCtx.resume().then(() => {
+          startAmbientHum();
+        }).catch(err => console.warn("Failed to resume AudioContext", err));
+      } else {
+        startAmbientHum();
       }
     } catch (e) {
       console.warn("Failed to initialize AudioContext", e);
@@ -120,11 +127,75 @@ document.addEventListener('DOMContentLoaded', () => {
     return audioCtx;
   }
 
+  function startAmbientHum() {
+    if (!state.audio || !state.audio.isEnabled) return;
+    if (ambientHumOsc1) return; // Hum is already active
+    
+    try {
+      const ctx = audioCtx || ensureAudioContext();
+      if (!ctx) return;
+      
+      // Master gain node for background hum
+      ambientHumGain = ctx.createGain();
+      ambientHumGain.gain.setValueAtTime(0, ctx.currentTime);
+      ambientHumGain.connect(ctx.destination);
+      
+      // Binaural chorus sweep (55Hz / 55.5Hz) for realistic space station core sound
+      ambientHumOsc1 = ctx.createOscillator();
+      ambientHumOsc1.type = 'sine';
+      ambientHumOsc1.frequency.setValueAtTime(55.0, ctx.currentTime);
+      
+      ambientHumOsc2 = ctx.createOscillator();
+      ambientHumOsc2.type = 'triangle';
+      ambientHumOsc2.frequency.setValueAtTime(55.5, ctx.currentTime);
+      
+      // Lowpass filter to keep it extremely deep, immersive, and pleasant
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(75, ctx.currentTime);
+      
+      ambientHumOsc1.connect(filter);
+      ambientHumOsc2.connect(filter);
+      filter.connect(ambientHumGain);
+      
+      ambientHumOsc1.start();
+      ambientHumOsc2.start();
+      
+      // Smooth fade in over 2 seconds to avoid popping
+      ambientHumGain.gain.linearRampToValueAtTime(0.015, ctx.currentTime + 2.0);
+    } catch (e) {
+      console.warn("Failed to spin up ambient hum loop", e);
+    }
+  }
+
+  function stopAmbientHum() {
+    if (ambientHumGain && audioCtx) {
+      try {
+        const currentGain = ambientHumGain.gain.value;
+        ambientHumGain.gain.setValueAtTime(currentGain, audioCtx.currentTime);
+        ambientHumGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.4);
+        
+        const osc1 = ambientHumOsc1;
+        const osc2 = ambientHumOsc2;
+        
+        ambientHumOsc1 = null;
+        ambientHumOsc2 = null;
+        
+        setTimeout(() => {
+          try { if (osc1) osc1.stop(); } catch(e){}
+          try { if (osc2) osc2.stop(); } catch(e){}
+        }, 500);
+      } catch (e) {
+        console.warn("Failed to stop ambient hum", e);
+      }
+    }
+  }
+
   function playTone(freq, type, duration, gainStart) {
     if (!state.audio || !state.audio.isEnabled) return;
     try {
       const ctx = ensureAudioContext();
-      if (!ctx || ctx.state === 'suspended') return;
+      if (!ctx) return; // Keep scheduling active oscillator even if suspended during transition
       
       const osc = ctx.createOscillator();
       const gainNode = ctx.createGain();
@@ -193,6 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.btnToggleAudio.style.background = 'transparent';
         elements.audioIcon.innerHTML = `<i data-lucide="volume-x" style="width: 12px; height: 12px;"></i>`;
         elements.audioStatusText.textContent = 'AUDIO: MUTED';
+        stopAmbientHum();
         logToConsole("SYS: Mission cockpit audio telemetry channel muted.");
       }
       lucide.createIcons();
