@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Simulator Elements
     insulationSelect: document.getElementById('insulation-select'),
+    simT0: document.getElementById('sim-t0'),
+    simTenv: document.getElementById('sim-tenv'),
     btnRunSim: document.getElementById('btn-run-simulation'),
     simKVal: document.getElementById('sim-k-val'),
     simT15Val: document.getElementById('sim-t15-val'),
@@ -184,19 +186,30 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Newton's Law of Cooling formula resolver: T(t) = T_env + (T_0 - T_env) * e^(-k*t)
   function calculateNewtonTemperature(time, k) {
-    const t0 = 80.0;
-    const tenv = 0.0;
+    const t0Input = elements.simT0 ? parseFloat(elements.simT0.value) : 80.0;
+    const tenvInput = elements.simTenv ? parseFloat(elements.simTenv.value) : 0.0;
+    const t0 = isNaN(t0Input) ? 80.0 : t0Input;
+    const tenv = isNaN(tenvInput) ? 0.0 : tenvInput;
     return tenv + (t0 - tenv) * Math.exp(-k * time);
   }
 
-  // Handle material parameters selection to update UI readouts immediately
-  elements.insulationSelect.addEventListener('change', (e) => {
-    const selected = e.target.value;
+  // Handle start and environmental temp inputs to update predicted temperature dynamically
+  const updatePredictionStats = () => {
+    const selected = elements.insulationSelect.value;
     const material = state.modelConstants[selected];
-    
-    elements.simKVal.textContent = material.k.toFixed(3);
     const predictedT15 = calculateNewtonTemperature(15, material.k);
     elements.simT15Val.textContent = `${predictedT15.toFixed(1)}°C`;
+  };
+
+  elements.simT0.addEventListener('input', updatePredictionStats);
+  elements.simTenv.addEventListener('input', updatePredictionStats);
+
+  // Handle material parameters selection to update UI readouts immediately
+  elements.insulationSelect.addEventListener('change', (e) => {
+    updatePredictionStats();
+    const selected = e.target.value;
+    const material = state.modelConstants[selected];
+    elements.simKVal.textContent = material.k.toFixed(3);
   });
 
   // Action: Compile Mathematical Curve
@@ -674,7 +687,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     for (let t = 0; t <= 15; t += 1.0) {
       if (t === 0) {
-        state.telemetryPoints.push({ time: 0, temp: 80.0 });
+        const t0Input = elements.simT0 ? parseFloat(elements.simT0.value) : 80.0;
+        const startT = isNaN(t0Input) ? 80.0 : t0Input;
+        state.telemetryPoints.push({ time: 0, temp: startT });
         continue;
       }
       
