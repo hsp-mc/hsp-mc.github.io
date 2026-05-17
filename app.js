@@ -41,8 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
     insulationSelect: document.getElementById('insulation-select'),
     simT0: document.getElementById('sim-t0'),
     simTenv: document.getElementById('sim-tenv'),
+    simTime: document.getElementById('sim-time'),
     btnRunSim: document.getElementById('btn-run-simulation'),
     simKVal: document.getElementById('sim-k-val'),
+    simT15Title: document.getElementById('sim-t15-title'),
     simT15Val: document.getElementById('sim-t15-val'),
     simBadge: document.getElementById('sim-selected-badge'),
     
@@ -197,12 +199,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const updatePredictionStats = () => {
     const selected = elements.insulationSelect.value;
     const material = state.modelConstants[selected];
-    const predictedT15 = calculateNewtonTemperature(15, material.k);
-    elements.simT15Val.textContent = `${predictedT15.toFixed(1)}°C`;
+    
+    const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
+    const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
+    
+    if (elements.simT15Title) {
+      elements.simT15Title.textContent = `PREDICTED T(${duration})`;
+    }
+    
+    const predictedFinal = calculateNewtonTemperature(duration, material.k);
+    elements.simT15Val.textContent = `${predictedFinal.toFixed(1)}°C`;
   };
 
   elements.simT0.addEventListener('input', updatePredictionStats);
   elements.simTenv.addEventListener('input', updatePredictionStats);
+  
+  if (elements.simTime) {
+    elements.simTime.addEventListener('input', () => {
+      updatePredictionStats();
+      resetTimer();
+    });
+  }
 
   // Handle material parameters selection to update UI readouts immediately
   elements.insulationSelect.addEventListener('change', (e) => {
@@ -218,9 +235,12 @@ document.addEventListener('DOMContentLoaded', () => {
     state.selectedModel = selected;
     const material = state.modelConstants[selected];
     
-    // Clear and build predicted dataset over 15 minutes (t=0 to 15, step=1)
+    const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
+    const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
+    
+    // Clear and build predicted dataset over custom duration (t=0 to duration, step=1)
     state.predictionCurve = [];
-    for (let t = 0; t <= 15; t++) {
+    for (let t = 0; t <= duration; t++) {
       const temp = calculateNewtonTemperature(t, material.k);
       state.predictionCurve.push({ x: t, y: parseFloat(temp.toFixed(2)) });
     }
@@ -281,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
           x: {
             type: 'linear',
             min: 0,
-            max: 15,
+            max: state.predictionCurve.length > 0 ? state.predictionCurve[state.predictionCurve.length - 1].x : 15,
             title: {
               display: true,
               text: 'TIME (MINUTES)',
@@ -350,6 +370,9 @@ document.addEventListener('DOMContentLoaded', () => {
       logToConsole("SYS: Re-entry thermal clock sequence initiated.");
       showNotification("Timer Initiated", "success");
       
+      const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
+      const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
+      
       state.timer.intervalId = setInterval(() => {
         state.timer.secondsRemaining--;
         updateTimerDisplay();
@@ -367,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
           state.timer.isRunning = false;
           elements.btnTimerToggle.innerHTML = `<i data-lucide="play"></i> START`;
           elements.btnTimerToggle.className = "btn-hud btn-orange";
-          logToConsole("WARN: mission capsule time frame exhausted! 15 minute limit reached.", "warn");
+          logToConsole(`WARN: mission capsule time frame exhausted! ${duration} minute limit reached.`, "warn");
           showNotification("Mission Complete!", "error");
         }
       }, 1000);
@@ -378,11 +401,17 @@ document.addEventListener('DOMContentLoaded', () => {
   function resetTimer() {
     clearInterval(state.timer.intervalId);
     state.timer.isRunning = false;
+    
+    const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
+    const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
+    
+    state.timer.duration = duration * 60;
     state.timer.secondsRemaining = state.timer.duration;
+    
     updateTimerDisplay();
     elements.btnTimerToggle.innerHTML = `<i data-lucide="play"></i> START`;
     elements.btnTimerToggle.className = "btn-hud btn-orange";
-    logToConsole("SYS: Mission clock reset to 15:00.");
+    logToConsole(`SYS: Mission clock reset to ${duration}:00.`);
     lucide.createIcons();
   }
 
@@ -436,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
           x: {
             type: 'linear',
             min: 0,
-            max: 15,
+            max: state.predictionCurve.length > 0 ? state.predictionCurve[state.predictionCurve.length - 1].x : 15,
             title: {
               display: true,
               text: 'TIME (MINUTES)',
@@ -481,6 +510,17 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateTelemetryChart() {
     if (!telemetryChartInstance) return;
     
+    const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
+    const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
+    
+    // Dynamically adjust scale limit
+    telemetryChartInstance.options.scales.x.max = duration;
+    
+    // Dynamically update max attribute of the log time input for UX guidance
+    if (elements.logTimeInput) {
+      elements.logTimeInput.max = duration;
+    }
+    
     // Format logged values appropriately sorted by time ascending
     const sortedPhysical = [...state.telemetryPoints].sort((a, b) => a.time - b.time).map(pt => ({
       x: pt.time,
@@ -500,7 +540,7 @@ document.addEventListener('DOMContentLoaded', () => {
     telemetryChartInstance.update();
     
     // Sync statistics
-    elements.acquiredCountBadge.textContent = `${state.telemetryPoints.length} / 16`;
+    elements.acquiredCountBadge.textContent = `${state.telemetryPoints.length} / ${duration + 1}`;
   }
 
   // Transmit and log manual packet
@@ -510,9 +550,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeVal = parseFloat(elements.logTimeInput.value);
     const tempVal = parseFloat(elements.logTempInput.value);
     
+    const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
+    const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
+    
     // Check validation constraints
-    if (isNaN(timeVal) || timeVal < 0 || timeVal > 15) {
-      showNotification("Invalid entry: Time must be between 0 and 15 mins", "error");
+    if (isNaN(timeVal) || timeVal < 0 || timeVal > duration) {
+      showNotification(`Invalid entry: Time must be between 0 and ${duration} mins`, "error");
       return;
     }
     if (isNaN(tempVal) || tempVal < 0 || tempVal > 100) {
@@ -864,6 +907,7 @@ document.addEventListener('DOMContentLoaded', () => {
       updateTelemetryTable();
     }
     
+    resetTimer();
     updateTelemetryChart();
     restoreQuizStatus();
   }

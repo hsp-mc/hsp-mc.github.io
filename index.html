@@ -349,7 +349,7 @@
               <div class="form-group" style="margin-top: 10px;">
                 <label class="form-label">SIMULATION EXPOSURE TIMEFRAME</label>
                 <div class="hud-input-wrapper">
-                  <input type="number" class="hud-input" value="15" readonly>
+                  <input type="number" id="sim-time" class="hud-input" value="15" min="1" max="60" step="1">
                   <span class="input-suffix">MINUTES</span>
                 </div>
               </div>
@@ -366,7 +366,7 @@
                 <div class="sim-stat-value glow-cyan" id="sim-k-val">0.150</div>
               </div>
               <div class="sim-stat-box">
-                <div class="sim-stat-title">PREDICTED T(15)</div>
+                <div class="sim-stat-title" id="sim-t15-title">PREDICTED T(15)</div>
                 <div class="sim-stat-value glow-orange" id="sim-t15-val">8.4°C</div>
               </div>
             </div>
