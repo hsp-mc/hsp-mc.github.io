@@ -47,6 +47,10 @@
         <button class="nav-tab tab-admin" data-target="admin">
           <i data-lucide="shield-alert"></i> TEACHER PORTAL
         </button>
+        <button id="btn-toggle-audio" class="btn-hud" style="width: auto; padding: 4px 10px; font-size: 0.7rem; border-color: rgba(0, 242, 254, 0.3); color: var(--cyan); background: rgba(0, 242, 254, 0.05); display: inline-flex; align-items: center; gap: 4px; border-radius: 4px; cursor: pointer; margin-left: 15px; border: 1px solid rgba(0, 242, 254, 0.3); font-family: var(--font-hud);">
+          <span id="audio-icon" style="display: inline-flex; align-items: center;"><i data-lucide="volume-2" style="width: 12px; height: 12px;"></i></span>
+          <span id="audio-status-text">AUDIO: ACTIVE</span>
+        </button>
       </nav>
     </header>
 
@@ -327,7 +331,30 @@
                   <option value="cotton">Cotton Layer Only (Conduction Shield) — k = 0.080</option>
                   <option value="mylar">Mylar Layer Only (Radiation Shield) — k = 0.040</option>
                   <option value="mli">Full MLI (Cotton + Bubble Wrap + Mylar) — k = 0.015</option>
+                  <option value="custom">Custom Design (Sandbox Sliders) — k = Variable</option>
                 </select>
+              </div>
+
+              <!-- Collapsible Custom Sandbox Tuner Card -->
+              <div id="custom-sandbox-tuner" class="form-group" style="display: none; background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; border-radius: 6px; margin-top: 15px; margin-bottom: 15px;">
+                <label class="form-label" style="color: var(--cyan); font-family: var(--font-hud); font-size: 0.75rem; letter-spacing: 0.05em; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                  <span><i data-lucide="sliders" style="width: 14px; height: 14px; vertical-align: middle;"></i> CUSTOM THERMAL SANDBOX</span>
+                  <span id="custom-k-val" class="step-badge" style="background: rgba(0, 242, 254, 0.1); border-color: var(--cyan); color: var(--cyan); margin: 0; font-size: 0.7rem; padding: 2px 6px;">k = 0.050</span>
+                </label>
+                <p class="briefing-text" style="font-size: 0.8rem; line-height: 1.4; margin-bottom: 12px; color: var(--text-normal);">
+                  Tune the cooling rate manually. A lower <code style="color: var(--cyan); font-family: var(--font-mono); font-weight: bold;">k</code> coefficient represents highly superior thermal protection insulation, while a higher <code style="color: var(--orange); font-family: var(--font-mono); font-weight: bold;">k</code> coefficient represents rapid thermal decay.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <div style="display: flex; align-items: center; gap: 15px;">
+                    <span style="font-size: 0.75rem; color: var(--text-dimmed); font-family: var(--font-mono); width: 45px;">Vacuum (0.005)</span>
+                    <input type="range" id="custom-k-slider" min="0.005" max="0.200" step="0.001" value="0.050" style="flex: 1; accent-color: var(--cyan); cursor: pointer; background: rgba(0,0,0,0.5); height: 6px; border-radius: 3px; outline: none; border: none;">
+                    <span style="font-size: 0.75rem; color: var(--text-dimmed); font-family: var(--font-mono); width: 40px;">Metal (0.200)</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; font-family: var(--font-mono); color: var(--text-dimmed); padding-top: 5px;">
+                    <span>◀ SUPERIOR INSULATION (MLI+)</span>
+                    <span>RAPID FLUX DECAY (BARE) ▶</span>
+                  </div>
+                </div>
               </div>
 
               <!-- Thermal Core Initial Boundaries -->

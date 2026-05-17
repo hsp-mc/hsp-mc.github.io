@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
       bare: { name: 'Bare Capsule (Control)', k: 0.150, color: '#00f2fe' },
       cotton: { name: 'Cotton Layer (Conduction Shield)', k: 0.080, color: '#4facfe' },
       mylar: { name: 'Mylar Layer (Radiation Shield)', k: 0.040, color: '#ff9f43' },
-      mli: { name: 'Full MLI (Cotton + Bubble Wrap + Mylar)', k: 0.015, color: '#10b981' }
+      mli: { name: 'Full MLI (Cotton + Bubble Wrap + Mylar)', k: 0.015, color: '#10b981' },
+      custom: { name: 'Custom Sandbox Layer', k: 0.050, color: '#a55eea' }
     },
     predictionCurve: [], // Cached prediction data points [{x: time, y: temp}]
     telemetryPoints: [],  // User logged physical points [{time: number, temp: number}]
@@ -25,6 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
       secondsRemaining: 15 * 60,
       intervalId: null,
       isRunning: false
+    },
+    
+    // Audio Sound FX State
+    audio: {
+      isEnabled: true
     }
   };
 
@@ -37,8 +43,16 @@ document.addEventListener('DOMContentLoaded', () => {
     systemStatusText: document.getElementById('system-status-text'),
     sysConsole: document.getElementById('sys-terminal-console'),
     
+    // Audio Elements
+    btnToggleAudio: document.getElementById('btn-toggle-audio'),
+    audioIcon: document.getElementById('audio-icon'),
+    audioStatusText: document.getElementById('audio-status-text'),
+    
     // Simulator Elements
     insulationSelect: document.getElementById('insulation-select'),
+    customSandboxTuner: document.getElementById('custom-sandbox-tuner'),
+    customKSlider: document.getElementById('custom-k-slider'),
+    customKVal: document.getElementById('custom-k-val'),
     simT0: document.getElementById('sim-t0'),
     simTenv: document.getElementById('sim-tenv'),
     simTime: document.getElementById('sim-time'),
@@ -85,6 +99,100 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize Lucide Icons
   lucide.createIcons();
+
+  // ==========================================================================
+  // Web Audio API Synthesizer (Space Mission UI Sound FX Engine)
+  // ==========================================================================
+  function playTone(freq, type, duration, gainStart) {
+    if (!state.audio || !state.audio.isEnabled) return;
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      
+      gainNode.gain.setValueAtTime(gainStart, audioCtx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      
+      osc.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    } catch (e) {
+      console.warn("Audio Context init failed", e);
+    }
+  }
+
+  function playClickSound() {
+    playTone(1200, 'sine', 0.08, 0.05);
+  }
+
+  function playSuccessSound() {
+    if (!state.audio || !state.audio.isEnabled) return;
+    playTone(523.25, 'triangle', 0.12, 0.08); // C5
+    setTimeout(() => {
+      playTone(659.25, 'triangle', 0.20, 0.08); // E5
+    }, 80);
+  }
+
+  function playEpochSound() {
+    if (!state.audio || !state.audio.isEnabled) return;
+    playTone(800, 'sawtooth', 0.15, 0.04);
+    setTimeout(() => {
+      playTone(800, 'sawtooth', 0.15, 0.04);
+    }, 180);
+  }
+
+  function playWarningSound() {
+    if (!state.audio || !state.audio.isEnabled) return;
+    playTone(380, 'triangle', 0.25, 0.10);
+    setTimeout(() => {
+      playTone(280, 'triangle', 0.25, 0.10);
+    }, 120);
+  }
+
+  // Audio Toggle Control Event Listener
+  if (elements.btnToggleAudio) {
+    elements.btnToggleAudio.addEventListener('click', () => {
+      state.audio.isEnabled = !state.audio.isEnabled;
+      
+      if (state.audio.isEnabled) {
+        elements.btnToggleAudio.style.borderColor = 'rgba(0, 242, 254, 0.3)';
+        elements.btnToggleAudio.style.color = 'var(--cyan)';
+        elements.btnToggleAudio.style.background = 'rgba(0, 242, 254, 0.05)';
+        elements.audioIcon.innerHTML = `<i data-lucide="volume-2" style="width: 12px; height: 12px;"></i>`;
+        elements.audioStatusText.textContent = 'AUDIO: ACTIVE';
+        playTone(1500, 'sine', 0.1, 0.08);
+      } else {
+        elements.btnToggleAudio.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+        elements.btnToggleAudio.style.color = 'var(--text-dimmed)';
+        elements.btnToggleAudio.style.background = 'transparent';
+        elements.audioIcon.innerHTML = `<i data-lucide="volume-x" style="width: 12px; height: 12px;"></i>`;
+        elements.audioStatusText.textContent = 'AUDIO: MUTED';
+      }
+      lucide.createIcons();
+    });
+  }
+
+  // Custom K Sandbox Slider Event Listener
+  if (elements.customKSlider) {
+    elements.customKSlider.addEventListener('input', (e) => {
+      const kVal = parseFloat(e.target.value);
+      state.modelConstants.custom.k = kVal;
+      
+      if (elements.customKVal) {
+        elements.customKVal.textContent = `k = ${kVal.toFixed(3)}`;
+      }
+      
+      updatePredictionStats();
+      if (elements.insulationSelect.value === 'custom') {
+        elements.simKVal.textContent = kVal.toFixed(3);
+      }
+    });
+  }
 
   // ==========================================================================
   // 2. Global Utilities & Notifications
@@ -152,6 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   elements.tabs.forEach(tab => {
     tab.addEventListener('click', () => {
+      playClickSound();
       const target = tab.getAttribute('data-target');
       
       // Update Tab state
@@ -223,8 +332,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Handle material parameters selection to update UI readouts immediately
   elements.insulationSelect.addEventListener('change', (e) => {
-    updatePredictionStats();
+    playClickSound();
     const selected = e.target.value;
+    
+    // Toggle Sandbox card visibility
+    if (selected === 'custom') {
+      if (elements.customSandboxTuner) {
+        elements.customSandboxTuner.style.display = 'block';
+      }
+    } else {
+      if (elements.customSandboxTuner) {
+        elements.customSandboxTuner.style.display = 'none';
+      }
+    }
+    
+    updatePredictionStats();
     const material = state.modelConstants[selected];
     elements.simKVal.textContent = material.k.toFixed(3);
   });
@@ -264,6 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     logToConsole(`SYS: Prediction generated for ${material.name} (k=${material.k.toFixed(3)}). Predicted T(15)=${calculateNewtonTemperature(15, material.k).toFixed(2)}°C.`, 'success');
     showNotification(`Simulation Curve Active: k=${material.k.toFixed(3)}`, 'success');
+    playSuccessSound();
     
     // Save state
     saveToLocalStorage();
@@ -383,6 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const minsElapsed = elapsedSeconds / 60;
           logToConsole(`MISSION TIME [${String(minsElapsed).padStart(2, '0')}:00]: Epoch checkpoint! Transmit actual thermometer telemetry.`, 'warn');
           showNotification(`Transmit physical telemetry for Minute ${minsElapsed}!`, 'info');
+          playEpochSound();
         }
         
         if (state.timer.secondsRemaining <= 0) {
@@ -392,6 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
           elements.btnTimerToggle.className = "btn-hud btn-orange";
           logToConsole(`WARN: mission capsule time frame exhausted! ${duration} minute limit reached.`, "warn");
           showNotification("Mission Complete!", "error");
+          playWarningSound();
         }
       }, 1000);
     }
@@ -421,8 +546,14 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   }
 
-  elements.btnTimerToggle.addEventListener('click', toggleTimer);
-  elements.btnTimerReset.addEventListener('click', resetTimer);
+  elements.btnTimerToggle.addEventListener('click', () => {
+    playClickSound();
+    toggleTimer();
+  });
+  elements.btnTimerReset.addEventListener('click', () => {
+    playClickSound();
+    resetTimer();
+  });
 
   // Dynamic overlay Chart rendering
   function initTelemetryChart() {
@@ -556,10 +687,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check validation constraints
     if (isNaN(timeVal) || timeVal < 0 || timeVal > duration) {
       showNotification(`Invalid entry: Time must be between 0 and ${duration} mins`, "error");
+      playWarningSound();
       return;
     }
     if (isNaN(tempVal) || tempVal < 0 || tempVal > 100) {
       showNotification("Invalid entry: Temp must be between 0 and 100°C", "error");
+      playWarningSound();
       return;
     }
     
@@ -584,6 +717,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     logToConsole(`LAB: Telemetry packet transmitted. Time: ${timeVal.toFixed(1)}m, Temp: ${tempVal.toFixed(1)}°C.`, 'success');
     showNotification("Telemetry Logged", "success");
+    playSuccessSound();
   });
 
   // Table synchronization
@@ -711,6 +845,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Clear telemetry completely
   elements.btnClearTelemetry.addEventListener('click', () => {
+    playClickSound();
     if (confirm("Are you sure you want to wipe all physical telemetry data? This cannot be undone.")) {
       state.telemetryPoints = [];
       updateTelemetryTable();
@@ -718,17 +853,22 @@ document.addEventListener('DOMContentLoaded', () => {
       saveToLocalStorage();
       logToConsole("WARN: Entire physical telemetry log wiped by manual directive.", "warn");
       showNotification("Logs Wiped", "error");
+      playWarningSound();
     }
   });
 
   // Mock autofill generator with authentic thermodynamic noise
   elements.btnAutofill.addEventListener('click', () => {
+    playClickSound();
     const material = state.modelConstants[state.selectedModel];
     state.telemetryPoints = [];
     
     logToConsole(`SYS: Simulating real-world TVAC drop telemetry for model: ${material.name.toUpperCase()}`);
     
-    for (let t = 0; t <= 15; t += 1.0) {
+    const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
+    const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
+    
+    for (let t = 0; t <= duration; t += 1.0) {
       if (t === 0) {
         const t0Input = elements.simT0 ? parseFloat(elements.simT0.value) : 80.0;
         const startT = isNaN(t0Input) ? 80.0 : t0Input;
@@ -754,6 +894,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     logToConsole("LAB: Cybernetic simulation complete. Real-world sensor variance dataset mounted.", "success");
     showNotification("Sample Telemetry Mounted", "success");
+    playSuccessSound();
   });
 
   // ==========================================================================
@@ -761,6 +902,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   elements.adminLoginForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    playClickSound();
     const pw = elements.adminPasswordInput.value;
     
     if (pw === 'SPHERE2026') {
@@ -771,23 +913,27 @@ document.addEventListener('DOMContentLoaded', () => {
       
       logToConsole("SYS: Instructor access validated. Key decrypted.", "success");
       showNotification("Teacher Portal Unlocked", "success");
+      playSuccessSound();
       
       sessionStorage.setItem('sphere_admin_auth', 'true');
       lucide.createIcons();
     } else {
       showNotification("Access Denied: Invalid Decryption Key", "error");
       logToConsole("WARN: Unauthorized access attempt registered on teacher portal.", "warn");
+      playWarningSound();
       elements.adminPasswordInput.value = '';
     }
   });
 
   elements.btnAdminLogout.addEventListener('click', () => {
+    playClickSound();
     state.isAuthorized = false;
     elements.adminAuthorizedDashboard.style.display = 'none';
     elements.adminLoginGate.style.display = 'block';
     
     logToConsole("SYS: Instructor session locked.");
     showNotification("Teacher Portal Secured", "error");
+    playWarningSound();
     
     sessionStorage.removeItem('sphere_admin_auth');
     lucide.createIcons();
@@ -795,6 +941,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Pre-Flight Certification Quiz Evaluation
   function evaluateQuiz() {
+    playClickSound();
     const q1 = document.querySelector('input[name="q1"]:checked')?.value;
     const q2 = document.querySelector('input[name="q2"]:checked')?.value;
     const q3 = document.querySelector('input[name="q3"]:checked')?.value;
@@ -802,6 +949,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!q1 || !q2 || !q3) {
       showNotification("Error: Answer all quiz questions first!", "error");
       logToConsole("WARN: Certification attempt rejected. Missing answer fields.", "warn");
+      playWarningSound();
       return;
     }
     
@@ -818,6 +966,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       logToConsole("SYS: Pre-flight quiz certified: 3/3 CORRECT. Credential card SPHERE-ENG-ACTIVE issued.", "success");
       showNotification("Assessment Passed! Credentials Issued.", "success");
+      playSuccessSound();
       
       localStorage.setItem('sphere_quiz_certified', 'true');
     } else {
@@ -834,6 +983,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       logToConsole(`WARN: Certification failed. ${incorrectCount} incorrect heat transfer answers detected. Re-evaluating mechanical layers...`, "warn");
       showNotification(`Failed: ${incorrectCount} incorrect answers. Try again!`, "error");
+      playWarningSound();
     }
   }
   
