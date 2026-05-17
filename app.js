@@ -103,26 +103,45 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // Web Audio API Synthesizer (Space Mission UI Sound FX Engine)
   // ==========================================================================
+  let audioCtx = null;
+
+  function ensureAudioContext() {
+    if (!state.audio || !state.audio.isEnabled) return null;
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    } catch (e) {
+      console.warn("Failed to initialize AudioContext", e);
+    }
+    return audioCtx;
+  }
+
   function playTone(freq, type, duration, gainStart) {
     if (!state.audio || !state.audio.isEnabled) return;
     try {
-      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      const osc = audioCtx.createOscillator();
-      const gainNode = audioCtx.createGain();
+      const ctx = ensureAudioContext();
+      if (!ctx || ctx.state === 'suspended') return;
+      
+      const osc = ctx.createOscillator();
+      const gainNode = ctx.createGain();
       
       osc.type = type;
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
       
-      gainNode.gain.setValueAtTime(gainStart, audioCtx.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      gainNode.gain.setValueAtTime(gainStart, ctx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
       
       osc.connect(gainNode);
-      gainNode.connect(audioCtx.destination);
+      gainNode.connect(ctx.destination);
       
       osc.start();
-      osc.stop(audioCtx.currentTime + duration);
+      osc.stop(ctx.currentTime + duration);
     } catch (e) {
-      console.warn("Audio Context init failed", e);
+      console.warn("Audio Context playback failed", e);
     }
   }
 
@@ -165,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.btnToggleAudio.style.background = 'rgba(0, 242, 254, 0.05)';
         elements.audioIcon.innerHTML = `<i data-lucide="volume-2" style="width: 12px; height: 12px;"></i>`;
         elements.audioStatusText.textContent = 'AUDIO: ACTIVE';
+        ensureAudioContext(); // Resume/initialize directly inside user click gesture stack
         playTone(1500, 'sine', 0.1, 0.08);
       } else {
         elements.btnToggleAudio.style.borderColor = 'rgba(255, 255, 255, 0.1)';
