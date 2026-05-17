@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.audioIcon.innerHTML = `<i data-lucide="volume-2" style="width: 12px; height: 12px;"></i>`;
         elements.audioStatusText.textContent = 'AUDIO: ACTIVE';
         ensureAudioContext(); // Resume/initialize directly inside user click gesture stack
+        logToConsole("SYS: Mission cockpit audio telemetry channel enabled.", "success");
         playTone(1500, 'sine', 0.1, 0.08);
       } else {
         elements.btnToggleAudio.style.borderColor = 'rgba(255, 255, 255, 0.1)';
@@ -192,6 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.btnToggleAudio.style.background = 'transparent';
         elements.audioIcon.innerHTML = `<i data-lucide="volume-x" style="width: 12px; height: 12px;"></i>`;
         elements.audioStatusText.textContent = 'AUDIO: MUTED';
+        logToConsole("SYS: Mission cockpit audio telemetry channel muted.");
       }
       lucide.createIcons();
     });
