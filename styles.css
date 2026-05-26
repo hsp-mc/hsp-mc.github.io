@@ -1450,3 +1450,10 @@ body.light-theme .hud-footer {
   background: #ffffff;
 }
 
+body.light-theme .digital-hud-clock {
+  background: rgba(234, 88, 12, 0.06) !important;
+  border-color: rgba(234, 88, 12, 0.2) !important;
+  color: var(--orange) !important;
+  text-shadow: none !important;
+}
+
