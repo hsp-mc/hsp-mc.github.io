@@ -1138,8 +1138,68 @@ document.addEventListener('DOMContentLoaded', () => {
   // Boot chart setups
   initTelemetryChart();
   
+  // ==========================================================================
+  // Theme Toggle (Light / Dark Mode Sync)
+  // ==========================================================================
+  const btnThemeToggle = document.getElementById('theme-toggle');
+  
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      document.body.classList.add('light-theme');
+      if (btnThemeToggle) {
+        btnThemeToggle.innerHTML = `<span id="theme-icon" style="display: inline-flex; align-items: center;"><i data-lucide="moon" style="width: 12px; height: 12px;"></i></span> <span id="theme-status-text">DARK</span>`;
+        btnThemeToggle.style.borderColor = 'rgba(0, 0, 0, 0.15)';
+        btnThemeToggle.style.color = 'var(--text-bright)';
+      }
+    } else {
+      document.body.classList.remove('light-theme');
+      if (btnThemeToggle) {
+        btnThemeToggle.innerHTML = `<span id="theme-icon" style="display: inline-flex; align-items: center;"><i data-lucide="sun" style="width: 12px; height: 12px;"></i></span> <span id="theme-status-text">LIGHT</span>`;
+        btnThemeToggle.style.borderColor = 'rgba(0, 242, 254, 0.3)';
+        btnThemeToggle.style.color = 'var(--cyan)';
+      }
+    }
+    lucide.createIcons();
+    
+    // Dynamically adjust Chart.js grids and colors based on theme
+    const gridColor = theme === 'light' ? 'rgba(0, 0, 0, 0.06)' : 'rgba(255, 255, 255, 0.05)';
+    const textColor = theme === 'light' ? '#334155' : '#e2e8f0';
+    const labelColor = theme === 'light' ? '#475569' : '#94a3b8';
+    const tooltipBg = theme === 'light' ? '#ffffff' : '#101830';
+    const tooltipBorder = theme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(0, 242, 254, 0.3)';
+    
+    [simulationChartInstance, telemetryChartInstance].forEach(chart => {
+      if (chart) {
+        chart.options.scales.x.grid.color = gridColor;
+        chart.options.scales.x.title.color = labelColor;
+        chart.options.scales.x.ticks.color = labelColor;
+        chart.options.scales.y.grid.color = gridColor;
+        chart.options.scales.y.title.color = labelColor;
+        chart.options.scales.y.ticks.color = labelColor;
+        chart.options.plugins.legend.labels.color = textColor;
+        chart.options.plugins.tooltip.backgroundColor = tooltipBg;
+        chart.options.plugins.tooltip.borderColor = tooltipBorder;
+        chart.update();
+      }
+    });
+  }
+
+  if (btnThemeToggle) {
+    btnThemeToggle.addEventListener('click', () => {
+      playClickSound();
+      const currentTheme = document.body.classList.contains('light-theme') ? 'dark' : 'light';
+      localStorage.setItem('sphere_theme', currentTheme);
+      applyTheme(currentTheme);
+      logToConsole(`SYS: UI theme switched to [${currentTheme.toUpperCase()} MODE].`);
+    });
+  }
+
+  // Initial Theme load from local storage
+  const savedTheme = localStorage.getItem('sphere_theme') || 'dark';
+  applyTheme(savedTheme);
+
   // Load cached settings
   loadFromLocalStorage();
-  
+
   logToConsole("SYS: Navigation systems aligned. Mission Control fully active.");
 });

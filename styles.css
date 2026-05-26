@@ -1240,3 +1240,166 @@ h1, h2, h3, h4, h5, h6 {
   border-color: var(--green);
   box-shadow: 0 0 15px var(--green-glow);
 }
+
+/* ==========================================================================
+   Light Mode Theme Overrides
+   ========================================================================== */
+body.light-theme {
+  --bg-deep: #f1f5f9;
+  --bg-grid: #e2e8f0;
+  --bg-panel: rgba(255, 255, 255, 0.85);
+  --bg-panel-solid: #ffffff;
+  --bg-input: rgba(241, 245, 249, 0.9);
+  
+  --cyan: #0284c7;
+  --cyan-glow: rgba(2, 132, 199, 0.15);
+  --cyan-border: rgba(2, 132, 199, 0.25);
+  
+  --blue: #2563eb;
+  --blue-glow: rgba(37, 99, 235, 0.15);
+  
+  --orange: #ea580c;
+  --orange-glow: rgba(234, 88, 12, 0.15);
+  --orange-border: rgba(234, 88, 12, 0.25);
+  
+  --green: #16a34a;
+  --green-glow: rgba(22, 163, 74, 0.15);
+  
+  --red: #dc2626;
+  --red-glow: rgba(220, 38, 38, 0.15);
+  
+  --amber: #d97706;
+  --amber-glow: rgba(217, 119, 6, 0.15);
+  
+  --text-pure: #0f172a;
+  --text-bright: #1e293b;
+  --text-normal: #475569;
+  --text-dimmed: #64748b;
+  --text-dark: #94a3b8;
+  
+  background-image: 
+    linear-gradient(rgba(2, 132, 199, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2, 132, 199, 0.04) 1px, transparent 1px);
+}
+
+body.light-theme .hud-header {
+  border-bottom-color: rgba(2, 132, 199, 0.2);
+}
+
+body.light-theme .logo-text h1 {
+  color: #0f172a;
+}
+
+body.light-theme .logo-text span {
+  color: var(--text-dimmed);
+}
+
+body.light-theme .nav-tab {
+  color: var(--text-normal);
+}
+
+body.light-theme .nav-tab:hover {
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--text-pure);
+}
+
+body.light-theme .nav-tab.active {
+  background: rgba(2, 132, 199, 0.08);
+  color: var(--cyan);
+}
+
+body.light-theme .hud-panel {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+body.light-theme .hud-panel.panel-orange {
+  border-color: rgba(234, 88, 12, 0.3);
+}
+
+body.light-theme .hud-panel.panel-cyan {
+  border-color: rgba(2, 132, 199, 0.3);
+}
+
+body.light-theme .panel-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.01);
+}
+
+body.light-theme .hud-stats-ticker {
+  border-bottom-color: rgba(2, 132, 199, 0.2);
+}
+
+body.light-theme .ticker-item {
+  border-right-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .telemetry-grid {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .input-box {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #0f172a;
+}
+
+body.light-theme .input-box:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 2px var(--cyan-glow);
+}
+
+body.light-theme .btn-hud {
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.3);
+  color: var(--cyan);
+}
+
+body.light-theme .btn-hud:hover {
+  background: var(--cyan);
+  color: #ffffff;
+}
+
+body.light-theme .btn-hud.btn-orange {
+  background: rgba(234, 88, 12, 0.08);
+  border-color: rgba(234, 88, 12, 0.3);
+  color: var(--orange);
+}
+
+body.light-theme .btn-hud.btn-orange:hover {
+  background: var(--orange);
+  color: #ffffff;
+}
+
+body.light-theme .btn-hud.btn-outline {
+  background: transparent;
+  border-color: rgba(2, 132, 199, 0.4);
+}
+
+body.light-theme .btn-hud.btn-outline:hover {
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--cyan);
+}
+
+body.light-theme .briefing-card, 
+body.light-theme .quiz-container,
+body.light-theme .instructions-list,
+body.light-theme .equation-box {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+body.light-theme .terminal-log {
+  background: #0f172a !important;
+}
+
+body.light-theme .terminal-log p {
+  color: #38bdf8 !important;
+}
+
+body.light-theme .hud-footer {
+  border-top-color: rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+}
+

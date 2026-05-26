@@ -807,6 +807,112 @@
         page-break-after: always;
       }
     }
+
+    /* Light Mode Overrides */
+    body.light-theme {
+      --bg-deep: #f1f5f9;
+      --bg-panel: #ffffff;
+      --bg-card: #f8fafc;
+      --bg-input: #ffffff;
+      --cyan: #0284c7;
+      --cyan-glow: rgba(2, 132, 199, 0.15);
+      --orange: #ea580c;
+      --orange-glow: rgba(234, 88, 12, 0.15);
+      --text-bright: #0f172a;
+      --text-normal: #334155;
+      --text-dimmed: #64748b;
+      --border-glow: rgba(2, 132, 199, 0.12);
+    }
+    body.light-theme .logo-text {
+      color: #0f172a;
+    }
+    body.light-theme .sidebar {
+      border-right-color: rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    body.light-theme .nav-link:hover {
+      background: rgba(0, 0, 0, 0.03);
+      color: var(--text-bright);
+    }
+    body.light-theme .nav-link.active {
+      background: rgba(2, 132, 199, 0.06);
+    }
+    body.light-theme .portal-switcher {
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+    body.light-theme .btn-portal {
+      color: var(--text-normal);
+    }
+    body.light-theme .btn-portal:hover {
+      background: rgba(0, 0, 0, 0.03);
+    }
+    body.light-theme .btn-portal.active.student {
+      background: rgba(2, 132, 199, 0.08);
+      color: var(--cyan);
+    }
+    body.light-theme .btn-portal.active.teacher {
+      background: rgba(234, 88, 12, 0.08);
+      color: var(--orange);
+    }
+    body.light-theme .main-header {
+      border-bottom-color: rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+    }
+    body.light-theme .badge-accent {
+      background: rgba(2, 132, 199, 0.06);
+    }
+    body.light-theme .manual-section {
+      border-bottom-color: rgba(0, 0, 0, 0.06);
+    }
+    body.light-theme .highlight-box {
+      background: rgba(2, 132, 199, 0.03);
+      border-color: rgba(2, 132, 199, 0.15);
+    }
+    body.light-theme .caution-box {
+      background: rgba(234, 88, 12, 0.03);
+      border-color: rgba(234, 88, 12, 0.15);
+    }
+    body.light-theme .equation-container {
+      background: #f8fafc;
+      border-color: rgba(0, 0, 0, 0.15);
+    }
+    body.light-theme .equation-math {
+      text-shadow: none;
+      color: #0f172a;
+    }
+    body.light-theme .workflow-step {
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    }
+    body.light-theme .workflow-step.completed {
+      border-color: rgba(22, 163, 74, 0.3);
+      background: rgba(22, 163, 74, 0.02);
+    }
+    body.light-theme .workflow-number {
+      background: rgba(2, 132, 199, 0.06);
+    }
+    body.light-theme .workflow-step.completed .workflow-number {
+      background: rgba(22, 163, 74, 0.1);
+      color: #16a34a;
+    }
+    body.light-theme .sandbox-tuner {
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+    body.light-theme .tuner-group label {
+      color: var(--text-normal);
+    }
+    body.light-theme .tuner-slider {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    body.light-theme .tuner-slider::-webkit-slider-runnable-track {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    body.light-theme .tuner-slider::-webkit-slider-thumb {
+      background: var(--cyan);
+    }
   </style>
 </head>
 <body>
@@ -824,6 +930,10 @@
       <a href="index.html" class="btn-back">
         <i data-lucide="chevron-left" style="width: 14px; height: 14px;"></i> Return to Telemetry
       </a>
+      
+      <button id="theme-toggle" class="btn-back" style="margin-bottom: 25px; width: 100%; justify-content: center; gap: 8px;">
+        <i data-lucide="sun" style="width: 14px; height: 14px;"></i> <span>Light Mode</span>
+      </button>
 
       <!-- Portal Switcher -->
       <div class="portal-switcher">
@@ -1338,7 +1448,8 @@
       ctx.clearRect(0, 0, width, height);
 
       // Draw Grid Lines & Labels
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+      const isLight = document.body.classList.contains('light-theme');
+      ctx.strokeStyle = isLight ? 'rgba(0, 0, 0, 0.06)' : 'rgba(255, 255, 255, 0.04)';
       ctx.lineWidth = 1;
       
       // Horizontal Lines
@@ -1350,7 +1461,7 @@
         ctx.stroke();
 
         // Label
-        ctx.fillStyle = '#62728d';
+        ctx.fillStyle = isLight ? '#475569' : '#62728d';
         ctx.font = '8px monospace';
         const labelTemp = Math.round(95 - (i * 95 / 4));
         ctx.fillText(`${labelTemp}°`, 8, y + 3);
@@ -1365,7 +1476,7 @@
         ctx.stroke();
 
         // Label
-        ctx.fillStyle = '#62728d';
+        ctx.fillStyle = isLight ? '#475569' : '#62728d';
         ctx.font = '8px monospace';
         const min = i * 5;
         ctx.fillText(`${min}m`, x - 6, height - 8);
@@ -1429,6 +1540,37 @@
       setupCanvas();
       drawSandboxPlot();
     }, 100);
+
+    // Theme Toggle Handler
+    const btnThemeToggle = document.getElementById('theme-toggle');
+    
+    function applyTheme(theme) {
+      if (theme === 'light') {
+        document.body.classList.add('light-theme');
+        if (btnThemeToggle) {
+          btnThemeToggle.innerHTML = `<i data-lucide="moon" style="width: 14px; height: 14px;"></i> <span>Dark Mode</span>`;
+        }
+      } else {
+        document.body.classList.remove('light-theme');
+        if (btnThemeToggle) {
+          btnThemeToggle.innerHTML = `<i data-lucide="sun" style="width: 14px; height: 14px;"></i> <span>Light Mode</span>`;
+        }
+      }
+      lucide.createIcons();
+      drawSandboxPlot();
+    }
+
+    if (btnThemeToggle) {
+      btnThemeToggle.addEventListener('click', () => {
+        const currentTheme = document.body.classList.contains('light-theme') ? 'dark' : 'light';
+        localStorage.setItem('sphere_theme', currentTheme);
+        applyTheme(currentTheme);
+      });
+    }
+
+    // Initialize Theme
+    const savedTheme = localStorage.getItem('sphere_theme') || 'dark';
+    applyTheme(savedTheme);
   </script>
 </body>
 </html>
