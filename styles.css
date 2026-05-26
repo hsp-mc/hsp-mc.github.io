@@ -1457,3 +1457,133 @@ body.light-theme .digital-hud-clock {
   text-shadow: none !important;
 }
 
+/* ==========================================================================
+   7. Advanced Responsive & Mobile Polish Rules
+   ========================================================================== */
+
+/* Clean wrap for action buttons/link groups on mobile */
+.btn-flex-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Base style for telemetry & grid parameters */
+.telemetry-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 15px;
+  gap: 15px;
+}
+
+.kit-logistics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 15px;
+  gap: 15px;
+}
+
+/* Ensure consistent layout for navigation tabs & utility controls */
+@media (max-width: 850px) {
+  #btn-toggle-audio, #theme-toggle {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #btn-toggle-audio, #theme-toggle {
+    flex: 1 1 calc(50% - 10px);
+    justify-content: center;
+    padding: 10px !important;
+    font-size: 0.75rem !important;
+    margin-left: 0 !important;
+  }
+  .kit-logistics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .hud-input-group {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Ticker wrap support */
+  .hud-stats-ticker {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  /* Layout Padding Adjustments */
+  .hud-wrapper {
+    padding: 0 10px 10px 10px;
+  }
+  
+  .hud-panel {
+    padding: 15px;
+  }
+
+  /* Utility & Nav Buttons stack nicely */
+  #btn-toggle-audio, #theme-toggle {
+    flex: 1 1 100%;
+  }
+
+  /* Grid details stacking */
+  .sim-stats-container {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .telemetry-stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Space Suit Visualizer node alignment */
+  .telemetry-node-text {
+    font-size: 0.6rem !important;
+    padding: 2px 6px !important;
+  }
+  #node-temp { right: 5% !important; }
+  #node-env { left: 5% !important; }
+  #node-flow { left: 5% !important; }
+
+  /* Correlation Score Card Stacking */
+  .correlation-score-box {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    padding: 15px !important;
+  }
+  .correlation-score-box div {
+    text-align: left !important;
+  }
+  
+  /* Quiz & Submit Badge Center Polish */
+  .quiz-action-group {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .quiz-action-group button, .quiz-action-group div {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+  }
+
+  /* Flex Button polish */
+  .btn-flex-group {
+    justify-content: center;
+    width: 100%;
+  }
+  .btn-flex-group a, .btn-flex-group button {
+    flex: 1 1 100% !important;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+

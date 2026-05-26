@@ -148,7 +148,7 @@
                 <li><strong>Phase 5 [Telemetry &amp; Correlation]:</strong> Open the <strong>Telemetry</strong> tab. Start the stopwatch. Every 60 seconds (indicated by terminal alarm alerts), log the temperature reading. Review your real-time overlaid <strong>Thermal Correlation Score</strong>.</li>
               </ul>
               
-              <div style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.06); padding-top: 12px; display: flex; justify-content: flex-end; gap: 10px;">
+              <div class="btn-flex-group" style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.06); padding-top: 12px; display: flex; justify-content: flex-end; gap: 10px;">
                 <a href="user_manual.html" target="_blank" class="btn-hud btn-outline" style="width: auto; padding: 6px 14px; font-size: 0.75rem; border-color: rgba(0, 242, 254, 0.4); color: var(--cyan); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                   <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> VIEW STUDENT MANUAL (WEB)
                 </a>
@@ -203,7 +203,7 @@
             </div>
           </div>
 
-          <div style="margin-top: 15px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap;">
+          <div class="quiz-action-group" style="margin-top: 15px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap;">
             <button type="button" class="btn-hud btn-orange" id="btn-submit-quiz" style="width: auto;">
               <i data-lucide="shield-check"></i> TRANSMIT ASSESSMENT ANSWER
             </button>
@@ -498,7 +498,7 @@
                 <canvas id="telemetryChart"></canvas>
               </div>
 
-              <div class="sim-stats-container" style="margin-top: 15px; grid-template-columns: 1fr 1fr;">
+              <div class="sim-stats-container telemetry-stats-grid">
                 <div class="sim-stat-box">
                   <div class="sim-stat-title">CURRENT SELECTED MODEL</div>
                   <div class="sim-stat-value glow-cyan" id="current-telemetry-model-badge" style="font-size: 0.95rem;">NONE</div>
@@ -507,7 +507,7 @@
                   <div class="sim-stat-title">ACQUIRED DATA POINTS</div>
                   <div class="sim-stat-value glow-orange" id="acquired-points-count" style="font-size: 0.95rem;">0 / 16</div>
                 </div>
-                <div class="sim-stat-box" style="grid-column: span 2; border-color: rgba(16, 185, 129, 0.25); text-align: left; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;">
+                <div class="sim-stat-box correlation-score-box" style="grid-column: span 2; border-color: rgba(16, 185, 129, 0.25); text-align: left; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;">
                   <div>
                     <div class="sim-stat-title glow-green" style="font-size: 0.75rem;"><i data-lucide="gauge" style="vertical-align: middle; width: 14px; height: 14px; margin-right: 4px;"></i> THERMAL CORRELATION SCORE</div>
                     <div class="sim-stat-value glow-green" id="telemetry-correlation-score" style="font-size: 1.4rem; margin-top: 2px;">N/A</div>
@@ -551,7 +551,7 @@
               </div>
 
               <!-- Clear Logbook Action -->
-              <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
+              <div class="btn-flex-group" style="margin-top: 20px; display: flex; justify-content: flex-end;">
                 <button class="btn-hud btn-outline btn-danger" id="btn-clear-telemetry" style="width: auto;">
                   <i data-lucide="trash-2"></i> WIPE MISSION TELEMETRY
                 </button>
@@ -613,32 +613,34 @@
               Thermodynamic experiments in school environments introduce manageable risks. Ensure the following rules are strictly enforced during the lab drop:
             </p>
 
-            <table class="risk-matrix-table">
-              <thead>
-                <tr>
-                  <th>HAZARD DESCRIPTION</th>
-                  <th>RISK LAYER</th>
-                  <th>MITIGATION MANDATE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Boiling Water Scalding</strong><br>Using boiling 100°C water directly in school environments.</td>
-                  <td><span class="risk-badge risk-high">HIGH</span></td>
-                  <td>Enforce a strict <strong>80°C limit</strong>. Provide thermal kettles pre-programmed to 80°C or use standard thermometers to lock temperatures before filling plastic capsules.</td>
-                </tr>
-                <tr>
-                  <td><strong>Ice-Bath Spillages</strong><br>Slips/trips from condensation, melted ice, or water spills around electricity.</td>
-                  <td><span class="risk-badge risk-medium">MEDIUM</span></td>
-                  <td>Establish a clear separation between the ice water reservoirs and any tablet or laptop charting stations. Provide absorbent fiber cloths.</td>
-                </tr>
-                <tr>
-                  <td><strong>Capsule Leakage</strong><br>PET plastic deformation if filled with temperatures &gt; 90°C.</td>
-                  <td><span class="risk-badge risk-low">LOW</span></td>
-                  <td>Never pour boiling water directly into thin plastic PET containers. Let water settle to 80°C, and securely lock the digital wire thread to prevent hot leaks.</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="telemetry-table-container" style="margin-top: 15px;">
+              <table class="risk-matrix-table">
+                <thead>
+                  <tr>
+                    <th>HAZARD DESCRIPTION</th>
+                    <th>RISK LAYER</th>
+                    <th>MITIGATION MANDATE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Boiling Water Scalding</strong><br>Using boiling 100°C water directly in school environments.</td>
+                    <td><span class="risk-badge risk-high">HIGH</span></td>
+                    <td>Enforce a strict <strong>80°C limit</strong>. Provide thermal kettles pre-programmed to 80°C or use standard thermometers to lock temperatures before filling plastic capsules.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ice-Bath Spillages</strong><br>Slips/trips from condensation, melted ice, or water spills around electricity.</td>
+                    <td><span class="risk-badge risk-medium">MEDIUM</span></td>
+                    <td>Establish a clear separation between the ice water reservoirs and any tablet or laptop charting stations. Provide absorbent fiber cloths.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Capsule Leakage</strong><br>PET plastic deformation if filled with temperatures &gt; 90°C.</td>
+                    <td><span class="risk-badge risk-low">LOW</span></td>
+                    <td>Never pour boiling water directly into thin plastic PET containers. Let water settle to 80°C, and securely lock the digital wire thread to prevent hot leaks.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
             <!-- Summer Conditions Alert Box -->
             <div style="margin-top: 20px; padding: 12px; background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 6px; font-family: var(--font-sans); font-size: 0.8rem;">
@@ -707,7 +709,7 @@
               To guarantee extreme economic scalability across diverse school districts, this project eliminates expensive 3D-printing or bespoke components. The hardware layout engineered by <strong>Piyath Vithanage, Elio Krollpfeiffer, Dilan Fernando, and Nuhansee Migelhewage</strong> leverages highly durable, accessible off-the-shelf items:
             </p>
             
-            <div class="sim-stats-container" style="grid-template-columns: 1fr 1fr 1fr; margin-top: 15px;">
+            <div class="sim-stats-container kit-logistics-grid">
               <div class="sim-stat-box" style="text-align: left;">
                 <div class="sim-stat-title glow-orange">MATERIALS BUDGET</div>
                 <p class="step-desc" style="font-size: 0.8rem; margin-top: 5px;">
@@ -773,7 +775,7 @@
               </div>
             </div>
             
-            <div style="margin-top: 15px; border-top: 1px dashed rgba(255,159,67,0.15); padding-top: 12px; display: flex; justify-content: flex-end; gap: 10px;">
+            <div class="btn-flex-group" style="margin-top: 15px; border-top: 1px dashed rgba(255,159,67,0.15); padding-top: 12px; display: flex; justify-content: flex-end; gap: 10px;">
               <a href="teacher_manual.html" target="_blank" class="btn-hud btn-orange btn-outline" style="width: auto; padding: 6px 14px; font-size: 0.75rem; border-color: rgba(255,159,67,0.4); color: var(--orange); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                 <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> VIEW TEACHER MANUAL (WEB)
               </a>
