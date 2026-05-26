@@ -1327,16 +1327,43 @@ body.light-theme .panel-header {
   background: rgba(0, 0, 0, 0.01);
 }
 
+body.light-theme .panel-title {
+  color: var(--text-pure);
+}
+
 body.light-theme .hud-stats-ticker {
-  border-bottom-color: rgba(2, 132, 199, 0.2);
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(2, 132, 199, 0.2) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
 }
 
 body.light-theme .ticker-item {
   border-right-color: rgba(0, 0, 0, 0.08);
 }
 
+body.light-theme .ticker-value {
+  color: var(--text-pure);
+}
+
 body.light-theme .telemetry-grid {
   border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .hud-input {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .hud-input:focus {
+  border-color: var(--cyan) !important;
+  box-shadow: 0 0 0 2px var(--cyan-glow) !important;
+}
+
+body.light-theme .hud-input:read-only {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+  color: var(--text-dimmed) !important;
+  border-color: rgba(0, 0, 0, 0.05) !important;
 }
 
 body.light-theme .input-box {
@@ -1348,6 +1375,26 @@ body.light-theme .input-box {
 body.light-theme .input-box:focus {
   border-color: var(--cyan);
   box-shadow: 0 0 0 2px var(--cyan-glow);
+}
+
+body.light-theme .glow-cyan,
+body.light-theme .glow-orange,
+body.light-theme .glow-green,
+body.light-theme .glow-red {
+  text-shadow: none !important;
+}
+
+body.light-theme div[style*="background: rgba(0,0,0,0.3)"] {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light-theme div[style*="border-top: 1px dashed rgba(255,255,255"] {
+  border-top-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light-theme div[style*="border-bottom: 1px dashed rgba(255,255,255"] {
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
 }
 
 body.light-theme .btn-hud {
