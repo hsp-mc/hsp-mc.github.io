@@ -108,166 +108,145 @@ document.addEventListener('DOMContentLoaded', () => {
   let ambientHumOsc2 = null;
   let ambientHumGain = null;
 
-  function ensureAudioContext() {
-    if (!state.audio || !state.audio.isEnabled) return null;
+  // Returns a READY AudioContext or null. Never triggers side effects (no hum start).
+  function getCtx() {
     try {
       if (!audioCtx) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
-      if (audioCtx && audioCtx.state === 'suspended') {
-        audioCtx.resume().then(() => {
-          startAmbientHum();
-        }).catch(err => console.warn("Failed to resume AudioContext", err));
-      } else {
-        startAmbientHum();
-      }
+      return audioCtx;
     } catch (e) {
-      console.warn("Failed to initialize AudioContext", e);
+      console.warn('AudioContext unavailable:', e);
+      return null;
     }
-    return audioCtx;
+  }
+
+  // Call ONLY inside a user-gesture handler to unlock the context.
+  function unlockAndStart() {
+    const ctx = getCtx();
+    if (!ctx) return;
+    const resume = ctx.state === 'suspended' ? ctx.resume() : Promise.resolve();
+    resume.then(() => startAmbientHum()).catch(e => console.warn('AudioContext resume failed:', e));
   }
 
   function startAmbientHum() {
-    if (!state.audio || !state.audio.isEnabled) return;
-    if (ambientHumOsc1) return; // Hum is already active
-    
+    if (!state.audio.isEnabled) return;
+    if (ambientHumOsc1) return; // already running
+
+    const ctx = getCtx();
+    if (!ctx || ctx.state !== 'running') return;
+
     try {
-      const ctx = audioCtx || ensureAudioContext();
-      if (!ctx) return;
-      
-      // Master gain node for background hum
       ambientHumGain = ctx.createGain();
       ambientHumGain.gain.setValueAtTime(0, ctx.currentTime);
       ambientHumGain.connect(ctx.destination);
-      
-      // Binaural chorus sweep (55Hz / 55.5Hz) for realistic space station core sound
-      ambientHumOsc1 = ctx.createOscillator();
-      ambientHumOsc1.type = 'sine';
-      ambientHumOsc1.frequency.setValueAtTime(55.0, ctx.currentTime);
-      
-      ambientHumOsc2 = ctx.createOscillator();
-      ambientHumOsc2.type = 'triangle';
-      ambientHumOsc2.frequency.setValueAtTime(55.5, ctx.currentTime);
-      
-      // Lowpass filter to keep it extremely deep, immersive, and pleasant
+
       const filter = ctx.createBiquadFilter();
       filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(75, ctx.currentTime);
-      
-      ambientHumOsc1.connect(filter);
-      ambientHumOsc2.connect(filter);
+      filter.frequency.setValueAtTime(80, ctx.currentTime);
       filter.connect(ambientHumGain);
-      
+
+      // 55 Hz sine + 55.5 Hz triangle = 0.5 Hz binaural beating (deep spacecraft hum)
+      ambientHumOsc1 = ctx.createOscillator();
+      ambientHumOsc1.type = 'sine';
+      ambientHumOsc1.frequency.value = 55.0;
+      ambientHumOsc1.connect(filter);
       ambientHumOsc1.start();
+
+      ambientHumOsc2 = ctx.createOscillator();
+      ambientHumOsc2.type = 'triangle';
+      ambientHumOsc2.frequency.value = 55.5;
+      ambientHumOsc2.connect(filter);
       ambientHumOsc2.start();
-      
-      // Smooth fade in over 2 seconds to avoid popping
-      ambientHumGain.gain.linearRampToValueAtTime(0.015, ctx.currentTime + 2.0);
+
+      // Fade in over 2 s — no click/pop
+      ambientHumGain.gain.linearRampToValueAtTime(0.018, ctx.currentTime + 2.0);
     } catch (e) {
-      console.warn("Failed to spin up ambient hum loop", e);
+      console.warn('Ambient hum start failed:', e);
     }
   }
 
   function stopAmbientHum() {
-    if (ambientHumGain && audioCtx) {
-      try {
-        const currentGain = ambientHumGain.gain.value;
-        ambientHumGain.gain.setValueAtTime(currentGain, audioCtx.currentTime);
-        ambientHumGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.4);
-        
-        const osc1 = ambientHumOsc1;
-        const osc2 = ambientHumOsc2;
-        
-        ambientHumOsc1 = null;
-        ambientHumOsc2 = null;
-        
-        setTimeout(() => {
-          try { if (osc1) osc1.stop(); } catch(e){}
-          try { if (osc2) osc2.stop(); } catch(e){}
-        }, 500);
-      } catch (e) {
-        console.warn("Failed to stop ambient hum", e);
-      }
+    if (!ambientHumGain || !audioCtx) return;
+    try {
+      ambientHumGain.gain.cancelScheduledValues(audioCtx.currentTime);
+      ambientHumGain.gain.setValueAtTime(ambientHumGain.gain.value, audioCtx.currentTime);
+      ambientHumGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.4);
+
+      const o1 = ambientHumOsc1, o2 = ambientHumOsc2;
+      ambientHumOsc1 = ambientHumOsc2 = ambientHumGain = null;
+
+      setTimeout(() => {
+        try { o1 && o1.stop(); } catch(e) {}
+        try { o2 && o2.stop(); } catch(e) {}
+      }, 450);
+    } catch (e) {
+      console.warn('Ambient hum stop failed:', e);
     }
   }
 
+  // Low-level tone synthesizer — does NOT call unlockAndStart (no recursion)
   function playTone(freq, type, duration, gainStart) {
-    if (!state.audio || !state.audio.isEnabled) return;
+    if (!state.audio.isEnabled) return;
+    const ctx = getCtx();
+    if (!ctx || ctx.state !== 'running') return;
     try {
-      const ctx = ensureAudioContext();
-      if (!ctx) return; // Keep scheduling active oscillator even if suspended during transition
-      
       const osc = ctx.createOscillator();
-      const gainNode = ctx.createGain();
-      
+      const g   = ctx.createGain();
       osc.type = type;
-      osc.frequency.setValueAtTime(freq, ctx.currentTime);
-      
-      gainNode.gain.setValueAtTime(gainStart, ctx.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-      
-      osc.connect(gainNode);
-      gainNode.connect(ctx.destination);
-      
+      osc.frequency.value = freq;
+      g.gain.setValueAtTime(gainStart, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+      osc.connect(g);
+      g.connect(ctx.destination);
       osc.start();
       osc.stop(ctx.currentTime + duration);
     } catch (e) {
-      console.warn("Audio Context playback failed", e);
+      console.warn('playTone failed:', e);
     }
   }
 
-  function playClickSound() {
-    playTone(1200, 'sine', 0.08, 0.05);
-  }
-
+  function playClickSound()   { playTone(1200, 'sine',     0.08, 0.05); }
   function playSuccessSound() {
-    if (!state.audio || !state.audio.isEnabled) return;
-    playTone(523.25, 'triangle', 0.12, 0.08); // C5
-    setTimeout(() => {
-      playTone(659.25, 'triangle', 0.20, 0.08); // E5
-    }, 80);
+    playTone(523.25, 'triangle', 0.14, 0.08);
+    setTimeout(() => playTone(659.25, 'triangle', 0.22, 0.08), 90);
   }
-
   function playEpochSound() {
-    if (!state.audio || !state.audio.isEnabled) return;
     playTone(800, 'sawtooth', 0.15, 0.04);
-    setTimeout(() => {
-      playTone(800, 'sawtooth', 0.15, 0.04);
-    }, 180);
+    setTimeout(() => playTone(800, 'sawtooth', 0.15, 0.04), 180);
   }
-
   function playWarningSound() {
-    if (!state.audio || !state.audio.isEnabled) return;
     playTone(380, 'triangle', 0.25, 0.10);
-    setTimeout(() => {
-      playTone(280, 'triangle', 0.25, 0.10);
-    }, 120);
+    setTimeout(() => playTone(280, 'triangle', 0.25, 0.10), 130);
   }
 
-  // Audio Toggle Control Event Listener
+  // Sync button visuals to the current state.audio.isEnabled value
+  function syncAudioButton() {
+    const on = state.audio.isEnabled;
+    elements.btnToggleAudio.style.borderColor = on ? 'rgba(0, 242, 254, 0.3)' : 'rgba(255, 255, 255, 0.1)';
+    elements.btnToggleAudio.style.color       = on ? 'var(--cyan)'            : 'var(--text-dimmed)';
+    elements.btnToggleAudio.style.background  = on ? 'rgba(0, 242, 254, 0.05)': 'transparent';
+    elements.audioIcon.innerHTML = on
+      ? `<i data-lucide="volume-2" style="width:12px;height:12px;"></i>`
+      : `<i data-lucide="volume-x" style="width:12px;height:12px;"></i>`;
+    elements.audioStatusText.textContent = on ? 'AUDIO: ACTIVE' : 'AUDIO: MUTED';
+    lucide.createIcons();
+  }
+
+  // Audio Toggle — this is the ONLY place we call unlockAndStart
   if (elements.btnToggleAudio) {
     elements.btnToggleAudio.addEventListener('click', () => {
       state.audio.isEnabled = !state.audio.isEnabled;
-      
+      syncAudioButton();
+
       if (state.audio.isEnabled) {
-        elements.btnToggleAudio.style.borderColor = 'rgba(0, 242, 254, 0.3)';
-        elements.btnToggleAudio.style.color = 'var(--cyan)';
-        elements.btnToggleAudio.style.background = 'rgba(0, 242, 254, 0.05)';
-        elements.audioIcon.innerHTML = `<i data-lucide="volume-2" style="width: 12px; height: 12px;"></i>`;
-        elements.audioStatusText.textContent = 'AUDIO: ACTIVE';
-        ensureAudioContext(); // Resume/initialize directly inside user click gesture stack
-        logToConsole("SYS: Mission cockpit audio telemetry channel enabled.", "success");
-        playTone(1500, 'sine', 0.1, 0.08);
+        unlockAndStart();                                   // create ctx + resume inside user gesture
+        setTimeout(() => playTone(1500, 'sine', 0.12, 0.07), 50); // startup chime after ctx ready
+        logToConsole('SYS: Mission cockpit audio telemetry channel enabled.', 'success');
       } else {
-        elements.btnToggleAudio.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-        elements.btnToggleAudio.style.color = 'var(--text-dimmed)';
-        elements.btnToggleAudio.style.background = 'transparent';
-        elements.audioIcon.innerHTML = `<i data-lucide="volume-x" style="width: 12px; height: 12px;"></i>`;
-        elements.audioStatusText.textContent = 'AUDIO: MUTED';
         stopAmbientHum();
-        logToConsole("SYS: Mission cockpit audio telemetry channel muted.");
+        logToConsole('SYS: Mission cockpit audio telemetry channel muted.');
       }
-      lucide.createIcons();
     });
   }
 

@@ -442,6 +442,16 @@
       <li><strong>Active Sensor Logging:</strong> Every 60 seconds (the alarm terminal will blink green and sound a beep), read the current physical thermometer value and log it into the input box. Click <strong>RECORD DATA POINT</strong> to plot it on the graph overlay.</li>
       <li><strong>Analyze Correlation Score:</strong> Once at least 5 points are logged, the telemetry panel automatically calculates your <strong>Thermal Correlation Score</strong>. Discuss with your crew how closely your digital twin simulator aligned with physical reality!</li>
     </ol>
+
+    <div class="highlight-box" style="border-left-color: var(--cyan); background: rgba(0, 242, 254, 0.03);">
+      <strong>Summer &amp; High-Ambient Temperature Procedures (~30°C):</strong><br>
+      If you are running this experiment in a hot room (e.g. during summer conditions), note these key steps to ensure high-accuracy and absolute safety:
+      <ul style="margin-top: 10px; margin-bottom: 0; padding-left: 20px;">
+        <li><strong>Safety Temp Scaling (Mitigate Scalding Risk):</strong> Instead of using 80°C hot water, you can safely scale the initial temperature down to <strong>55°C–60°C</strong>. Newton's Law of Cooling works identically! Simply enter <code style="font-family: var(--font-mono); color: var(--cyan);">T₀ = 60°C</code> in your simulator prediction, and fill your physical jar with 60°C water.</li>
+        <li><strong>Melting Ice Compensation:</strong> On hot days, your ice bath water may rise slightly above 0°C (e.g. to 4°C). Use your thermometer to measure the actual temperature of your ice bath at the start, and enter that exact value as the environmental temperature <code style="font-family: var(--font-mono); color: var(--cyan);">T_env</code> in your Simulator tab.</li>
+        <li><strong>Ice-Free Tap Water Drop:</strong> If ice is not logistically available, you can drop your capsule into room-temperature tap water (~25°C–30°C). Simply log the tap water's temperature, enter it as <code style="font-family: var(--font-mono); color: var(--cyan);">T_env</code>, and run your predictions!</li>
+      </ul>
+    </div>
     
     <div class="action-button-container" style="margin-top: 30px; margin-bottom: 20px;">
       <button class="btn-print" onclick="window.print();">
