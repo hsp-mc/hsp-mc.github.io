@@ -495,6 +495,12 @@
       letter-spacing: 0.1em;
     }
 
+    .table-container {
+      overflow-x: auto;
+      margin: 25px 0;
+      width: 100%;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 960px) {
       .app-container {
@@ -505,10 +511,102 @@
         position: relative;
         border-right: none;
         border-bottom: 1px solid rgba(255, 159, 67, 0.15);
+        padding: 25px 20px 15px 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .sidebar-header {
+        grid-column: span 2;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+      }
+      .sidebar > .btn-back {
+        margin-bottom: 0 !important;
+      }
+      .sidebar > #theme-toggle {
+        margin-bottom: 0 !important;
+      }
+      .portal-switcher {
+        grid-column: span 2;
+        margin-bottom: 0;
+      }
+      .nav-label {
+        grid-column: span 2;
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+      .nav-list {
+        grid-column: span 2;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 8px;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-item {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+      .nav-link {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding: 6px 12px;
+        white-space: nowrap;
+      }
+      .nav-link.active {
+        border-left-color: transparent !important;
+        border-bottom-color: var(--orange) !important;
+      }
+      .sidebar > div:last-of-type {
+        grid-column: span 2;
       }
       .content-area {
         margin-left: 0;
         padding: 30px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hud-info-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .sidebar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 20px 15px 10px 15px;
+      }
+      .sidebar-header {
+        grid-column: span 1;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+      }
+      .sidebar > .btn-back {
+        grid-column: span 1;
+      }
+      .sidebar > #theme-toggle {
+        grid-column: span 1;
+      }
+      .portal-switcher {
+        grid-column: span 1;
+      }
+      .nav-label {
+        grid-column: span 1;
+        margin-top: 5px;
+      }
+      .nav-list {
+        grid-column: span 1;
+      }
+      .sidebar > div:last-of-type {
+        grid-column: span 1;
       }
     }
 
@@ -802,42 +900,44 @@
         </ul>
 
         <h3>The 45-Minute Lesson Timeline Blueprint:</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>TIMING</th>
-              <th>INQUIRY STEP</th>
-              <th>STUDENT ACTIVITIES &amp; MILESTONES</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>00 - 10 Min</strong></td>
-              <td>Engage &amp; Certify</td>
-              <td>Students review the deep-space context, read the student briefing, and complete the Pre-Flight Quiz to unlock mission telemetry.</td>
-            </tr>
-            <tr>
-              <td><strong>10 - 20 Min</strong></td>
-              <td>Explore &amp; Construct</td>
-              <td>Student crews wrap their physical PET jars with specific insulation configs and thread thermal wire probes through PG7 glands.</td>
-            </tr>
-            <tr>
-              <td><strong>20 - 25 Min</strong></td>
-              <td>Model &amp; Predict</td>
-              <td>Crews open the <strong>Simulator</strong> tab, select their insulation schemes, configure parameters (<code style="font-family: var(--font-mono);">T₀ = 80°C</code>), and execute mathematical predictions.</td>
-            </tr>
-            <tr>
-              <td><strong>25 - 40 Min</strong></td>
-              <td>Explain &amp; Measure</td>
-              <td>Pour 80°C water into PET jars. Submerge in the 0°C ice baths. Start stopwatch. Students log temperatures every 60 seconds.</td>
-            </tr>
-            <tr>
-              <td><strong>40 - 45 Min</strong></td>
-              <td>Elaborate &amp; Grade</td>
-              <td>Analyze the resulting <strong>Thermal Correlation Score</strong>. Discuss convective leaks, and record grading coefficients.</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>TIMING</th>
+                <th>INQUIRY STEP</th>
+                <th>STUDENT ACTIVITIES &amp; MILESTONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>00 - 10 Min</strong></td>
+                <td>Engage &amp; Certify</td>
+                <td>Students review the deep-space context, read the student briefing, and complete the Pre-Flight Quiz to unlock mission telemetry.</td>
+              </tr>
+              <tr>
+                <td><strong>10 - 20 Min</strong></td>
+                <td>Explore &amp; Construct</td>
+                <td>Student crews wrap their physical PET jars with specific insulation configs and thread thermal wire probes through PG7 glands.</td>
+              </tr>
+              <tr>
+                <td><strong>20 - 25 Min</strong></td>
+                <td>Model &amp; Predict</td>
+                <td>Crews open the <strong>Simulator</strong> tab, select their insulation schemes, configure parameters (<code style="font-family: var(--font-mono);">T₀ = 80°C</code>), and execute mathematical predictions.</td>
+              </tr>
+              <tr>
+                <td><strong>25 - 40 Min</strong></td>
+                <td>Explain &amp; Measure</td>
+                <td>Pour 80°C water into PET jars. Submerge in the 0°C ice baths. Start stopwatch. Students log temperatures every 60 seconds.</td>
+              </tr>
+              <tr>
+                <td><strong>40 - 45 Min</strong></td>
+                <td>Elaborate &amp; Grade</td>
+                <td>Analyze the resulting <strong>Thermal Correlation Score</strong>. Discuss convective leaks, and record grading coefficients.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <!-- SECTION 2 -->
@@ -847,37 +947,39 @@
           Enforce these standard safety mandates to guarantee zero accident rates during live laboratory sessions:
         </p>
 
-        <table>
-          <thead>
-            <tr>
-              <th>HAZARD</th>
-              <th>LEVEL</th>
-              <th>MANDATED MITIGATION STEPS</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Hot Water Scalding</strong></td>
-              <td class="risk-high">HIGH</td>
-              <td>Do not allow students to use water &gt; 80°C. Teachers should pre-boil and dispense water pre-mixed with cold tap water to lock thermal limits at exactly 80°C.</td>
-            </tr>
-            <tr>
-              <td><strong>Melted Ice Slippages</strong></td>
-              <td class="risk-medium">MEDIUM</td>
-              <td>Place physical ice baths in high-density plastic trays. Provide moisture absorbent towels. Keep ice bath tables completely segregated from laptops and tablets.</td>
-            </tr>
-            <tr>
-              <td><strong>Electrical Shock</strong></td>
-              <td class="risk-medium">MEDIUM</td>
-              <td>Only permit low-voltage, USB-powered or battery-powered digital sensor readouts. Keep the thermocouple cables long to maximize distance from the computer screen.</td>
-            </tr>
-            <tr>
-              <td><strong>Capsule Deformation</strong></td>
-              <td class="risk-low">LOW</td>
-              <td>Ensure thin PET food jars are not exposed to boiling 100°C temperatures which causes polymer warping. Enforce the strict 80°C limit.</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>HAZARD</th>
+                <th>LEVEL</th>
+                <th>MANDATED MITIGATION STEPS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Hot Water Scalding</strong></td>
+                <td class="risk-high">HIGH</td>
+                <td>Do not allow students to use water &gt; 80°C. Teachers should pre-boil and dispense water pre-mixed with cold tap water to lock thermal limits at exactly 80°C.</td>
+              </tr>
+              <tr>
+                <td><strong>Melted Ice Slippages</strong></td>
+                <td class="risk-medium">MEDIUM</td>
+                <td>Place physical ice baths in high-density plastic trays. Provide moisture absorbent towels. Keep ice bath tables completely segregated from laptops and tablets.</td>
+              </tr>
+              <tr>
+                <td><strong>Electrical Shock</strong></td>
+                <td class="risk-medium">MEDIUM</td>
+                <td>Only permit low-voltage, USB-powered or battery-powered digital sensor readouts. Keep the thermocouple cables long to maximize distance from the computer screen.</td>
+              </tr>
+              <tr>
+                <td><strong>Capsule Deformation</strong></td>
+                <td class="risk-low">LOW</td>
+                <td>Ensure thin PET food jars are not exposed to boiling 100°C temperatures which causes polymer warping. Enforce the strict 80°C limit.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <div class="cyan-box">
           <strong>Summer &amp; High-Ambient Temperature Adjustments (~30°C Classroom)</strong>
@@ -898,42 +1000,44 @@
         </p>
         
         <h3>Expected Cooling Rates after 15-Minute Submersion:</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>INSULATION DESIGN</th>
-              <th>DECAY CONSTANT (k)</th>
-              <th>EXPECTED END TEMP (15 MIN)</th>
-              <th>DOMINANT COOLING PATHWAY BLOCKED</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>A. Bare Capsule</strong></td>
-              <td>k ≈ 0.082</td>
-              <td>≈ 23°C</td>
-              <td>Baseline Scientific Control. No pathways blocked.</td>
-            </tr>
-            <tr>
-              <td><strong>B. Cotton Padding</strong></td>
-              <td>k ≈ 0.045</td>
-              <td>≈ 40°C</td>
-              <td>Blocks direct thermal conduction through fibers.</td>
-            </tr>
-            <tr>
-              <td><strong>C. Bubble Wrap Rings</strong></td>
-              <td>k ≈ 0.032</td>
-              <td>≈ 49°C</td>
-              <td>Blocks convective thermal transfer via static air pockets.</td>
-            </tr>
-            <tr>
-              <td><strong>D. Multi-Layer MLI</strong></td>
-              <td>k ≈ 0.015</td>
-              <td>≈ 64°C</td>
-              <td>Blocks radiant energy transfer via reflective aluminum layers.</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>INSULATION DESIGN</th>
+                <th>DECAY CONSTANT (k)</th>
+                <th>EXPECTED END TEMP (15 MIN)</th>
+                <th>DOMINANT COOLING PATHWAY BLOCKED</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>A. Bare Capsule</strong></td>
+                <td>k ≈ 0.082</td>
+                <td>≈ 23°C</td>
+                <td>Baseline Scientific Control. No pathways blocked.</td>
+              </tr>
+              <tr>
+                <td><strong>B. Cotton Padding</strong></td>
+                <td>k ≈ 0.045</td>
+                <td>≈ 40°C</td>
+                <td>Blocks direct thermal conduction through fibers.</td>
+              </tr>
+              <tr>
+                <td><strong>C. Bubble Wrap Rings</strong></td>
+                <td>k ≈ 0.032</td>
+                <td>≈ 49°C</td>
+                <td>Blocks convective thermal transfer via static air pockets.</td>
+              </tr>
+              <tr>
+                <td><strong>D. Multi-Layer MLI</strong></td>
+                <td>k ≈ 0.015</td>
+                <td>≈ 64°C</td>
+                <td>Blocks radiant energy transfer via reflective aluminum layers.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <!-- FIG 3: SOLUTIONS PLOT GRAPH -->
         <div style="text-align: center; margin: 25px 0;">
@@ -1019,47 +1123,49 @@
           Use this standardized 100-point rubric to grade student performance:
         </p>
 
-        <table>
-          <thead>
-            <tr>
-              <th>GRADING CRITERIA</th>
-              <th>POINTS</th>
-              <th>EXCELLENT (100% Points)</th>
-              <th>SATISFACTORY (70% Points)</th>
-              <th>INSUFFICIENT (30% Points)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>1. Assembly Precision</strong></td>
-              <td><strong>20 Pt</strong></td>
-              <td>Capsule sealed completely. PG7 gland tightened perfectly. DS18B20 wire is centered without touching PET walls.</td>
-              <td>Capsule sealed, but slight water leakage inside jar lid. Probe touching side wall.</td>
-              <td>Severe leaks. Wire gland is loose or untightened. Complete water ingress.</td>
-            </tr>
-            <tr>
-              <td><strong>2. Telemetry Diligence</strong></td>
-              <td><strong>20 Pt</strong></td>
-              <td>All 15 data points entered precisely every 60 seconds. Active team tracking.</td>
-              <td>Missed 2-3 data points. Data recorded late or values estimated.</td>
-              <td>Missed major telemetry slots. Incomplete logging.</td>
-            </tr>
-            <tr>
-              <td><strong>3. Correlation Score</strong></td>
-              <td><strong>30 Pt</strong></td>
-              <td>Physical curve matches mathematical simulator curve with &gt; 90% correlation score.</td>
-              <td>Thermal correlation falls between 75% and 89%. Small wrapping air gaps.</td>
-              <td>Correlation score is &lt; 70% due to major physical leaks or simulation error.</td>
-            </tr>
-            <tr>
-              <td><strong>4. Analytical Report</strong></td>
-              <td><strong>30 Pt</strong></td>
-              <td>Deep explanation of conduction, convection, and radiation blocks. Precise calculations.</td>
-              <td>Answers standard questions correctly but lacks deep scientific rationale.</td>
-              <td>Incomplete answers. Scientific concepts misunderstood or omitted.</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>GRADING CRITERIA</th>
+                <th>POINTS</th>
+                <th>EXCELLENT (100% Points)</th>
+                <th>SATISFACTORY (70% Points)</th>
+                <th>INSUFFICIENT (30% Points)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Assembly Precision</strong></td>
+                <td><strong>20 Pt</strong></td>
+                <td>Capsule sealed completely. PG7 gland tightened perfectly. DS18B20 wire is centered without touching PET walls.</td>
+                <td>Capsule sealed, but slight water leakage inside jar lid. Probe touching side wall.</td>
+                <td>Severe leaks. Wire gland is loose or untightened. Complete water ingress.</td>
+              </tr>
+              <tr>
+                <td><strong>2. Telemetry Diligence</strong></td>
+                <td><strong>20 Pt</strong></td>
+                <td>All 15 data points entered precisely every 60 seconds. Active team tracking.</td>
+                <td>Missed 2-3 data points. Data recorded late or values estimated.</td>
+                <td>Missed major telemetry slots. Incomplete logging.</td>
+              </tr>
+              <tr>
+                <td><strong>3. Correlation Score</strong></td>
+                <td><strong>30 Pt</strong></td>
+                <td>Physical curve matches mathematical simulator curve with &gt; 90% correlation score.</td>
+                <td>Thermal correlation falls between 75% and 89%. Small wrapping air gaps.</td>
+                <td>Correlation score is &lt; 70% due to major physical leaks or simulation error.</td>
+              </tr>
+              <tr>
+                <td><strong>4. Analytical Report</strong></td>
+                <td><strong>30 Pt</strong></td>
+                <td>Deep explanation of conduction, convection, and radiation blocks. Precise calculations.</td>
+                <td>Answers standard questions correctly but lacks deep scientific rationale.</td>
+                <td>Incomplete answers. Scientific concepts misunderstood or omitted.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <div style="text-align: center; margin-top: 50px;">

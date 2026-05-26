@@ -693,6 +693,57 @@
         position: relative;
         border-right: none;
         border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+        padding: 25px 20px 15px 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .sidebar-header {
+        grid-column: span 2;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+      }
+      .sidebar > .btn-back {
+        margin-bottom: 0 !important;
+      }
+      .sidebar > #theme-toggle {
+        margin-bottom: 0 !important;
+      }
+      .portal-switcher {
+        grid-column: span 2;
+        margin-bottom: 0;
+      }
+      .nav-label {
+        grid-column: span 2;
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+      .nav-list {
+        grid-column: span 2;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 8px;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-item {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+      .nav-link {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding: 6px 12px;
+        white-space: nowrap;
+      }
+      .nav-link.active {
+        border-left-color: transparent !important;
+        border-bottom-color: var(--cyan) !important;
+      }
+      .sidebar > div:last-of-type {
+        grid-column: span 2;
       }
       .content-area {
         margin-left: 0;
@@ -700,6 +751,47 @@
       }
       .sandbox-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hud-info-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .sidebar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 20px 15px 10px 15px;
+      }
+      .sidebar-header {
+        grid-column: span 1;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+      }
+      .sidebar > .btn-back {
+        grid-column: span 1;
+      }
+      .sidebar > #theme-toggle {
+        grid-column: span 1;
+      }
+      .portal-switcher {
+        grid-column: span 1;
+      }
+      .nav-label {
+        grid-column: span 1;
+        margin-top: 5px;
+      }
+      .nav-list {
+        grid-column: span 1;
+      }
+      .sidebar > div:last-of-type {
+        grid-column: span 1;
       }
     }
 
