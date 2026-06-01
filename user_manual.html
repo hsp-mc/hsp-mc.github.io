@@ -228,7 +228,7 @@
     <div style="text-align: center; margin-bottom: 40px;">
       <div style="font-family: var(--font-hud); font-size: 0.9rem; color: var(--orange); letter-spacing: 0.2em; margin-bottom: 10px;">EUROPEAN UNION STEM LABORATORY INITIATIVE</div>
       <h1>SPHERE: MISSION CONTROL</h1>
-      <div style="font-family: var(--font-hud); font-size: 1.2rem; color: var(--cyan); letter-spacing: 0.1em; margin-top: 15px;">STUDENT USER MANUAL &amp; DIGITAL TWIN PROTOCOL</div>
+      <div style="font-family: var(--font-hud); font-size: 1.2rem; color: var(--cyan); letter-spacing: 0.1em; margin-top: 15px;">STUDENT USER MANUAL</div>
       <div style="font-size: 0.9rem; color: var(--text-dimmed); margin-top: 10px; font-family: var(--font-mono);">DOCUMENT REF // EU_SPHERE_STUDENT_V2</div>
     </div>
 
@@ -239,7 +239,7 @@
     <div class="page-break"></div>
 
     <!-- SECTION 1 -->
-    <h2>1. INTRODUCTION &amp; THE DIGITAL TWIN Paradigm</h2>
+    <h2>1. INTRODUCTION &amp; EXPERIMENT OVERVIEW</h2>
     <p>
       During deep-space voyages, spacecraft and astronauts are subjected to thermal extremes. In low Earth orbit (such as on the International Space Station), direct solar irradiation can heat surfaces to <strong>121°C</strong>, while objects in orbital shadows radiate energy away, plunging to <strong>-157°C</strong>. Creating reliable, multi-layer thermal envelopes is critical to preserving astronaut safety.
     </p>
@@ -247,7 +247,7 @@
       In this laboratory experiment, you will build a protective "spacesuit" for a simulated astronaut (a 100ml PET container filled with hot water at 80°C). You will drop this unit into an ice-bath chamber (0°C) mimicking the thermal void of space, and use the <strong>SPHERE: Mission Control</strong> dashboard as your live telemetry terminal.
     </p>
     <p>
-      This project leverages the <strong>Digital Twin Ecosystem</strong>, aligned with the real-world <strong>European Union Horizon 2020 SPHERE initiative</strong>. A Digital Twin is a real-time mathematical replication of a physical device. By pairing your physical sensor readings with the simulator's theoretical predictions, you will evaluate heat dissipation efficiency and insulation integrity!
+      In this experiment, you will compare real temperature measurements with a computer model. By comparing both results, you can investigate how different insulation materials affect heat transfer and discuss why real measurements may differ from predictions.
     </p>
 
     <!-- SECTION 2 -->
@@ -257,14 +257,14 @@
     </p>
     <ul>
       <li><strong>Capsule Body:</strong> 1x 100ml wide-mouth PET food jar.</li>
-      <li><strong>Waterproof Routing:</strong> 1x Industrial PG7 Nylon Cable Gland (mounted securely through a 12.5mm hole drilled in the PET jar cap).</li>
+      <li><strong>Waterproof Cable Connector:</strong> 1x Industrial PG7 Nylon Cable Gland (mounted securely through a 12.5mm hole drilled in the PET jar cap).</li>
       <li><strong>Thermal Sensor:</strong> 1x DS18B20 digital waterproof temperature sensor probe.</li>
       <li><strong>Environmental Chamber:</strong> A large tub or bucket filled with crushed ice and water (maintained at 0°C).</li>
     </ul>
 
     <h3>Assembly Steps:</h3>
     <ol>
-      <li>Thread the digital DS18B20 sensor wire through the PG7 nylon gland body.</li>
+      <li>Thread the temperature sensor wire through the waterproof connector.</li>
       <li>Screw the PG7 gland locknut onto the inside of the jar cap until firmly sealed.</li>
       <li>Tighten the external dome nut of the PG7 gland. This compresses the internal neoprene rubber seal around the sensor wire, creating a 100% waterproof seal capable of sustaining submersion in ice water.</li>
       <li>Verify that the sensor probe is suspended freely in the middle of the jar and does not directly touch the bottom or sides of the PET capsule.</li>
@@ -333,9 +333,13 @@
     </p>
     <ul>
       <li><strong>Configuration A (Bare Capsule):</strong> No insulation applied. Serves as your scientific control baseline.</li>
-      <li><strong>Configuration B (Cotton Padding):</strong> Represents conduction protection. Heavy cotton layers absorb mechanical heat but allow air movement.</li>
-      <li><strong>Configuration C (Bubble Wrap Rings):</strong> Represents convection prevention. Captures static air pockets, slowing convective heat transfer.</li>
-      <li><strong>Configuration D (Multi-Layer Insulation - MLI):</strong> Reflective aluminum Mylar foil layers separated by thin netting. The gold standard for space flight, designed to block radiant heat transfer.</li>
+      <li><strong>Configuration B (Cotton Padding):</strong> 
+Cotton slows down heat transfer because the fabric traps some warm air around the capsule. (Mainly reduces conduction.)</li>
+      <li><strong>Configuration C (Bubble Wrap Rings):</strong> 
+Bubble wrap contains many small pockets of air. These air pockets help slow down heat transfer. (Mainly reduces convection.)</li>
+      <li><strong>Configuration D (Aluminum Mylar Foil):</strong> 
+Reflective foil can reduce heat loss by reflecting thermal radiation. Similar materials are used on spacecraft and satellites. (Mainly reduces radiation.)
+</li>
     </ul>
 
     <!-- FIG 2: INSULATION SCHEMATICS -->
@@ -404,34 +408,35 @@
     <div class="page-break"></div>
 
     <!-- SECTION 4 -->
-    <h2>4. MATHEMATICAL CORE &amp; NEWTON'S COOLING FORMULA</h2>
+    <h2>4. UNDERSTANDING THE TEMPERATURE GRAPH</h2>
     <p>
-      The rate at which the warm water capsule cools in the cold ice bath is modeled by <strong>Newton's Law of Cooling</strong>. This law states that the rate of heat loss of an object is directly proportional to the difference in temperatures between the object and its surrounding environment:
-    </p>
-    
-    <div class="equation-box">
-      dT/dt = -k · (T - T_env)
-    </div>
-
-    <p>
-      By integrating this differential equation, we get the analytical prediction formula utilized by the <strong>SPHERE Mathematical Engine</strong>:
+      As the warm water cools down, heat flows from the warmer capsule to the colder surroundings. By measuring the temperature over time, you can create a graph and compare different insulation materials. 
     </p>
 
-    <div class="equation-box">
-      T(t) = T_env + (T₀ - T_env) · e⁻ᵏᵗ
-    </div>
+<div class="highlight-box">
+<strong>Optional: The Mathematics Behind the Model</strong>
 
-    <p>
+Scientists and Engineers often use a model called Newton's Law of Cooling to describe how objects cool down over time: 
+<p>
+<div class="equation-box">
+  dT/dt = -k · (T - Tₑₙᵥ)<br>
+  T(t) = Tₑₙᵥ + (T₀ - Tₑₙᵥ) · e⁻ᵏᵗ
+</div>
+</p>
       Where:
     </p>
     <ul>
       <li><strong>T(t):</strong> The predicted temperature at time <code style="font-family: var(--font-mono); color: var(--orange);">t</code> (seconds).</li>
-      <li><strong>T_env:</strong> The environmental ice-water temperature (fixed at <code style="font-family: var(--font-mono); color: var(--orange);">0°C</code>).</li>
+      <li><strong>Tₑₙᵥ:</strong> The environmental ice-water temperature (fixed at <code style="font-family: var(--font-mono); color: var(--orange);">0°C</code>).</li>
       <li><strong>T₀:</strong> The initial temperature of the warm water at drop-time (typically <code style="font-family: var(--font-mono); color: var(--orange);">80°C</code>).</li>
       <li><strong>k:</strong> The cooling decay coefficient (1/seconds) which represents the heat transfer rate. A lower <code style="font-family: var(--font-mono); color: var(--orange);">k</code> constant indicates a more efficient spacesuit!</li>
       <li><strong>e:</strong> Euler's mathematical constant (~2.71828).</li>
     </ul>
 
+The simulator uses this model to calculate a prediction curve. You do not need to derive the equation, but you can compare its predictions with your measurements.
+</div>
+
+   
     <!-- SECTION 5 -->
     <h2>5. STEP-BY-STEP MISSION CONTROL WORKFLOW</h2>
     <ol>
