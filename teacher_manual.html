@@ -291,11 +291,20 @@
           <td>Engage &amp; Certify</td>
           <td>Students review the deep-space context, read the student briefing, and complete the Pre-Flight Quiz to unlock mission telemetry.</td>
         </tr>
-        <tr>
-          <td><strong>10 - 20 Min</strong></td>
-          <td>Explore &amp; Construct</td>
-          <td>Student crews wrap their physical PET jars with specific insulation configs and thread thermal wire probes through PG7 glands.</td>
-        </tr>
+<tr>
+  <td><strong>10 - 20 Min</strong></td>
+  <td>Explore &amp; Construct</td>
+  <td>
+    Student crews construct one of four thermal protection systems:
+    <ul style="margin-top:8px; margin-bottom:0;">
+      <li>Bare Capsule</li>
+      <li>Cotton Layer</li>
+      <li>Mylar Layer</li>
+      <li>Mylar + Cotton + Bubble Wrap</li>
+    </ul>
+    They then install the temperature probe through the PG7 cable gland and prepare the capsule for testing.
+  </td>
+</tr>
         <tr>
           <td><strong>20 - 25 Min</strong></td>
           <td>Model &amp; Predict</td>
@@ -372,44 +381,55 @@
 <div class="highlight-box">
 <strong>Important:</strong> Actual classroom measurements may differ depending on wrapping quality, material thickness, sensor placement, room conditions, and ice-bath temperature.
 </div>
+<div class="highlight-box">
+<strong>Important Experimental Design Note:</strong><br>
+Students do not test bubble wrap as a standalone insulation system. Bubble wrap is only used as an outer protective layer in the combined configuration (Mylar + Cotton + Bubble Wrap). This reflects real engineering practice, where multiple materials are combined to reduce different heat-transfer mechanisms simultaneously.
+</div>
+
     
-    <h3>Expected Cooling Rates after 15-Minute Submersion:</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>INSULATION DESIGN</th>
-          <th>DECAY CONSTANT (k)</th>
-          <th>EXPECTED END TEMP (15 MIN)</th>
-          <th>DOMINANT COOLING PATHWAY BLOCKED</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>A. Bare Capsule</strong></td>
-          <td>k ≈ 0.082</td>
-          <td>≈ 23°C</td>
-          <td>Baseline Scientific Control. No pathways blocked.</td>
-        </tr>
-        <tr>
-          <td><strong>B. Cotton Padding</strong></td>
-          <td>k ≈ 0.045</td>
-          <td>≈ 40°C</td>
-          <td>Blocks direct thermal conduction through fibers.</td>
-        </tr>
-        <tr>
-          <td><strong>C. Bubble Wrap Rings</strong></td>
-          <td>k ≈ 0.032</td>
-          <td>≈ 49°C</td>
-          <td>Blocks convective thermal transfer via static air pockets.</td>
-        </tr>
-        <tr>
-          <td><strong>D. Multi-Layer MLI</strong></td>
-          <td>k ≈ 0.015</td>
-          <td>≈ 64°C</td>
-          <td>Blocks radiant energy transfer via reflective aluminum layers.</td>
-        </tr>
-      </tbody>
-    </table>
+<h3>Expected Cooling Rates after 15-Minute Submersion:</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>INSULATION DESIGN</th>
+      <th>DECAY CONSTANT (k)</th>
+      <th>EXPECTED END TEMP (15 MIN)</th>
+      <th>PRIMARY INSULATION EFFECT</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td><strong>A. Bare Capsule</strong></td>
+      <td>k ≈ 0.082</td>
+      <td>≈ 23°C</td>
+      <td>Baseline control. No additional insulation.</td>
+    </tr>
+
+    <tr>
+      <td><strong>B. Cotton Layer</strong></td>
+      <td>k ≈ 0.050</td>
+      <td>≈ 37°C</td>
+      <td>Reduces conductive heat transfer through trapped air within fibers.</td>
+    </tr>
+
+    <tr>
+      <td><strong>C. Mylar Layer</strong></td>
+      <td>k ≈ 0.040</td>
+      <td>≈ 43°C</td>
+      <td>Reflects thermal radiation and reduces radiative heat loss.</td>
+    </tr>
+
+    <tr>
+      <td><strong>D. Mylar + Cotton + Bubble Wrap</strong></td>
+      <td>k ≈ 0.022</td>
+      <td>≈ 56°C</td>
+      <td>Combined reduction of radiation, conduction and convective losses.</td>
+    </tr>
+
+  </tbody>
+</table>
 
     <!-- FIG 3: SOLUTIONS PLOT GRAPH -->
     <div style="text-align: center; margin: 25px 0;">
@@ -447,19 +467,19 @@
         <text x="480" y="244" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="middle">15m</text>
 
         <!-- Curves -->
-        <!-- 1. MLI (Gold) -->
+<!-- 1. Mylar + Cotton + Bubble Wrap (Gold) -->
         <path d="M 60 50 Q 270 65 480 86" fill="none" stroke="#f59e0b" stroke-width="2.5" />
         <circle cx="480" cy="86" r="3.5" fill="#f59e0b" />
         
-        <!-- 2. Bubble Wrap (Green) -->
+<!-- 2. Mylar (Green) -->
         <path d="M 60 50 Q 270 80 480 120" fill="none" stroke="#10b981" stroke-width="2.5" />
         <circle cx="480" cy="120" r="3.5" fill="#10b981" />
 
-        <!-- 3. Cotton (Blue) -->
+<!-- 3. Cotton (Blue) -->
         <path d="M 60 50 Q 270 95 480 140" fill="none" stroke="#4facfe" stroke-width="2.5" />
         <circle cx="480" cy="140" r="3.5" fill="#4facfe" />
 
-        <!-- 4. Bare Capsule (Red) -->
+<!-- 4. Bare Capsule (Red) -->
         <path d="M 60 50 Q 270 125 480 179" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="3,2" />
         <circle cx="480" cy="179" r="3.5" fill="#f43f5e" />
 
@@ -468,17 +488,17 @@
         <!-- Legend -->
         <rect x="492" y="45" width="98" height="135" rx="4" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" />
         
-        <rect x="500" y="55" width="6" height="6" fill="#f59e0b" />
-        <text x="510" y="61" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">MLI (64°C)</text>
-        
-        <rect x="500" y="85" width="6" height="6" fill="#10b981" />
-        <text x="510" y="91" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Bubbles (49°C)</text>
+<rect x="500" y="55" width="6" height="6" fill="#f59e0b" />
+<text x="510" y="61" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Mylar+Cotton+BW (56°C)</text>
 
-        <rect x="500" y="115" width="6" height="6" fill="#4facfe" />
-        <text x="510" y="121" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Cotton (40°C)</text>
+<rect x="500" y="85" width="6" height="6" fill="#10b981" />
+<text x="510" y="91" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Mylar (43°C)</text>
 
-        <rect x="500" y="145" width="6" height="6" fill="#f43f5e" />
-        <text x="510" y="151" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Bare (23°C)</text>
+<rect x="500" y="115" width="6" height="6" fill="#4facfe" />
+<text x="510" y="121" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Cotton (37°C)</text>
+
+<rect x="500" y="145" width="6" height="6" fill="#f43f5e" />
+<text x="510" y="151" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Bare (23°C)</text>
       </svg>
       <div style="font-size: 0.8rem; color: var(--text-dimmed); margin-top: 6px; font-family: var(--font-mono);">FIGURE 3: EXPECTED EXPONENTIAL COOLING CURVES (t = 0 to 15m)</div>
     </div>
