@@ -327,20 +327,33 @@
     </div>
 
     <!-- SECTION 3 -->
-    <h2>3. INSULATION SCHEMES &amp; OPTIMIZATION</h2>
-    <p>
-      Your main engineering challenge is to test different insulation configurations wrapped around the physical capsule to slow the temperature decay:
-    </p>
-    <ul>
-      <li><strong>Configuration A (Bare Capsule):</strong> No insulation applied. Serves as your scientific control baseline.</li>
-      <li><strong>Configuration B (Cotton Padding):</strong> 
-Cotton slows down heat transfer because the fabric traps some warm air around the capsule. (Mainly reduces conduction.)</li>
-      <li><strong>Configuration C (Bubble Wrap Rings):</strong> 
-Bubble wrap contains many small pockets of air. These air pockets help slow down heat transfer. (Mainly reduces convection.)</li>
-      <li><strong>Configuration D (Aluminum Mylar Foil):</strong> 
-Reflective foil can reduce heat loss by reflecting thermal radiation. Similar materials are used on spacecraft and satellites. (Mainly reduces radiation.)
-</li>
-    </ul>
+<h2>3. INSULATION CONFIGURATIONS</h2>
+
+<p>
+Your engineering team must design and test different thermal protection systems for the capsule. Each configuration combines materials in a different way to investigate how insulation affects heat transfer.
+</p>
+
+<ul>
+  <li>
+    <strong>Configuration A — Control Capsule</strong><br>
+    No insulation. This configuration serves as the scientific baseline for comparison.
+  </li>
+
+  <li>
+    <strong>Configuration B — Cotton Suit</strong><br>
+    One layer of cotton wrapped around the capsule. The trapped air inside the fibres helps reduce heat transfer.
+  </li>
+
+  <li>
+    <strong>Configuration C — Bubble Shield</strong><br>
+    Bubble wrap surrounding the capsule. The enclosed air pockets slow heat transfer and improve insulation.
+  </li>
+
+  <li>
+    <strong>Configuration D — Multi-Layer Thermal Suit (MLI)</strong><br>
+    Multiple reflective Mylar layers separated by thin air gaps. This design is inspired by spacecraft thermal blankets and provides the strongest insulation performance.
+  </li>
+</ul>
 
     <!-- FIG 2: INSULATION SCHEMATICS -->
     <div style="text-align: center; margin: 20px 0;">
@@ -419,16 +432,25 @@ Reflective foil can reduce heat loss by reflecting thermal radiation. Similar ma
 Scientists and Engineers often use a model called Newton's Law of Cooling to describe how objects cool down over time: 
 <p>
 <div class="equation-box">
-  dT/dt = -k · (T - Tₑₙᵥ)<br>
-  T(t) = Tₑₙᵥ + (T₀ - Tₑₙᵥ) · e⁻ᵏᵗ
+  dT/dt = -k · (T - Tenv)<br>
+  T(t) = Tenv + (T0 - Tenv) · e⁻ᵏᵗ
 </div>
 </p>
       Where:
     </p>
     <ul>
       <li><strong>T(t):</strong> The predicted temperature at time <code style="font-family: var(--font-mono); color: var(--orange);">t</code> (seconds).</li>
-      <li><strong>Tₑₙᵥ:</strong> The environmental ice-water temperature (fixed at <code style="font-family: var(--font-mono); color: var(--orange);">0°C</code>).</li>
-      <li><strong>T₀:</strong> The initial temperature of the warm water at drop-time (typically <code style="font-family: var(--font-mono); color: var(--orange);">80°C</code>).</li>
+<li>
+ <strong>Tenv:</strong>
+ The surrounding environmental temperature
+ (typically 0°C for an ice-water bath).
+</li>
+ 
+<li>
+ <strong>T0:</strong>
+ The initial temperature of the water when the experiment begins
+ (typically 80°C).
+</li>
       <li><strong>k:</strong> The cooling decay coefficient (1/seconds) which represents the heat transfer rate. A lower <code style="font-family: var(--font-mono); color: var(--orange);">k</code> constant indicates a more efficient spacesuit!</li>
       <li><strong>e:</strong> Euler's mathematical constant (~2.71828).</li>
     </ul>
@@ -438,15 +460,21 @@ The simulator uses this model to calculate a prediction curve. You do not need t
 
 <div class="highlight-box">
   <strong>Learning Objectives</strong>
-  <p>By completing this experiment, you should be able to:</p>
 
   <ul>
-    <li>Explain that heat flows from warmer objects to colder surroundings.</li>
-    <li>Measure and record temperature data at regular time intervals.</li>
-    <li>Create and interpret a temperature-versus-time graph.</li>
-    <li>Compare the effectiveness of different insulation materials.</li>
-    <li>Compare real experimental data with a computer prediction.</li>
-    <li>Discuss possible reasons why measurements and predictions may differ.</li>
+    <li>Explain how heat flows from warmer objects to colder surroundings.</li>
+
+    <li>Measure and record temperature data at regular intervals.</li>
+
+    <li>Interpret temperature-versus-time graphs.</li>
+
+    <li>Compare the effectiveness of different insulation systems.</li>
+
+    <li>Use a digital model to predict experimental outcomes.</li>
+
+    <li>Compare measured data with simulation results.</li>
+
+    <li>Evaluate why real experiments differ from ideal mathematical models.</li>
   </ul>
 </div>
 
