@@ -348,22 +348,22 @@ Your engineering team must design and test different thermal protection systems 
 <ul>
   <li>
     <strong>Configuration A — Control Capsule</strong><br>
-    No insulation. This configuration serves as the scientific baseline for comparison.
+    No insulation. This configuration serves as the scientific baseline.
   </li>
 
   <li>
     <strong>Configuration B — Cotton Suit</strong><br>
-    One layer of cotton wrapped around the capsule. The trapped air inside the fibres helps reduce heat transfer.
+    A single cotton layer wrapped around the capsule.
   </li>
 
   <li>
-    <strong>Configuration C — Bubble Shield</strong><br>
-    Bubble wrap surrounding the capsule. The enclosed air pockets slow heat transfer and improve insulation.
+    <strong>Configuration C — Mylar Shield</strong><br>
+    A reflective Mylar foil layer surrounding the capsule. The shiny surface reflects thermal radiation and reduces heat loss.
   </li>
 
   <li>
-    <strong>Configuration D — Multi-Layer Thermal Suit (MLI)</strong><br>
-    Multiple reflective Mylar layers separated by thin air gaps. This design is inspired by spacecraft thermal blankets and provides the strongest insulation performance.
+    <strong>Configuration D — Multi-Layer Thermal Suit</strong><br>
+    A combined insulation system consisting of cotton, bubble wrap, and an outer Mylar layer.
   </li>
 </ul>
 
@@ -432,35 +432,48 @@ Your engineering team must design and test different thermal protection systems 
     Cotton
   </text>
 
-  <!-- C -->
-  <rect x="300" y="45" width="90" height="130"
-        rx="10"
-        fill="rgba(16,185,129,0.08)"
-        stroke="#10b981"
-        stroke-width="2"/>
+<!-- C : MYLAR -->
 
-  <rect x="320" y="65" width="50" height="90"
-        rx="5"
-        fill="rgba(0,242,254,0.08)"
-        stroke="#00f2fe"
-        stroke-width="2"/>
+<rect x="300" y="45"
+      width="90"
+      height="130"
+      rx="8"
+      fill="rgba(245,158,11,0.05)"
+      stroke="#f59e0b"
+      stroke-width="2"/>
 
-  <circle cx="310" cy="75" r="5" fill="none" stroke="#10b981"/>
-  <circle cx="380" cy="75" r="5" fill="none" stroke="#10b981"/>
+<!-- reflective foil lines -->
 
-  <circle cx="310" cy="105" r="5" fill="none" stroke="#10b981"/>
-  <circle cx="380" cy="105" r="5" fill="none" stroke="#10b981"/>
+<line x1="315" y1="55" x2="315" y2="165" stroke="#f59e0b"/>
+<line x1="330" y1="55" x2="330" y2="165" stroke="#f59e0b"/>
+<line x1="345" y1="55" x2="345" y2="165" stroke="#f59e0b"/>
+<line x1="360" y1="55" x2="360" y2="165" stroke="#f59e0b"/>
+<line x1="375" y1="55" x2="375" y2="165" stroke="#f59e0b"/>
 
-  <circle cx="310" cy="135" r="5" fill="none" stroke="#10b981"/>
-  <circle cx="380" cy="135" r="5" fill="none" stroke="#10b981"/>
+<rect x="320" y="65"
+      width="50"
+      height="90"
+      rx="5"
+      fill="rgba(0,242,254,0.08)"
+      stroke="#00f2fe"
+      stroke-width="2"/>
 
-  <text x="345" y="40"
-        text-anchor="middle"
-        fill="#00f2fe"
-        font-size="11"
-        font-weight="bold">
-    C
-  </text>
+<text x="345"
+      y="40"
+      text-anchor="middle"
+      fill="#00f2fe"
+      font-size="11"
+      font-weight="bold">
+  C
+</text>
+
+<text x="345"
+      y="185"
+      text-anchor="middle"
+      fill="#ffffff"
+      font-size="10">
+  Mylar
+</text>
 
   <text x="345" y="185"
         text-anchor="middle"
@@ -469,35 +482,77 @@ Your engineering team must design and test different thermal protection systems 
     Bubble Wrap
   </text>
 
-  <!-- D -->
-  <rect x="455" y="40" width="100" height="140"
-        rx="10"
-        fill="rgba(245,158,11,0.05)"
-        stroke="#f59e0b"
-        stroke-width="2"/>
+<!-- D : COTTON + BUBBLE + MYLAR -->
 
-  <line x1="470" y1="50" x2="470" y2="170"
-        stroke="#f59e0b" />
+<!-- outer mylar -->
 
-  <line x1="485" y1="50" x2="485" y2="170"
-        stroke="#f59e0b" />
+<rect x="445" y="35"
+      width="110"
+      height="150"
+      rx="10"
+      fill="rgba(245,158,11,0.04)"
+      stroke="#f59e0b"
+      stroke-width="2"/>
 
-  <line x1="500" y1="50" x2="500" y2="170"
-        stroke="#f59e0b" />
+<line x1="455" y1="45" x2="455" y2="175" stroke="#f59e0b"/>
+<line x1="470" y1="45" x2="470" y2="175" stroke="#f59e0b"/>
+<line x1="485" y1="45" x2="485" y2="175" stroke="#f59e0b"/>
 
-  <rect x="510" y="65" width="30" height="90"
-        rx="4"
-        fill="rgba(0,242,254,0.08)"
-        stroke="#00f2fe"
-        stroke-width="2"/>
+<!-- bubble wrap layer -->
 
-  <text x="505" y="30"
-        text-anchor="middle"
-        fill="#00f2fe"
-        font-size="11"
-        font-weight="bold">
-    D
-  </text>
+<rect x="460" y="50"
+      width="80"
+      height="120"
+      rx="8"
+      fill="rgba(16,185,129,0.05)"
+      stroke="#10b981"
+      stroke-width="1.5"/>
+
+<circle cx="470" cy="70" r="4" fill="none" stroke="#10b981"/>
+<circle cx="530" cy="70" r="4" fill="none" stroke="#10b981"/>
+
+<circle cx="470" cy="100" r="4" fill="none" stroke="#10b981"/>
+<circle cx="530" cy="100" r="4" fill="none" stroke="#10b981"/>
+
+<circle cx="470" cy="130" r="4" fill="none" stroke="#10b981"/>
+<circle cx="530" cy="130" r="4" fill="none" stroke="#10b981"/>
+
+<!-- cotton layer -->
+
+<rect x="475" y="60"
+      width="50"
+      height="100"
+      rx="6"
+      fill="rgba(255,255,255,0.03)"
+      stroke="#ffffff"
+      stroke-width="1.5"/>
+
+<!-- capsule -->
+
+<rect x="487" y="75"
+      width="26"
+      height="70"
+      rx="4"
+      fill="rgba(0,242,254,0.08)"
+      stroke="#00f2fe"
+      stroke-width="2"/>
+
+<text x="500"
+      y="25"
+      text-anchor="middle"
+      fill="#00f2fe"
+      font-size="11"
+      font-weight="bold">
+  D
+</text>
+
+<text x="500"
+      y="198"
+      text-anchor="middle"
+      fill="#ffffff"
+      font-size="10">
+  Cotton + Bubble + Mylar
+</text>
 
   <text x="505" y="195"
         text-anchor="middle"
