@@ -532,7 +532,9 @@ Larger k-values represent faster heat loss.
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label">ENV TEMP (T_env)</label>
+                  <label class="form-label">ENV TEMP (
+T<sub>env</sub>
+)</label>
                   <div class="hud-input-wrapper">
                     <input type="number" id="sim-tenv" class="hud-input" value="0.0" min="-50" max="50" step="0.5">
                     <span class="input-suffix">°C</span>
@@ -807,8 +809,8 @@ Larger k-values represent faster heat loss.
               </span>
               <p class="step-desc" style="font-size: 0.8rem; margin: 0; line-height: 1.4;">
                 • <strong>Reduce Target Temp:</strong> Safety scale water down to <strong>55°C–60°C</strong> to neutralize scalding risks on hot days. The simulator supports any initial value.<br>
-                • <strong>Melt Compensation:</strong> Instruct students to measure actual bath temperature and input it as <code style="color: var(--cyan); font-family: var(--font-mono); font-weight: bold;">T_env</code> in the simulator if ice melts above 0°C.<br>
-                • <strong>Ice-Free Option:</strong> Drop capsules in room-temperature tap water (~25°C–30°C) and configure <code style="color: var(--cyan); font-family: var(--font-mono); font-weight: bold;">T_env</code> accordingly.
+                • <strong>Melt Compensation:</strong> Instruct students to measure actual bath temperature and input it as <code style="color: var(--cyan); font-family: var(--font-mono); font-weight: bold;">T<sub>env</sub></code> in the simulator if ice melts above 0°C.<br>
+                • <strong>Ice-Free Option:</strong> Drop capsules in room-temperature tap water (~25°C–30°C) and configure <code style="color: var(--cyan); font-family: var(--font-mono); font-weight: bold;">T<sub>env</sub></code> accordingly.
               </p>
             </div>
           </div>
@@ -843,7 +845,7 @@ Larger k-values represent faster heat loss.
               </p>
               <div class="math-equation">T(t) = T<sub>env</sub> + (T₀ - T<sub>env</sub>) · e<sup>-kt</sup></div>
               <p class="briefing-text" style="font-size: 0.75rem; margin-bottom: 0;">
-                Where: <strong>T₀</strong> = 80°C, <strong>T_env</strong> = 0°C (ice bath), <strong>k</strong> = insulation cooling constant, <strong>t</strong> = time. For this project, students do not need to derive the equation. The model is used to explore how insulation affects cooling behaviour and how mathematical predictions compare with experimental data.
+                Where: <strong>T₀</strong> = 80°C, <strong>T<sub>env</sub></strong> = 0°C (ice bath), <strong>k</strong> = insulation cooling constant, <strong>t</strong> = time. For this project, students do not need to derive the equation. The model is used to explore how insulation affects cooling behaviour and how mathematical predictions compare with experimental data.
               </p>
             </div>
 
