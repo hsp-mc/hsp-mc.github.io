@@ -571,8 +571,15 @@ Your engineering team must design and test different thermal protection systems 
 Scientists and Engineers often use a model called Newton's Law of Cooling to describe how objects cool down over time: 
 <p>
 <div class="equation-box">
-  dT/dt = -k · (T - Tenv)<br>
-  T(t) = Tenv + (T0 - Tenv) · e⁻ᵏᵗ
+  dT/dt = -k · (T - 
+T<sub>env</sub>
+)<br>
+  T(t) = T
+T<sub>env</sub>
+ + (T₀ - 
+T<sub>env</sub>
+) · 
+e<sup>-kt</sup>
 </div>
 </p>
       Where:
@@ -580,13 +587,15 @@ Scientists and Engineers often use a model called Newton's Law of Cooling to des
     <ul>
       <li><strong>T(t):</strong> The predicted temperature at time <code style="font-family: var(--font-mono); color: var(--orange);">t</code> (seconds).</li>
 <li>
- <strong>Tenv:</strong>
+ <strong>
+T<sub>env</sub>
+:</strong>
  The surrounding environmental temperature
  (typically 0°C for an ice-water bath).
 </li>
  
 <li>
- <strong>T0:</strong>
+ <strong>T₀:</strong>
  The initial temperature of the water when the experiment begins
  (typically 80°C).
 </li>
@@ -623,7 +632,9 @@ The simulator uses this model to calculate a prediction curve. You do not need t
     <h2>5. STEP-BY-STEP MISSION CONTROL WORKFLOW</h2>
     <ol>
       <li><strong>Unlock Operations:</strong> Read the Mission Briefing on the home page and complete the Pre-Flight Quiz to prove your laboratory readiness.</li>
-      <li><strong>Run Newtonian Predictions:</strong> Open the <strong>Simulator</strong> tab. Select your insulation type, configure your initial variables (<code style="font-family: var(--font-mono); color: var(--cyan);">T0 = 80°C</code>, <code style="font-family: var(--font-mono); color: var(--cyan);">Tenv = 0°C</code>), and click <strong>RUN SIMULATION PREDICTION</strong>. Review the projected mathematical decay curve.</li>
+      <li><strong>Run Newtonian Predictions:</strong> Open the <strong>Simulator</strong> tab. Select your insulation type, configure your initial variables (<code style="font-family: var(--font-mono); color: var(--cyan);">T₀ = 80°C</code>, <code style="font-family: var(--font-mono); color: var(--cyan);">
+T<sub>env</sub>
+ = 0°C</code>), and click <strong>RUN SIMULATION PREDICTION</strong>. Review the projected mathematical decay curve.</li>
       <li><strong>Prepare Physical Asset:</strong> Fill the PET capsule with hot water pre-measured at 80°C. Secure the cap and tighten the PG7 gland to prevent convective leakage.</li>
       <li><strong>Submerge &amp; Initialize:</strong> Submerge the capsule into the 0°C ice water. Simultaneously click <strong>START LIVE TIMER</strong> in the <strong>Live Telemetry</strong> tab.</li>
       <li><strong>Active Sensor Logging:</strong> Every 60 seconds (the alarm terminal will blink green and sound a beep), read the current physical thermometer value and log it into the input box. Click <strong>RECORD DATA POINT</strong> to plot it on the graph overlay.</li>
@@ -634,9 +645,13 @@ The simulator uses this model to calculate a prediction curve. You do not need t
       <strong>Summer &amp; High-Ambient Temperature Procedures (~30°C):</strong><br>
       If you are running this experiment in a hot room (e.g. during summer conditions), note these key steps to ensure high-accuracy and absolute safety:
       <ul style="margin-top: 10px; margin-bottom: 0; padding-left: 20px;">
-        <li><strong>Safety Temp Scaling (Mitigate Scalding Risk):</strong> Instead of using 80°C hot water, you can safely scale the initial temperature down to <strong>55°C–60°C</strong>. Newton's Law of Cooling works identically! Simply enter <code style="font-family: var(--font-mono); color: var(--cyan);">T0 = 60°C</code> in your simulator prediction, and fill your physical jar with 60°C water.</li>
-        <li><strong>Melting Ice Compensation:</strong> On hot days, your ice bath water may rise slightly above 0°C (e.g. to 4°C). Use your thermometer to measure the actual temperature of your ice bath at the start, and enter that exact value as the environmental temperature <code style="font-family: var(--font-mono); color: var(--cyan);">Tenv</code> in your Simulator tab.</li>
-        <li><strong>Ice-Free Tap Water Drop:</strong> If ice is not logistically available, you can drop your capsule into room-temperature tap water (~25°C–30°C). Simply log the tap water's temperature, enter it as <code style="font-family: var(--font-mono); color: var(--cyan);">Tenv</code>, and run your predictions!</li>
+        <li><strong>Safety Temp Scaling (Mitigate Scalding Risk):</strong> Instead of using 80°C hot water, you can safely scale the initial temperature down to <strong>55°C–60°C</strong>. Newton's Law of Cooling works identically! Simply enter <code style="font-family: var(--font-mono); color: var(--cyan);">T₀ = 60°C</code> in your simulator prediction, and fill your physical jar with 60°C water.</li>
+        <li><strong>Melting Ice Compensation:</strong> On hot days, your ice bath water may rise slightly above 0°C (e.g. to 4°C). Use your thermometer to measure the actual temperature of your ice bath at the start, and enter that exact value as the environmental temperature <code style="font-family: var(--font-mono); color: var(--cyan);">
+T<sub>env</sub>
+</code> in your Simulator tab.</li>
+        <li><strong>Ice-Free Tap Water Drop:</strong> If ice is not logistically available, you can drop your capsule into room-temperature tap water (~25°C–30°C). Simply log the tap water's temperature, enter it as <code style="font-family: var(--font-mono); color: var(--cyan);">
+T<sub>env</sub>
+</code>, and run your predictions!</li>
       </ul>
     </div>
     
