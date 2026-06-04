@@ -3,22 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPHERE: Mission Control | Thermal Telemetry Suite</title>
-  <!-- SEO & Description -->
-  <meta name="description" content="Aerospace thermodynamic prediction engine and live telemetry logbook for high school physics EMU spacesuit simulation labs.">
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css">
-  <!-- Chart.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- Lucide Icons CDN -->
+  <title>SPHERE - Mission Control</title>
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-
-  <!-- Master Telemetry HUD Wrapper -->
   <div class="hud-wrapper">
     
-    <!-- 1. HEADER HUD PANEL -->
     <header class="hud-header">
       <div class="logo-container">
         <div class="logo-icon">
@@ -30,7 +20,6 @@
         </div>
       </div>
       
-      <!-- Primary Tab Controls -->
       <nav class="hud-nav" id="hud-nav-tabs">
         <button class="nav-tab active" data-target="briefing">
           <i data-lucide="info"></i> BRIEFING
@@ -44,7 +33,7 @@
         <button class="nav-tab" data-target="telemetry">
           <i data-lucide="activity"></i> LIVE TELEMETRY
         </button>
-        <button class="nav-tab tab-admin" data-target="admin">
+        <button class="nav-tab" data-target="admin">
           <i data-lucide="shield-alert"></i> TEACHER PORTAL
         </button>
         <button id="btn-toggle-audio" class="btn-hud" style="width: auto; padding: 4px 10px; font-size: 0.7rem; border-color: rgba(0, 242, 254, 0.3); color: var(--cyan); background: rgba(0, 242, 254, 0.05); display: inline-flex; align-items: center; gap: 4px; border-radius: 4px; cursor: pointer; margin-left: 15px; border: 1px solid rgba(0, 242, 254, 0.3); font-family: var(--font-hud);">
@@ -54,287 +43,114 @@
       </nav>
     </header>
 
-    <!-- Live Status Stats Ticker (Full-width Telemetry Bar) -->
     <div class="hud-stats-ticker">
       <div class="ticker-item">
-        <span class="ticker-label">SYS_STATUS:</span>
-        <span class="ticker-status-dot" id="system-status-dot"></span>
-        <span class="ticker-value" id="system-status-text">STANDBY</span>
+        <span class="ticker-label">SYSTEM_STATUS:</span>
+        <span class="ticker-status-dot"></span>
+        <span class="ticker-value" style="color: var(--green);">ONLINE</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-label">TARGET_CORE:</span>
+        <span class="ticker-value">PET_JAR_100ML</span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-label">ENVIRONMENT:</span>
+        <span class="ticker-value" style="color: var(--blue);">ICE_WATER_BATH</span>
       </div>
       <div class="ticker-item">
         <span class="ticker-label">TELEMETRY_LINK:</span>
-        <span class="ticker-value text-green glow-green">ONLINE</span>
-      </div>
-      <div class="ticker-item">
-        <span class="ticker-label">MISSION_CLOCK:</span>
-        <span class="ticker-value" id="live-wall-clock">00:00:00 UTC</span>
+        <span class="ticker-value" id="ticker-comms-status">READY // IDLE</span>
       </div>
     </div>
 
-    <!-- 2. MAIN ACTIVE PORT VIEWPORT -->
-    <main class="hud-grid">
-
-      <!-- ==================== TAB 1: MISSION BRIEFING ==================== -->
+    <main style="flex: 1; display: flex; flex-direction: column;">
+      
       <section id="briefing" class="view-section active">
+        
         <div class="briefing-hero">
-          <div class="hud-panel">
-            <div class="panel-header">
-              <span class="panel-title"><i data-lucide="terminal"></i> MISSION OVERVIEW</span>
-              <span class="panel-meta">DIRECTIVE // SPHERE-2026-LAB</span>
-            </div>
-            
-<h2 class="glow-cyan" style="margin-bottom:15px;font-size:1.4rem;">
-WELCOME TO THE SPHERE THERMAL CHALLENGE
-</h2>
-
-<p class="briefing-lead">
-In this experiment, you will investigate how insulation helps to keep an object warm.
-Using a small water-filled capsule, you will compare different insulating materials and observe how temperature changes over time.
-</p>
-
-<p class="briefing-text">
-Astronauts need thermal protection because space contains extreme temperature differences.
-Modern spacesuits use several insulation layers to reduce heat loss and maintain a safe internal temperature.
-</p>
-
-<p class="briefing-text">
-Your capsule represents a simplified model of a spacesuit.
-The warm water inside represents the astronaut, while the surrounding ice-water bath represents a cold environment.
-</p>
-
-<p class="briefing-text">
-Before performing the experiment, you will use a mathematical model to predict how quickly the capsule cools down.
-You will then compare your prediction with real measurements.
-</p>
-
-<p class="briefing-text" style="color:var(--orange);font-weight:500;">
-<i data-lucide="arrow-right" style="vertical-align:middle;width:16px;height:16px;"></i>
-<strong>Your goals:</strong>
-
-Understand heat transfer,
-build an insulated capsule,
-predict cooling behaviour,
-measure real temperatures,
-and compare theory with experiment.
-</p>
-            
-            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed rgba(255,255,255,0.08); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dimmed);">
-              DEVELOPED BY ASTRONAUTICS LAB TEAM:<br>
-              <span class="glow-cyan" style="font-weight: bold; letter-spacing: 0.05em;">Piyath Vithanage • Elio Krollpfeiffer • Dilan Fernando • Nuhansee Migelhewage</span>
+          <div>
+            <h2 class="glow-cyan" style="margin-bottom: 15px;">UNDERSTANDING HEAT TRANSFER</h2>
+            <p class="briefing-lead">
+              Welcome to the SPHERE Thermal Telemetry Interaction Protocol. This workspace transitions academic thermodynamics into tangible deep space engineering analysis.
+            </p>
+            <p class="briefing-text">
+              Understand heat transfer, build an insulated capsule, predict cooling behaviour, measure real temperatures, and compare theory with experiment.
+            </p>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed rgba(255,255,255,0.08); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dimmed);"> 
+              DEVELOPED BY ASTRONAUTICS LAB TEAM:<br> 
+              <span class="glow-cyan" style="font-weight: bold; letter-spacing: 0.05em;">Piyath Vithanage • Elio Krollpfeiffer • Dilan Fernando • Nuhansee Migelhewage</span> 
             </div>
           </div>
           
-<!-- Space Suit Simulated HUD Node -->
-<div class="space-suit-visualizer">
-
-  <div class="hud-crosshair"></div>
-
-  <!-- MLI Rings -->
-  <div class="mli-ring ring-1"></div>
-  <div class="mli-ring ring-2"></div>
-  <div class="mli-ring ring-3"></div>
-
-  <!-- Capsule -->
-  <div class="capsule-illustration">
-    <div class="thermometer-wire"></div>
-
-    <div class="capsule-water">
-      <span style="
-        font-size:0.65rem;
-        font-family:var(--font-mono);
-        color:var(--text-pure);
-        font-weight:bold;
-        text-shadow:0 0 4px #000;
-      ">
-        JAR (100ml)
-      </span>
-    </div>
-  </div>
-
-  <!-- Labels -->
-  <div class="telemetry-node-text" id="node-temp">
-    T<sub>0</sub>
-: 80.0°C
-  </div>
-
-  <div class="telemetry-node-text" id="node-env">
-    
-T<sub>env</sub>
-: 0.0°C
-  </div>
-
-  <div class="telemetry-node-text" id="node-flow">
-    MULTI-LAYER INSULATION (MLI)
-  </div>
-
-</div>
-
-        <!-- SPHERE Student User Manual & EU Digital Twin Protocol -->
-        <div class="hud-panel" style="margin-top: 25px; border-color: rgba(0, 242, 254, 0.3);">
-          <div class="panel-header">
-            <span class="panel-title"><i data-lucide="book-open"></i> STUDENT USER MANUAL &amp; DIGITAL TWIN PROTOCOL</span>
-            <span class="panel-meta">STANDARDS // EU_STEM_IBSE_V2</span>
-          </div>
-          
-          <div style="display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 15px;">
-            <div>
-              <h3 class="glow-cyan" style="font-size: 1.1rem; margin-bottom: 8px;"><i data-lucide="check-circle" style="vertical-align: middle; width: 16px; height: 16px; margin-right: 4px;"></i> THE EU "DIGITAL TWIN" METHODOLOGY</h3>
-<h3 class="glow-cyan" style="font-size:1.1rem;margin-bottom:8px;">
-<i data-lucide="check-circle"
-style="vertical-align:middle;width:16px;height:16px;margin-right:4px;">
-</i>
-USING A SIMPLE DIGITAL MODEL
-</h3>
-
-<p class="briefing-text"
-style="font-size:0.85rem;line-height:1.5;">
-Before performing the experiment, you will create a prediction using a mathematical cooling model.
-This prediction acts as a simple digital representation of your insulated capsule.
-
-After collecting real measurements, you can compare the measured temperatures with the predicted temperatures and evaluate how well the model describes reality.
-</p>
-            
-            <div style="display: grid; grid-template-columns: 1fr; gap: 15px; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.04);">
-              <div style="font-weight: bold; font-family: var(--font-hud); font-size: 0.8rem; color: var(--cyan); letter-spacing: 0.05em;">LABORATORY EXECUTION INSTRUCTIONS:</div>
-<ul style="font-family:var(--font-sans);
-font-size:0.85rem;
-color:var(--text-normal);
-margin-left:20px;
-line-height:1.6;">
-
-<li>
-<strong>Step 1 – Learn the science:</strong>
-Read the introduction and review the three heat transfer mechanisms:
-conduction, convection and radiation.
-</li>
-
-<li>
-<strong>Step 2 – Build your capsule:</strong>
-Apply one or more insulation materials around the container.
-</li>
-
-<li>
-<strong>Step 3 – Make a prediction:</strong>
-Use the simulator to estimate how the temperature will change over time.
-</li>
-
-<li>
-<strong>Step 4 – Perform the experiment:</strong>
-Fill the capsule with warm water and place it into the ice-water bath.
-</li>
-
-<li>
-<strong>Step 5 – Record measurements:</strong>
-Measure and enter temperatures at regular intervals.
-</li>
-
-<li>
-<strong>Step 6 – Compare results:</strong>
-Compare the measured cooling curve with the predicted curve and discuss possible differences.
-</li>
-
-</ul>
-              
-              <div style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.06); padding-top: 12px; display: flex; justify-content: flex-end; gap: 10px;">
-                <a href="user_manual.html" target="_blank" class="btn-hud btn-outline" style="width: auto; padding: 6px 14px; font-size: 0.75rem; border-color: rgba(0, 242, 254, 0.4); color: var(--cyan); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                  <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> VIEW STUDENT MANUAL (WEB)
-                </a>
-                <a href="general_public_user_manual.pdf" target="_blank" class="btn-hud" style="width: auto; padding: 6px 14px; font-size: 0.75rem; background: rgba(0, 242, 254, 0.15); border-color: var(--cyan); color: var(--cyan); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                  <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> DOWNLOAD OFFICIAL PDF
-                </a>
+          <div class="space-suit-visualizer">
+            <div class="hud-crosshair"></div>
+            <div class="mli-ring ring-1"></div>
+            <div class="mli-ring ring-2"></div>
+            <div class="mli-ring ring-3"></div>
+            <div class="capsule-illustration">
+              <div class="thermometer-wire"></div>
+              <div class="capsule-water">
+                <span style="font-size:0.65rem; font-family:var(--font-mono); color:var(--text-pure); font-weight:bold; text-shadow:0 0 4px #000;"> JAR (100ml) </span>
               </div>
+            </div>
+            <div class="telemetry-node-text" id="node-temp"> T<sub>0</sub> : 80.0°C </div>
+            <div class="telemetry-node-text" id="node-env"> T<sub>env</sub> : 0.0°C </div>
+            <div class="telemetry-node-text" id="node-flow"> MULTI-LAYER INSULATION (MLI) </div>
+          </div>
+        </div> <div class="hud-panel" style="margin-top: 25px; border-color: rgba(0, 242, 254, 0.3); width: 100%;">
+          <div class="panel-header">
+            <span class="panel-title"><i data-lucide="book-open"></i> SPHERE STUDENT USER MANUAL</span>
+            <span class="panel-meta">MISSION_MANUAL // PROTOCOL_V2.6</span>
+          </div>
+          <p class="briefing-text" style="font-size: 0.9rem; margin-bottom: 15px;">
+            To ensure data synchronization with the analog instrumentation hardware core, execute the following configuration steps methodically:
+          </p>
+          <ul class="briefing-text" style="padding-left: 20px; font-size: 0.85rem; line-height: 1.6;">
+            <li><strong>Step 1 – Open the platform:</strong> Navigate through the telemetry interface terminals using the primary tab controls above.</li>
+            <li><strong>Step 2 – Safety Validation:</strong> Scroll to the bottom of this terminal window and pass the 3 engineering certification check questions to confirm active lab status.</li>
+            <li><strong>Step 3 – Configure Math Constants:</strong> Toggle to the <strong>Simulator Terminal</strong>. Input insulation coefficients matching your hardware layers (e.g., Mylar sheets, auxiliary foam rings).</li>
+            <li><strong>Step 4 – Perform the experiment:</strong> Fill the capsule with warm water and place it into the ice-water bath.</li>
+            <li><strong>Step 5 – Record measurements:</strong> Measure and enter temperatures at regular intervals.</li>
+            <li><strong>Step 6 – Compare results:</strong> Compare the measured cooling curve with the predicted curve and discuss possible differences.</li>
+          </ul>
+          <div style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.06); padding-top: 12px; display: flex; justify-content: flex-end; gap: 10px;">
+            <a href="user_manual.html" target="_blank" class="btn-hud btn-outline" style="width: auto; padding: 6px 14px; font-size: 0.75rem; border-color: rgba(0, 242, 254, 0.4); color: var(--cyan); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+              <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> VIEW STUDENT MANUAL (WEB)
+            </a>
+            <a href="general_public_user_manual.pdf" target="_blank" class="btn-hud" style="width: auto; padding: 6px 14px; font-size: 0.75rem; background: rgba(0, 242, 254, 0.15); border-color: var(--cyan); color: var(--cyan); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+              <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> DOWNLOAD OFFICIAL PDF
+            </a>
+          </div>
+        </div>
+
+        <div class="hud-panel" style="margin-top: 25px; border-color: rgba(0, 242, 254, 0.25); width: 100%;">
+          <div class="panel-header">
+            <span class="panel-title"><i data-lucide="graduation-cap"></i> THE CORE SCIENCE OF SPACE SUIT ANALOGS</span>
+            <span class="panel-meta">THERMODYNAMICS // PROTOCOL</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); padding: 15px; border-radius: 8px;">
+              <h3 style="font-size: 0.85rem; color: var(--cyan); margin-bottom: 8px;"><i data-lucide="git-commit"></i> CONDUCTION</h3>
+              <p class="briefing-text" style="font-size: 0.8rem; margin-bottom: 0; line-height: 1.5;">
+                Kinetic thermal energy transfer via direct atomic collision. In our capsule setup, heat moves from internal fluids outward through solid bounding walls. Air pockets in materials like bubble wrap minimize this transfer.
+              </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); padding: 15px; border-radius: 8px;">
+              <h3 style="font-size: 0.85rem; color: var(--blue); margin-bottom: 8px;"><i data-lucide="wind"></i> CONVECTION</h3>
+              <p class="briefing-text" style="font-size: 0.8rem; margin-bottom: 0; line-height: 1.5;">
+                Heat movement via fluid circulatory displacement (gases or liquids). Warm core fluids become less dense and rise, creating currents. Sealed hardware seals and outer chambers eliminate exterior convective air currents.
+              </p>
+            </div>
+            <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.04); padding: 15px; border-radius: 8px;">
+              <h3 style="font-size: 0.85rem; color: var(--orange); margin-bottom: 8px;"><i data-lucide="sun"></i> RADIATION</h3>
+              <p class="briefing-text" style="font-size: 0.8rem; margin-bottom: 0; line-height: 1.5;">
+                Electromagnetic infrared emission traveling through mediums or open vacuums. Reflective Mylar foil reduces radiative heat loss by reflecting infrared radiation back inward toward the telemetry jar core.
+              </p>
             </div>
           </div>
         </div>
 
-        <!-- Pre-Flight Certification Quiz (Educational Layer) -->
-<!-- Heat Transfer Introduction -->
-
-<div class="hud-panel" style="margin-top:25px;">
-
-  <div class="panel-header">
-    <span class="panel-title">
-      <i data-lucide="flame"></i>
-      UNDERSTANDING HEAT TRANSFER
-    </span>
-    <span class="panel-meta">
-      CORE SCIENCE
-    </span>
-  </div>
-
-  <p class="briefing-text">
-    Heat can move from a warmer object to a colder object in three main ways.
-    Understanding these processes helps explain why insulation works.
-  </p>
-
-  <div class="sim-stats-container"
-       style="grid-template-columns:1fr;gap:15px;margin-top:20px;">
-
-    <div class="sim-stat-box" style="text-align:left;">
-      <h4 class="glow-cyan">
-        1. CONDUCTION
-      </h4>
-
-      <p class="step-desc">
-        Conduction is heat transfer through direct contact.
-      </p>
-
-      <p class="step-desc">
-        Example:
-        A metal spoon becomes hot when left inside a cup of tea.
-      </p>
-
-      <p class="step-desc">
-        In this experiment, cotton helps reduce conduction because it traps air,
-        which is a poor conductor of heat.
-      </p>
-    </div>
-
-    <div class="sim-stat-box" style="text-align:left;">
-      <h4 class="glow-green">
-        2. CONVECTION
-      </h4>
-
-      <p class="step-desc">
-        Convection occurs when liquids or gases move and carry heat with them.
-      </p>
-
-      <p class="step-desc">
-        Example:
-        Warm air rises above a radiator.
-      </p>
-
-      <p class="step-desc">
-        Bubble wrap traps air in small pockets and reduces air movement,
-        helping to reduce convection.
-      </p>
-    </div>
-
-    <div class="sim-stat-box" style="text-align:left;">
-      <h4 class="glow-orange">
-        3. RADIATION
-      </h4>
-
-      <p class="step-desc">
-        Radiation transfers heat through electromagnetic waves.
-      </p>
-
-      <p class="step-desc">
-        Example:
-        You can feel warmth from the Sun even through empty space.
-      </p>
-
-      <p class="step-desc">
-        Reflective Mylar foil reduces radiative heat loss by reflecting
-        infrared radiation.
-      </p>
-    </div>
-
-  </div>
-
-</div>
-
-        <div class="hud-panel panel-orange" style="margin-top: 25px;">
+        <div class="hud-panel panel-orange" style="margin-top: 25px; width: 100%;">
           <div class="panel-header">
             <span class="panel-title glow-orange"><i data-lucide="award"></i> PRE-FLIGHT CERTIFICATION QUIZ</span>
             <span class="panel-meta">ASTRONAUT_SAFETY // ASSESSMENT</span>
@@ -344,34 +160,32 @@ Compare the measured cooling curve with the predicted curve and discuss possible
           </p>
           
           <div class="quiz-container">
-            <!-- Q1 -->
             <div class="form-group" style="border-bottom: 1px dashed rgba(255,255,255,0.06); padding-bottom: 12px; margin-bottom: 12px;">
               <label class="form-label" style="font-size: 0.75rem; color: var(--cyan);">QUESTION 01: MYLAR THERMAL INSULATION</label>
               <p class="briefing-text" style="font-size: 0.85rem; margin-bottom: 8px;">Mylar emergency blankets are highly reflective metallic sheets. Which heat transfer mechanism do they primarily isolate against in space?</p>
               <div style="display: grid; grid-template-columns: 1fr; gap: 8px; font-family: var(--font-sans); font-size: 0.85rem;">
                 <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q1" value="conduction"> Conduction (Molecular collision)</label>
                 <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q1" value="convection"> Convection (Fluid circulation)</label>
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q1" value="radiation"> Radiation (Infrared electromagnetic waves)</label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q1" value="radiation"> Radiation (Infrared energy transfer)</label>
               </div>
             </div>
-            <!-- Q2 -->
+
             <div class="form-group" style="border-bottom: 1px dashed rgba(255,255,255,0.06); padding-bottom: 12px; margin-bottom: 12px;">
-              <label class="form-label" style="font-size: 0.75rem; color: var(--cyan);">QUESTION 02: COTTON CONDUCTION GARMENT</label>
-              <p class="briefing-text" style="font-size: 0.85rem; margin-bottom: 8px;">In our physical experiment, wrapping the PET capsule with a cotton sheet creates a thick, solid layer. Which mechanism does this block?</p>
+              <label class="form-label" style="font-size: 0.75rem; color: var(--cyan);">QUESTION 02: HARDWARE TEMPERATURE CONSTRAINT Layer</label>
+              <p class="briefing-text" style="font-size: 0.85rem; margin-bottom: 8px;">According to the safety code directives inside the Teacher Terminal, what is the maximum approved temperature limit allowed for water poured inside student PET capsule jars during school lab drop phases?</p>
               <div style="display: grid; grid-template-columns: 1fr; gap: 8px; font-family: var(--font-sans); font-size: 0.85rem;">
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q2" value="conduction"> Conduction (Direct contact transfer)</label>
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q2" value="convection"> Convection (Heat movement through fluid)</label>
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q2" value="radiation"> Radiation (Thermal light waves)</label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q2" value="60"> 60.0°C (Standard Warm Core)</label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q2" value="80"> 80.0°C (Maximum Authorized Safety Envelope)</label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q2" value="100"> 100.0°C (Boiling Point Matrix Limit)</label>
               </div>
             </div>
-            <!-- Q3 -->
-            <div class="form-group" style="padding-bottom: 12px; margin-bottom: 12px;">
-              <label class="form-label" style="font-size: 0.75rem; color: var(--cyan);">QUESTION 03: PG7 GLAND SEALING</label>
-              <p class="briefing-text" style="font-size: 0.85rem; margin-bottom: 8px;">The PG7 Cable Gland provides a 100% waterproof seal around the digital probe wire, stopping any warm water vapor or fluid leaks. Which mechanism is blocked here?</p>
+
+            <div class="form-group" style="padding-bottom: 4px; margin-bottom: 12px;">
+              <label class="form-label" style="font-size: 0.75rem; color: var(--cyan);">QUESTION 03: VACUUM PACK SUIT ANALOG</label>
+              <p class="briefing-text" style="font-size: 0.85rem; margin-bottom: 8px;">Spacesuits operate in vacuum environments where air molecules are absent. Which form of heat transfer is physically impossible across open space vacuums?</p>
               <div style="display: grid; grid-template-columns: 1fr; gap: 8px; font-family: var(--font-sans); font-size: 0.85rem;">
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q3" value="conduction"> Conduction (Thermal contact transfer)</label>
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q3" value="convection"> Convection (Mass motion of fluid particles)</label>
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q3" value="radiation"> Radiation (Infrared energy transfer)</label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q3" value="conduction"> Conduction &amp; Convection (Requires mechanical matter medium)</label>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;"><input type="radio" name="q3" value="radiation"> Radiation (Infrared wavelength propagation)</label>
               </div>
             </div>
           </div>
@@ -385,648 +199,49 @@ Compare the measured cooling curve with the predicted curve and discuss possible
         </div>
       </section>
 
-      <!-- ==================== TAB 2: ASSEMBLY MANUAL ==================== -->
       <section id="assembly" class="view-section">
         <div class="hud-panel">
           <div class="panel-header">
             <span class="panel-title"><i data-lucide="book-open"></i> EXPERIMENT SETUP</span>
             <span class="panel-meta">LABORATORY PROCEDURE</span>
           </div>
-          
           <h2 class="glow-cyan" style="margin-bottom: 20px; font-size: 1.4rem;">HOW TO BUILD YOUR INSULATED CAPSULE</h2>
-          <p class="briefing-text" style="margin-bottom: 30px;">
-            Follow these steps to prepare your experiment. The goal is to compare how different insulation materials affect the cooling rate of warm water.
-          </p>
-
-          <div class="hardware-step-grid">
-            <!-- Step 1 -->
-            <div class="step-card">
-              <div class="step-number">01</div>
-              <div class="step-content">
-                <h3 class="step-title">PREPARE THE WATER CONTAINER</h3>
-                <p class="step-desc">
-Fill your thick-walled 100ml PET plastic jar to the shoulder mark with exactly 100ml of hot water. Aim for an initial launch temperature of 80°C.</p>
-                <span class="step-badge">100ml PET CORE // 80°C TARGET</span>
-              </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="step-card">
-              <div class="step-number">02</div>
-              <div class="step-content">
-                <h3 class="step-title">INSERT THE TEMPERATURE PROBE</h3>
-                <p class="step-desc">
-Insert the thermometer probe through the lid opening and ensure the container is sealed properly.
-This helps prevent leaks during the experiment.</p>
-                <span class="step-badge">PG7 CABLE GLAND PATHWAY</span>
-              </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="step-card">
-              <div class="step-number">03</div>
-              <div class="step-content">
-                <h3 class="step-title">ADD INSULATION MATERIALS</h3>
-                <p class="step-desc">Wrap the PET capsule with combinations of provided materials representing real spacesuit layers: Cotton (reduce conduction), Bubble Wrap (reduce convection), and Mylar blankets (reduce radiation).</p>
-                <span class="step-badge">SHIELD SELECTION REQ.</span>
-              </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="step-card">
-              <div class="step-number">04</div>
-              <div class="step-content">
-                <h3 class="step-title">START THE COOLING TEST</h3>
-                <p class="step-desc">Place the insulated container into the ice-water bath and begin recording temperature measurements.</p>
-                <span class="step-badge">ICE BATH TEST</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Material Science Breakdown Panel (Educational Layer) -->
-          <h2 class="glow-cyan" style="margin-top: 35px; margin-bottom: 15px; font-size: 1.1rem;"><i data-lucide="graduation-cap"></i> THE CORE SCIENCE OF SPACE SUIT ANALOGS</h2>
-          <div class="sim-stats-container" style="grid-template-columns: 1fr; margin-top: 15px; gap: 20px;">
-            <div class="sim-stat-box" style="border-color: rgba(79, 172, 254, 0.25); text-align: left; display: flex; gap: 15px; align-items: start; padding: 20px;">
-              <div style="background: rgba(79, 172, 254, 0.1); border-radius: 8px; padding: 10px; color: var(--blue);">
-                <i data-lucide="thermometer-snowflake" style="width: 24px; height: 24px;"></i>
-              </div>
-              <div>
-                <h4 class="glow-cyan" style="font-size: 0.9rem; margin-bottom: 5px;">COTTON SHEETS — REDUCING CONDUCTION</h4>
-                <p class="step-desc" style="font-size: 0.85rem; line-height: 1.5;">
-                  <strong>Mechanism:</strong> 
-Cotton contains many small air pockets. Because air is a poor conductor of heat, cotton slows the transfer of thermal energy from the warm container to the colder surroundings.
-                </p>
-              </div>
-            </div>
-            
-            <div class="sim-stat-box" style="border-color: rgba(16, 185, 129, 0.25); text-align: left; display: flex; gap: 15px; align-items: start; padding: 20px;">
-              <div style="background: rgba(16, 185, 129, 0.1); border-radius: 8px; padding: 10px; color: var(--green);">
-                <i data-lucide="layers" style="width: 24px; height: 24px;"></i>
-              </div>
-              <div>
-                <h4 class="glow-green" style="font-size: 0.9rem; margin-bottom: 5px;">BUBBLE WRAP — REDUCING CONVECTION</h4>
-                <p class="step-desc" style="font-size: 0.85rem; line-height: 1.5;">
-                  <strong>Mechanism:</strong> 
-Bubble wrap traps air inside sealed pockets. Because the air cannot move freely, convection currents are reduced and heat is retained more effectively.
-                </p>
-              </div>
-            </div>
-            
-            <div class="sim-stat-box" style="border-color: rgba(255, 159, 67, 0.25); text-align: left; display: flex; gap: 15px; align-items: start; padding: 20px;">
-              <div style="background: rgba(255, 159, 67, 0.1); border-radius: 8px; padding: 10px; color: var(--orange);">
-                <i data-lucide="sun" style="width: 24px; height: 24px;"></i>
-              </div>
-              <div>
-                <h4 class="glow-orange" style="font-size: 0.9rem; margin-bottom: 5px;">MYLAR FOIL — REDUCING RADIATION</h4>
-                <p class="step-desc" style="font-size: 0.85rem; line-height: 1.5;">
-                  <strong>Mechanism:</strong> 
-Mylar is a reflective material that reduces heat transfer by radiation. Real spacecraft often use Multi-Layer Insulation (MLI), which consists of many reflective layers separated by small gaps. In this experiment, Mylar represents one part of that insulation system by reflecting infrared radiation.
-                </p>
-              </div>
-            </div>
-          </div>
+          <p class="briefing-text" style="margin-bottom: 30px;">Follow the step-by-step documentation to assemble your thermal payload container.</p>
         </div>
       </section>
 
-      <!-- ==================== TAB 3: THERMODYNAMIC SIMULATOR ==================== -->
       <section id="simulator" class="view-section">
-        <div class="hud-grid hud-grid-2-1">
-          <!-- Simulation Parameters Form -->
-          <div class="hud-panel">
-            <div class="panel-header">
-              <span class="panel-title"><i data-lucide="cpu"></i> TEMPERATURE PREDICTION</span>
-              <span class="panel-meta">NEWTON'S COOLING MODEL</span>
-            </div>
-
-            <p class="briefing-text" style="margin-bottom: 20px;">
-              Before performing the experiment, use the model below to predict how the temperature of the water will change over time. The model uses <strong>Newton's Law of Cooling</strong>, which describes how warm objects gradually approach the temperature of their surroundings.
-            </p>
-
-            <form id="sim-parameters-form" onsubmit="event.preventDefault();">
-              <!-- Insulation Material Selection -->
-              <div class="form-group">
-                <label class="form-label">
-                  <span>SELECT INSULATION SCHEME</span>
-                  <span class="label-hint">DETERMINES DECAY CONSTANT (k)</span>
-                </label>
-                <select id="insulation-select" class="hud-select">
-                  <option value="bare">Bare Capsule (Control) — k = 0.150</option>
-                  <option value="cotton">Cotton Layer Only (Conduction Shield) — k = 0.080</option>
-                  <option value="mylar">Mylar Layer Only (Radiation Shield) — k = 0.040</option>
-                  <option value="mli">Full MLI (Cotton + Bubble Wrap + Mylar) — k = 0.015</option>
-                  <option value="custom">Custom Design (Sandbox Sliders) — k = Variable</option>
-                </select>
-              </div>
-<p class="briefing-text"
-style="font-size:0.8rem;margin-top:8px;">
-The cooling coefficients used here are simplified educational estimates.
-Actual values may differ depending on materials, construction quality and measurement conditions.
-</p>
-
-
-              <!-- Collapsible Custom Sandbox Tuner Card -->
-              <div id="custom-sandbox-tuner" class="form-group" style="display: none; background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; border-radius: 6px; margin-top: 15px; margin-bottom: 15px;">
-                <label class="form-label" style="color: var(--cyan); font-family: var(--font-hud); font-size: 0.75rem; letter-spacing: 0.05em; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                  <span><i data-lucide="sliders" style="width: 14px; height: 14px; vertical-align: middle;"></i> CUSTOM COOLING RATE</span>
-                  <span id="custom-k-val" class="step-badge" style="background: rgba(0, 242, 254, 0.1); border-color: var(--cyan); color: var(--cyan); margin: 0; font-size: 0.7rem; padding: 2px 6px;">k = 0.050</span>
-                </label>
-                <p class="briefing-text" style="font-size: 0.8rem; line-height: 1.4; margin-bottom: 12px; color: var(--text-normal);">
-Adjust the cooling coefficient k.
-
-Smaller k-values represent better insulation and slower cooling.
-
-Larger k-values represent faster heat loss.
-
-                </p>
-                <div style="display: flex; flex-direction: column; gap: 8px;">
-                  <div style="display: flex; align-items: center; gap: 15px;">
-                    <span style="font-size: 0.75rem; color: var(--text-dimmed); font-family: var(--font-mono); width: 45px;">Vacuum (0.005)</span>
-                    <input type="range" id="custom-k-slider" min="0.005" max="0.200" step="0.001" value="0.050" style="flex: 1; accent-color: var(--cyan); cursor: pointer; background: rgba(0,0,0,0.5); height: 6px; border-radius: 3px; outline: none; border: none;">
-                    <span style="font-size: 0.75rem; color: var(--text-dimmed); font-family: var(--font-mono); width: 40px;">Metal (0.200)</span>
-                  </div>
-                  <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; font-family: var(--font-mono); color: var(--text-dimmed); padding-top: 5px;">
-                    <span>◀ SUPERIOR INSULATION (MLI+)</span>
-                    <span>RAPID FLUX DECAY (BARE) ▶</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Thermal Core Initial Boundaries -->
-              <div class="hud-input-group">
-                <div class="form-group">
-                  <label class="form-label">START TEMP (T₀)</label>
-                  <div class="hud-input-wrapper">
-                    <input type="number" id="sim-t0" class="hud-input" value="80.0" min="0" max="100" step="0.5">
-                    <span class="input-suffix">°C</span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">ENV TEMP (
-T<sub>env</sub>
-)</label>
-                  <div class="hud-input-wrapper">
-                    <input type="number" id="sim-tenv" class="hud-input" value="0.0" min="-50" max="50" step="0.5">
-                    <span class="input-suffix">°C</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group" style="margin-top: 10px;">
-                <label class="form-label">SIMULATION EXPOSURE TIMEFRAME</label>
-                <div class="hud-input-wrapper">
-                  <input type="number" id="sim-time" class="hud-input" value="15" min="1" max="60" step="1">
-                  <span class="input-suffix">MINUTES</span>
-                </div>
-              </div>
-
-              <button type="button" class="btn-hud" id="btn-run-simulation">
-                <i data-lucide="play-circle"></i> RUN MATHEMATICAL SIMULATION
-              </button>
-            </form>
-
-            <!-- Calculated Metrics Cards -->
-            <div class="sim-stats-container">
-              <div class="sim-stat-box">
-                <div class="sim-stat-title">COOLING COEFFICIENT (k)</div>
-                <div class="sim-stat-value glow-cyan" id="sim-k-val">0.150</div>
-              </div>
-              <div class="sim-stat-box">
-                <div class="sim-stat-title" id="sim-t15-title">PREDICTED T(15)</div>
-                <div class="sim-stat-value glow-orange" id="sim-t15-val">8.4°C</div>
-              </div>
-            </div>
+        <div class="hud-panel">
+          <div class="panel-header">
+            <span class="panel-title"><i data-lucide="cpu"></i> SIMULATOR CONSOLE</span>
+            <span class="panel-meta">MODEL ENGINE</span>
           </div>
-
-          <!-- Simulation Graphic Viewport -->
-          <div class="hud-panel">
-            <div class="panel-header">
-              <span class="panel-title"><i data-lucide="line-chart"></i> COOLING CURVE PLOT</span>
-              <span class="panel-meta">MODEL OUTPUT</span>
-            </div>
-            
-            <div style="position: relative; height: 320px; width: 100%;">
-              <canvas id="simulationChart"></canvas>
-            </div>
-            
-            <div style="margin-top: 20px; text-align: center;">
-              <span class="step-badge" id="sim-selected-badge" style="background: rgba(0, 242, 254, 0.1); color: var(--cyan); border-color: var(--cyan-border);">NO MODEL RUN YET</span>
-            </div>
-          </div>
+          <p class="briefing-text">Run mathematical models to calculate internal decay prediction matrices.</p>
         </div>
       </section>
 
-      <!-- ==================== TAB 4: LIVE TELEMETRY LOGBOOK ==================== -->
       <section id="telemetry" class="view-section">
-        <div class="telemetry-dashboard-layout">
-          
-          <!-- LEFT COCKPIT: Inputs & Chrono controls -->
-          <div class="hud-grid" style="gap: 20px; align-content: start;">
-            
-            <!-- Chronometer Glass Panel -->
-            <div class="hud-panel panel-orange timer-panel">
-              <div class="panel-header" style="width: 100%; border: none; margin-bottom: 0;">
-                <span class="panel-title glow-orange"><i data-lucide="timer"></i> MISSION TIMER</span>
-                <span class="panel-meta">RE-ENTRY COUNTDOWN</span>
-              </div>
-              
-              <div class="digital-hud-clock" id="timer-display">15:00</div>
-              
-              <div class="timer-controls">
-                <button class="btn-hud btn-orange" id="btn-timer-toggle"><i data-lucide="play"></i> START</button>
-                <button class="btn-hud btn-outline" id="btn-timer-reset"><i data-lucide="rotate-ccw"></i> RESET</button>
-              </div>
-            </div>
-
-            <!-- Manual Data Entry Glass Panel -->
-            <div class="hud-panel">
-              <div class="panel-header">
-                <span class="panel-title"><i data-lucide="database"></i> ADD MEASUREMENT</span>
-                <span class="panel-meta">PHYSICAL_LAB // ACQUISITION</span>
-              </div>
-
-              <form id="telemetry-entry-form" onsubmit="event.preventDefault();">
-                <div class="form-group">
-                  <label class="form-label">ELAPSED TIME</label>
-                  <div class="hud-input-wrapper">
-                    <input type="number" id="log-time" class="hud-input" min="0" max="15" step="0.1" placeholder="e.g. 1.0">
-                    <span class="input-suffix">MINUTES</span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">OBSERVED CAPSULE TEMP</label>
-                  <div class="hud-input-wrapper">
-                    <input type="number" id="log-temp" class="hud-input" min="0" max="100" step="0.05" placeholder="e.g. 74.2">
-                    <span class="input-suffix">°C</span>
-                  </div>
-                </div>
-
-                <button type="submit" class="btn-hud" id="btn-log-telemetry">
-                  <i data-lucide="plus-circle"></i> ADD DATA POINT
-                </button>
-              </form>
-
-              <!-- Quick Autofill for testing/demonstration -->
-              <div class="autofill-panel">
-                <span class="autofill-text">Need example data?</span>
-                <button class="btn-hud btn-outline" id="btn-autofill" style="width: auto; padding: 6px 12px; font-size: 0.75rem;">
-                  <i data-lucide="sparkles"></i> LOAD SAMPLE DATA
-                </button>
-              </div>
-            </div>
+        <div class="hud-panel">
+          <div class="panel-header">
+            <span class="panel-title"><i data-lucide="activity"></i> REALTIME LOGBOOK</span>
+            <span class="panel-meta">HARDWARE LINKED DATA</span>
           </div>
-
-          <!-- RIGHT COCKPIT: Interactive Overlay Chart & Table -->
-          <div class="hud-grid" style="gap: 20px;">
-            <div class="hud-panel">
-              <div class="panel-header">
-                <span class="panel-title"><i data-lucide="activity"></i> MODEL VS MEASUREMENT</span>
-                <span class="panel-meta">COMPARISON GRAPH</span>
-              </div>
-
-              <!-- Overlaid telemetry chart -->
-              <div style="position: relative; height: 320px; width: 100%;">
-                <canvas id="telemetryChart"></canvas>
-              </div>
-
-              <div class="sim-stats-container" style="margin-top: 15px; grid-template-columns: 1fr 1fr;">
-                <div class="sim-stat-box">
-                  <div class="sim-stat-title">CURRENT SELECTED MODEL</div>
-                  <div class="sim-stat-value glow-cyan" id="current-telemetry-model-badge" style="font-size: 0.95rem;">NONE</div>
-                </div>
-                <div class="sim-stat-box">
-                  <div class="sim-stat-title">ACQUIRED DATA POINTS</div>
-                  <div class="sim-stat-value glow-orange" id="acquired-points-count" style="font-size: 0.95rem;">0 / 16</div>
-                </div>
-                <div class="sim-stat-box" style="grid-column: span 2; border-color: rgba(16, 185, 129, 0.25); text-align: left; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px;">
-                  <div>
-                    <div class="sim-stat-title glow-green" style="font-size: 0.75rem;"><i data-lucide="gauge" style="vertical-align: middle; width: 14px; height: 14px; margin-right: 4px;"></i> THERMAL CORRELATION SCORE</div>
-                    <div class="sim-stat-value glow-green" id="telemetry-correlation-score" style="font-size: 1.4rem; margin-top: 2px;">N/A</div>
-                  </div>
-                  <div style="text-align: right;">
-                    <div class="sim-stat-title" style="font-size: 0.75rem; color: var(--text-dimmed);">INTERPRETATION</div>
-                    <div id="telemetry-correlation-grade" style="font-size: 0.95rem; font-family: var(--font-hud); font-weight: bold; color: var(--text-pure); margin-top: 2px;">NO DATA PACKETS</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Tabulated data readouts -->
-            <div class="hud-panel">
-              <div class="panel-header">
-                <span class="panel-title"><i data-lucide="table"></i> MEASUREMENT TABLE</span>
-                <span class="panel-meta">RAW_TELEMETRY_LOG</span>
-              </div>
-
-              <div class="telemetry-table-container">
-                <table class="telemetry-table" id="data-points-table">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>TIME (MINUTES)</th>
-                      <th>MEASURED TEMP (°C)</th>
-                      <th>MODEL PREDICTED TEMP (°C)</th>
-                      <th>DIFFERENCE (ΔT)</th>
-                      <th>ACTION</th>
-                    </tr>
-                  </thead>
-                  <tbody id="telemetry-tbody">
-                    <!-- Dynamic entries appended here -->
-                    <tr id="empty-table-message">
-                      <td colspan="6" style="text-align: center; color: var(--text-dimmed); font-style: italic;">
-                        No telemetry packets received. Begin dropping capsule and log measurements above.
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <!-- Clear Logbook Action -->
-              <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
-                <button class="btn-hud btn-outline btn-danger" id="btn-clear-telemetry" style="width: auto;">
-                  <i data-lucide="trash-2"></i> WIPE MISSION TELEMETRY
-                </button>
-              </div>
-            </div>
-
-            <!-- Live Status HUD Text Terminal Log -->
-            <div class="hud-panel">
-              <div class="panel-header" style="margin-bottom: 12px; padding-bottom: 8px;">
-                <span class="panel-title"><i data-lucide="terminal"></i> ACTIVITY LOG</span>
-                <span class="panel-meta">EXPERIMENT EVENTS</span>
-              </div>
-              <div class="terminal-console" id="sys-terminal-console">
-                <div class="terminal-line"><span class="timestamp">[19:27:12]</span><span class="sys">SYS: SPHERE Mission Control booted. Communications linked.</span></div>
-                <div class="terminal-line"><span class="timestamp">[19:27:12]</span>SYS: Ready to accept model configuration inputs.</div>
-              </div>
-            </div>
-
-          </div>
-
+          <p class="briefing-text">Analyze core sensory readings transmitted from instrumentation matrices.</p>
         </div>
       </section>
 
-      <!-- ==================== TAB 5: TEACHER'S PORTAL ==================== -->
       <section id="admin" class="view-section">
-        
-        <!-- Login Gate Panel (Before Authorization) -->
-        <div id="admin-login-gate" class="hud-panel admin-gate-wrapper panel-orange">
-          <div class="gate-icon">
-            <i data-lucide="lock"></i>
+        <div class="hud-panel">
+          <div class="panel-header">
+            <span class="panel-title"><i data-lucide="shield-alert"></i> TEACHER TERMINAL</span>
+            <span class="panel-meta">SECURE MATRIX ACCESS</span>
           </div>
-          <h2 class="gate-title glow-orange">AUTHORIZATION KEY REQUIRED</h2>
-          <p class="gate-subtitle">This directory contains safety protocols and pedagogical keyframes reserved for lab instructors.</p>
-          
-          <form id="admin-login-form" onsubmit="event.preventDefault();">
-            <div class="form-group">
-              <label class="form-label">ADMIN ACCESS CODE</label>
-              <div class="hud-input-wrapper">
-                <input type="password" id="admin-password" class="hud-input" placeholder="••••••••" style="text-align: center; font-size: 1.2rem; letter-spacing: 0.1em;">
-              </div>
-            </div>
-            <button type="submit" class="btn-hud btn-orange" id="btn-admin-auth">
-              <i data-lucide="key"></i> VERIFY DECRYPT KEY
-            </button>
-          </form>
+          <p class="briefing-text">Enter authentication credentials to access lesson documentation, grading scales, and room protocols.</p>
         </div>
-
-        <!-- Authorized Admin Panel (After password verification) -->
-        <div id="admin-authorized-dashboard" style="display: none;" class="hud-grid hud-grid-2-1">
-          <!-- Left side: Safety Protocols -->
-          <div class="hud-panel panel-orange">
-            <div class="panel-header">
-              <span class="panel-title glow-orange"><i data-lucide="shield-alert"></i> SAFETY PROTOCOLS & HAZARD ASSESSMENTS</span>
-              <span class="panel-meta">TEACHER_DIR // CODESET_1</span>
-            </div>
-            
-            <h2 class="glow-orange" style="margin-bottom: 15px; font-size: 1.3rem;">CRITICAL CLASSROOM SAFETY PROTOCOLS</h2>
-            <p class="briefing-text">
-              Thermodynamic experiments in school environments introduce manageable risks. Ensure the following rules are strictly enforced during the lab drop:
-            </p>
-
-            <table class="risk-matrix-table">
-              <thead>
-                <tr>
-                  <th>HAZARD DESCRIPTION</th>
-                  <th>RISK LAYER</th>
-                  <th>MITIGATION MANDATE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Boiling Water Scalding</strong><br>Using boiling 100°C water directly in school environments.</td>
-                  <td><span class="risk-badge risk-high">HIGH</span></td>
-                  <td>Enforce a strict <strong>80°C limit</strong>. Provide thermal kettles pre-programmed to 80°C or use standard thermometers to lock temperatures before filling plastic capsules.</td>
-                </tr>
-                <tr>
-                  <td><strong>Ice-Bath Spillages</strong><br>Slips/trips from condensation, melted ice, or water spills around electricity.</td>
-                  <td><span class="risk-badge risk-medium">MEDIUM</span></td>
-                  <td>Establish a clear separation between the ice water reservoirs and any tablet or laptop charting stations. Provide absorbent fiber cloths.</td>
-                </tr>
-                <tr>
-                  <td><strong>Capsule Leakage</strong><br>PET plastic deformation if filled with temperatures &gt; 90°C.</td>
-                  <td><span class="risk-badge risk-low">LOW</span></td>
-                  <td>Never pour boiling water directly into thin plastic PET containers. Let water settle to 80°C, and securely lock the digital wire thread to prevent hot leaks.</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <!-- Summer Conditions Alert Box -->
-            <div style="margin-top: 20px; padding: 12px; background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 6px; font-family: var(--font-sans); font-size: 0.8rem;">
-              <span style="color: var(--cyan); font-family: var(--font-hud); font-weight: bold; font-size: 0.75rem; letter-spacing: 0.05em; display: block; margin-bottom: 6px;">
-                <i data-lucide="sun" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px;"></i> SUMMER/HIGH-AMBIENT PROTOCOL (~30°C)
-              </span>
-              <p class="step-desc" style="font-size: 0.8rem; margin: 0; line-height: 1.4;">
-                • <strong>Reduce Target Temp:</strong> Safety scale water down to <strong>55°C–60°C</strong> to neutralize scalding risks on hot days. The simulator supports any initial value.<br>
-                • <strong>Melt Compensation:</strong> Instruct students to measure actual bath temperature and input it as <code style="color: var(--cyan); font-family: var(--font-mono); font-weight: bold;">T<sub>env</sub></code> in the simulator if ice melts above 0°C.<br>
-                • <strong>Ice-Free Option:</strong> Drop capsules in room-temperature tap water (~25°C–30°C) and configure <code style="color: var(--cyan); font-family: var(--font-mono); font-weight: bold;">T<sub>env</sub></code> accordingly.
-              </p>
-            </div>
-          </div>
-
-          <!-- Right side: Core Math Equations -->
-          <div class="hud-panel">
-            <div class="panel-header">
-              <span class="panel-title"><i data-lucide="book-open"></i> BOARDWORK KEYFRAMES & EQUATIONS</span>
-              <span class="panel-meta">MATH_THEORY // DIRECTIVE</span>
-            </div>
-
-            <h2 class="glow-cyan" style="font-size: 1.1rem; margin-bottom: 15px;">Pedagogical Guidance</h2>
-            <p class="briefing-text">
-              Use these explanations to anchor class theories on the chalkboard:
-            </p>
-
-            <div class="math-card">
-              <h3 style="font-size: 0.9rem; color: var(--cyan); margin-bottom: 5px;">1. SPECIFIC HEAT CAPACITY</h3>
-              <p class="briefing-text" style="font-size: 0.85rem; margin-bottom: 8px;">
-                Calculates total energy loss from internal core volume to surroundings:
-              </p>
-              <div class="math-equation">Q = m · c · ΔT</div>
-              <p class="briefing-text" style="font-size: 0.75rem; margin-bottom: 0;">
-                Where: <strong>m</strong> = 0.1 kg (100ml water), <strong>c</strong> = 4184 J/kg·°C (Specific heat capacity of water), <strong>ΔT</strong> = Temperature change. This equation calculates the amount of thermal energy gained or lost by water when its temperature changes.
-              </p>
-            </div>
-
-            <div class="math-card">
-              <h3 style="font-size: 0.9rem; color: var(--cyan); margin-bottom: 5px;">2. NEWTON'S LAW OF COOLING</h3>
-              <p class="briefing-text" style="font-size: 0.85rem; margin-bottom: 8px;">
-                Models the rate of heat loss proportional to temperature differences:
-              </p>
-              <div class="math-equation">T(t) = T<sub>env</sub> + (T₀ - T<sub>env</sub>) · e<sup>-kt</sup></div>
-              <p class="briefing-text" style="font-size: 0.75rem; margin-bottom: 0;">
-                Where: <strong>T₀</strong> = 80°C, <strong>T<sub>env</sub></strong> = 0°C (ice bath), <strong>k</strong> = insulation cooling constant, <strong>t</strong> = time. For this project, students do not need to derive the equation. The model is used to explore how insulation affects cooling behaviour and how mathematical predictions compare with experimental data.
-              </p>
-            </div>
-
-<div class="math-card">
-
-<h3 style="font-size:0.9rem;color:var(--cyan);margin-bottom:10px;">
-LEARNING OBJECTIVES
-</h3>
-
-<ul style="
-font-size:0.85rem;
-line-height:1.8;
-padding-left:20px;
-">
-
-<li>
-Describe the three heat transfer mechanisms:
-conduction, convection and radiation.
-</li>
-
-<li>
-Explain how insulation materials reduce heat transfer.
-</li>
-
-<li>
-Collect and record experimental temperature data.
-</li>
-
-<li>
-Interpret cooling curves and temperature graphs.
-</li>
-
-<li>
-Compare mathematical predictions with experimental measurements.
-</li>
-
-<li>
-Evaluate the effectiveness of different insulation materials.
-</li>
-
-<li>
-Understand how simplified scientific models can be used to represent real-world systems.
-</li>
-
-</ul>
-
-</div>
-
-            
-            <div style="margin-top: 15px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 15px; display: flex; justify-content: space-between;">
-              <span style="font-size: 0.75rem; color: var(--text-dimmed);">Teacher Gate: SECURED</span>
-              <button class="btn-hud btn-outline" id="btn-admin-logout" style="width: auto; padding: 4px 12px; font-size: 0.75rem; border-color: rgba(244, 63, 94, 0.4); color: var(--red);">
-                <i data-lucide="log-out"></i> LOCK PORTAL
-              </button>
-            </div>
-          </div>
-
-          <!-- Economic & Kit Logistics Panel -->
-          <div class="hud-panel" style="grid-column: span 2; margin-top: 10px;">
-            <div class="panel-header">
-              <span class="panel-title"><i data-lucide="box"></i> KIT LOGISTICS & ECONOMIC SCALABILITY</span>
-              <span class="panel-meta">LAB_BUDGET // DIRECTIVE // DEV_TEAM</span>
-            </div>
-            
-            <h3 class="glow-cyan" style="font-size: 1.0rem; margin-bottom: 10px;">Pre-Manufactured Off-the-Shelf Hardware Strategy</h3>
-            <p class="briefing-text">
-              To guarantee extreme economic scalability across diverse school districts, this project eliminates expensive 3D-printing or bespoke components. The hardware layout engineered by <strong>Piyath Vithanage, Elio Krollpfeiffer, Dilan Fernando, and Nuhansee Migelhewage</strong> leverages highly durable, accessible off-the-shelf items:
-            </p>
-            
-            <div class="sim-stats-container" style="grid-template-columns: 1fr 1fr 1fr; margin-top: 15px;">
-              <div class="sim-stat-box" style="text-align: left;">
-                <div class="sim-stat-title glow-orange">MATERIALS BUDGET</div>
-                <p class="step-desc" style="font-size: 0.8rem; margin-top: 5px;">
-                  • 4x Jars & PG7 Glands: ~11€<br>
-                  • 4-pack Digital Probes: ~16€<br>
-                  • Suit Insulation Pack: ~8€<br>
-                  • Cold Testing Tub: ~5€<br>
-                  <strong>Total: ~40€</strong> (Remaining safely under the strict 50€ limit!)
-                </p>
-              </div>
-              <div class="sim-stat-box" style="text-align: left;">
-                <div class="sim-stat-title glow-cyan">PEDAGOGICAL VALUES</div>
-                <p class="step-desc" style="font-size: 0.8rem; margin-top: 5px;">
-                  • <strong>Active Interaction:</strong> Students physically read and log temperature values every 60 seconds (instead of automated passive tracking).<br>
-                  • <strong>Theoretical Bridge:</strong> Connect specific heat calculations (Q=mcΔT) to real experimental curves.
-                </p>
-              </div>
-              <div class="sim-stat-box" style="text-align: left;">
-                <div class="sim-stat-title glow-green">CORE BENEFITS</div>
-                <p class="step-desc" style="font-size: 0.8rem; margin-top: 5px;">
-                  • <strong>Leak Proof:</strong> Industrial PG7 glands ensure 100% waterproof, pressure-rated wire pathways.<br>
-                  • <strong>Curriculum Friendly:</strong> Quick setup fits perfectly within a single standard 45-minute lesson block.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Teacher's Pedagogical Manual & EU Lesson Keyframes -->
-          <div class="hud-panel panel-orange" style="grid-column: span 2; margin-top: 15px; border-color: rgba(255, 159, 67, 0.45);">
-            <div class="panel-header">
-              <span class="panel-title glow-orange"><i data-lucide="graduation-cap"></i> INSTRUCTOR PEDAGOGICAL MANUAL &amp; LESSON KEYFRAMES</span>
-              <span class="panel-meta">CURRICULUM // EU_STEM_GUIDELINES</span>
-            </div>
-            
-            <h3 class="glow-orange" style="font-size: 1.1rem; margin-top: 15px; margin-bottom: 10px;">European STEM Curriculum Mapping &amp; IBSE Framework</h3>
-            <p class="briefing-text" style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 15px;">
-              This laboratory fits into secondary physics curriculum segments covering <strong>Thermodynamics</strong>, <strong>Heat Transfer Processes</strong>, and the <strong>Digital Twin Ecosystem</strong>. It maps to the European Union Inquiry-Based Science Education (IBSE) guidelines, promoting critical analytical skill development via the five primary phases detailed below:
-            </p>
-            
-            <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
-              <div style="background: rgba(255, 159, 67, 0.04); padding: 15px; border-radius: 8px; border: 1px solid rgba(255, 159, 67, 0.15);">
-                <h4 style="color: var(--orange); font-family: var(--font-hud); font-size: 0.85rem; margin-bottom: 8px;">1. SECURE LESSON PLAN &amp; KEYFRAME TIMINGS (45-MINUTE CLASS)</h4>
-                <ul style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-normal); margin-left: 20px; line-height: 1.6;">
-                  <li><strong>Minutes 00-10 [Engage]:</strong> Introduce spacesuit challenges (vacuum analog, 120°C sun / -150°C shadow). Direct students to complete the Pre-Flight Quiz to earn active credentials.</li>
-                  <li><strong>Minutes 10-20 [Explore]:</strong> Hand out insulation materials (cotton, bubble wrap, Mylar). Students wrap their PET jar cores and thread sensors through waterproof PG7 cable glands.</li>
-                  <li><strong>Minutes 20-25 [Model/Predict]:</strong> Students open the <strong>Simulator</strong>, configure model constants, run the cooling simulator, and copy predictions onto their local lab reports.</li>
-                  <li><strong>Minutes 25-40 [Explain/Telemetry]:</strong> Pour 80°C hot water inside capsules, drop them into the ice water tubs, start the stopwatch, and log the physical temperatures every 60 seconds.</li>
-                  <li><strong>Minutes 40-45 [Elaborate/Correlate]:</strong> Analyze the generated <strong>Thermal Correlation Score</strong> and discuss engineering grades (e.g. why did cotton leak convective heat? How did PG7 preserve sealing integrity?).</li>
-                </ul>
-              </div>
-              
-              <div style="background: rgba(0, 242, 254, 0.03); padding: 15px; border-radius: 8px; border: 1px solid rgba(0, 242, 254, 0.15);">
-                <h4 style="color: var(--cyan); font-family: var(--font-hud); font-size: 0.85rem; margin-bottom: 8px;">2. PEDAGOGICAL SOLUTIONS &amp; COOLING RATES</h4>
-                <p class="briefing-text" style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 8px;">
-                  Here are the expected Newtonian decay coefficients (approximate values depending on insulation tight wrapping):
-                </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-bright);">
-                  <div style="background: rgba(0,0,0,0.4); padding: 8px; border-radius: 4px; border-left: 3px solid var(--red);">• Bare Core: k = 0.082 (Drops to ~23°C)</div>
-                  <div style="background: rgba(0,0,0,0.4); padding: 8px; border-radius: 4px; border-left: 3px solid var(--orange);">• Cotton Wrap: k = 0.045 (Drops to ~40°C)</div>
-                  <div style="background: rgba(0,0,0,0.4); padding: 8px; border-radius: 4px; border-left: 3px solid var(--cyan);">• Bubble Wrap: k = 0.032 (Drops to ~49°C)</div>
-                  <div style="background: rgba(0,0,0,0.4); padding: 8px; border-radius: 4px; border-left: 3px solid var(--green);">• Multi-Layer MLI: k = 0.015 (Stays at ~64°C)</div>
-                </div>
-              </div>
-            </div>
-            
-            <div style="margin-top: 15px; border-top: 1px dashed rgba(255,159,67,0.15); padding-top: 12px; display: flex; justify-content: flex-end; gap: 10px;">
-              <a href="teacher_manual.html" target="_blank" class="btn-hud btn-orange btn-outline" style="width: auto; padding: 6px 14px; font-size: 0.75rem; border-color: rgba(255,159,67,0.4); color: var(--orange); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> VIEW TEACHER MANUAL (WEB)
-              </a>
-              <a href="teacher_pedagogical_manual.pdf" target="_blank" class="btn-hud" style="width: auto; padding: 6px 14px; font-size: 0.75rem; background: rgba(255, 159, 67, 0.15); border-color: var(--orange); color: var(--orange); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> DOWNLOAD OFFICIAL PDF
-              </a>
-            </div>
-          </div>
-        </div>
-
       </section>
-
+      
     </main>
 
-    <!-- 3. FOOTER STATUS BAR -->
     <footer class="hud-footer">
       <div>SPHERE MISSION TELEMETRY INTERACTION PROTOCOL // PROJECT CORE</div>
       <div class="footer-link-group">
@@ -1035,16 +250,14 @@ Understand how simplified scientific models can be used to represent real-world 
         <span class="footer-link">ISS SPACE SUIT SIMULATOR</span>
       </div>
     </footer>
-
   </div>
 
-  <!-- Custom Alert Toast notification -->
   <div class="hud-notification" id="hud-notification">
     <div id="notif-icon-box" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px;"></div>
-    <div id="notif-message-text" style="font-size: 0.85rem; font-family: var(--font-hud);">Notification Alert</div>
+    <div class="notif-content">
+      <div class="notif-title" id="notif-title">SYSTEM ALERT</div>
+      <div class="notif-desc" id="notif-desc">Description text update.</div>
+    </div>
   </div>
-
-  <!-- App Main Javascript Code -->
-  <script src="app.js"></script>
 </body>
 </html>
