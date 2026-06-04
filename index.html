@@ -124,20 +124,52 @@ and compare theory with experiment.
             </div>
           </div>
           
-          <!-- Space Suit Simulated HUD Node -->
-          <div class="space-suit-visualizer">
-            <div class="hud-crosshair"></div>
-            <div class="capsule-illustration">
-              <div class="thermometer-wire"></div>
-              <div class="capsule-water">
-                <span style="font-size: 0.65rem; font-family: var(--font-mono); color: var(--text-pure); font-weight: bold; text-shadow: 0 0 4px #000;">JAR (100ml)</span>
-              </div>
-            </div>
-            <div class="telemetry-node-text" id="node-temp">T_INTERNAL: 80.0°C</div>
-            <div class="telemetry-node-text" id="node-env">T_AMBIENT: 0.0°C</div>
-            <div class="telemetry-node-text" id="node-flow">MLI RADIATION SHIELD</div>
-          </div>
-        </div>
+<!-- Space Suit Simulated HUD Node -->
+<div class="space-suit-visualizer">
+
+  <div class="hud-crosshair"></div>
+
+  <!-- MLI Rings -->
+  <div class="mli-ring ring-1"></div>
+  <div class="mli-ring ring-2"></div>
+  <div class="mli-ring ring-3"></div>
+
+  <!-- Heat Flow Arrows -->
+  <div class="heat-arrow arrow-1">⇠</div>
+  <div class="heat-arrow arrow-2">⇠</div>
+  <div class="heat-arrow arrow-3">⇠</div>
+
+  <!-- Capsule -->
+  <div class="capsule-illustration">
+    <div class="thermometer-wire"></div>
+
+    <div class="capsule-water">
+      <span style="
+        font-size:0.65rem;
+        font-family:var(--font-mono);
+        color:var(--text-pure);
+        font-weight:bold;
+        text-shadow:0 0 4px #000;
+      ">
+        JAR (100ml)
+      </span>
+    </div>
+  </div>
+
+  <!-- Labels -->
+  <div class="telemetry-node-text" id="node-temp">
+    T_INTERNAL: 80.0°C
+  </div>
+
+  <div class="telemetry-node-text" id="node-env">
+    T_AMBIENT: 0.0°C
+  </div>
+
+  <div class="telemetry-node-text" id="node-flow">
+    MULTI-LAYER INSULATION (MLI)
+  </div>
+
+</div>
 
         <!-- SPHERE Student User Manual & EU Digital Twin Protocol -->
         <div class="hud-panel" style="margin-top: 25px; border-color: rgba(0, 242, 254, 0.3);">
