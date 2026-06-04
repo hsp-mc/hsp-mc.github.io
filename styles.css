@@ -550,14 +550,61 @@ h1, h2, h3, h4, h5, h6 {
   height: 180px;
   border: 2px solid var(--text-normal);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255,255,255,0.05);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 30px rgba(255,255,255,0.05);
   animation: float 4s ease-in-out infinite alternate;
+}
+
+/* GOLD MLI BLANKET */
+.capsule-illustration::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffe082 0%,
+      #ffd54f 20%,
+      #ffca28 40%,
+      #f59e0b 60%,
+      #ffd54f 80%,
+      #fff3c4 100%
+    );
+
+  opacity: 0.85;
+
+  box-shadow:
+    0 0 15px rgba(245,158,11,0.4),
+    0 0 40px rgba(245,158,11,0.2);
+
+  z-index: -1;
+}
+
+/* CRINKLED FOIL EFFECT */
+.capsule-illustration::after {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 24px;
+
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.18) 0px,
+      rgba(255,255,255,0.18) 2px,
+      transparent 2px,
+      transparent 8px
+    );
+
+  opacity: 0.3;
+  z-index: -1;
 }
 
 .capsule-water {
@@ -595,9 +642,25 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 10;
 }
 
-#node-temp { top: 30%; right: 10%; color: var(--red); }
-#node-env { bottom: 20%; left: 10%; color: var(--cyan); }
-#node-flow { top: 15%; left: 15%; color: var(--orange); }
+#node-temp {
+  top: 28%;
+  right: 6%;
+  color: var(--red);
+}
+
+#node-env {
+  bottom: 18%;
+  left: 6%;
+  color: var(--cyan);
+}
+
+#node-flow {
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--orange);
+  white-space: nowrap;
+}
 
 /* Tab 2: Assembly Step-by-Step Card Flow */
 .hardware-step-grid {
