@@ -1240,3 +1240,28 @@ h1, h2, h3, h4, h5, h6 {
   border-color: var(--green);
   box-shadow: 0 0 15px var(--green-glow);
 }
+
+/* =======================================================
+   Mission Hero Image
+======================================================= */
+
+.hero-astronaut {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.space-suit-visualizer {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+
+.hero-astronaut {
+  filter:
+    contrast(1.05)
+    saturate(1.05)
+    brightness(0.95);
+}
+
