@@ -124,67 +124,53 @@ and compare theory with experiment.
             </div>
           </div>
           
-<div class="astronaut-silhouette">
+<!-- Space Suit Simulated HUD Node -->
+<div class="space-suit-visualizer">
 
-<svg width="180" height="240" viewBox="0 0 180 240">
+  <div class="hud-crosshair"></div>
 
-  <!-- Helmet -->
-  <circle
-    cx="90"
-    cy="45"
-    r="28"
-    fill="none"
-    stroke="#00f2fe"
-    stroke-width="3"/>
+  <!-- MLI Rings -->
+  <div class="mli-ring ring-1"></div>
+  <div class="mli-ring ring-2"></div>
+  <div class="mli-ring ring-3"></div>
 
-  <!-- Body -->
-  <rect
-    x="65"
-    y="75"
-    width="50"
-    height="75"
-    rx="12"
-    fill="none"
-    stroke="#00f2fe"
-    stroke-width="3"/>
+  <!-- Capsule -->
+  <div class="capsule-illustration">
+    <div class="thermometer-wire"></div>
 
-  <!-- Arms -->
-  <line
-    x1="65"
-    y1="95"
-    x2="30"
-    y2="120"
-    stroke="#00f2fe"
-    stroke-width="3"/>
+    <div class="capsule-water">
+      <span style="
+        font-size:0.65rem;
+        font-family:var(--font-mono);
+        color:var(--text-pure);
+        font-weight:bold;
+        text-shadow:0 0 4px #000;
+      ">
+        JAR (100ml)
+      </span>
+    </div>
+  </div>
 
-  <line
-    x1="115"
-    y1="95"
-    x2="150"
-    y2="120"
-    stroke="#00f2fe"
-    stroke-width="3"/>
+  <!-- Labels -->
+  <div class="telemetry-node-text" id="node-temp">
+    T<sub>0</sub>
+: 80.0°C
+  </div>
 
-  <!-- Legs -->
-  <line
-    x1="80"
-    y1="150"
-    x2="65"
-    y2="210"
-    stroke="#00f2fe"
-    stroke-width="3"/>
+  <div class="telemetry-node-text" id="node-env">
+    
+T<sub>env</sub>
+: 0.0°C
+  </div>
 
-  <line
-    x1="100"
-    y1="150"
-    x2="115"
-    y2="210"
-    stroke="#00f2fe"
-    stroke-width="3"/>
-
-</svg>
+  <div class="telemetry-node-text" id="node-flow">
+    MULTI-LAYER INSULATION (MLI)
+  </div>
 
 </div>
+
+
+</div> <!-- ENDE briefing-hero -->
 
 
         <!-- SPHERE Student User Manual & EU Digital Twin Protocol -->
