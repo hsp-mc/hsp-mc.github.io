@@ -26,14 +26,14 @@
         </div>
         <div class="logo-text">
           <h1>SPHERE</h1>
-          <span>Thermal Challenge</span>
+          <span>Mission Control v2.6</span>
         </div>
       </div>
       
       <!-- Primary Tab Controls -->
       <nav class="hud-nav" id="hud-nav-tabs">
         <button class="nav-tab active" data-target="briefing">
-          <i data-lucide="info"></i> OVERVIEW
+          <i data-lucide="info"></i> BRIEFING
         </button>
         <button class="nav-tab" data-target="assembly">
           <i data-lucide="settings"></i> ASSEMBLY
@@ -62,12 +62,14 @@
         <span class="ticker-value" id="system-status-text">STANDBY</span>
       </div>
       <div class="ticker-item">
+        <span class="ticker-label">TELEMETRY_LINK:</span>
+        <span class="ticker-value text-green glow-green">ONLINE</span>
+      </div>
+      <div class="ticker-item">
         <span class="ticker-label">MISSION_CLOCK:</span>
         <span class="ticker-value" id="live-wall-clock">00:00:00 UTC</span>
       </div>
     </div>
-
-
 
     <!-- 2. MAIN ACTIVE PORT VIEWPORT -->
     <main class="hud-grid">
