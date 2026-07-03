@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     selectedModel: 'bare',
     modelConstants: {
       bare: { name: 'Bare Capsule (Control)', k: 0.150, color: '#00f2fe' },
-      cotton: { name: 'Cotton Layer (Conduction Shield)', k: 0.080, color: '#4facfe' },
+      bubblewrap: { name: 'Bubble Wrap Only (Convective Shield)', k: 0.032, color: '#4facfe' },
       mylar: { name: 'Mylar Layer (Radiation Shield)', k: 0.040, color: '#ff9f43' },
       mli: { name: 'Full MLI (Cotton + Bubble Wrap + Mylar)', k: 0.015, color: '#10b981' },
       custom: { name: 'Custom Sandbox Layer', k: 0.050, color: '#a55eea' }
@@ -1105,8 +1105,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cachedTelemetry = localStorage.getItem('sphere_telemetry_points');
     
     if (cachedModel) {
-      state.selectedModel = cachedModel;
-      elements.insulationSelect.value = cachedModel;
+      state.selectedModel = cachedModel === 'cotton' ? 'bubblewrap' : cachedModel;
+      elements.insulationSelect.value = state.selectedModel;
       // Trigger select change event to update text readouts
       elements.insulationSelect.dispatchEvent(new Event('change'));
     }
