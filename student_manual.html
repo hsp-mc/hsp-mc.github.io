@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPHERE: Mission Control - Student User Manual</title>
+  <style>
+    /* Premium Theme variables matching SPHERE Mission Control */
+    :root {
+      --bg-deep: #060913;
+      --bg-panel: #101830;
+      --cyan: #00f2fe;
+      --orange: #ff9f43;
+      --text-bright: #e2e8f0;
+      --text-normal: #94a3b8;
+      --text-dimmed: #64748b;
+      --font-hud: 'Orbitron', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+      --font-mono: 'Roboto Mono', monospace;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;500&display=swap');
+
+    /* Global styling optimized for screen viewing */
+    body {
+      background-color: var(--bg-deep);
+      color: var(--text-bright);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: rgba(16, 24, 48, 0.7);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.1);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-hud);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 1.8em;
+      margin-bottom: 0.8em;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      text-align: center;
+      color: var(--cyan);
+      border-bottom: 2px solid rgba(0, 242, 254, 0.3);
+      padding-bottom: 15px;
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: var(--cyan);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: var(--orange);
+    }
+
+    p {
+      color: var(--text-bright);
+      font-size: 0.95rem;
+      margin-bottom: 1.5em;
+    }
+
+    ul, ol {
+      margin-bottom: 1.5em;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      color: var(--text-bright);
+    }
+
+    .highlight-box {
+      background: rgba(0, 242, 254, 0.05);
+      border-left: 4px solid var(--cyan);
+      padding: 15px 20px;
+      border-radius: 4px;
+      margin: 20px 0;
+    }
+
+    .highlight-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .equation-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px dashed rgba(0, 242, 254, 0.3);
+      font-family: var(--font-mono);
+      padding: 15px;
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--cyan);
+      border-radius: 6px;
+      margin: 20px 0;
+    }
+
+    .action-button-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .btn-print {
+      background: linear-gradient(135deg, var(--cyan), #00b8ff);
+      border: none;
+      color: #060913;
+      padding: 12px 24px;
+      font-family: var(--font-hud);
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+    }
+
+    .btn-print:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+    }
+
+    .footer-bar {
+      text-align: center;
+      margin-top: 40px;
+      font-family: var(--font-hud);
+      font-size: 0.75rem;
+      color: var(--text-dimmed);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 20px;
+    }
+
+    /* Print styles optimized for high-quality white-paper print and PDF generation */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0;
+        margin: 0;
+        font-size: 11pt;
+      }
+
+      .container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+      }
+
+      h1, h2, h3, h4 {
+        color: #000000 !important;
+        text-shadow: none !important;
+        page-break-after: avoid;
+      }
+
+      h1 {
+        font-size: 24pt;
+        border-bottom: 2pt solid #000000 !important;
+        margin-top: 0;
+      }
+
+      h2 {
+        font-size: 16pt;
+        border-bottom: 1pt solid #cccccc !important;
+        margin-top: 25pt;
+      }
+
+      h3 {
+        font-size: 12pt;
+        margin-top: 18pt;
+      }
+
+      p, li {
+        color: #111111 !important;
+      }
+
+      .highlight-box {
+        background: #f4f6f8 !important;
+        border-left: 3pt solid #333333 !important;
+        page-break-inside: avoid;
+      }
+
+      .equation-box {
+        background: #f8fafc !important;
+        color: #000000 !important;
+        border: 1pt dashed #666666 !important;
+        page-break-inside: avoid;
+      }
+
+      .action-button-container {
+        display: none !important;
+      }
+
+      .page-break {
+        page-break-after: always;
+      }
+
+      .footer-bar {
+        color: #666666 !important;
+        border-top: 1pt solid #dddddd !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="container">
+    
+    <!-- COVER PAGE / HEADER -->
+    <div style="text-align: center; margin-bottom: 40px;">
+      <div style="font-family: var(--font-hud); font-size: 0.9rem; color: var(--orange); letter-spacing: 0.2em; margin-bottom: 10px;">EUROPEAN UNION STEM LABORATORY INITIATIVE</div>
+      <h1>SPHERE: MISSION CONTROL</h1>
+      <div style="font-family: var(--font-hud); font-size: 1.2rem; color: var(--cyan); letter-spacing: 0.1em; margin-top: 15px;">STUDENT USER MANUAL</div>
+      <div style="font-size: 0.9rem; color: var(--text-dimmed); margin-top: 10px; font-family: var(--font-mono);">DOCUMENT REF // EU_SPHERE_STUDENT_V2</div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>Inquiry-Based Science Education (IBSE) Focus:</strong> This manual provides a complete hardware guide and digital workflow to construct a physical thermal envelope (an astronaut spacesuit capsule) and map its real cooling dynamics inside a vacuum analog to a live Newtonian mathematical prediction engine.
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 1 -->
+    <h2>1. INTRODUCTION &amp; EXPERIMENT OVERVIEW</h2>
+    <p>
+      During deep-space voyages, spacecraft and astronauts are subjected to thermal extremes. In low Earth orbit (such as on the International Space Station), direct solar irradiation can heat surfaces to <strong>121°C</strong>, while objects in orbital shadows radiate energy away, plunging to <strong>-157°C</strong>. Creating reliable, multi-layer thermal envelopes is critical to preserving astronaut safety.
+    </p>
+    <p>
+      In this laboratory experiment, you will build a protective "spacesuit" for a simulated astronaut (a 100ml PET container filled with hot water at 80°C). You will drop this unit into an ice-bath chamber (0°C) mimicking the thermal void of space, and use the <strong>SPHERE: Mission Control</strong> dashboard as your live telemetry terminal.
+    </p>
+    <p>
+      In this experiment, you will compare real temperature measurements with a computer model. By comparing both results, you can investigate how different insulation materials affect heat transfer and discuss why real measurements may differ from predictions.
+    </p>
+
+    <!-- SECTION 2 -->
+    <h2>2. HARDWARE ASSEMBLY GUIDE</h2>
+    <p>
+      To ensure the experiment is economically scalable across diverse classrooms, the hardware relies exclusively on affordable, off-the-shelf industrial and household components:
+    </p>
+    <ul>
+      <li><strong>Capsule Body:</strong> 1x 100ml wide-mouth PET food jar.</li>
+      <li><strong>Waterproof Cable Connector:</strong> 1x Industrial PG7 Nylon Cable Gland (mounted securely through a 12.5mm hole drilled in the PET jar cap).</li>
+      <li><strong>Thermal Sensor:</strong> 1x DS18B20 digital waterproof temperature sensor probe.</li>
+      <li><strong>Environmental Chamber:</strong> A large tub or bucket filled with crushed ice and water (maintained at 0°C).</li>
+    </ul>
+
+    <h3>Assembly Steps:</h3>
+    <ol>
+      <li>Thread the temperature sensor wire through the waterproof connector.</li>
+      <li>Screw the PG7 gland locknut onto the inside of the jar cap until firmly sealed.</li>
+      <li>Tighten the external dome nut of the PG7 gland. This compresses the internal neoprene rubber seal around the sensor wire, creating a 100% waterproof seal capable of sustaining submersion in ice water.</li>
+      <li>Verify that the sensor probe is suspended freely in the middle of the jar and does not directly touch the bottom or sides of the PET capsule.</li>
+    </ol>
+
+    <!-- FIG 1: ASSEMBLY SCHEMATIC -->
+    <div style="text-align: center; margin: 20px 0;">
+      <svg viewBox="0 0 600 280" style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; margin: 0 auto; display: block; max-width: 600px; width: 100%;">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#00f2fe"/>
+          </marker>
+          <marker id="arrow-orange" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#ff9f43"/>
+          </marker>
+        </defs>
+        
+        <rect x="10" y="10" width="580" height="260" rx="6" fill="rgba(0, 242, 254, 0.01)" stroke="rgba(0, 242, 254, 0.1)" stroke-width="1"/>
+        <text x="25" y="32" fill="#4facfe" font-family="var(--font-hud, Orbitron)" font-size="9" font-weight="bold" letter-spacing="1">CHAMBER: ICE WATER BATH (0°C)</text>
+        
+        <!-- Jar cap -->
+        <rect x="250" y="55" width="100" height="15" rx="3" fill="#1e293b" stroke="#64748b" stroke-width="2" />
+        <line x1="240" y1="70" x2="360" y2="70" stroke="#64748b" stroke-width="3" />
+        
+        <!-- Jar Body -->
+        <path d="M 255 70 L 255 200 C 255 210, 260 215, 270 215 L 330 215 C 340 215, 345 210, 345 200 L 345 70 Z" fill="rgba(16, 24, 48, 0.8)" stroke="#00f2fe" stroke-width="2.5" />
+        
+        <!-- Liquid inside jar -->
+        <path d="M 258 90 L 258 198 C 258 206, 262 210, 270 210 L 330 210 C 338 210, 342 206, 342 198 L 342 90 Z" fill="rgba(0, 242, 254, 0.12)" />
+        <text x="300" y="145" fill="rgba(255,255,255,0.4)" font-family="var(--font-hud, Orbitron)" font-size="10" font-weight="bold" text-anchor="middle" letter-spacing="1">100ml CORE (80°C)</text>
+
+        <!-- PG7 Cable Gland -->
+        <rect x="288" y="32" width="24" height="23" fill="#0f172a" stroke="#ff9f43" stroke-width="1.5" />
+        <circle cx="300" cy="43" r="5" fill="#f43f5e" />
+        
+        <!-- Thermocouple Wire -->
+        <path d="M 300 15 L 300 32 M 300 45 L 300 160" fill="none" stroke="#ff9f43" stroke-width="2" />
+        
+        <!-- Temperature Sensor Bulb at end -->
+        <rect x="296" y="150" width="8" height="15" rx="2" fill="#ff9f43" stroke="#fff" stroke-width="0.5" />
+
+        <!-- Labeled Callouts & Lines -->
+        <line x1="130" y1="43" x2="280" y2="43" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow)" />
+        <text x="30" y="42" fill="#00f2fe" font-family="var(--font-sans, Inter)" font-size="11" font-weight="bold">PG7 Cable Gland</text>
+        <text x="30" y="54" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="9">Tightened Rubber Compression</text>
+        
+        <line x1="470" y1="80" x2="304" y2="100" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow-orange)" />
+        <text x="480" y="78" fill="#ff9f43" font-family="var(--font-sans, Inter)" font-size="11" font-weight="bold">DS18B20 Sensor Wire</text>
+        <text x="480" y="90" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="9">Drill-thru cap entry path</text>
+
+        <line x1="130" y1="180" x2="252" y2="180" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow)" />
+        <text x="20" y="176" fill="#00f2fe" font-family="var(--font-sans, Inter)" font-size="11" font-weight="bold">PET Capsule Core</text>
+        <text x="20" y="188" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="9">Thick-walled plastic container</text>
+
+        <line x1="470" y1="160" x2="310" y2="160" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#arrow-orange)" />
+<text x="430" y="158"
+      fill="#ff9f43"
+      font-family="var(--font-sans, Inter)"
+      font-size="11"
+      font-weight="bold">
+  Sensor Probe
+</text>
+
+<text x="430" y="170"
+      fill="#94a3b8"
+      font-family="var(--font-sans, Inter)"
+      font-size="9">
+  Suspended freely inside capsule
+</text>
+      </svg>
+      <div style="font-size: 0.8rem; color: var(--text-dimmed); margin-top: 6px; font-family: var(--font-mono);">FIGURE 1: SPHERE CAPSULE MECHANICAL ASSEMBLY SCHEMATIC</div>
+    </div>
+
+    <!-- SECTION 3 -->
+<h2>3. INSULATION CONFIGURATIONS</h2>
+
+<p>
+Your engineering team must design and test different thermal protection systems for the capsule. Each configuration combines materials in a different way to investigate how insulation affects heat transfer.
+</p>
+
+<ul>
+  <li>
+    <strong>Configuration A — Bare Capsule (Control)</strong><br>
+    No insulation. This configuration serves as the scientific baseline.
+  </li>
+
+  <li>
+    <strong>Configuration B — Bubble Wrap</strong><br>
+    A bubble wrap layer wrapped around the capsule.
+  </li>
+
+  <li>
+    <strong>Configuration C — Mylar</strong><br>
+    A reflective Mylar foil layer surrounding the capsule. The shiny surface reflects thermal radiation and reduces heat loss.
+  </li>
+
+  <li>
+    <strong>Configuration D — Cotton + Bubble Wrap + Mylar (MLI)</strong><br>
+    A combined insulation system consisting of cotton, bubble wrap, and an outer Mylar layer.
+  </li>
+</ul>
+
+<!-- FIGURE 2: INSULATION CONFIGURATIONS -->
+
+<div style="text-align:center; margin:20px 0;">
+<svg viewBox="0 0 600 230"
+     style="background:rgba(0,0,0,0.25);
+            border:1px solid rgba(255,255,255,0.06);
+            border-radius:8px;
+            max-width:600px;
+            width:100%;">
+
+  <rect x="10" y="10" width="580" height="210"
+        rx="6"
+        fill="rgba(255,255,255,0.01)"
+        stroke="rgba(255,255,255,0.06)" />
+
+  <!-- A -->
+  <rect x="35" y="55" width="70" height="110"
+        rx="6"
+        fill="rgba(0,242,254,0.08)"
+        stroke="#00f2fe"
+        stroke-width="2"/>
+
+  <text x="70" y="40"
+        text-anchor="middle"
+        fill="#00f2fe"
+        font-size="11"
+        font-weight="bold">
+    A
+  </text>
+
+  <text x="70" y="185"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="10">
+    Bare Capsule (Control)
+  </text>
+
+<!-- B : BUBBLE WRAP -->
+
+<!-- Bubble wrap layer -->
+
+<rect x="165" y="50"
+      width="80"
+      height="120"
+      rx="8"
+      fill="rgba(16,185,129,0.05)"
+      stroke="#10b981"
+      stroke-width="1.5"/>
+
+<circle cx="175" cy="70" r="4" fill="none" stroke="#10b981"/>
+<circle cx="235" cy="70" r="4" fill="none" stroke="#10b981"/>
+
+<circle cx="175" cy="100" r="4" fill="none" stroke="#10b981"/>
+<circle cx="235" cy="100" r="4" fill="none" stroke="#10b981"/>
+
+<circle cx="175" cy="130" r="4" fill="none" stroke="#10b981"/>
+<circle cx="235" cy="130" r="4" fill="none" stroke="#10b981"/>
+
+<!-- PET capsule -->
+
+<rect x="180" y="65"
+      width="50"
+      height="90"
+      rx="5"
+      fill="rgba(0,242,254,0.08)"
+      stroke="#00f2fe"
+      stroke-width="2"/>
+
+<text x="205"
+      y="40"
+      text-anchor="middle"
+      fill="#00f2fe"
+      font-size="11"
+      font-weight="bold">
+  B
+</text>
+
+<text x="205"
+      y="185"
+      text-anchor="middle"
+      fill="#ffffff"
+      font-size="10">
+  Bubble Wrap
+</text>
+
+<!-- C : MYLAR -->
+
+<rect x="300" y="45"
+      width="90"
+      height="130"
+      rx="8"
+      fill="rgba(245,158,11,0.05)"
+      stroke="#f59e0b"
+      stroke-width="2"/>
+
+<!-- reflective foil lines -->
+
+<line x1="315" y1="55" x2="315" y2="165" stroke="#f59e0b"/>
+<line x1="330" y1="55" x2="330" y2="165" stroke="#f59e0b"/>
+<line x1="345" y1="55" x2="345" y2="165" stroke="#f59e0b"/>
+<line x1="360" y1="55" x2="360" y2="165" stroke="#f59e0b"/>
+<line x1="375" y1="55" x2="375" y2="165" stroke="#f59e0b"/>
+
+<rect x="320" y="65"
+      width="50"
+      height="90"
+      rx="5"
+      fill="rgba(0,242,254,0.08)"
+      stroke="#00f2fe"
+      stroke-width="2"/>
+
+<text x="345"
+      y="40"
+      text-anchor="middle"
+      fill="#00f2fe"
+      font-size="11"
+      font-weight="bold">
+  C
+</text>
+
+<text x="345"
+      y="185"
+      text-anchor="middle"
+      fill="#ffffff"
+      font-size="10">
+  Mylar
+</text>
+
+
+<!-- D : COTTON + BUBBLE + MYLAR -->
+
+<!-- outer mylar -->
+
+<rect x="445" y="35"
+      width="110"
+      height="150"
+      rx="10"
+      fill="rgba(245,158,11,0.04)"
+      stroke="#f59e0b"
+      stroke-width="2"/>
+
+<line x1="455" y1="45" x2="455" y2="175" stroke="#f59e0b"/>
+<line x1="470" y1="45" x2="470" y2="175" stroke="#f59e0b"/>
+<line x1="485" y1="45" x2="485" y2="175" stroke="#f59e0b"/>
+
+<!-- bubble wrap layer -->
+
+<rect x="460" y="50"
+      width="80"
+      height="120"
+      rx="8"
+      fill="rgba(16,185,129,0.05)"
+      stroke="#10b981"
+      stroke-width="1.5"/>
+
+<circle cx="470" cy="70" r="4" fill="none" stroke="#10b981"/>
+<circle cx="530" cy="70" r="4" fill="none" stroke="#10b981"/>
+
+<circle cx="470" cy="100" r="4" fill="none" stroke="#10b981"/>
+<circle cx="530" cy="100" r="4" fill="none" stroke="#10b981"/>
+
+<circle cx="470" cy="130" r="4" fill="none" stroke="#10b981"/>
+<circle cx="530" cy="130" r="4" fill="none" stroke="#10b981"/>
+
+<!-- cotton layer -->
+
+<rect x="475" y="60"
+      width="50"
+      height="100"
+      rx="6"
+      fill="rgba(255,255,255,0.03)"
+      stroke="#ffffff"
+      stroke-width="1.5"/>
+
+<!-- capsule -->
+
+<rect x="487" y="75"
+      width="26"
+      height="70"
+      rx="4"
+      fill="rgba(0,242,254,0.08)"
+      stroke="#00f2fe"
+      stroke-width="2"/>
+
+<text x="500"
+      y="25"
+      text-anchor="middle"
+      fill="#00f2fe"
+      font-size="11"
+      font-weight="bold">
+  D
+</text>
+
+  <text x="505" y="195"
+        text-anchor="middle"
+        fill="#ffffff"
+        font-size="10">
+    Cotton + Bubble Wrap + Mylar (MLI)
+  </text>
+
+</svg>
+
+<div style="font-size:0.8rem;
+            color:var(--text-dimmed);
+            margin-top:6px;
+            font-family:var(--font-mono);">
+  FIGURE 2: INSULATION CONFIGURATIONS TESTED DURING THE EXPERIMENT
+</div>
+</div>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 4 -->
+    <h2>4. UNDERSTANDING THE TEMPERATURE GRAPH</h2>
+    <p>
+      As the warm water cools down, heat flows from the warmer capsule to the colder surroundings. By measuring the temperature over time, you can create a graph and compare different insulation materials. 
+    </p>
+
+<div class="highlight-box">
+<strong>The Mathematics Behind the Model:</strong>
+
+Scientists and Engineers often use a model called Newton's Law of Cooling to describe how objects cool down over time: 
+<p>
+<div class="equation-box">
+  dT/dt = -k · (T - 
+T<sub>env</sub>
+)<br>
+  T(t) =
+T<sub>env</sub>
+ + (T₀ - 
+T<sub>env</sub>
+) · 
+e<sup>-kt</sup>
+</div>
+</p>
+      Where:
+    </p>
+    <ul>
+      <li><strong>T(t):</strong> The predicted temperature at time <code style="font-family: var(--font-mono); color: var(--orange);">t</code> (seconds).</li>
+<li>
+ <strong>
+T<sub>env</sub>
+:</strong>
+ The surrounding environmental temperature
+ (typically 0°C for an ice-water bath).
+</li>
+ 
+<li>
+ <strong>T₀:</strong>
+ The initial temperature of the water when the experiment begins
+ (typically 80°C).
+</li>
+      <li><strong>k:</strong> The cooling decay coefficient (1/seconds) which represents the heat transfer rate. A lower <code style="font-family: var(--font-mono); color: var(--orange);">k</code> constant indicates a more efficient spacesuit!</li>
+      <li><strong>e:</strong> Euler's mathematical constant (~2.71828).</li>
+    </ul>
+
+The simulator uses this model to calculate a prediction curve. You do not need to derive the equation, but you can compare its predictions with your measurements.
+</div>
+
+<div class="highlight-box">
+  <strong>Learning Objectives</strong>
+
+  <ul>
+    <li>Explain how heat flows from warmer objects to colder surroundings.</li>
+
+    <li>Measure and record temperature data at regular intervals.</li>
+
+    <li>Interpret temperature-versus-time graphs.</li>
+
+    <li>Compare the effectiveness of different insulation systems.</li>
+
+    <li>Use a digital model to predict experimental outcomes.</li>
+
+    <li>Compare measured data with simulation results.</li>
+
+    <li>Evaluate why real experiments differ from ideal mathematical models.</li>
+  </ul>
+</div>
+
+
+   
+    <!-- SECTION 5 -->
+    <h2>5. STEP-BY-STEP MISSION CONTROL WORKFLOW</h2>
+    <ol>
+      <li><strong>Unlock Operations:</strong> Read the Mission Briefing on the home page and complete the Pre-Flight Quiz to prove your laboratory readiness.</li>
+      <li><strong>Run Newtonian Predictions:</strong> Open the <strong>Simulator</strong> tab. Select your insulation type, configure your initial variables (<code style="font-family: var(--font-mono); color: var(--cyan);">T₀ = 80°C</code>, <code style="font-family: var(--font-mono); color: var(--cyan);">
+T<sub>env</sub>
+ = 0°C</code>), and click <strong>RUN SIMULATION PREDICTION</strong>. Review the projected mathematical decay curve.</li>
+      <li><strong>Prepare Physical Asset:</strong> Fill the PET capsule with hot water pre-measured at 80°C. Secure the cap and tighten the PG7 gland to prevent convective leakage.</li>
+      <li><strong>Submerge &amp; Initialize:</strong> Submerge the capsule into the 0°C ice water. Simultaneously click <strong>START LIVE TIMER</strong> in the <strong>Live Telemetry</strong> tab.</li>
+      <li><strong>Active Sensor Logging:</strong> Every 60 seconds (the alarm terminal will blink green and sound a beep), read the current physical thermometer value and log it into the input box. Click <strong>RECORD DATA POINT</strong> to plot it on the graph overlay.</li>
+      <li><strong>Analyze Correlation Score:</strong> Once at least 5 points are logged, the telemetry panel automatically calculates your <strong>Thermal Correlation Score</strong>. Discuss with your crew how closely your digital twin simulator aligned with physical reality!</li>
+    </ol>
+
+    <div class="highlight-box" style="border-left-color: var(--cyan); background: rgba(0, 242, 254, 0.03);">
+      <strong>Summer &amp; High-Ambient Temperature Procedures (~30°C):</strong><br>
+      If you are running this experiment in a hot room (e.g. during summer conditions), note these key steps to ensure high-accuracy and absolute safety:
+      <ul style="margin-top: 10px; margin-bottom: 0; padding-left: 20px;">
+        <li><strong>Safety Temp Scaling (Mitigate Scalding Risk):</strong> Instead of using 80°C hot water, you can safely scale the initial temperature down to <strong>55°C–60°C</strong>. Newton's Law of Cooling works identically! Simply enter <code style="font-family: var(--font-mono); color: var(--cyan);">T₀ = 60°C</code> in your simulator prediction, and fill your physical jar with 60°C water.</li>
+        <li><strong>Melting Ice Compensation:</strong> On hot days, your ice bath water may rise slightly above 0°C (e.g. to 4°C). Use your thermometer to measure the actual temperature of your ice bath at the start, and enter that exact value as the environmental temperature <code style="font-family: var(--font-mono); color: var(--cyan);">
+T<sub>env</sub>
+</code> in your Simulator tab.</li>
+        <li><strong>Ice-Free Tap Water Drop:</strong> If ice is not logistically available, you can drop your capsule into room-temperature tap water (~25°C–30°C). Simply log the tap water's temperature, enter it as <code style="font-family: var(--font-mono); color: var(--cyan);">
+T<sub>env</sub>
+</code>, and run your predictions!</li>
+      </ul>
+    </div>
+    
+    <div class="action-button-container" style="margin-top: 30px; margin-bottom: 20px;">
+      <button class="btn-print" onclick="window.print();">
+        <i data-lucide="printer"></i> SAVE MANUAL TO PDF / PRINT
+      </button>
+    </div>
+
+    <div class="footer-bar">
+      SPHERE: MISSION CONTROL // STUDENT DIGITAL TWIN LABORATORY HANDBOOK // © 2026 PROJECT SPHERE INITIATIVE
+    </div>
+
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
