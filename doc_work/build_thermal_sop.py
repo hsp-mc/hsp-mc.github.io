@@ -354,25 +354,26 @@ def add_checklist_table(document, rows):
 
 
 def add_config_table(document):
-    table = document.add_table(rows=1, cols=4)
+    table = document.add_table(rows=1, cols=5)
     table.style = "Table Grid"
-    headers = ["Configuration", "Construction", "Main heat-transfer control", "Expected behavior"]
+    headers = ["Configuration", "Theoretical k (min⁻¹)", "Construction", "Main heat-transfer control", "Expected behavior"]
     for cell, text in zip(table.rows[0].cells, headers):
-        set_cell_text(cell, text, bold=True, size=9.5)
+        set_cell_text(cell, text, bold=True, size=9.2)
     rows = [
-        ("Bare core (control)", "No insulation; identical probe depth and container.", "Reference for natural convection and radiation.", "Fast cooling."),
-        ("Bubble wrap only", "Two uniform layers; close the neck without crushing the bubbles.", "Trapped air reduces conduction and convection.", "Moderate heat retention."),
-        ("Mylar only", "One reflective layer with the shiny face outward; secure the neck.", "Reduces radiation only; air leaks can dominate.", "Highly sensitive to gaps."),
-        ("Full MLI", "Cotton inner layer + bubble wrap + reflective Mylar outer layer.", "Combines conduction, convection, and radiation control.", "Best heat retention when tightly sealed."),
+        ("Bare core (control)", "k ≈ 0.150", "Uninsulated 100ml PET core jar; identical probe depth and container.", "Reference for natural fluid conduction, convection, and radiation.", "Fast cooling (T₁₅ ≈ 8.4–23.3 °C)."),
+        ("Cotton wrap layer", "k ≈ 0.080", "Single uniform cotton/fibrous wrap around core.", "Traps stationary air pockets to reduce conductive heat transfer.", "Intermediate cooling (T₁₅ ≈ 24.1 °C)."),
+        ("Bubble wrap layer", "k ≈ 0.040", "Two uniform layers; close the neck without crushing the bubbles.", "Sealed air chambers suppress fluid convection currents.", "Moderate heat retention (T₁₅ ≈ 52.6 °C)."),
+        ("Mylar reflective foil", "k ≈ 0.040", "One reflective layer with shiny face outward; secure neck.", "Reflects infrared electromagnetic thermal radiation.", "Highly sensitive to convective air leaks; weak in direct liquid bath."),
+        ("Full MLI package", "k ≈ 0.015", "Cotton inner layer + Bubble wrap + Mylar reflective outer layer.", "Combines conduction, convection, and radiation control.", "Best heat retention (T₁₅ ≈ 63.9 °C)."),
     ]
-    fills = [GRAY, PALE_BLUE, PALE_ORANGE, PALE_GREEN]
+    fills = [GRAY, PALE_BLUE, PALE_BLUE, PALE_ORANGE, PALE_GREEN]
     for data, fill in zip(rows, fills):
         cells = table.add_row().cells
         for cell, text in zip(cells, data):
-            set_cell_text(cell, text, size=9.3)
+            set_cell_text(cell, text, size=9.0)
             shade_cell(cell, fill)
         prevent_row_split(table.rows[-1])
-    set_table_geometry(table, [1800, 3000, 2500, 2060])
+    set_table_geometry(table, [1700, 1200, 2500, 2260, 1700])
     style_header_row(table.rows[0])
     return table
 
@@ -663,9 +664,18 @@ def build():
     add_heading(document, "DATA RECORDING AND CALCULATION", 2)
     add_body(document, "Record temperature at 0, 1, 2, …, 15 minutes. Do not substitute readings taken at irregular times without recording the actual timestamps.")
     add_equation_paragraph(document, "Temperature drop", "ΔTdrop = T₀ − T₁₅")
-    add_equation_paragraph(document, "Newtonian cooling model", "T(t) = Tamb + (T₀ − Tamb)e^(−kt)")
-    add_equation_paragraph(document, "Estimated cooling coefficient", "k = −ln[(Tt − Tamb)/(T₀ − Tamb)] / t")
-    add_body(document, "Use temperatures in degrees Celsius and time in minutes, so k is reported in min⁻¹. The logarithm expression is valid only while Tt remains above Tamb.")
+    add_equation_paragraph(document, "Newtonian cooling model", "T(t) = Tenv + (T₀ − Tenv)e^(−kt)")
+    add_equation_paragraph(document, "Estimated cooling coefficient", "k = −ln[(Tt − Tenv)/(T₀ − Tenv)] / t")
+    add_equation_paragraph(document, "Sum of Absolute Errors", "Sum |ΔT| = Σ |Tphysical(t) − Tpredicted(t)|")
+    add_equation_paragraph(document, "Average Telemetry Error", "Avg Error = (Sum |ΔT|) / 15")
+    add_equation_paragraph(document, "Thermal Correlation Score (%)", "Score = 100 − (Avg Error × 5)")
+    add_body(document, "Use temperatures in degrees Celsius and time in minutes, so k is reported in min⁻¹. Crew Correlation Performance Ratings: A+ (≥ 95%), A (≥ 90%), B (≥ 80%), C (≥ 70%), Re-calibrate (< 70%).")
+    add_callout(
+        document,
+        "Environmental boundary calibration (Tenv).",
+        "If the classroom ice bath warms above 0 °C (e.g. to 4.5 °C or 5 °C) during extended testing, measure the actual bath temperature with a DS18B20 probe and enter that exact Tenv value into Mission Control to preserve Digital Twin model accuracy.",
+        fill=PALE_BLUE,
+    )
 
     add_heading(document, "REFERENCE OBSERVATIONS FROM THE ATTACHED TEST", 2, page_break_before=True)
     add_body(document, "The following values were transcribed from the supplied 16-point telemetry screenshots. They are included as a worked example and should not replace student measurements.")
@@ -731,6 +741,20 @@ def build():
         "How is spacecraft multilayer insulation similar to—and different from—the classroom package?",
     ]:
         add_bullet(document, item)
+
+    add_heading(document, "INSTRUCTOR PHYSICS SOLUTIONS & SPACESUIT ENGINEERING INSIGHTS", 3)
+    solutions = [
+        ("Q1: Thermal Radiation vs Conduction in Liquid", "Mylar reflects infrared radiation, which dominates heat transfer in space vacuum. In an ice-water bath, liquid conduction is extremely rapid. Thin Mylar conducts heat directly to surrounding water unless paired with an inner insulating layer (cotton or bubble wrap) to block conduction."),
+        ("Q2: Physical Meaning of Cooling Constant (k)", "A smaller k value represents a superior thermal insulator. In T(t) = Tenv + (T₀ − Tenv)e^(−kt), as k approaches 0, e^(−kt) remains close to 1.0, preserving core temperature and delaying thermal dissipation."),
+        ("Q3: Multi-Layer Insulation (MLI) Synergy", "Full MLI combines three complementary barriers: cotton traps stationary air pockets to block conduction; bubble wrap creates sealed air chambers to suppress convection; and metallic Mylar reflects thermal radiation back into the core."),
+        ("Q4: Discrepancy Sources between Physical and Digital Twin", "Key sources: (1) Temperature probe tip touching PET jar wall instead of hanging in water center; (2) Incomplete PG7 gland nut tightening causing cold water seepage; (3) Thermal stratification inside the unmixed water jar; (4) Ice bath warming above 0 °C."),
+        ("Q5: Environmental Boundary Calibration", "Measure actual ice bath temperature with a calibrated probe and enter that value (e.g. Tenv = 4.5 °C) into Mission Control so the Digital Twin simulation accurately mirrors physical laboratory boundary conditions."),
+        ("Q6: Water Volume & Heat Capacity Scaling", "Doubling water volume from 100 ml to 200 ml doubles total thermal mass (Q = m · c · ΔT). Holding surface area constant, the temperature drop per minute becomes slower, resulting in a smaller effective decay constant k."),
+        ("Q7: EVA Spacesuit Engineering Trade-Offs", "Adding excessive insulation layers in space suits increases mass, bulk, and joint stiffness, severely restricting astronaut mobility during Extravehicular Activities (EVAs). Trapped metabolic heat also requires heavy active Liquid Cooling and Ventilation Garment (LCVG) loops."),
+        ("Q8: Thermal Correlation Score Optimization", "Crews optimize telemetry correlation scores (95%+) by: hand-tightening the PG7 gland dome nut to clamp the neoprene seal; centering the probe tip; swirling the capsule gently to eliminate thermal gradients; and standardizing timestamps."),
+    ]
+    for q_title, q_body in solutions:
+        add_callout(document, q_title + " — ", q_body, fill=PALE_BLUE)
 
     add_heading(document, "Acceptance checklist", 3)
     checklist = document.add_table(rows=1, cols=2)

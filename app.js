@@ -574,6 +574,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (state.timer.secondsRemaining <= 0) {
         state.timer.duration = duration * 60;
         state.timer.secondsRemaining = state.timer.duration;
+        state.timer.lastTriggeredMinute = 0;
       }
 
       state.timer.isRunning = true;
@@ -857,7 +858,7 @@ document.addEventListener('DOMContentLoaded', () => {
     activeModalTargetTime = typeof currentMins === 'number' ? currentMins : parseFloat(currentMins);
 
     if (epochModalElements.minBadge) {
-      epochModalElements.minBadge.textContent = Math.max(1, Math.floor(activeModalTargetTime));
+      epochModalElements.minBadge.textContent = Math.round(activeModalTargetTime);
     }
     if (epochModalElements.elapsedDisplay) {
       epochModalElements.elapsedDisplay.textContent = `${activeModalTargetTime.toFixed(1)} MIN`;
