@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPHERE: Mission Control - Student Task Sheet & Graph Workbook</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       SPHERE MISSION CONTROL: 2-PAGE STUDENT TASK SHEET & GRAPH WORKBOOK
+       Optimized specifically for exact 2-Page A4 / Letter PDF Printing
+       ========================================================================== */
+
+    :root {
+      --bg-document: #f1f5f9;
+      --bg-page: #ffffff;
+      --bg-subtle: #f8fafc;
+      
+      --primary-blue: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-bg: #e0f2fe;
+      --primary-border: #7dd3fc;
+      
+      --accent-amber: #d97706;
+      --accent-amber-dark: #92400e;
+      --accent-amber-bg: #fef3c7;
+      
+      --dark-navy: #0f172a;
+      --text-heading: #0f172a;
+      --text-body: #1e293b;
+      --text-muted: #334155;
+      --text-subtle: #475569;
+      --border-color: #cbd5e1;
+      --border-dark: #94a3b8;
+
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-hud: 'Orbitron', 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-document);
+      color: var(--text-body);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      line-height: 1.45;
+      margin: 0;
+      padding: 20px 10px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Screen Wrapper Container */
+    .workbook-container {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    /* Navigation Bar (Screen only) */
+    .doc-nav {
+      position: sticky;
+      top: 15px;
+      z-index: 1000;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 12px 20px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .doc-nav a, .doc-nav button {
+      text-decoration: none;
+      font-family: var(--font-hud);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-btn-back {
+      color: #0284c7;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-btn-back:hover {
+      color: #7dd3fc;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .nav-btn-alt {
+      color: #fbbf24;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn-alt:hover {
+      color: #fde047;
+    }
+
+    .nav-btn-print {
+      background: #0284c7;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+
+    .nav-btn-print:hover {
+      background: #0369a1;
+    }
+
+    /* Individual Printable Page Box */
+    .sheet-page {
+      background: var(--bg-page);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 30px 35px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+      position: relative;
+    }
+
+    /* Page Header Strip */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--dark-navy);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .brand-badge {
+      font-family: var(--font-hud);
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      background: var(--primary-bg);
+      border: 1px solid var(--primary-border);
+      padding: 4px 12px;
+      border-radius: 50px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .sheet-title {
+      font-family: var(--font-hud);
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--text-heading);
+      margin: 0;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .sheet-sub {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .page-number-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #ffffff;
+      background: var(--dark-navy);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    /* Metadata Form Grid */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 18px;
+      background: var(--bg-subtle);
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border-color);
+      margin-bottom: 15px;
+    }
+
+    .meta-field label {
+      font-family: var(--font-hud);
+      font-size: 0.65rem;
+      font-weight: 800;
+      color: var(--text-subtle);
+      display: block;
+      margin-bottom: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    .meta-line {
+      border-bottom: 1.5px solid var(--dark-navy);
+      min-height: 20px;
+    }
+
+    .config-options {
+      display: flex;
+      gap: 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      padding-top: 2px;
+    }
+
+    /* Section Headings */
+    .section-head {
+      font-family: var(--font-hud);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--dark-navy);
+      border-bottom: 1.5px solid var(--primary-blue);
+      padding-bottom: 4px;
+      margin-top: 12px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-head span.tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      background: var(--primary-bg);
+      color: var(--primary-dark);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--primary-border);
+    }
+
+    /* Data Logging Table */
+    .logging-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 15px;
+      font-size: 0.82rem;
+      background: #ffffff;
+      border: 1.5px solid var(--dark-navy);
+    }
+
+    .logging-table th {
+      background: var(--dark-navy);
+      color: #ffffff;
+      font-family: var(--font-hud);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      padding: 6px 8px;
+      text-align: center;
+      border: 1px solid #334155;
+    }
+
+    .logging-table td {
+      padding: 4px 6px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+      color: var(--text-body);
+      height: 22px;
+    }
+
+    .logging-table tr:nth-child(even) td {
+      background: var(--bg-subtle);
+    }
+
+    /* Coordinate Graph Box */
+    .graph-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .graph-instructions {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      text-align: left;
+    }
+
+    /* Calculations Box */
+    .calc-box {
+      background: var(--bg-subtle);
+      border: 1.5px solid var(--primary-blue);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 15px;
+    }
+
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+
+    .calc-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .calc-formula {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--primary-dark);
+      background: var(--primary-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--primary-border);
+    }
+
+    .calc-line {
+      border-bottom: 1.5px dashed var(--dark-navy);
+      width: 140px;
+      display: inline-block;
+    }
+
+    .rating-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      border: 1.5px solid var(--dark-navy);
+      padding: 8px 14px;
+      border-radius: 6px;
+      margin-top: 12px;
+      font-family: var(--font-hud);
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    /* Question Cards (Grid layout for Page 2) */
+    .questions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .q-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-left: 4px solid var(--primary-blue);
+      border-radius: 6px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .q-title {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--dark-navy);
+      margin-bottom: 4px;
+    }
+
+    .q-desc {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .q-answer-space {
+      background: var(--bg-subtle);
+      border: 1px dashed var(--border-dark);
+      border-radius: 4px;
+      height: 60px;
+      width: 100%;
+    }
+
+    .q-answer-space.tall {
+      height: 72px;
+    }
+
+    /* Page Footer Strip */
+    .page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1.5px solid var(--border-color);
+      padding-top: 8px;
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-subtle);
+      font-weight: 600;
+    }
+
+    .sign-box {
+      display: flex;
+      gap: 20px;
+    }
+
+    .sign-line {
+      border-bottom: 1px solid var(--dark-navy);
+      width: 110px;
+      display: inline-block;
+    }
+
+    /* ==========================================================================
+       STRICT 2-PAGE PRINT STYLES (A4 PORTRAIT)
+       ========================================================================== */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 8mm 10mm 8mm 10mm;
+      }
+
+      html, body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        font-size: 9pt;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .workbook-container {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .sheet-page {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        height: 280mm !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .sheet-page:last-child {
+        page-break-after: auto !important;
+        break-after: auto !important;
+      }
+
+      .meta-grid {
+        background: #f8fafc !important;
+        border: 1pt solid #cbd5e1 !important;
+        padding: 8pt 12pt !important;
+        margin-bottom: 10pt !important;
+      }
+
+      .logging-table {
+        border: 1pt solid #0f172a !important;
+        margin-bottom: 10pt !important;
+      }
+
+      .logging-table th {
+        background: #0f172a !important;
+        color: #ffffff !important;
+        padding: 4pt 6pt !important;
+        font-size: 7.5pt !important;
+      }
+
+      .logging-table td {
+        border: 1pt solid #cbd5e1 !important;
+        padding: 3pt 5pt !important;
+        font-size: 7.5pt !important;
+        height: 17pt !important;
+      }
+
+      .calc-box {
+        background: #f0f9ff !important;
+        border: 1pt solid #0284c7 !important;
+        padding: 8pt 12pt !important;
+      }
+
+      .questions-grid {
+        gap: 8pt !important;
+      }
+
+      .q-card {
+        border: 1pt solid #cbd5e1 !important;
+        border-left: 3pt solid #0284c7 !important;
+        padding: 7pt 9pt !important;
+      }
+
+      .q-answer-space {
+        background: #f8fafc !important;
+        border: 1pt dashed #94a3b8 !important;
+        height: 48pt !important;
+      }
+
+      .q-answer-space.tall {
+        height: 58pt !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="workbook-container">
+
+    <!-- STICKY NAVIGATION BAR (Screen Only) -->
+    <nav class="doc-nav no-print">
+      <a href="student_manual.html" class="nav-btn-back">
+        <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> STUDENT MANUAL
+      </a>
+      <div style="font-family: var(--font-hud); font-size: 0.85rem; color: #ffffff; font-weight: 800;">
+        PRINTABLE TASK SHEET &amp; GRAPH WORKBOOK (2 PAGES)
+      </div>
+      <div class="nav-actions">
+        <a href="teacher_manual.html" class="nav-btn-alt">
+          <i data-lucide="graduation-cap" style="width: 16px; height: 16px;"></i> TEACHER MANUAL
+        </a>
+        <button onclick="window.print()" class="nav-btn-print">
+          <i data-lucide="printer" style="width: 16px; height: 16px;"></i> PRINT / SAVE PDF
+        </button>
+      </div>
+    </nav>
+
+    <!-- ==========================================================================
+         PAGE 1: METADATA, TELEMETRY LOGGING TABLE & COORDINATE GRAPH GRID
+         ========================================================================== -->
+    <div class="sheet-page" id="sheet-page-1">
+      <div>
+        <!-- Page 1 Header -->
+        <header class="page-header">
+          <div>
+            <span class="brand-badge">EUROPEAN UNION STEM INITIATIVE</span>
+            <h1 class="sheet-title">SPHERE: MISSION CONTROL</h1>
+            <div class="sheet-sub">STUDENT LABORATORY TASK SHEET &amp; WORKBOOK</div>
+          </div>
+          <div style="text-align: right;">
+            <span class="page-number-tag">PAGE 1 OF 2</span>
+            <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-subtle); margin-top: 4px; font-weight: 700;">
+              REF: EU_SPHERE_TS_V2.1
+            </div>
+          </div>
+        </header>
+
+        <!-- Crew Metadata Grid -->
+        <div class="meta-grid">
+          <div class="meta-field">
+            <label>CREW MEMBERS / NAMES:</label>
+            <div class="meta-line"></div>
+          </div>
+          <div class="meta-field">
+            <label>CREW CALLSIGN / TEAM ID:</label>
+            <div class="meta-line"></div>
+          </div>
+          <div class="meta-field">
+            <label>DATE / CLASS PERIOD:</label>
+            <div class="meta-line"></div>
+          </div>
+          <div class="meta-field">
+            <label>TESTED INSULATION CONFIGURATION:</label>
+            <div class="config-options">
+              <span>[ ] A: Bare</span>
+              <span>[ ] B: Cotton</span>
+              <span>[ ] C: Mylar</span>
+              <span>[ ] D: MLI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Part A: Telemetry Logging Table -->
+        <div class="section-head">
+          <span>PART A. LIVE TELEMETRY DATA LOGGING TABLE (0 TO 15 MIN)</span>
+          <span class="tag">60s INTERVALS</span>
+        </div>
+
+        <table class="logging-table">
+          <thead>
+            <tr>
+              <th style="width: 12%;">TIME</th>
+              <th style="width: 20%;">PHYSICAL TEMP (°C)</th>
+              <th style="width: 20%;">PREDICTED TEMP (°C)</th>
+              <th style="width: 18%;">ABS DIFF |ΔT| (°C)</th>
+              <th style="width: 30%;">OBSERVER FIELD NOTES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>0 min</strong></td><td>80.0°C</td><td>80.0°C</td><td>0.0°C</td><td>Capsule submerged in 0°C ice bath</td></tr>
+            <tr><td><strong>1 min</strong></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><strong>2 min</strong></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><strong>3 min</strong></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><strong>4 min</strong></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><strong>5 min</strong></td><td></td><td></td><td></td><td>Check thermal equilibrium status</td></tr>
+            <tr><td><strong>6 min</strong></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><strong>7 min</strong></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><strong>8 min</strong></td><td></td><td></td><td></td><td>Mid-point verification mark</td></tr>
+            <tr><td><strong>9 min</strong></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><strong>10 min</strong></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><strong>11 min</strong></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><strong>12 min</strong></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><strong>13 min</strong></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><strong>14 min</strong></td><td></td><td></td><td></td><td></td></tr>
+            <tr><td><strong>15 min</strong></td><td></td><td></td><td></td><td>Final measurement checkpoint</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Part B: Coordinate Graph Grid -->
+        <div class="section-head">
+          <span>PART B. THERMAL COOLING CURVE GRAPH GRID</span>
+          <span class="tag">PHYSICAL (•) VS PREDICTED (---)</span>
+        </div>
+        
+        <div class="graph-instructions">
+          Plot physical temperature readings as solid points <strong style="color:var(--primary-dark);">(•)</strong> and join them. Plot theoretical model predictions as a dashed curve <strong style="color:var(--accent-amber-dark);">(---)</strong>.
+        </div>
+
+        <div class="graph-container">
+          <svg viewBox="0 0 680 340" style="background: #ffffff; border: 2px solid var(--dark-navy); border-radius: 6px; width: 100%; height: auto; max-height: 255px;">
+            <defs>
+              <pattern id="grid-minor-p1" width="10" height="8" patternUnits="userSpaceOnUse">
+                <path d="M 10 0 L 0 0 0 8" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+              </pattern>
+              <pattern id="grid-major-p1" width="50" height="40" patternUnits="userSpaceOnUse">
+                <rect width="50" height="40" fill="url(#grid-minor-p1)"/>
+                <path d="M 50 0 L 0 0 0 40" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+              </pattern>
+            </defs>
+
+            <!-- Graph Grid Area -->
+            <rect x="70" y="25" width="575" height="260" fill="url(#grid-major-p1)" stroke="#0f172a" stroke-width="2"/>
+
+            <!-- Y-Axis Labels (0°C to 80°C) -->
+            <text x="58" y="29" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">80°C</text>
+            <text x="58" y="61" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">70°C</text>
+            <text x="58" y="94" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">60°C</text>
+            <text x="58" y="126" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">50°C</text>
+            <text x="58" y="159" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#0284c7">40°C</text>
+            <text x="58" y="191" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">30°C</text>
+            <text x="58" y="224" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">20°C</text>
+            <text x="58" y="256" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">10°C</text>
+            <text x="58" y="288" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">0°C</text>
+
+            <text x="20" y="155" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a" transform="rotate(-90 20 155)">TEMPERATURE (°C)</text>
+
+            <!-- X-Axis Labels (0m to 15m) -->
+            <text x="70" y="304" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">0m</text>
+            <text x="185" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">3m</text>
+            <text x="300" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">6m</text>
+            <text x="415" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">9m</text>
+            <text x="530" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">12m</text>
+            <text x="645" y="304" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">15m</text>
+
+            <text x="357" y="325" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">MISSION ELAPSED TIME (MINUTES)</text>
+            <text x="357" y="16" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">THERMAL DECAY COOLING CURVE TEMPLATE</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Page 1 Footer -->
+      <footer class="page-footer">
+        <span>SPHERE: MISSION CONTROL // STUDENT TASK SHEET</span>
+        <span>FORM REF: EU_SPHERE_TS_P1</span>
+        <span>CONFIDENTIAL - CLASSROOM USE ONLY</span>
+      </footer>
+    </div>
+
+
+    <!-- ==========================================================================
+         PAGE 2: CALCULATIONS & LAB REFLECTION QUESTIONS (Q1 - Q6)
+         ========================================================================== -->
+    <div class="sheet-page" id="sheet-page-2">
+      <div>
+        <!-- Page 2 Header -->
+        <header class="page-header">
+          <div>
+            <span class="brand-badge">EUROPEAN UNION STEM INITIATIVE</span>
+            <h1 class="sheet-title">SPHERE: MISSION CONTROL</h1>
+            <div class="sheet-sub">THERMAL CORRELATION &amp; ANALYSIS WORKBOOK</div>
+          </div>
+          <div style="text-align: right;">
+            <span class="page-number-tag">PAGE 2 OF 2</span>
+            <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-subtle); margin-top: 4px; font-weight: 700;">
+              REF: EU_SPHERE_TS_V2.1
+            </div>
+          </div>
+        </header>
+
+        <!-- Part C: Calculations -->
+        <div class="section-head">
+          <span>PART C. MANUAL THERMAL CORRELATION SCORE CALCULATION</span>
+          <span class="tag">PERFORMANCE EVALUATION</span>
+        </div>
+
+        <div class="calc-box">
+          <div class="calc-row">
+            <span><strong>1. Sum of Absolute Differences:</strong> <span class="calc-formula">Sum |ΔT| = Σ |T_phys - T_pred|</span></span>
+            <span><strong>Sum |ΔT| = </strong> <span class="calc-line"></span> °C</span>
+          </div>
+          <div class="calc-row">
+            <span><strong>2. Average Experimental Error:</strong> <span class="calc-formula">Avg Error = Sum |ΔT| / 15</span></span>
+            <span><strong>Avg Error = </strong> <span class="calc-line"></span> °C</span>
+          </div>
+          <div class="calc-row">
+            <span><strong>3. Digital Twin Correlation Score:</strong> <span class="calc-formula">Score = 100 - (Avg Error × 5)</span></span>
+            <span><strong>Score = </strong> <span class="calc-line"></span> %</span>
+          </div>
+
+          <div class="rating-strip">
+            <span>FINAL CREW RATING:</span>
+            <span>[ ] A+ (&ge;95%)</span>
+            <span>[ ] A (90-94%)</span>
+            <span>[ ] B (80-89%)</span>
+            <span>[ ] C (70-79%)</span>
+            <span>[ ] RE-CALIBRATE (&lt;70%)</span>
+          </div>
+        </div>
+
+        <!-- Part D: Questions Grid (Q1 - Q6) -->
+        <div class="section-head">
+          <span>PART D. POST-FLIGHT ANALYSIS &amp; REFLECTION QUESTIONS</span>
+          <span class="tag">6 KEY CONCEPT QUESTIONS</span>
+        </div>
+
+        <div class="questions-grid">
+          <!-- Q1 -->
+          <div class="q-card">
+            <div>
+              <div class="q-title">Q1: Thermal Radiation vs Conduction</div>
+              <div class="q-desc">
+                Mylar reflects IR radiation in space. Why does Mylar alone perform poorly when submerged in an ice bath without cotton or bubble wrap?
+              </div>
+            </div>
+            <div class="q-answer-space"></div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="q-card">
+            <div>
+              <div class="q-title">Q2: Physical Meaning of Decay Rate Constant (k)</div>
+              <div class="q-desc">
+                In Newton's Law T(t) = T_env + (T_0 - T_env)·e^(-kt), does a smaller k value indicate better or worse insulation? Explain using the formula.
+              </div>
+            </div>
+            <div class="q-answer-space"></div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="q-card">
+            <div>
+              <div class="q-title">Q3: Multi-Layer Insulation (MLI) Synergy</div>
+              <div class="q-desc">
+                Explain how combining Cotton + Bubble Wrap + Mylar in Configuration D creates a synergistic defense against conduction, convection, and radiation.
+              </div>
+            </div>
+            <div class="q-answer-space"></div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="q-card">
+            <div>
+              <div class="q-title">Q4: Sources of Experimental Error</div>
+              <div class="q-desc">
+                Identify two physical sources of error (e.g. sensor positioning, water leakage, cap sealing) that could cause readings to diverge from the model.
+              </div>
+            </div>
+            <div class="q-answer-space"></div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="q-card">
+            <div>
+              <div class="q-title">Q5: Environmental Boundary Shift</div>
+              <div class="q-desc">
+                If your ice bath warms from 0°C to 4°C during the lab run, how should you adjust the simulation parameters in Mission Control to keep model validity?
+              </div>
+            </div>
+            <div class="q-answer-space tall"></div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="q-card">
+            <div>
+              <div class="q-title">Q6: Heat Capacity &amp; Volume Scaling</div>
+              <div class="q-desc">
+                If the core water volume is increased from 100ml to 200ml, how does total heat capacity (Q = m · c · ΔT) affect the cooling rate k?
+              </div>
+            </div>
+            <div class="q-answer-space tall"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 2 Footer & Sign-off -->
+      <div>
+        <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 8px 14px; border-radius: 6px; margin-bottom: 8px;">
+          <div class="sign-box">
+            <span><strong>CREW LEAD SIGNATURE:</strong> <span class="sign-line"></span></span>
+            <span><strong>TEACHER VALIDATION:</strong> <span class="sign-line"></span></span>
+            <span><strong>FINAL GRADE:</strong> ________ / 100</span>
+          </div>
+        </div>
+
+        <footer class="page-footer">
+          <span>SPHERE: MISSION CONTROL // STUDENT TASK SHEET</span>
+          <span>FORM REF: EU_SPHERE_TS_P2</span>
+          <span>END OF WORKBOOK (PAGE 2 OF 2)</span>
+        </footer>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Lucide Icons Script -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

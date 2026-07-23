@@ -218,14 +218,18 @@ line-height:1.6;">
                 </ul>
 
                 <div
-                  style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.06); padding-top: 12px; display: flex; justify-content: flex-end; gap: 10px;">
+                  style="margin-top: 10px; border-top: 1px dashed rgba(255,255,255,0.06); padding-top: 12px; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px;">
+                  <a href="student_task_sheet.html" target="_blank" class="btn-hud btn-orange"
+                    style="width: auto; padding: 6px 14px; font-size: 0.75rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                    <i data-lucide="file-spreadsheet" style="width: 14px; height: 14px;"></i> 2-PAGE TASK SHEET &amp; GRAPH WORKBOOK (PRINT/PDF)
+                  </a>
                   <a href="student_manual.html" target="_blank" class="btn-hud btn-outline"
                     style="width: auto; padding: 6px 14px; font-size: 0.75rem; border-color: rgba(0, 242, 254, 0.4); color: var(--cyan); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                     <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> VIEW STUDENT MANUAL (WEB)
                   </a>
                   <a href="V2.1_SPHERE_ Mission Control - Student User Manual.pdf" target="_blank" class="btn-hud"
                     style="width: auto; padding: 6px 14px; font-size: 0.75rem; background: rgba(0, 242, 254, 0.15); border-color: var(--cyan); color: var(--cyan); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                    <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> DOWNLOAD PDF
+                    <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> DOWNLOAD MANUAL PDF
                   </a>
                 </div>
               </div>
@@ -679,14 +683,15 @@ line-height:1.6;">
             <div class="hud-panel">
               <div class="panel-header">
                 <span class="panel-title"><i data-lucide="database"></i> ADD MEASUREMENT</span>
+                <span class="panel-meta">AUTO-DETECTED TIME</span>
               </div>
 
               <form id="telemetry-entry-form" onsubmit="event.preventDefault();">
                 <div class="form-group">
-                  <label class="form-label">ELAPSED TIME</label>
+                  <label class="form-label">ELAPSED TIME <span class="label-hint">AUTO-SYNCED</span></label>
                   <div class="hud-input-wrapper">
                     <input type="number" id="log-time" class="hud-input" min="0" max="15" step="0.1"
-                      placeholder="e.g. 1.0">
+                      placeholder="Auto (e.g. 1.0)">
                     <span class="input-suffix">MINUTES</span>
                   </div>
                 </div>
@@ -702,6 +707,9 @@ line-height:1.6;">
 
                 <button type="submit" class="btn-hud" id="btn-log-telemetry">
                   <i data-lucide="plus-circle"></i> ADD DATA POINT
+                </button>
+                <button type="button" class="btn-hud btn-orange btn-outline" id="btn-open-epoch-modal" style="margin-top: 10px;">
+                  <i data-lucide="maximize-2"></i> POPUP CENTERED INPUT WINDOW
                 </button>
               </form>
 
@@ -806,7 +814,7 @@ line-height:1.6;">
             <i data-lucide="lock"></i>
           </div>
           <h2 class="gate-title glow-orange">AUTHORIZATION KEY REQUIRED</h2>
-          <p class="gate-subtitle">This directory contains safety protocols and pedagogical keyframes reserved for lab
+          <p class="gate-subtitle">This directory contains safety protocols and keyframes reserved for lab
             instructors.</p>
 
           <form id="admin-login-form" onsubmit="event.preventDefault();">
@@ -903,7 +911,7 @@ line-height:1.6;">
               <span class="panel-meta">MATH_THEORY // DIRECTIVE</span>
             </div>
 
-            <h2 class="glow-cyan" style="font-size: 1.1rem; margin-bottom: 15px;">Pedagogical Guidance</h2>
+            <h2 class="glow-cyan" style="font-size: 1.1rem; margin-bottom: 15px;">Instructor Guidance</h2>
             <p class="briefing-text">
               Use these explanations to anchor class theories on the chalkboard:
             </p>
@@ -1019,7 +1027,7 @@ padding-left:20px;
                 </p>
               </div>
               <div class="sim-stat-box" style="text-align: left;">
-                <div class="sim-stat-title glow-cyan">PEDAGOGICAL VALUES</div>
+                <div class="sim-stat-title glow-cyan">EDUCATIONAL VALUES</div>
                 <p class="step-desc" style="font-size: 0.8rem; margin-top: 5px;">
                   • <strong>Active Interaction:</strong> Students physically read and log temperature values every 60
                   seconds (instead of automated passive tracking).<br>
@@ -1039,11 +1047,11 @@ padding-left:20px;
             </div>
           </div>
 
-          <!-- Teacher's Pedagogical Manual & EU Lesson Keyframes -->
+          <!-- Teacher's Manual & EU Lesson Keyframes -->
           <div class="hud-panel panel-orange"
             style="grid-column: span 2; margin-top: 15px; border-color: rgba(255, 159, 67, 0.45);">
             <div class="panel-header">
-              <span class="panel-title glow-orange"><i data-lucide="graduation-cap"></i> INSTRUCTOR PEDAGOGICAL MANUAL
+              <span class="panel-title glow-orange"><i data-lucide="graduation-cap"></i> INSTRUCTOR MANUAL
                 &amp; LESSON KEYFRAMES</span>
               <span class="panel-meta">CURRICULUM // EU_STEM_GUIDELINES</span>
             </div>
@@ -1084,7 +1092,7 @@ padding-left:20px;
               <div
                 style="background: rgba(0, 242, 254, 0.03); padding: 15px; border-radius: 8px; border: 1px solid rgba(0, 242, 254, 0.15);">
                 <h4 style="color: var(--cyan); font-family: var(--font-hud); font-size: 0.85rem; margin-bottom: 8px;">2.
-                  PEDAGOGICAL SOLUTIONS &amp; COOLING RATES</h4>
+                  INSTRUCTOR SOLUTIONS &amp; COOLING RATES</h4>
                 <p class="briefing-text" style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 8px;">
                   Here are the expected Newtonian decay coefficients (approximate values depending on insulation tight
                   wrapping):
@@ -1113,7 +1121,7 @@ padding-left:20px;
                 style="width: auto; padding: 6px 14px; font-size: 0.75rem; border-color: rgba(255,159,67,0.4); color: var(--orange); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                 <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> VIEW TEACHER MANUAL (WEB)
               </a>
-              <a href="V2.1_SPHERE_ Mission Control - Teacher Pedagogical Manual.pdf" target="_blank" class="btn-hud"
+              <a href="V2.1_SPHERE_ Mission Control - Teacher Manual.pdf" target="_blank" class="btn-hud"
                 style="width: auto; padding: 6px 14px; font-size: 0.75rem; background: rgba(255, 159, 67, 0.15); border-color: var(--orange); color: var(--orange); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                 <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> DOWNLOAD OFFICIAL PDF
               </a>
@@ -1857,6 +1865,47 @@ padding-left:20px;
       </div>
     </footer>
 
+  </div>
+
+  <!-- Centered Screen Telemetry Input Modal (Active Timer Checkpoint) -->
+  <div id="epoch-modal-overlay" class="modal-overlay" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title glow-orange">
+          <i data-lucide="thermometer"></i>
+          <span>TELEMETRY CHECKPOINT: MIN <span id="modal-epoch-min">1</span></span>
+        </div>
+        <button type="button" class="btn-close-modal" id="btn-close-epoch-modal">&times;</button>
+      </div>
+      
+      <div class="modal-body">
+        <p class="modal-desc">
+          Mission Clock Running. Auto-logged Elapsed Time:
+          <span class="modal-time-badge" id="modal-elapsed-time-display">1.0 MIN</span>
+        </p>
+
+        <form id="epoch-modal-form" onsubmit="event.preventDefault();">
+          <div class="form-group" style="margin-bottom: 20px;">
+            <label class="form-label" style="justify-content: center; font-size: 0.85rem; margin-bottom: 10px;">
+              OBSERVED CAPSULE TEMPERATURE (°C)
+            </label>
+            <div class="hud-input-wrapper">
+              <input type="number" id="modal-log-temp" class="hud-input modal-temp-input" min="0" max="100" step="0.05" placeholder="e.g. 74.5" required>
+              <span class="input-suffix" style="font-size: 1.2rem; font-weight: bold; right: 16px;">°C</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px; justify-content: center;">
+            <button type="submit" class="btn-hud btn-orange" id="btn-modal-submit-telemetry" style="padding: 12px 20px;">
+              <i data-lucide="send"></i> TRANSMIT PACKET
+            </button>
+            <button type="button" class="btn-hud btn-outline" id="btn-modal-skip" style="width: auto; padding: 12px 16px;">
+              SKIP
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
   <!-- Custom Alert Toast notification -->

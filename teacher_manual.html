@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPHERE: Mission Control - Teacher Pedagogical Manual & Solutions Key</title>
+  <title>SPHERE: Mission Control - Teacher Manual & Solutions Key</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
   
   <style>
     /* ==========================================================================
-       SPHERE MISSION CONTROL: OFFICIAL PEDAGOGICAL MANUAL STYLESHEET
+       SPHERE MISSION CONTROL: OFFICIAL TEACHER MANUAL STYLESHEET
        Theme: Ultra-High Contrast Instructor Manual (WCAG AAA Compliant)
        ========================================================================== */
 
@@ -428,17 +428,15 @@
         background: transparent !important;
       }
 
-      /* Start each section on a brand-new PDF page */
+      /* Natural flowing sections without forced blank pages */
       .doc-section {
-        break-before: page;
-        page-break-before: always;
-        margin-bottom: 0;
-        padding-top: 10px;
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+        margin-bottom: 24pt !important;
+        padding-top: 0;
       }
 
       .doc-section:first-of-type {
-        break-before: auto;
-        page-break-before: auto;
         padding-top: 0;
       }
 
@@ -549,7 +547,7 @@
         <a href="student_manual.html" class="nav-btn-alt">
           <i data-lucide="book-open" style="width: 16px; height: 16px;"></i> STUDENT MANUAL
         </a>
-        <a href="V2.1_SPHERE_ Mission Control - Teacher Pedagogical Manual.pdf" target="_blank" class="nav-btn-pdf">
+        <a href="V2.1_SPHERE_ Mission Control - Teacher Manual.pdf" target="_blank" class="nav-btn-pdf">
           <i data-lucide="file-text" style="width: 16px; height: 16px;"></i> DOWNLOAD PDF (V2.1)
         </a>
       </div>
@@ -559,7 +557,7 @@
     <header class="doc-header">
       <span class="header-badge">EUROPEAN UNION STEM LABORATORY INITIATIVE</span>
       <h1 class="doc-title">SPHERE: MISSION CONTROL</h1>
-      <div class="doc-subtitle">TEACHER PEDAGOGICAL MANUAL &amp; SOLUTIONS KEY</div>
+      <div class="doc-subtitle">TEACHER MANUAL &amp; SOLUTIONS KEY</div>
       <div class="doc-meta-strip">
         <span>REF: EU_SPHERE_TEACHER_V2.1</span>
         <span>•</span>
@@ -569,7 +567,7 @@
       </div>
     </header>
 
-    <!-- PEDAGOGICAL SUMMARY CALLOUT -->
+    <!-- SUMMARY CALLOUT -->
     <div class="callout-box">
       <strong>Inquiry-Based Science Education (IBSE) Framework:</strong>
       This instructor manual provides curriculum alignment, a 60-minute lesson plan, equipment preparation protocols, theoretical physics decay reference tables, and complete official solutions for the Student Worksheet &amp; Question Sheet (Q1 through Q8).
@@ -577,13 +575,13 @@
 
     <!-- SECTION 1 -->
     <section class="doc-section" id="section-1">
-      <h2><i data-lucide="award"></i> 1. PEDAGOGICAL CONTEXT &amp; SYLLABUS ALIGNMENT</h2>
+      <h2><i data-lucide="award"></i> 1. CURRICULUM CONTEXT &amp; SYLLABUS ALIGNMENT</h2>
       <p>
         The <strong>SPHERE: Mission Control Digital Twin Laboratory</strong> integrates hands-on experimental physics with computational modeling. Designed for secondary and upper-secondary physics (NGSS, IB Physics, A-Level, and National STEM Curricula), this module targets the following core learning outcomes:
       </p>
       <ul>
         <li><strong>Heat Transfer Mechanisms:</strong> Conduction, Convection, and Thermal Radiation.</li>
-        <li><strong>Exponential Mathematical Decay:</strong> Differential and integrated Newton's Law of Cooling $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$.</li>
+        <li><strong>Exponential Mathematical Decay:</strong> Differential and integrated Newton's Law of Cooling <i>T(t) = T<sub>env</sub> + (T<sub>0</sub> - T<sub>env</sub>)e<sup>-kt</sup></i>.</li>
         <li><strong>Digital Twin Engineering Methodology:</strong> Validating physical hardware sensors against computer simulation models.</li>
         <li><strong>Data Analysis &amp; Graphing Literacy:</strong> Manual data logging, graph construction, and percentage error evaluation.</li>
       </ul>
@@ -620,12 +618,12 @@
           <tr>
             <td><strong>35–48 min</strong></td>
             <td>4. Graphing &amp; Correlation</td>
-            <td>Crews plot paper graph curves, compute absolute errors $| \Delta T |$, and calculate their crew Thermal Correlation Score.</td>
+            <td>Crews plot paper graph curves, compute absolute errors |ΔT|, and calculate their crew Thermal Correlation Score.</td>
           </tr>
           <tr>
             <td><strong>48–60 min</strong></td>
             <td>5. Debrief &amp; Analysis</td>
-            <td>Instructor leads reflection on material decay rates ($k$), sources of experimental error, and spacesuit engineering trade-offs.</td>
+            <td>Instructor leads reflection on material decay rates (<i>k</i>), sources of experimental error, and spacesuit engineering trade-offs.</td>
           </tr>
         </tbody>
       </table>
@@ -639,7 +637,7 @@
       </p>
       <ul>
         <li><strong>Water Temperature Control:</strong> Maintain hot water supply at 80°C (use a thermostatically controlled kettle).</li>
-        <li><strong>Ice Bath Preparation:</strong> Prepare slurry buckets containing 50% crushed ice and 50% cold water to guarantee stable $T_{\text{env}} = 0^\circ\text{C}$ boundary conditions.</li>
+        <li><strong>Ice Bath Preparation:</strong> Prepare slurry buckets containing 50% crushed ice and 50% cold water to guarantee stable <i>T</i><sub>env</sub> = 0°C boundary conditions.</li>
         <li><strong>PG7 Seal Verification:</strong> Demonstrate tightening the PG7 gland dome nut to prevent liquid leakage into student capsules.</li>
       </ul>
     </section>
@@ -648,7 +646,7 @@
     <section class="doc-section" id="section-4">
       <h2><i data-lucide="book-open"></i> 4. THEORETICAL PHYSICS REFERENCE &amp; DECAY CONSTANTS</h2>
       <p>
-        Expected end temperatures ($t = 15$ min) based on $T_0 = 80^\circ\text{C}$ and $T_{\text{env}} = 0^\circ\text{C}$:
+        Expected end temperatures (<i>t</i> = 15 min) based on <i>T</i><sub>0</sub> = 80°C and <i>T</i><sub>env</sub> = 0°C:
       </p>
 
       <table class="styled-table">
@@ -711,7 +709,7 @@
         <div class="solution-item">
           <div class="solution-title">Q2 Solution: Physical Meaning of Cooling Constant (k)</div>
           <div class="solution-body">
-            <strong>Exemplar Response:</strong> A <strong>smaller</strong> $k$ value represents a <strong>better</strong> thermal insulator. In Newton's exponential equation $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$, the decay exponent is proportional to $-k \cdot t$. As $k$ approaches zero, the exponential factor $e^{-kt}$ stays near 1.0, keeping core temperatures high and delaying heat loss over time.
+            <strong>Exemplar Response:</strong> A <strong>smaller</strong> <i>k</i> value represents a <strong>better</strong> thermal insulator. In Newton's exponential equation <i>T(t) = T<sub>env</sub> + (T<sub>0</sub> - T<sub>env</sub>)e<sup>-kt</sup></i>, the decay exponent is proportional to -<i>k</i> · <i>t</i>. As <i>k</i> approaches zero, the exponential factor <i>e<sup>-kt</sup></i> stays near 1.0, keeping core temperatures high and delaying heat loss over time.
           </div>
         </div>
 
@@ -719,7 +717,7 @@
         <div class="solution-item">
           <div class="solution-title">Q3 Solution: Multi-Layer Insulation (MLI) Synergy</div>
           <div class="solution-body">
-            <strong>Exemplar Response:</strong> MLI combines three complementary barriers: cotton traps microscopic stationary air pockets to block conduction; bubble wrap creates sealed air chambers that suppress fluid convection currents; and metallic Mylar reflects thermal radiation back into the core. By simultaneously targeting all three modes of heat transfer, the combination achieves a dramatically lower decay rate ($k = 0.015$) than any single material alone.
+            <strong>Exemplar Response:</strong> MLI combines three complementary barriers: cotton traps microscopic stationary air pockets to block conduction; bubble wrap creates sealed air chambers that suppress fluid convection currents; and metallic Mylar reflects thermal radiation back into the core. By simultaneously targeting all three modes of heat transfer, the combination achieves a dramatically lower decay rate (<i>k</i> = 0.015) than any single material alone.
           </div>
         </div>
 
@@ -741,7 +739,7 @@
         <div class="solution-item">
           <div class="solution-title">Q5 Solution: Environmental Boundary Calibration</div>
           <div class="solution-body">
-            <strong>Exemplar Response:</strong> Students should measure the actual ambient ice bath temperature using their DS18B20 thermometer and enter that exact value (e.g., $T_{\text{env}} = 4.5^\circ\text{C}$) into the $T_{\text{env}}$ parameter field in Mission Control. Updating the environmental boundary parameter ensures the mathematical digital twin accurate models physical classroom conditions.
+            <strong>Exemplar Response:</strong> Students should measure the actual ambient ice bath temperature using their DS18B20 thermometer and enter that exact value (e.g., <i>T</i><sub>env</sub> = 4.5°C) into the <i>T</i><sub>env</sub> parameter field in Mission Control. Updating the environmental boundary parameter ensures the mathematical digital twin accurately models physical classroom conditions.
           </div>
         </div>
 
@@ -749,7 +747,7 @@
         <div class="solution-item">
           <div class="solution-title">Q6 Solution: Water Volume &amp; Heat Capacity Scaling</div>
           <div class="solution-body">
-            <strong>Exemplar Response:</strong> Doubling the water volume from 100ml to 200ml doubles the total thermal mass $m$. Because thermal energy stored is $Q = m \cdot c \cdot \Delta T$, the core holds twice as much thermal energy. For the same surface area, the temperature drop per minute will be slower, resulting in a <strong>smaller effective decay rate constant $k$</strong>.
+            <strong>Exemplar Response:</strong> Doubling the water volume from 100ml to 200ml doubles the total thermal mass <i>m</i>. Because thermal energy stored is <i>Q = m · c · ΔT</i>, the core holds twice as much thermal energy. For the same surface area, the temperature drop per minute will be slower, resulting in a <strong>smaller effective decay rate constant <i>k</i></strong>.
           </div>
         </div>
 
@@ -809,7 +807,7 @@
 
     <!-- ACTION BUTTONS -->
     <div class="action-bar no-print">
-      <a href="V2.1_SPHERE_ Mission Control - Teacher Pedagogical Manual.pdf" download="SPHERE_Teacher_Manual_V2.1.pdf" class="btn-action btn-primary" style="text-decoration:none;">
+      <a href="V2.1_SPHERE_ Mission Control - Teacher Manual.pdf" download="SPHERE_Teacher_Manual_V2.1.pdf" class="btn-action btn-primary" style="text-decoration:none;">
         <i data-lucide="download"></i> DOWNLOAD TEACHER MANUAL (PDF)
       </a>
       <a href="student_manual.html" class="btn-action btn-secondary">
@@ -819,7 +817,7 @@
 
     <!-- FOOTER -->
     <footer class="doc-footer">
-      SPHERE: MISSION CONTROL // TEACHER PEDAGOGICAL MANUAL &amp; SOLUTIONS // © 2026 PROJECT SPHERE INITIATIVE
+      SPHERE: MISSION CONTROL // TEACHER MANUAL &amp; SOLUTIONS // © 2026 PROJECT SPHERE INITIATIVE
     </footer>
 
   </div>

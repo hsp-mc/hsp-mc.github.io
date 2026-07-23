@@ -640,17 +640,15 @@
         background: transparent !important;
       }
 
-      /* Start each section on a brand-new PDF page */
+      /* Natural flowing sections without forced blank pages */
       .doc-section {
-        break-before: page;
-        page-break-before: always;
-        margin-bottom: 0;
-        padding-top: 10px;
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+        margin-bottom: 24pt !important;
+        padding-top: 0;
       }
 
       .doc-section:first-of-type {
-        break-before: auto;
-        page-break-before: auto;
         padding-top: 0;
       }
 
@@ -772,6 +770,9 @@
         <a href="teacher_manual.html" class="nav-btn-alt">
           <i data-lucide="graduation-cap" style="width: 16px; height: 16px;"></i> TEACHER MANUAL
         </a>
+        <a href="student_task_sheet.html" target="_blank" class="nav-btn-pdf" style="background: rgba(2, 132, 199, 0.15); color: #0284c7; border-color: #0284c7;">
+          <i data-lucide="file-spreadsheet" style="width: 16px; height: 16px;"></i> PRINT 2-PAGE TASK SHEET
+        </a>
         <a href="V2.1_SPHERE_ Mission Control - Student User Manual.pdf" target="_blank" class="nav-btn-pdf">
           <i data-lucide="file-text" style="width: 16px; height: 16px;"></i> DOWNLOAD PDF (V2.1)
         </a>
@@ -787,8 +788,6 @@
         <span>REF: EU_SPHERE_STUDENT_V2.1</span>
         <span>•</span>
         <span>LEVEL: SECONDARY / STEM PHYSICS</span>
-        <span>•</span>
-        <span>DIGITAL TWIN LAB</span>
       </div>
     </header>
 
@@ -964,7 +963,7 @@
       <h2><i data-lucide="play-circle"></i> 5. STEP-BY-STEP MISSION CONTROL WORKFLOW</h2>
       <ol>
         <li><strong>Pre-Flight Certification:</strong> Access Mission Control on the desktop terminal and complete the Pre-Flight Safety Quiz to initialize telemetry access.</li>
-        <li><strong>Run Simulation Prediction:</strong> Go to the <strong>Simulator</strong> tab. Select your assigned insulation configuration, set initial parameters ($T_0 = 80^\circ\text{C}$, $T_{\text{env}} = 0^\circ\text{C}$), and click <strong>RUN SIMULATION PREDICTION</strong>.</li>
+        <li><strong>Run Simulation Prediction:</strong> Go to the <strong>Simulator</strong> tab. Select your assigned insulation configuration, set initial parameters (<i>T</i><sub>0</sub> = 80°C, <i>T</i><sub>env</sub> = 0°C), and click <strong>RUN SIMULATION PREDICTION</strong>.</li>
         <li><strong>Prepare Physical Water Core:</strong> Measure 100ml of hot water at 80°C, pour it into the PET jar, screw the PG7 cap tightly, and verify the waterproof seal.</li>
         <li><strong>Submerge &amp; Start Timer:</strong> Place the capsule into the 0°C ice water bath and click <strong>START LIVE TIMER</strong> in the <strong>Live Telemetry</strong> tab.</li>
         <li><strong>Log Measurements Every 60 Seconds:</strong> Record the thermometer reading into your Task Sheet and the Mission Control digital entry log at every minute mark up to 15 minutes.</li>
@@ -974,6 +973,11 @@
 
     <!-- SECTION 6: STUDENT TASK SHEET -->
     <section class="doc-section" id="section-6">
+      <div style="text-align: center; margin-bottom: 20px;" class="no-print">
+        <a href="student_task_sheet.html" target="_blank" class="btn-action btn-primary" style="text-decoration:none; background: #0284c7; font-size: 0.95rem; padding: 16px 32px;">
+          <i data-lucide="printer" style="width: 20px; height: 20px;"></i> OPEN &amp; PRINT DEDICATED 2-PAGE WORKBOOK (PDF READY)
+        </a>
+      </div>
       <div class="worksheet-card" id="task-sheet">
         <div class="worksheet-header">
           <span class="worksheet-title"><i data-lucide="clipboard-list" style="vertical-align: middle;"></i> SECTION 6: STUDENT TASK SHEET &amp; GRAPH WORKBOOK</span>
@@ -1142,15 +1146,15 @@
       <div class="question-block">
         <div class="question-title">Question 6: Water Volume &amp; Heat Capacity Scaling</div>
         <p style="font-size: 0.9rem; margin-bottom: 6px;">
-          If the water volume inside the PET capsule was increased from 100ml to 200ml, how would the total heat capacity ($Q = m \cdot c \cdot \Delta T$) affect the cooling rate? Would $k$ increase or decrease?
+          If the water volume inside the PET capsule was increased from 100ml to 200ml, how would the total heat capacity (<i>Q = m · c · ΔT</i>) affect the cooling rate? Would <i>k</i> increase or decrease?
         </p>
         <div class="answer-space"></div>
       </div>
 
       <div class="question-block">
-        <div class="question-title">Question 7: Spacesuit Design Trade-Offs in EVA</div>
+        <div class="question-title">QUESTION 07: SPACESUIT ENGINEERING TRADE-OFFS</div>
         <p style="font-size: 0.9rem; margin-bottom: 6px;">
-          In real space missions (such as spacewalk Extravehicular Activities), why can't engineers simply add 50 layers of insulation to achieve a near-zero $k$ value? What mechanical trade-offs occur?
+          In real space missions (such as spacewalk Extravehicular Activities), why can't engineers simply add 50 layers of insulation to achieve a near-zero <i>k</i> value? What mechanical trade-offs occur?
         </p>
         <div class="answer-space"></div>
       </div>

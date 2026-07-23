@@ -587,13 +587,14 @@ document.addEventListener('DOMContentLoaded', () => {
         state.timer.secondsRemaining--;
         updateTimerDisplay();
         
-        // 60-Second Logging Epoch Prompts (Pedagogical Prompts)
+        // 60-Second Logging Epoch Prompts
         const elapsedSeconds = state.timer.duration - state.timer.secondsRemaining;
         if (elapsedSeconds > 0 && elapsedSeconds % 60 === 0 && state.timer.secondsRemaining >= 0) {
           const minsElapsed = elapsedSeconds / 60;
           logToConsole(`MISSION TIME [${String(minsElapsed).padStart(2, '0')}:00]: Epoch checkpoint! Transmit actual thermometer telemetry.`, 'warn');
           showNotification(`Transmit physical telemetry for Minute ${minsElapsed}!`, 'info');
           playEpochSound();
+          openEpochModal(minsElapsed);
         }
         
         if (state.timer.secondsRemaining <= 0) {
@@ -636,6 +637,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const mins = Math.floor(state.timer.secondsRemaining / 60);
     const secs = state.timer.secondsRemaining % 60;
     elements.timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    
+    // Auto-calculate and sync elapsed time into log input if not being actively edited
+    if (elements.logTimeInput && document.activeElement !== elements.logTimeInput) {
+      const elapsedSeconds = state.timer.duration ? (state.timer.duration - state.timer.secondsRemaining) : 0;
+      const elapsedMins = (elapsedSeconds / 60).toFixed(1);
+      elements.logTimeInput.value = elapsedMins;
+    }
   }
 
   if (elements.btnTimerToggle) {
@@ -770,13 +778,8 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.acquiredCountBadge.textContent = `${state.telemetryPoints.length} / ${duration + 1}`;
   }
 
-  // Transmit and log manual packet
-  document.getElementById('telemetry-entry-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const timeVal = parseFloat(elements.logTimeInput.value);
-    const tempVal = parseFloat(elements.logTempInput.value);
-    
+  // Helper to record telemetry packet
+  function addTelemetryPoint(timeVal, tempVal) {
     const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
     const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
     
@@ -784,27 +787,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isNaN(timeVal) || timeVal < 0 || timeVal > duration) {
       showNotification(`Invalid entry: Time must be between 0 and ${duration} mins`, "error");
       playWarningSound();
-      return;
+      return false;
     }
     if (isNaN(tempVal) || tempVal < 0 || tempVal > 100) {
       showNotification("Invalid entry: Temp must be between 0 and 100°C", "error");
       playWarningSound();
-      return;
+      return false;
     }
     
     // Check duplicate timestamps
     const existsIndex = state.telemetryPoints.findIndex(pt => Math.abs(pt.time - timeVal) < 0.01);
     if (existsIndex !== -1) {
-      showNotification(`Warning: Timestamp ${timeVal} min already registered. Removing old packet first.`, "error");
+      showNotification(`Timestamp ${timeVal} min updated with new temperature.`, "info");
       state.telemetryPoints.splice(existsIndex, 1);
     }
     
     // Add point to array
     state.telemetryPoints.push({ time: timeVal, temp: tempVal });
     
-    // Clean inputs
-    elements.logTimeInput.value = '';
-    elements.logTempInput.value = '';
+    // Clean temp input
+    if (elements.logTempInput) elements.logTempInput.value = '';
     
     // Sync elements
     updateTelemetryTable();
@@ -812,9 +814,97 @@ document.addEventListener('DOMContentLoaded', () => {
     saveToLocalStorage();
     
     logToConsole(`LAB: Telemetry packet transmitted. Time: ${timeVal.toFixed(1)}m, Temp: ${tempVal.toFixed(1)}°C.`, 'success');
-    showNotification("Telemetry Logged", "success");
+    showNotification(`Logged ${tempVal.toFixed(1)}°C at t=${timeVal.toFixed(1)} min`, "success");
     playSuccessSound();
+    return true;
+  }
+
+  // Transmit and log manual packet from main form
+  if (document.getElementById('telemetry-entry-form')) {
+    document.getElementById('telemetry-entry-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const timeVal = parseFloat(elements.logTimeInput.value);
+      const tempVal = parseFloat(elements.logTempInput.value);
+      addTelemetryPoint(timeVal, tempVal);
+    });
+  }
+
+  // ==========================================================================
+  // Centered Screen Telemetry Epoch Modal Controller
+  // ==========================================================================
+  const epochModalElements = {
+    overlay: document.getElementById('epoch-modal-overlay'),
+    minBadge: document.getElementById('modal-epoch-min'),
+    elapsedDisplay: document.getElementById('modal-elapsed-time-display'),
+    tempInput: document.getElementById('modal-log-temp'),
+    form: document.getElementById('epoch-modal-form'),
+    btnClose: document.getElementById('btn-close-epoch-modal'),
+    btnSkip: document.getElementById('btn-modal-skip'),
+    btnOpen: document.getElementById('btn-open-epoch-modal')
+  };
+
+  function openEpochModal(minsElapsed) {
+    if (!epochModalElements.overlay) return;
+    
+    const elapsedSecs = state.timer.duration ? (state.timer.duration - state.timer.secondsRemaining) : 0;
+    const currentMins = minsElapsed !== undefined ? minsElapsed : (elapsedSecs / 60).toFixed(1);
+    
+    if (epochModalElements.minBadge) {
+      epochModalElements.minBadge.textContent = Math.max(1, Math.floor(currentMins));
+    }
+    if (epochModalElements.elapsedDisplay) {
+      epochModalElements.elapsedDisplay.textContent = `${currentMins} MIN`;
+    }
+    if (epochModalElements.tempInput) {
+      epochModalElements.tempInput.value = '';
+      setTimeout(() => epochModalElements.tempInput.focus(), 100);
+    }
+    
+    epochModalElements.overlay.style.display = 'flex';
+    lucide.createIcons();
+  }
+
+  function closeEpochModal() {
+    if (epochModalElements.overlay) {
+      epochModalElements.overlay.style.display = 'none';
+    }
+  }
+
+  if (epochModalElements.btnClose) {
+    epochModalElements.btnClose.addEventListener('click', closeEpochModal);
+  }
+  if (epochModalElements.btnSkip) {
+    epochModalElements.btnSkip.addEventListener('click', closeEpochModal);
+  }
+  if (epochModalElements.btnOpen) {
+    epochModalElements.btnOpen.addEventListener('click', () => {
+      playClickSound();
+      const elapsedSecs = state.timer.duration ? (state.timer.duration - state.timer.secondsRemaining) : 0;
+      const currentMins = (elapsedSecs / 60).toFixed(1);
+      openEpochModal(currentMins);
+    });
+  }
+
+  // Close modal on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && epochModalElements.overlay && epochModalElements.overlay.style.display === 'flex') {
+      closeEpochModal();
+    }
   });
+
+  if (epochModalElements.form) {
+    epochModalElements.form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const elapsedSecs = state.timer.duration ? (state.timer.duration - state.timer.secondsRemaining) : 0;
+      const timeVal = parseFloat((elapsedSecs / 60).toFixed(1));
+      const tempVal = parseFloat(epochModalElements.tempInput.value);
+
+      const success = addTelemetryPoint(timeVal, tempVal);
+      if (success) {
+        closeEpochModal();
+      }
+    });
+  }
 
   // Table synchronization
   function updateTelemetryTable() {
@@ -1101,7 +1191,7 @@ document.addEventListener('DOMContentLoaded', () => {
       elements.quizStatusBadge.style.color = "var(--green)";
       elements.quizStatusBadge.classList.add('glow-green');
       
-      // Auto check correct answers for pedagogical reinforcement
+      // Auto check correct answers for educational reinforcement
       const q1El = document.querySelector('input[name="q1"][value="radiation"]');
       const q2El = document.querySelector('input[name="q2"][value="conduction"]');
       const q3El = document.querySelector('input[name="q3"][value="convection"]');
