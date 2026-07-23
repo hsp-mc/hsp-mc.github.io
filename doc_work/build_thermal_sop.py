@@ -469,6 +469,22 @@ def add_equation_paragraph(document, label, equation):
     return p
 
 
+def set_header_image_alt_text(section):
+    continuation = section.header
+    for idx, doc_pr in enumerate(continuation._element.xpath(".//wp:docPr")):
+        doc_pr.set("descr", "HSP institutional logo")
+        doc_pr.set("title", "HSP logo")
+    first = section.first_page_header
+    labels = [
+        ("Technische Universität München logo and wordmark", "TUM logo"),
+        ("HSP institutional logo", "HSP logo"),
+    ]
+    for idx, doc_pr in enumerate(first._element.xpath(".//wp:docPr")):
+        descr, title = labels[idx] if idx < len(labels) else ("Institutional logo", "Institutional logo")
+        doc_pr.set("descr", descr)
+        doc_pr.set("title", title)
+
+
 def build():
     global BULLET_NUM_ID, NUMBER_NUM_ID
     if not REFERENCE.exists():
@@ -485,6 +501,7 @@ def build():
 
     section = document.sections[0]
     section.different_first_page_header_footer = True
+    set_header_image_alt_text(section)
 
     document.core_properties.title = "Experimental Toolkit Procedure - Thermal Insulation and Cooling Rates"
     document.core_properties.subject = "Illustrated classroom SOP for comparing passive thermal insulation systems"
@@ -678,7 +695,7 @@ def build():
         "Graph comparing predicted and observed bubble-wrap cooling curves over 15 minutes.",
     )
 
-    add_heading(document, "PREDICTION–OBSERVATION GRAPHS (CONTINUED)", 2, page_break_before=True)
+    add_heading(document, "RESULT GRAPHS (CONTINUED)", 2, page_break_before=True)
     add_image(
         document,
         IMAGES["mylar_graph"],

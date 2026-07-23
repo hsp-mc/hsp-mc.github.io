@@ -1,0 +1,170 @@
+{
+  "input": "/Users/mandinu/Downloads/project/Experimental_Toolkit_Thermal_Insulation_SOP_Illustrated.docx",
+  "fonts_by_char_count": {
+    "Cambria Math": 85
+  },
+  "direct_run_formatting_runs": 281,
+  "direct_paragraph_formatting_paragraphs": 50,
+  "heading_like_paragraphs_not_heading_style": [
+    {
+      "para_index": 54,
+      "text": "Temperature drop: \u0394Tdrop = T\u2080 \u2212 T\u2081\u2085",
+      "style": "Normal"
+    },
+    {
+      "para_index": 55,
+      "text": "Newtonian cooling model: T(t) = Tamb + (T\u2080 \u2212 Tamb)e^(\u2212kt)",
+      "style": "Normal"
+    },
+    {
+      "para_index": 56,
+      "text": "Estimated cooling coefficient: k = \u2212ln[(Tt \u2212 Tamb)/(T\u2080 \u2212 Tamb)] / t",
+      "style": "Normal"
+    },
+    {
+      "para_index": 87,
+      "text": "Author",
+      "style": "Normal"
+    },
+    {
+      "para_index": 89,
+      "text": "Version number",
+      "style": "Normal"
+    },
+    {
+      "para_index": 91,
+      "text": "Last edited on",
+      "style": "Normal"
+    },
+    {
+      "para_index": 94,
+      "text": "Item",
+      "style": "Normal"
+    },
+    {
+      "para_index": 95,
+      "text": "Purpose / requirement",
+      "style": "Normal"
+    },
+    {
+      "para_index": 115,
+      "text": "Item",
+      "style": "Normal"
+    },
+    {
+      "para_index": 116,
+      "text": "Purpose / requirement",
+      "style": "Normal"
+    },
+    {
+      "para_index": 135,
+      "text": "Configuration",
+      "style": "Normal"
+    },
+    {
+      "para_index": 136,
+      "text": "Construction",
+      "style": "Normal"
+    },
+    {
+      "para_index": 137,
+      "text": "Main heat-transfer control",
+      "style": "Normal"
+    },
+    {
+      "para_index": 138,
+      "text": "Expected behavior",
+      "style": "Normal"
+    },
+    {
+      "para_index": 155,
+      "text": "Step",
+      "style": "Normal"
+    },
+    {
+      "para_index": 156,
+      "text": "Action",
+      "style": "Normal"
+    },
+    {
+      "para_index": 157,
+      "text": "Notes",
+      "style": "Normal"
+    },
+    {
+      "para_index": 158,
+      "text": "Duration",
+      "style": "Normal"
+    },
+    {
+      "para_index": 159,
+      "text": "Check",
+      "style": "Normal"
+    },
+    {
+      "para_index": 220,
+      "text": "Condition",
+      "style": "Normal"
+    }
+  ],
+  "examples": {
+    "direct_run_formatting": [
+      {
+        "para_index": 4,
+        "run_text": "This classroom experiment compares how four passive insulation configurations sl",
+        "style": "Normal"
+      },
+      {
+        "para_index": 5,
+        "run_text": "Recommended class format: four groups working in parallel. Expected duration: ap",
+        "style": "Normal"
+      },
+      {
+        "para_index": 15,
+        "run_text": "HOT-WATER HAZARD. ",
+        "style": "Normal"
+      },
+      {
+        "para_index": 21,
+        "run_text": "Optional extension. ",
+        "style": "Normal"
+      },
+      {
+        "para_index": 22,
+        "run_text": "Fair-test rule. ",
+        "style": "Normal"
+      }
+    ],
+    "direct_paragraph_formatting": [
+      {
+        "para_index": 7,
+        "text": "Distinguish conduction, convection, and thermal radiation in a practical system.",
+        "style": "Normal"
+      },
+      {
+        "para_index": 8,
+        "text": "Explain why trapped air and layered insulation can reduce heat transfer.",
+        "style": "Normal"
+      },
+      {
+        "para_index": 9,
+        "text": "Collect a controlled time series and compare observed and predicted cooling curves.",
+        "style": "Normal"
+      },
+      {
+        "para_index": 10,
+        "text": "Evaluate why material choice alone is insufficient when gaps, compression, or inconsistent probe placement introduce exp",
+        "style": "Normal"
+      },
+      {
+        "para_index": 15,
+        "text": "HOT-WATER HAZARD. Water near 80 \u00b0C can cause serious scalds. An adult must prepare the bath and handle the heated core w",
+        "style": "Normal"
+      }
+    ]
+  },
+  "notes": [
+    "Direct formatting is not always wrong, but it often causes inconsistent output when templates change.",
+    "Heading-like paragraphs not using Heading styles can break TOC and accessibility."
+  ]
+}

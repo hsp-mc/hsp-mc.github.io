@@ -1,0 +1,38 @@
+{
+  "file": "/Users/mandinu/Downloads/project/Experimental_Toolkit_Thermal_Insulation_SOP_Illustrated.docx",
+  "counts": {
+    "high": 2,
+    "medium": 1,
+    "low": 0
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "kind": "table_no_header_row",
+      "message": "Table first row is not marked as header (w:tblHeader missing)",
+      "context": {
+        "part": "word/document.xml"
+      }
+    },
+    {
+      "severity": "high",
+      "kind": "image_missing_alt",
+      "message": "Image missing alt text (descr/title empty)",
+      "context": {
+        "part": "word/header1.xml",
+        "id": "636696816",
+        "name": "Picture 1"
+      }
+    },
+    {
+      "severity": "high",
+      "kind": "image_missing_alt",
+      "message": "Image missing alt text (descr/title empty)",
+      "context": {
+        "part": "word/header2.xml",
+        "id": "371973125",
+        "name": "Picture 1"
+      }
+    }
+  ]
+}
