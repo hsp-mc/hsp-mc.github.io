@@ -16,7 +16,7 @@
   
   /* Accent Colors & Glowing Glows */
   --cyan: #0284c7;
-  --cyan-bright: #38bdf8;
+  --cyan-bright: #0284c7;
   --cyan-glow: rgba(2, 132, 199, 0.25);
   --cyan-border: #cbd5e1;
   
@@ -141,7 +141,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 16px 24px;
   background: rgba(15, 23, 42, 0.95);
   border: 1.5px solid rgba(2, 132, 199, 0.5);
-  border-bottom: 3px solid #38bdf8;
+  border-bottom: 3px solid #0284c7;
   border-radius: 12px;
   margin-top: 10px;
   margin-bottom: 25px;
@@ -156,8 +156,8 @@ h1, h2, h3, h4, h5, h6 {
   left: 10%;
   width: 40%;
   height: 3px;
-  background: linear-gradient(90deg, #38bdf8, var(--blue), transparent);
-  box-shadow: 0 0 15px #38bdf8;
+  background: linear-gradient(90deg, #0284c7, var(--blue), transparent);
+  box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
 }
 
 /* Logo */
@@ -287,17 +287,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-tab:hover {
   background: rgba(2, 132, 199, 0.25);
-  border-color: #38bdf8;
+  border-color: #0284c7;
   color: #ffffff;
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 14px rgba(2, 132, 199, 0.4);
 }
 
 .nav-tab.active {
   background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-  border-color: #38bdf8;
+  border-color: #7dd3fc;
   color: #ffffff;
   font-weight: 800;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.5), inset 0 0 10px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 0 20px rgba(2, 132, 199, 0.5), inset 0 0 10px rgba(2, 132, 199, 0.2);
 }
 
 .nav-tab.active::after {
@@ -307,8 +307,8 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 3px;
-  background: #38bdf8;
-  box-shadow: 0 0 10px #38bdf8;
+  background: #7dd3fc;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
 }
 
 .nav-tab.tab-admin {
@@ -413,7 +413,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 4px;
-  background: linear-gradient(90deg, #0284c7, #38bdf8, transparent);
+  background: linear-gradient(90deg, #0284c7, #7dd3fc, transparent);
 }
 
 .hud-panel:hover {
@@ -910,6 +910,107 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Live Telemetry Dark Windows Styling */
+#telemetry .hud-panel {
+  background: radial-gradient(circle at 50% 0%, #0f172a 0%, #0b1329 100%);
+  color: #f8fafc;
+  border: 1.5px solid rgba(2, 132, 199, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(2, 132, 199, 0.15);
+}
+
+#telemetry .hud-panel::before {
+  background: linear-gradient(90deg, #0284c7, #0284c7, transparent);
+}
+
+#telemetry .hud-panel:hover {
+  border-color: #0284c7;
+  box-shadow: 0 12px 35px rgba(2, 132, 199, 0.3);
+}
+
+#telemetry .hud-panel.panel-orange {
+  background: radial-gradient(circle at 50% 0%, #17162b 0%, #0b0d1e 100%);
+  border-color: rgba(217, 119, 6, 0.45);
+}
+
+#telemetry .hud-panel.panel-orange::before {
+  background: linear-gradient(90deg, #d97706, #f59e0b, transparent);
+}
+
+#telemetry .hud-panel.panel-orange:hover {
+  border-color: #d97706;
+  box-shadow: 0 12px 35px rgba(217, 119, 6, 0.3);
+}
+
+#telemetry .panel-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+#telemetry .panel-title {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+#telemetry .panel-title svg {
+  color: #0284c7;
+}
+
+#telemetry .hud-panel.panel-orange .panel-title svg {
+  color: #d97706;
+}
+
+#telemetry .panel-meta {
+  color: #94a3b8;
+}
+
+#telemetry .form-label {
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+#telemetry .hud-input {
+  background-color: #040814;
+  border: 1.5px solid #0284c7;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+#telemetry .hud-input:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 12px rgba(2, 132, 199, 0.4);
+}
+
+#telemetry .hud-input::placeholder {
+  color: #64748b;
+}
+
+#telemetry .input-suffix {
+  color: #94a3b8;
+}
+
+#telemetry .sim-stat-box {
+  background: rgba(4, 8, 20, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+#telemetry .sim-stat-title {
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+#telemetry .sim-stat-value {
+  color: #0284c7;
+}
+
+#telemetry .autofill-panel {
+  background: rgba(2, 132, 199, 0.12);
+  border: 1px dashed #0284c7;
+}
+
+#telemetry .autofill-text {
+  color: #7dd3fc;
+  font-weight: 600;
+}
+
 /* Digital Mission Timer Cockpit */
 .timer-panel {
   display: flex;
@@ -995,9 +1096,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-hud);
   font-size: 0.75rem;
   text-align: left;
-  background: #e0f2fe;
+  background: #0f172a;
   border-bottom: 2px solid #0284c7;
-  color: #0369a1;
+  color: #7dd3fc;
   padding: 12px 16px;
   letter-spacing: 0.05em;
   font-weight: 700;
@@ -1005,17 +1106,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .telemetry-table td {
   padding: 10px 16px;
-  border-bottom: 1px solid #e2e8f0;
-  color: #1e293b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
 }
 
 .telemetry-table tr:hover td {
-  background: #f8fafc;
-  color: #0f172a;
+  background: rgba(2, 132, 199, 0.15);
+  color: #ffffff;
 }
 
 .table-row-prediction {
-  color: #64748b !important;
+  color: #94a3b8 !important;
   font-style: italic;
 }
 
@@ -1041,8 +1142,8 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f0f9ff;
-  border: 1px dashed #7dd3fc;
+  background: rgba(2, 132, 199, 0.12);
+  border: 1px dashed #0284c7;
   padding: 12px 20px;
   border-radius: 8px;
   margin-top: 15px;
@@ -1050,7 +1151,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .autofill-text {
   font-size: 0.8rem;
-  color: #0369a1;
+  color: #7dd3fc;
   font-weight: 600;
 }
 
@@ -1476,12 +1577,12 @@ h1, h2, h3, h4, h5, h6 {
   width: 44px;
   height: 44px;
   background: rgba(2, 132, 199, 0.2);
-  border: 1px solid #38bdf8;
+  border: 1px solid #0284c7;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #38bdf8;
+  color: #7dd3fc;
   margin-bottom: 12px;
 }
 
@@ -1502,8 +1603,8 @@ h1, h2, h3, h4, h5, h6 {
 .flashcard-back {
   background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);
   color: #ffffff;
-  border: 2px solid #38bdf8;
-  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.3);
+  border: 2px solid #0284c7;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.3);
   transform: rotateY(180deg);
 }
 
@@ -1523,7 +1624,7 @@ h1, h2, h3, h4, h5, h6 {
 .flashcard-back .flashcard-title {
   font-family: var(--font-hud);
   font-size: 0.95rem;
-  color: #38bdf8;
+  color: #7dd3fc;
   margin-bottom: 8px;
   font-weight: 700;
 }

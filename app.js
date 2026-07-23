@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const state = {
     selectedModel: 'bare',
     modelConstants: {
-      bare: { name: 'Bare Capsule (Control)', k: 0.150, color: '#38bdf8' },
+      bare: { name: 'Bare Capsule (Control)', k: 0.150, color: '#0284c7' },
       cotton: { name: 'Cotton Layer (Conduction Shield)', k: 0.080, color: '#4facfe' },
       mylar: { name: 'Mylar Layer (Radiation Shield)', k: 0.040, color: '#ff9f43' },
       mli: { name: 'Full MLI (Cotton + Bubble Wrap + Mylar)', k: 0.015, color: '#10b981' },
