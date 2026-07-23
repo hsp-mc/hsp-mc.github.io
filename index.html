@@ -988,12 +988,12 @@ Understand how simplified scientific models can be used to represent real-world 
               <span class="badge-mix badge-mix-cyan"><i data-lucide="sparkles"></i> HIGH SCHOOL STEM MODULE</span>
             </div>
           </div>
-          <p style="margin-bottom: 15px;">
-            Welcome to the Interactive Study Hub! High school space projects require a solid grasp of thermodynamics, radiative heat transfer, and digital twin modeling. Hover or tap on any 3D card below to flip it and reveal the underlying scientific concept.
+          <p style="margin-bottom: 15px; font-weight: 600; font-size: 0.95rem; color: #334155;">
+            Welcome to the Interactive Study Hub! High school space projects require a solid grasp of thermodynamics, radiative heat transfer, and digital twin modeling. Click or tap any card below to flip it and test your knowledge!
           </p>
 
-          <!-- Study Filter Bar -->
-          <div class="flashcards-header-bar">
+          <!-- Study Filter & Action Bar -->
+          <div class="flashcards-header-bar" style="background: #f8fafc; padding: 12px 18px; border-radius: 14px; border: 1px solid #cbd5e1;">
             <div class="filter-btn-group" id="flashcard-filter-group">
               <button class="btn-filter active" data-filter="all">ALL CONCEPTS</button>
               <button class="btn-filter" data-filter="thermo">NEWTON'S LAW</button>
@@ -1001,12 +1001,15 @@ Understand how simplified scientific models can be used to represent real-world 
               <button class="btn-filter" data-filter="mli">MLI SPACESUITS</button>
               <button class="btn-filter" data-filter="twin">DIGITAL TWIN</button>
             </div>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);" id="flipped-count-badge">FLIPPED: 0 / 6</span>
-              <button class="btn-hud" id="btn-flip-all" style="width: auto; padding: 6px 12px; font-size: 0.75rem; background: rgba(0, 242, 254, 0.1); border: 1px solid var(--cyan); color: var(--cyan);">
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+              <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #0284c7; font-weight: bold;" id="flipped-count-badge">FLIPPED: 0 / 6</span>
+              <button class="btn-hud" id="btn-flip-all" style="width: auto; padding: 6px 12px; font-size: 0.75rem; background: #e0f2fe; border: 1px solid #0284c7; color: #0369a1; border-radius: 20px; font-weight: 700;">
                 <i data-lucide="rotate-cw"></i> FLIP ALL
               </button>
-              <button class="btn-hud" id="btn-reset-flashcards" style="width: auto; padding: 6px 12px; font-size: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.2); color: var(--text-bright);">
+              <button class="btn-hud" onclick="window.print();" style="width: auto; padding: 6px 12px; font-size: 0.75rem; background: #0284c7; border: 1px solid #0284c7; color: #fff; border-radius: 20px; font-weight: 700;">
+                <i data-lucide="download"></i> DOWNLOAD / PRINT CARDS
+              </button>
+              <button class="btn-hud" id="btn-reset-flashcards" style="width: auto; padding: 6px 12px; font-size: 0.75rem; background: #f1f5f9; border: 1px solid #cbd5e1; color: #334155; border-radius: 20px; font-weight: 700;">
                 <i data-lucide="refresh-cw"></i> RESET
               </button>
             </div>
@@ -1020,13 +1023,13 @@ Understand how simplified scientific models can be used to represent real-world 
                 <div class="flashcard-front">
                   <div class="flashcard-icon"><i data-lucide="flame"></i></div>
                   <div class="flashcard-title">NEWTON'S LAW OF COOLING</div>
-                  <div class="flashcard-desc">What formula describes how objects cool down in a surrounding reservoir?</div>
-                  <div style="font-size: 0.7rem; color: #0284c7; margin-top: 10px; font-weight: bold;">[ TAP TO REVEAL FORMULA ]</div>
+                  <div class="flashcard-desc">What equation predicts how fast an hot capsule loses heat in ice water?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL FORMULA ]</div>
                 </div>
                 <div class="flashcard-back">
                   <div class="flashcard-icon"><i data-lucide="check-circle"></i></div>
                   <div class="flashcard-title">T(t) = T<sub>env</sub> + (T₀ - T<sub>env</sub>)e<sup>-kt</sup></div>
-                  <div class="flashcard-desc">Heat loss rate is proportional to the temperature gap between capsule &amp; environment!</div>
+                  <div class="flashcard-desc">The rate of heat loss is proportional to the temperature gap (T₀ - T<sub>env</sub>)!</div>
                 </div>
               </div>
             </div>
@@ -1037,13 +1040,13 @@ Understand how simplified scientific models can be used to represent real-world 
                 <div class="flashcard-front">
                   <div class="flashcard-icon"><i data-lucide="sun"></i></div>
                   <div class="flashcard-title">RADIATIVE SHIELDING</div>
-                  <div class="flashcard-desc">How does Mylar protect spacecraft from extreme solar radiation in space?</div>
-                  <div style="font-size: 0.7rem; color: #0284c7; margin-top: 10px; font-weight: bold;">[ TAP TO REVEAL ANSWER ]</div>
+                  <div class="flashcard-desc">How does shiny Mylar protect spacecraft from solar heat in space?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
                   <div class="flashcard-icon"><i data-lucide="shield"></i></div>
                   <div class="flashcard-title">INFRARED REFLECTION</div>
-                  <div class="flashcard-desc">Mylar's metallic mirror coating reflects up to 90% of electromagnetic infrared radiation away!</div>
+                  <div class="flashcard-desc">Mylar's metallic mirror coating bounces back up to 90% of heat radiation away!</div>
                 </div>
               </div>
             </div>
@@ -1054,13 +1057,13 @@ Understand how simplified scientific models can be used to represent real-world 
                 <div class="flashcard-front">
                   <div class="flashcard-icon"><i data-lucide="layers"></i></div>
                   <div class="flashcard-title">MULTI-LAYER INSULATION (MLI)</div>
-                  <div class="flashcard-desc">Why do spacesuits use MLI instead of a single thick insulating material?</div>
-                  <div style="font-size: 0.7rem; color: #0284c7; margin-top: 10px; font-weight: bold;">[ TAP TO REVEAL ANSWER ]</div>
+                  <div class="flashcard-desc">Why do spacesuits stack Cotton + Bubble Wrap + Mylar together?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
                   <div class="flashcard-icon"><i data-lucide="box"></i></div>
-                  <div class="flashcard-title">TRIPLE-BARRIER SHIELD</div>
-                  <div class="flashcard-desc">MLI blocks conduction (cotton), traps convection (bubble wrap), and reflects radiation (Mylar)!</div>
+                  <div class="flashcard-title">TRIPLE HEAT SHIELD</div>
+                  <div class="flashcard-desc">Cotton blocks conduction, Bubble Wrap traps convection air, and Mylar reflects radiation!</div>
                 </div>
               </div>
             </div>
@@ -1071,13 +1074,13 @@ Understand how simplified scientific models can be used to represent real-world 
                 <div class="flashcard-front">
                   <div class="flashcard-icon"><i data-lucide="trending-down"></i></div>
                   <div class="flashcard-title">DECAY CONSTANT (k)</div>
-                  <div class="flashcard-desc">Does a lower k constant indicate superior or inferior thermal insulation?</div>
-                  <div style="font-size: 0.7rem; color: #0284c7; margin-top: 10px; font-weight: bold;">[ TAP TO REVEAL ANSWER ]</div>
+                  <div class="flashcard-desc">If Capsule A has k = 0.15 and Capsule B has k = 0.015, which is better insulated?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
                   <div class="flashcard-icon"><i data-lucide="award"></i></div>
-                  <div class="flashcard-title">LOWER k = SUPERIOR PROTECTION</div>
-                  <div class="flashcard-desc">A lower k value represents a slower thermal decay rate, keeping hot items warmer for much longer!</div>
+                  <div class="flashcard-title">CAPSULE B (k = 0.015)</div>
+                  <div class="flashcard-desc">A smaller k value means a much slower cooling rate — retaining heat 10x longer!</div>
                 </div>
               </div>
             </div>
@@ -1087,14 +1090,14 @@ Understand how simplified scientific models can be used to represent real-world 
               <div class="flashcard-inner">
                 <div class="flashcard-front">
                   <div class="flashcard-icon"><i data-lucide="cpu"></i></div>
-                  <div class="flashcard-title">DIGITAL TWIN ECOSYSTEM</div>
-                  <div class="flashcard-desc">What is a Digital Twin in aerospace mission engineering?</div>
-                  <div style="font-size: 0.7rem; color: #0284c7; margin-top: 10px; font-weight: bold;">[ TAP TO REVEAL ANSWER ]</div>
+                  <div class="flashcard-title">DIGITAL TWIN CONCEPT</div>
+                  <div class="flashcard-desc">What is a Digital Twin in modern aerospace engineering?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
                   <div class="flashcard-icon"><i data-lucide="activity"></i></div>
-                  <div class="flashcard-title">REAL-TIME SIMULATION ENGINE</div>
-                  <div class="flashcard-desc">A computational model running math predictions synchronized directly with physical sensor telemetry!</div>
+                  <div class="flashcard-title">LIVE VIRTUAL MODEL</div>
+                  <div class="flashcard-desc">A computer simulation running math predictions alongside real physical sensor data!</div>
                 </div>
               </div>
             </div>
@@ -1104,17 +1107,119 @@ Understand how simplified scientific models can be used to represent real-world 
               <div class="flashcard-inner">
                 <div class="flashcard-front">
                   <div class="flashcard-icon"><i data-lucide="snowflake"></i></div>
-                  <div class="flashcard-title">ICE BATH VACUUM ANALOG</div>
-                  <div class="flashcard-desc">Why do we submerge the experimental capsule in a 0°C ice bath?</div>
-                  <div style="font-size: 0.7rem; color: #0284c7; margin-top: 10px; font-weight: bold;">[ TAP TO REVEAL ANSWER ]</div>
+                  <div class="flashcard-title">ICE BATH SPACE ANALOG</div>
+                  <div class="flashcard-desc">Why submerge the hot test tube in 0°C ice water during lab trials?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
                   <div class="flashcard-icon"><i data-lucide="thermometer-snowflake"></i></div>
-                  <div class="flashcard-title">CONSTANT THERMAL SINK</div>
-                  <div class="flashcard-desc">Ice water maintains a constant 0°C reservoir mimicking the extreme temperature drop of space!</div>
+                  <div class="flashcard-title">CONSTANT HEAT SINK</div>
+                  <div class="flashcard-desc">Ice water keeps a steady 0°C environment, simulating the intense thermal sink of deep space!</div>
                 </div>
               </div>
             </div>
+          </div>
+
+          <!-- ==================== INTERACTIVE THERMODYNAMIC CALCULATOR WIDGET ==================== -->
+          <div style="margin-top: 35px; background: #f8fafc; padding: 24px; border-radius: 18px; border: 2px solid #cbd5e1;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;">
+              <h3 style="font-family: var(--font-hud); font-size: 1.1rem; color: #0f172a; margin: 0; display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="calculator" style="color: #0284c7;"></i> INTERACTIVE PRACTICE: HOW TO CALCULATE YOUR DECAY CONSTANT (k)
+              </h3>
+              <span class="badge-mix badge-mix-cyan"><i data-lucide="zap"></i> STEP-BY-STEP MATH TOOL</span>
+            </div>
+            
+            <p style="font-size: 0.9rem; color: #475569; margin-bottom: 20px; line-height: 1.5;">
+              The decay constant <strong>k</strong> measures how fast heat leaks out of your capsule. You can calculate your capsule's exact <strong>k-value</strong> from your lab thermometer readings using this simple formula derived from Newton's Law of Cooling:
+            </p>
+
+            <div style="background: #0f172a; color: #00f2fe; padding: 15px; border-radius: 12px; text-align: center; font-family: var(--font-mono); font-size: 1.1rem; margin-bottom: 20px; border: 1px solid #0284c7;">
+              <strong>k = - [ ln( (T(t) - T<sub>env</sub>) / (T₀ - T<sub>env</sub>) ) ] / t</strong>
+            </div>
+
+            <!-- Calculator Inputs -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 20px;">
+              <div>
+                <label style="font-family: var(--font-hud); font-size: 0.75rem; color: #0f172a; display: block; margin-bottom: 5px; font-weight: 700;">INITIAL TEMP T₀ (°C):</label>
+                <input type="number" id="calc-t0" value="80.0" step="0.5" class="hud-input" style="background: #fff; color: #0f172a; border: 2px solid #cbd5e1; border-radius: 10px;">
+              </div>
+              <div>
+                <label style="font-family: var(--font-hud); font-size: 0.75rem; color: #0f172a; display: block; margin-bottom: 5px; font-weight: 700;">ICE WATER T<sub>env</sub> (°C):</label>
+                <input type="number" id="calc-tenv" value="0.0" step="0.5" class="hud-input" style="background: #fff; color: #0f172a; border: 2px solid #cbd5e1; border-radius: 10px;">
+              </div>
+              <div>
+                <label style="font-family: var(--font-hud); font-size: 0.75rem; color: #0f172a; display: block; margin-bottom: 5px; font-weight: 700;">TEMP AT TIME t T(t) (°C):</label>
+                <input type="number" id="calc-tt" value="23.8" step="0.5" class="hud-input" style="background: #fff; color: #0f172a; border: 2px solid #cbd5e1; border-radius: 10px;">
+              </div>
+              <div>
+                <label style="font-family: var(--font-hud); font-size: 0.75rem; color: #0f172a; display: block; margin-bottom: 5px; font-weight: 700;">ELAPSED TIME t (MINUTES):</label>
+                <input type="number" id="calc-time" value="15" step="1" class="hud-input" style="background: #fff; color: #0f172a; border: 2px solid #cbd5e1; border-radius: 10px;">
+              </div>
+            </div>
+
+            <!-- Live Step-by-Step Output Panel -->
+            <div style="background: #ffffff; padding: 18px; border-radius: 14px; border: 2px solid #e2e8f0; font-family: var(--font-mono); font-size: 0.88rem; color: #1e293b;" id="calc-output-box">
+              <div style="font-weight: 700; color: #0284c7; margin-bottom: 8px;">CALCULATED RESULTS &amp; STEP-BY-STEP BREAKDOWN:</div>
+              <div id="calc-step-1" style="margin-bottom: 4px;">1. Temp Ratio = (23.8 - 0) / (80.0 - 0) = 0.2975</div>
+              <div id="calc-step-2" style="margin-bottom: 4px;">2. Natural Log ln(0.2975) = -1.2123</div>
+              <div id="calc-step-3" style="font-weight: 800; font-size: 1rem; color: #0f172a; margin-top: 8px;">3. DERIVED k-VALUE = 0.081 min⁻¹</div>
+              <div id="calc-match-badge" style="margin-top: 10px; display: inline-block; padding: 4px 12px; background: #e0f2fe; color: #0369a1; border-radius: 20px; font-weight: 700; font-family: var(--font-hud); font-size: 0.75rem;">
+                MATCHING MATERIAL: COTTON SHIELD (k ≈ 0.080)
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ==================== WORKED PRACTICE PROBLEMS WITH HINTS ==================== -->
+          <div style="margin-top: 30px; background: #ffffff; padding: 24px; border-radius: 18px; border: 2px solid #cbd5e1;">
+            <h3 style="font-family: var(--font-hud); font-size: 1.1rem; color: #0f172a; margin-top: 0; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+              <i data-lucide="help-circle" style="color: #f59e0b;"></i> PRACTICE PROBLEMS FOR CLASSROOM REINFORCEMENT
+            </h3>
+
+            <!-- Problem 1 -->
+            <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 15px;">
+              <div style="font-family: var(--font-hud); font-size: 0.85rem; color: #0284c7; font-weight: 800; margin-bottom: 6px;">PRACTICE PROBLEM #01</div>
+              <div style="font-size: 0.92rem; color: #0f172a; font-weight: 600; margin-bottom: 10px;">
+                An astronaut capsule is filled with 80°C hot water and placed into a 0°C ice bath. After 15 minutes, its thermometer reads 63.8°C. What is the capsule's insulation decay constant <em>k</em>?
+              </div>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn-hud btn-hint-toggle" data-target="prob1-hint" style="width: auto; padding: 5px 12px; font-size: 0.75rem; background: #fef3c7; border: 1px solid #f59e0b; color: #b45309; border-radius: 16px; font-weight: 700;">
+                  <i data-lucide="lightbulb"></i> REVEAL HINT
+                </button>
+                <button class="btn-hud btn-solution-toggle" data-target="prob1-sol" style="width: auto; padding: 5px 12px; font-size: 0.75rem; background: #e0f2fe; border: 1px solid #0284c7; color: #0369a1; border-radius: 16px; font-weight: 700;">
+                  <i data-lucide="check-circle"></i> REVEAL WORKED SOLUTION
+                </button>
+              </div>
+              <div id="prob1-hint" style="display: none; margin-top: 10px; padding: 10px; background: #fffbeb; border-radius: 8px; font-size: 0.85rem; color: #b45309; font-weight: 600;">
+                💡 Hint: Extract values: T₀ = 80, T_env = 0, T(15) = 63.8, t = 15. Plug into k = -ln(63.8 / 80) / 15.
+              </div>
+              <div id="prob1-sol" style="display: none; margin-top: 10px; padding: 10px; background: #f0fdf4; border-radius: 8px; font-size: 0.85rem; color: #15803d; font-weight: 700; font-family: var(--font-mono);">
+                ✓ Solution: ratio = 63.8/80 = 0.7975. ln(0.7975) = -0.2263. k = -(-0.2263)/15 = 0.015 min⁻¹. This matches the Multi-Layer Insulation (MLI) spacesuit!
+              </div>
+            </div>
+
+            <!-- Problem 2 -->
+            <div style="background: #f8fafc; padding: 16px; border-radius: 12px; border: 1px solid #e2e8f0;">
+              <div style="font-family: var(--font-hud); font-size: 0.85rem; color: #0284c7; font-weight: 800; margin-bottom: 6px;">PRACTICE PROBLEM #02</div>
+              <div style="font-size: 0.92rem; color: #0f172a; font-weight: 600; margin-bottom: 10px;">
+                If a Mylar-wrapped capsule has k = 0.040 and starts at 80°C in a 0°C ice bath, what will its temperature be after 20 minutes?
+              </div>
+              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button class="btn-hud btn-hint-toggle" data-target="prob2-hint" style="width: auto; padding: 5px 12px; font-size: 0.75rem; background: #fef3c7; border: 1px solid #f59e0b; color: #b45309; border-radius: 16px; font-weight: 700;">
+                  <i data-lucide="lightbulb"></i> REVEAL HINT
+                </button>
+                <button class="btn-hud btn-solution-toggle" data-target="prob2-sol" style="width: auto; padding: 5px 12px; font-size: 0.75rem; background: #e0f2fe; border: 1px solid #0284c7; color: #0369a1; border-radius: 16px; font-weight: 700;">
+                  <i data-lucide="check-circle"></i> REVEAL WORKED SOLUTION
+                </button>
+              </div>
+              <div id="prob2-hint" style="display: none; margin-top: 10px; padding: 10px; background: #fffbeb; border-radius: 8px; font-size: 0.85rem; color: #b45309; font-weight: 600;">
+                💡 Hint: Use T(20) = 0 + (80 - 0) * e^(-0.040 * 20).
+              </div>
+              <div id="prob2-sol" style="display: none; margin-top: 10px; padding: 10px; background: #f0fdf4; border-radius: 8px; font-size: 0.85rem; color: #15803d; font-weight: 700; font-family: var(--font-mono);">
+                ✓ Solution: e^(-0.040 * 20) = e^(-0.8) = 0.4493. T(20) = 80 * 0.4493 = 35.9°C.
+              </div>
+            </div>
+
           </div>
 
         </div>

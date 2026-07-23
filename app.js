@@ -1231,6 +1231,92 @@ document.addEventListener('DOMContentLoaded', () => {
         playClickSound();
       });
     }
+
+    // ==========================================================================
+    // Interactive K-Value Calculator Logic
+    // ==========================================================================
+    const calcT0 = document.getElementById('calc-t0');
+    const calcTenv = document.getElementById('calc-tenv');
+    const calcTt = document.getElementById('calc-tt');
+    const calcTime = document.getElementById('calc-time');
+    const calcStep1 = document.getElementById('calc-step-1');
+    const calcStep2 = document.getElementById('calc-step-2');
+    const calcStep3 = document.getElementById('calc-step-3');
+    const calcMatchBadge = document.getElementById('calc-match-badge');
+
+    function updateKCalculator() {
+      if (!calcT0 || !calcTenv || !calcTt || !calcTime) return;
+
+      const t0 = parseFloat(calcT0.value) || 80;
+      const tenv = parseFloat(calcTenv.value) || 0;
+      const tt = parseFloat(calcTt.value) || 20;
+      const time = parseFloat(calcTime.value) || 15;
+
+      const num = tt - tenv;
+      const den = t0 - tenv;
+
+      if (den <= 0 || num <= 0 || time <= 0) {
+        if (calcStep1) calcStep1.textContent = '1. Invalid parameters (Check temperatures and time)';
+        if (calcStep2) calcStep2.textContent = '2. Natural Log = N/A';
+        if (calcStep3) calcStep3.textContent = '3. DERIVED k-VALUE = N/A';
+        return;
+      }
+
+      const ratio = num / den;
+      const lnRatio = Math.log(ratio);
+      const kVal = -lnRatio / time;
+
+      if (calcStep1) calcStep1.textContent = `1. Temp Ratio = (${tt.toFixed(1)} - ${tenv.toFixed(1)}) / (${t0.toFixed(1)} - ${tenv.toFixed(1)}) = ${ratio.toFixed(4)}`;
+      if (calcStep2) calcStep2.textContent = `2. Natural Log ln(${ratio.toFixed(4)}) = ${lnRatio.toFixed(4)}`;
+      if (calcStep3) calcStep3.textContent = `3. DERIVED k-VALUE = ${kVal.toFixed(3)} min⁻¹`;
+
+      // Match insulation grade
+      let material = "CUSTOM INSULATION SHIELD";
+      let badgeBg = "#e0f2fe";
+      let badgeColor = "#0369a1";
+
+      if (kVal <= 0.025) {
+        material = "FULL MLI SPACESUIT (k ≈ 0.015 min⁻¹)";
+        badgeBg = "#dcfce7";
+        badgeColor = "#15803d";
+      } else if (kVal <= 0.060) {
+        material = "MYLAR RADIATION SHIELD (k ≈ 0.040 min⁻¹)";
+        badgeBg = "#fef3c7";
+        badgeColor = "#b45309";
+      } else if (kVal <= 0.110) {
+        material = "COTTON CONDUCTION SHIELD (k ≈ 0.080 min⁻¹)";
+        badgeBg = "#e0f2fe";
+        badgeColor = "#0369a1";
+      } else {
+        material = "BARE UNINSULATED CORE (k ≈ 0.150 min⁻¹)";
+        badgeBg = "#fee2e2";
+        badgeColor = "#b91c1c";
+      }
+
+      if (calcMatchBadge) {
+        calcMatchBadge.textContent = `MATCHING MATERIAL: ${material}`;
+        calcMatchBadge.style.background = badgeBg;
+        calcMatchBadge.style.color = badgeColor;
+      }
+    }
+
+    [calcT0, calcTenv, calcTt, calcTime].forEach(input => {
+      if (input) input.addEventListener('input', updateKCalculator);
+    });
+    updateKCalculator();
+
+    // Problem Hint & Solution Toggles
+    document.querySelectorAll('.btn-hint-toggle, .btn-solution-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          const isHidden = targetEl.style.display === 'none' || targetEl.style.display === '';
+          targetEl.style.display = isHidden ? 'block' : 'none';
+          playClickSound();
+        }
+      });
+    });
   }
 
   // ==========================================================================
