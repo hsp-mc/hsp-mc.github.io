@@ -895,7 +895,11 @@ document.addEventListener('DOMContentLoaded', () => {
     epochModalElements.btnSkip.addEventListener('click', closeEpochModal);
   }
   if (epochModalElements.btnOpen) {
-    epochModalElements.btnOpen.addEventListener('click', () => {
+    epochModalElements.btnOpen.addEventListener('click', (e) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
       playClickSound();
       const elapsedSecs = state.timer.duration ? (state.timer.duration - state.timer.secondsRemaining) : 0;
       const currentMins = parseFloat((elapsedSecs / 60).toFixed(1));
