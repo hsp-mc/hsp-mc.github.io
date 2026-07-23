@@ -204,7 +204,8 @@
         page-break-inside: avoid;
       }
 
-      .action-button-container {
+      .action-button-container,
+      .no-print {
         display: none !important;
       }
 
@@ -224,6 +225,21 @@
 
   <div class="container">
     
+    <!-- NAVIGATION BAR -->
+    <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.4); padding: 12px 20px; border-radius: 8px; border: 1px solid rgba(0, 242, 254, 0.25); margin-bottom: 30px;" class="no-print">
+      <a href="index.html" style="color: var(--cyan); text-decoration: none; font-family: var(--font-hud); font-size: 0.8rem; display: flex; align-items: center; gap: 6px;">
+        <i data-lucide="arrow-left" style="width: 14px; height: 14px;"></i> BACK TO MISSION CONTROL
+      </a>
+      <div style="display: flex; gap: 12px;">
+        <a href="teacher_manual.html" style="color: var(--orange); text-decoration: none; font-family: var(--font-hud); font-size: 0.8rem; display: flex; align-items: center; gap: 6px;">
+          <i data-lucide="graduation-cap" style="width: 14px; height: 14px;"></i> TEACHER MANUAL
+        </a>
+        <a href="V2.1_SPHERE_ Mission Control - Student User Manual.pdf" target="_blank" style="background: rgba(0, 242, 254, 0.15); color: var(--cyan); border: 1px solid var(--cyan); padding: 6px 12px; border-radius: 4px; text-decoration: none; font-family: var(--font-hud); font-size: 0.75rem; display: flex; align-items: center; gap: 6px;">
+          <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> DOWNLOAD PDF (V2.1)
+        </a>
+      </div>
+    </div>
+
     <!-- COVER PAGE / HEADER -->
     <div style="text-align: center; margin-bottom: 40px;">
       <div style="font-family: var(--font-hud); font-size: 0.9rem; color: var(--orange); letter-spacing: 0.2em; margin-bottom: 10px;">EUROPEAN UNION STEM LABORATORY INITIATIVE</div>
