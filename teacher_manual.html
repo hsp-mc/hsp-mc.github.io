@@ -4,239 +4,420 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SPHERE: Mission Control - Teacher Pedagogical Manual & Solutions Key</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
-    /* Premium Light / Dark Mix Theme variables matching SPHERE Mission Control */
+    /* ==========================================================================
+       SPHERE MISSION CONTROL: OFFICIAL PEDAGOGICAL MANUAL STYLESHEET
+       Theme: Instructor Light Executive Document with Amber / Navy Accents
+       ========================================================================== */
+
     :root {
-      --bg-deep: #060913;
-      --bg-panel: #101830;
-      --bg-card-light: #f8fafc;
-      --text-dark: #0f172a;
-      --text-muted-dark: #475569;
-      --cyan: #00f2fe;
-      --cyan-dark: #0284c7;
-      --orange: #ff9f43;
-      --orange-dark: #d97706;
-      --green: #10b981;
-      --purple: #a855f7;
-      --text-bright: #f8fafc;
-      --text-normal: #cbd5e1;
-      --text-dimmed: #64748b;
+      /* Theme Palettes */
+      --bg-document: #f8fafc;
+      --bg-page: #ffffff;
+      --bg-subtle: #f8fafc;
+      --bg-elevated: #f1f5f9;
+      
+      /* Primary Brand Accents (Teacher: Warm Amber / Navy) */
+      --primary-600: #d97706;
+      --primary-700: #b45309;
+      --primary-800: #92400e;
+      --primary-subtle: #fffbeb;
+      --primary-border: #fde68a;
+      
+      /* Secondary Accents */
+      --accent-sky: #0284c7;
+      --accent-emerald: #059669;
+      --accent-purple: #7c3aed;
+      --dark-navy: #0f172a;
+      
+      /* Typography Colors */
+      --text-main: #0f172a;
+      --text-muted: #334155;
+      --text-subtle: #64748b;
+      --border-color: #cbd5e1;
+      --border-light: #e2e8f0;
+
+      /* Font Families */
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
       --font-hud: 'Orbitron', sans-serif;
-      --font-sans: 'Inter', sans-serif;
-      --font-mono: 'Roboto Mono', monospace;
+      --font-mono: 'JetBrains Mono', monospace;
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;500;700&display=swap');
+    * {
+      box-sizing: border-box;
+    }
 
-    /* Global styling with high readability Light/Dark Mix */
     body {
-      background-color: var(--bg-deep);
-      color: var(--text-bright);
+      background-color: var(--bg-document);
+      color: var(--text-main);
       font-family: var(--font-sans);
-      line-height: 1.6;
+      line-height: 1.65;
       margin: 0;
-      padding: 40px 20px;
+      padding: 20px 15px;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* Page Container Box */
     .container {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
-      background: rgba(16, 24, 48, 0.85);
-      border: 1px solid rgba(255, 159, 67, 0.3);
-      border-radius: 14px;
-      padding: 40px;
-      box-shadow: 0 0 35px rgba(255, 159, 67, 0.12);
+      background: var(--bg-page);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 45px 50px;
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 0 15px rgba(217, 119, 6, 0.05);
     }
 
-    h1, h2, h3, h4 {
+    /* Sticky Navigation Bar */
+    .doc-nav {
+      position: sticky;
+      top: 15px;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 12px 20px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .doc-nav a {
+      text-decoration: none;
       font-family: var(--font-hud);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-top: 1.8em;
-      margin-bottom: 0.8em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: all 0.2s ease;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      text-align: center;
-      color: var(--orange);
-      border-bottom: 2px solid rgba(255, 159, 67, 0.3);
-      padding-bottom: 15px;
-      margin-top: 0;
-      text-shadow: 0 0 12px rgba(255, 159, 67, 0.3);
-    }
-
-    h2 {
-      font-size: 1.35rem;
-      color: var(--orange);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      padding-bottom: 8px;
+    .nav-btn-back {
+      color: #38bdf8;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+    }
+
+    .nav-btn-back:hover {
+      color: #7dd3fc;
+      transform: translateX(-2px);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .nav-btn-alt {
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn-alt:hover {
+      color: #7dd3fc;
+    }
+
+    .nav-btn-pdf {
+      background: rgba(251, 191, 36, 0.15);
+      color: #fbbf24;
+      border: 1px solid #fbbf24;
+      padding: 6px 14px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn-pdf:hover {
+      background: #fbbf24;
+      color: #0f172a;
+    }
+
+    /* Header & Document Title Block */
+    .doc-header {
+      text-align: center;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 30px;
+      margin-bottom: 35px;
+    }
+
+    .header-badge {
+      display: inline-block;
+      font-family: var(--font-hud);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary-700);
+      background: var(--primary-subtle);
+      border: 1px solid var(--primary-border);
+      padding: 6px 16px;
+      border-radius: 50px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .doc-title {
+      font-family: var(--font-hud);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--dark-navy);
+      margin: 0;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .doc-subtitle {
+      font-family: var(--font-sans);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-600);
+      margin-top: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .doc-meta-strip {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-subtle);
+      margin-top: 15px;
+    }
+
+    /* Headings Hierarchy */
+    h2 {
+      font-family: var(--font-hud);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--dark-navy);
+      border-bottom: 2px solid var(--border-light);
+      padding-bottom: 10px;
+      margin-top: 45px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.03em;
+    }
+
+    h2 i {
+      color: var(--primary-600);
     }
 
     h3 {
-      font-size: 1.1rem;
-      color: var(--cyan);
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent-sky);
+      margin-top: 25px;
+      margin-bottom: 12px;
     }
 
     p {
-      color: var(--text-bright);
-      font-size: 0.95rem;
-      margin-bottom: 1.5em;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.25em;
     }
 
     ul, ol {
+      color: var(--text-muted);
+      font-size: 0.98rem;
       margin-bottom: 1.5em;
-      padding-left: 22px;
+      padding-left: 24px;
     }
 
     li {
       margin-bottom: 8px;
-      color: var(--text-bright);
     }
 
-    /* Light Mix Cards for Maximum Readability */
-    .card-light {
-      background: var(--bg-card-light);
-      color: var(--text-dark);
-      border-radius: 10px;
-      padding: 24px;
-      margin: 24px 0;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Callout & Feature Boxes */
+    .callout-box {
+      background: var(--primary-subtle);
+      border-left: 5px solid var(--primary-600);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+      margin: 25px 0;
+      border-top: 1px solid var(--primary-border);
+      border-right: 1px solid var(--primary-border);
+      border-bottom: 1px solid var(--primary-border);
     }
 
-    .card-light h2, .card-light h3, .card-light h4 {
-      color: var(--text-dark);
-      text-shadow: none;
+    .callout-box strong {
+      color: var(--primary-800);
+      font-weight: 700;
     }
 
-    .card-light p, .card-light li {
-      color: var(--text-muted-dark);
-    }
-
-    .card-light .badge-accent {
-      background: rgba(217, 119, 6, 0.1);
-      color: var(--orange-dark);
-      border: 1px solid rgba(217, 119, 6, 0.3);
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-family: var(--font-hud);
-      font-size: 0.75rem;
-      font-weight: bold;
-    }
-
-    .highlight-box {
-      background: rgba(255, 159, 67, 0.06);
-      border-left: 4px solid var(--orange);
-      padding: 18px 22px;
-      border-radius: 6px;
-      margin: 20px 0;
-    }
-
-    .highlight-box p:last-child {
+    .callout-box p:last-child {
       margin-bottom: 0;
     }
 
-    .equation-box {
-      background: rgba(0, 0, 0, 0.45);
-      border: 1px dashed rgba(255, 159, 67, 0.4);
-      font-family: var(--font-mono);
-      padding: 16px;
-      text-align: center;
-      font-size: 1.15rem;
-      color: var(--orange);
-      border-radius: 8px;
-      margin: 20px 0;
-      box-shadow: inset 0 0 15px rgba(255, 159, 67, 0.05);
-    }
-
-    table {
+    /* Tables */
+    .styled-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 0.85rem;
+      margin: 25px 0;
+      font-size: 0.9rem;
       background: #ffffff;
-      color: var(--text-dark);
-      border-radius: 6px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     }
 
-    th, td {
-      border: 1px solid #cbd5e1;
+    .styled-table th {
+      background: var(--dark-navy);
+      color: #ffffff;
+      font-family: var(--font-hud);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 12px 14px;
+      text-align: left;
+      border: 1px solid #334155;
+    }
+
+    .styled-table td {
       padding: 10px 12px;
       text-align: left;
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
     }
 
-    th {
-      background: #f1f5f9;
-      color: #1e293b;
-      font-family: var(--font-hud);
-      font-size: 0.75rem;
+    .styled-table tr:nth-child(even) {
+      background: var(--bg-elevated);
     }
 
-    tr:nth-child(even) {
-      background: #f8fafc;
+    .styled-table tr:hover {
+      background: var(--primary-subtle);
     }
 
-    .action-button-container {
+    /* Answer Key Solutions Block */
+    .answer-key-card {
+      background: #ffffff;
+      border: 2px solid var(--primary-600);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 35px 0;
+      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.08);
+    }
+
+    .solution-item {
+      background: var(--bg-subtle);
+      border-left: 4px solid var(--accent-sky);
+      border-radius: 0 8px 8px 0;
+      padding: 18px;
+      margin-bottom: 20px;
+      border-top: 1px solid var(--border-light);
+      border-right: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .solution-title {
+      font-weight: 700;
+      color: var(--dark-navy);
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .solution-body {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Print & Action Buttons */
+    .action-bar {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      margin-bottom: 30px;
+      gap: 16px;
+      margin-top: 40px;
       flex-wrap: wrap;
     }
 
-    .btn-print {
-      background: linear-gradient(135deg, var(--orange), #ffa800);
-      border: none;
-      color: #060913;
-      padding: 12px 24px;
+    .btn-action {
       font-family: var(--font-hud);
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
       font-size: 0.85rem;
-      transition: all 0.2s ease;
-      box-shadow: 0 0 15px rgba(255, 159, 67, 0.3);
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      text-decoration: none;
+      gap: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    .btn-print:hover {
+    .btn-primary {
+      background: var(--primary-600);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-700);
       transform: translateY(-2px);
-      box-shadow: 0 0 25px rgba(255, 159, 67, 0.5);
+      box-shadow: 0 6px 18px rgba(217, 119, 6, 0.3);
     }
 
-    .footer-bar {
+    .btn-secondary {
+      background: var(--accent-sky);
+      color: #ffffff;
+    }
+
+    .btn-secondary:hover {
+      background: #0369a1;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.3);
+    }
+
+    .doc-footer {
       text-align: center;
-      margin-top: 40px;
-      font-family: var(--font-hud);
-      font-size: 0.75rem;
-      color: var(--text-dimmed);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 45px;
       padding-top: 20px;
+      border-top: 1px solid var(--border-light);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-subtle);
     }
 
-    /* Print styles optimized for high-quality white-paper print and PDF generation */
+    /* ==========================================================================
+       PRINT STYLES: OPTIMIZED FOR WHITE PAPER & PDF GENERATION
+       ========================================================================== */
     @media print {
       body {
         background: #ffffff !important;
         color: #000000 !important;
-        padding: 0;
-        margin: 0;
+        padding: 0 !important;
+        margin: 0 !important;
         font-size: 10pt;
       }
 
+      .doc-nav, .no-print, .action-bar {
+        display: none !important;
+      }
+
       .container {
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
         border: none !important;
         box-shadow: none !important;
         background: transparent !important;
@@ -244,64 +425,33 @@
 
       h1, h2, h3, h4 {
         color: #000000 !important;
-        text-shadow: none !important;
         page-break-after: avoid;
       }
 
-      h1 {
-        font-size: 20pt;
-        border-bottom: 2pt solid #000000 !important;
-        margin-top: 0;
-      }
-
       h2 {
-        font-size: 14pt;
-        border-bottom: 1pt solid #cccccc !important;
-        margin-top: 20pt;
+        border-bottom: 1.5pt solid #000000 !important;
+        margin-top: 18pt !important;
       }
 
-      h3 {
-        font-size: 11pt;
-        margin-top: 14pt;
-      }
-
-      p, li {
-        color: #111111 !important;
-      }
-
-      .card-light {
-        background: #ffffff !important;
-        border: 1pt solid #999999 !important;
+      .answer-key-card {
+        border: 1pt solid #000000 !important;
         box-shadow: none !important;
-        margin: 15pt 0 !important;
-        padding: 12pt !important;
-      }
-
-      .highlight-box {
-        background: #f4f6f8 !important;
-        border-left: 3pt solid #333333 !important;
+        padding: 15pt !important;
         page-break-inside: avoid;
       }
 
-      .equation-box {
-        background: #f8fafc !important;
+      .styled-table th {
+        background: #e2e8f0 !important;
         color: #000000 !important;
-        border: 1pt dashed #666666 !important;
-        page-break-inside: avoid;
+        border: 1pt solid #000000 !important;
       }
 
-      .action-button-container,
-      .no-print {
-        display: none !important;
+      .styled-table td {
+        border: 1pt solid #666666 !important;
       }
 
       .page-break {
         page-break-after: always;
-      }
-
-      .footer-bar {
-        color: #666666 !important;
-        border-top: 1pt solid #dddddd !important;
       }
     }
   </style>
@@ -309,191 +459,253 @@
 <body>
 
   <div class="container">
-    
-    <!-- NAVIGATION BAR -->
-    <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.4); padding: 12px 20px; border-radius: 8px; border: 1px solid rgba(255, 159, 67, 0.25); margin-bottom: 30px;" class="no-print">
-      <a href="index.html" style="color: var(--cyan); text-decoration: none; font-family: var(--font-hud); font-size: 0.8rem; display: flex; align-items: center; gap: 6px;">
-        <i data-lucide="arrow-left" style="width: 14px; height: 14px;"></i> BACK TO MISSION CONTROL
+
+    <!-- STICKY NAVIGATION BAR -->
+    <nav class="doc-nav no-print">
+      <a href="index.html" class="nav-btn-back">
+        <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> BACK TO MISSION CONTROL
       </a>
-      <div style="display: flex; gap: 12px;">
-        <a href="student_manual.html" style="color: var(--cyan); text-decoration: none; font-family: var(--font-hud); font-size: 0.8rem; display: flex; align-items: center; gap: 6px;">
-          <i data-lucide="book-open" style="width: 14px; height: 14px;"></i> STUDENT MANUAL
+      <div class="nav-actions">
+        <a href="student_manual.html" class="nav-btn-alt">
+          <i data-lucide="book-open" style="width: 16px; height: 16px;"></i> STUDENT MANUAL
         </a>
-        <a href="V2.1_SPHERE_ Mission Control - Teacher Pedagogical Manual.pdf" target="_blank" style="background: rgba(255, 159, 67, 0.15); color: var(--orange); border: 1px solid var(--orange); padding: 6px 12px; border-radius: 4px; text-decoration: none; font-family: var(--font-hud); font-size: 0.75rem; display: flex; align-items: center; gap: 6px;">
-          <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> DOWNLOAD PDF (V2.1)
+        <a href="V2.1_SPHERE_ Mission Control - Teacher Pedagogical Manual.pdf" target="_blank" class="nav-btn-pdf">
+          <i data-lucide="file-text" style="width: 16px; height: 16px;"></i> DOWNLOAD PDF (V2.1)
         </a>
       </div>
-    </div>
+    </nav>
 
-    <!-- COVER PAGE / HEADER -->
-    <div style="text-align: center; margin-bottom: 35px;">
-      <div style="font-family: var(--font-hud); font-size: 0.85rem; color: var(--cyan); letter-spacing: 0.2em; margin-bottom: 8px;">EUROPEAN UNION STEM LABORATORY INITIATIVE</div>
-      <h1>SPHERE: MISSION CONTROL</h1>
-      <div style="font-family: var(--font-hud); font-size: 1.15rem; color: var(--orange); letter-spacing: 0.1em; margin-top: 12px;">TEACHER PEDAGOGICAL MANUAL &amp; SOLUTIONS KEY</div>
-      <div style="font-size: 0.85rem; color: var(--text-dimmed); margin-top: 8px; font-family: var(--font-mono);">DOCUMENT REF // EU_SPHERE_TEACHER_V2.1</div>
+    <!-- DOCUMENT HEADER -->
+    <header class="doc-header">
+      <span class="header-badge">EUROPEAN UNION STEM LABORATORY INITIATIVE</span>
+      <h1 class="doc-title">SPHERE: MISSION CONTROL</h1>
+      <div class="doc-subtitle">TEACHER PEDAGOGICAL MANUAL &amp; SOLUTIONS KEY</div>
+      <div class="doc-meta-strip">
+        <span>REF: EU_SPHERE_TEACHER_V2.1</span>
+        <span>•</span>
+        <span>INSTRUCTOR GUIDE</span>
+        <span>•</span>
+        <span>IBSE CURRICULUM</span>
+      </div>
+    </header>
+
+    <!-- PEDAGOGICAL SUMMARY CALLOUT -->
+    <div class="callout-box">
+      <strong>Inquiry-Based Science Education (IBSE) Framework:</strong>
+      This instructor manual provides curriculum alignment, a 60-minute lesson plan, equipment preparation protocols, theoretical physics decay reference tables, and complete official solutions for the Student Worksheet &amp; Question Sheet.
     </div>
 
     <!-- SECTION 1 -->
-    <h2><i data-lucide="award" style="width:20px; height:20px; color:var(--orange);"></i> 1. PEDAGOGICAL CONTEXT &amp; SYLLABUS ALIGNMENT</h2>
+    <h2><i data-lucide="award"></i> 1. PEDAGOGICAL CONTEXT &amp; SYLLABUS ALIGNMENT</h2>
     <p>
-      The <strong>SPHERE: Mission Control Digital Twin Laboratory</strong> is an Inquiry-Based Science Education (IBSE) learning framework. It bridges physical thermal experiments with live mathematical simulation, designed specifically for secondary and upper-secondary physics and engineering curricula.
+      The <strong>SPHERE: Mission Control Digital Twin Laboratory</strong> integrates hands-on experimental physics with computational modeling. Designed for secondary and upper-secondary physics (NGSS, IB Physics, A-Level, and National STEM Curricula), this module targets the following core learning outcomes:
     </p>
-
-    <h3>Target Learning Outcomes:</h3>
     <ul>
-      <li><strong>Thermodynamic Mechanisms:</strong> Differentiate between conduction, convection, and radiative heat transfer in complex insulating structures.</li>
-      <li><strong>Newtonian Mathematical Modeling:</strong> Apply Newton's Law of Cooling $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$ to predict exponential decay.</li>
-      <li><strong>Digital Twin Methodology:</strong> Evaluate discrepancies between physical sensor telemetry and computer models.</li>
-      <li><strong>Data Literacy &amp; Graphing:</strong> Manually log data points, plot continuous curves on grid paper templates, and calculate percentage correlation scores.</li>
+      <li><strong>Heat Transfer Mechanisms:</strong> Conduction, Convection, and Thermal Radiation.</li>
+      <li><strong>Exponential Mathematical Decay:</strong> Differential and integrated Newton's Law of Cooling $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$.</li>
+      <li><strong>Digital Twin Engineering Methodology:</strong> Validating physical hardware sensors against computer simulation models.</li>
+      <li><strong>Data Analysis &amp; Graphing Literacy:</strong> Manual data logging, graph construction, and percentage error evaluation.</li>
     </ul>
 
     <!-- SECTION 2 -->
-    <h2><i data-lucide="clock" style="width:20px; height:20px; color:var(--orange);"></i> 2. LESSON PLAN &amp; TIMELINE (60 MINUTES)</h2>
-    <table>
+    <h2><i data-lucide="clock"></i> 2. LESSON PLAN &amp; TIMELINE (60 MINUTES)</h2>
+    
+    <table class="styled-table">
       <thead>
         <tr>
-          <th>TIME</th>
-          <th>PHASE</th>
-          <th>TEACHER &amp; STUDENT ACTIVITIES</th>
+          <th style="width: 15%;">TIMEFRAME</th>
+          <th style="width: 25%;">LESSON PHASE</th>
+          <th style="width: 60%;">TEACHER &amp; STUDENT ACTIVITIES</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><strong>00–10 min</strong></td>
-          <td>Briefing &amp; Quiz</td>
-          <td>Introduce space thermal challenges. Students take the Pre-Flight Certification Quiz on Mission Control home page.</td>
+          <td>1. Mission Briefing &amp; Quiz</td>
+          <td>Teacher introduces orbital thermal challenges. Students complete the Pre-Flight Quiz in Mission Control to unlock telemetry features.</td>
         </tr>
         <tr>
           <td><strong>10–20 min</strong></td>
-          <td>Hardware Prep</td>
-          <td>Students wrap PET jars with assigned insulation (Bare, Cotton, Mylar, MLI) and thread sensors through PG7 glands.</td>
+          <td>2. Hardware Capsule Assembly</td>
+          <td>Student crews wrap 100ml PET jars with assigned insulation (Bare, Cotton, Mylar, MLI) and thread sensors through PG7 waterproof glands.</td>
         </tr>
         <tr>
           <td><strong>20–35 min</strong></td>
-          <td>15m Live Experiment</td>
-          <td>Capsules dropped into 0°C ice water. Students record temperatures every 60s into Mission Control &amp; task sheet.</td>
+          <td>3. Live 15m Telemetry Run</td>
+          <td>Capsules submerged in 0°C ice bath. Students record physical core temperatures every 60s into Mission Control &amp; Task Sheets.</td>
         </tr>
         <tr>
           <td><strong>35–48 min</strong></td>
-          <td>Graphing &amp; Scoring</td>
-          <td>Students plot manual paper graph curves and calculate Thermal Correlation Scores against the simulator digital twin.</td>
+          <td>4. Graphing &amp; Correlation</td>
+          <td>Crews plot paper graph curves, compute absolute errors $| \Delta T |$, and calculate their crew Thermal Correlation Score.</td>
         </tr>
         <tr>
           <td><strong>48–60 min</strong></td>
-          <td>Debrief &amp; Reflection</td>
-          <td>Group discussion analyzing sources of error, material decay constants ($k$), and spacesuit engineering trade-offs.</td>
+          <td>5. Debrief &amp; Analysis</td>
+          <td>Instructor leads reflection on material decay rates ($k$), sources of experimental error, and spacesuit engineering trade-offs.</td>
         </tr>
       </tbody>
     </table>
 
     <!-- SECTION 3 -->
-    <h2><i data-lucide="check-square" style="width:20px; height:20px; color:var(--orange);"></i> 3. THEORETICAL SOLUTION KEY &amp; DECAY CONSTANTS</h2>
+    <h2><i data-lucide="wrench"></i> 3. EQUIPMENT PREPARATION &amp; LAB PROTOCOLS</h2>
     <p>
-      The following theoretical end temperatures ($t = 15$ min) assume initial hot water $T_0 = 80^\circ\text{C}$ and ice bath $T_{\text{env}} = 0^\circ\text{C}$:
+      To ensure smooth lab execution, prepare materials prior to student arrival:
+    </p>
+    <ul>
+      <li><strong>Water Temperature Control:</strong> Maintain hot water supply at 80°C (use a thermostatically controlled kettle).</li>
+      <li><strong>Ice Bath Preparation:</strong> Prepare slurry buckets containing 50% crushed ice and 50% cold water to guarantee stable $T_{\text{env}} = 0^\circ\text{C}$ boundary conditions.</li>
+      <li><strong>PG7 Seal Verification:</strong> Demonstrate tightening the PG7 gland dome nut to prevent liquid leakage into student capsules.</li>
+    </ul>
+
+    <!-- SECTION 4 -->
+    <h2><i data-lucide="book-open"></i> 4. THEORETICAL PHYSICS REFERENCE &amp; DECAY CONSTANTS</h2>
+    <p>
+      Expected end temperatures ($t = 15$ min) based on $T_0 = 80^\circ\text{C}$ and $T_{\text{env}} = 0^\circ\text{C}$:
     </p>
 
-    <table>
+    <table class="styled-table">
       <thead>
         <tr>
-          <th>INSULATION DESIGN</th>
-          <th>DECAY CONSTANT (k)</th>
-          <th>EXPECTED END TEMP (15 MIN)</th>
-          <th>PRIMARY INSULATION MECHANISM</th>
+          <th>INSULATION SYSTEM</th>
+          <th>DECAY RATE (k)</th>
+          <th>EXPECTED TEMP (15m)</th>
+          <th>DOMINANT THERMAL DISSIPATION PATHWAY</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>A. Bare Capsule</strong></td>
-          <td>k ≈ 0.150 (or 0.082)</td>
-          <td>≈ 8°C – 23°C</td>
-          <td>Baseline control. Rapid uninsulated conduction &amp; convection.</td>
+          <td><strong>A. Bare Control</strong></td>
+          <td>k ≈ 0.150 / 0.082</td>
+          <td>8.4°C – 23.3°C</td>
+          <td>Rapid uninsulated liquid conduction &amp; convective fluid currents.</td>
         </tr>
         <tr>
           <td><strong>B. Cotton Layer</strong></td>
           <td>k ≈ 0.080</td>
-          <td>≈ 24°C</td>
-          <td>Traps air pockets to suppress conductive heat transfer.</td>
+          <td>24.1°C</td>
+          <td>Traps stationary air cells to reduce conductive losses.</td>
         </tr>
         <tr>
           <td><strong>C. Mylar Layer</strong></td>
           <td>k ≈ 0.040</td>
-          <td>≈ 44°C</td>
-          <td>Reflects infrared thermal radiation back into capsule.</td>
+          <td>43.9°C</td>
+          <td>Reflects infrared radiant electromagnetic heat energy.</td>
         </tr>
         <tr>
-          <td><strong>D. Full MLI (Combined)</strong></td>
+          <td><strong>D. Full MLI System</strong></td>
           <td>k ≈ 0.015</td>
-          <td>≈ 64°C</td>
-          <td>Multi-layer barrier addressing conduction, convection, and radiation.</td>
+          <td>63.9°C</td>
+          <td>Multi-layer barrier blocking conduction, convection, and radiation.</td>
         </tr>
       </tbody>
     </table>
 
     <div class="page-break"></div>
 
-    <!-- SECTION 4: TEACHER ANSWER KEY FOR STUDENT WORKSHEETS -->
-    <div class="card-light" id="answer-key">
-      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #cbd5e1; padding-bottom: 10px; margin-bottom: 15px;">
-        <span class="badge-accent"><i data-lucide="check-circle-2" style="width: 14px; height: 14px; vertical-align: middle;"></i> OFFICIAL ANSWER KEY</span>
-        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted-dark);">INSTRUCTOR SOLUTIONS GUIDE</span>
+    <!-- SECTION 5: OFFICIAL QUESTION SHEET SOLUTION KEY -->
+    <div class="answer-key-card" id="solutions-key">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px;">
+        <span style="font-family: var(--font-hud); font-size: 1.1rem; font-weight: 800; color: var(--primary-700);">
+          <i data-lucide="check-circle-2" style="vertical-align: middle;"></i> SECTION 5: QUESTION SHEET OFFICIAL SOLUTIONS KEY
+        </span>
+        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--dark-navy); font-weight: bold;">INSTRUCTOR GUIDANCE</span>
       </div>
 
-      <h2 style="color: var(--text-dark); margin-top: 0;">4. QUESTION SHEET SOLUTION &amp; GRADING GUIDE</h2>
-
-      <div style="display: flex; flex-direction: column; gap: 16px;">
-        <div style="background: #ffffff; padding: 14px; border-radius: 6px; border-left: 4px solid #0284c7;">
-          <strong style="color: #0f172a;">Q1 Answer (Mylar Mechanism):</strong>
-          <p style="color: #334155; font-size: 0.85rem; margin: 4px 0 0 0;">
-            Mylar has a highly reflective metallic coating that reflects infrared radiation (electromagnetic waves). In a vacuum, radiation is the dominant form of heat transfer. However, in an ice-water bath, conduction through direct liquid contact is extremely high. Mylar alone is thin and has high thermal conductivity, so it requires cotton or bubble wrap to block conductive heat transfer.
-          </p>
+      <div class="solution-item">
+        <div class="solution-title">Q1 Answer: Thermal Radiation vs Conduction in Liquid</div>
+        <div class="solution-body">
+          <strong>Exemplar Response:</strong> Mylar is an ultra-thin metallic film optimized to reflect infrared radiation. Radiation is the dominant form of heat transfer in space vacuums. However, in an ice-water bath, conduction via direct liquid contact is extremely fast. Because Mylar is very thin and highly conductive to touch, it easily transfers heat directly to surrounding water if used alone. To be effective in a liquid bath, it requires an inner layer (like cotton or bubble wrap) to block conduction.
         </div>
+      </div>
 
-        <div style="background: #ffffff; padding: 14px; border-radius: 6px; border-left: 4px solid #d97706;">
-          <strong style="color: #0f172a;">Q2 Answer (Decay Constant k):</strong>
-          <p style="color: #334155; font-size: 0.85rem; margin: 4px 0 0 0;">
-            A <strong>smaller</strong> $k$ value indicates a <strong>better</strong> thermal insulator. The term $-k \cdot t$ in the exponent determines how quickly temperature drops. Smaller $k$ values mean a slower decay rate, retaining heat inside the capsule for much longer.
-          </p>
+      <div class="solution-item">
+        <div class="solution-title">Q2 Answer: Physical Meaning of Cooling Constant (k)</div>
+        <div class="solution-body">
+          <strong>Exemplar Response:</strong> A <strong>smaller</strong> $k$ value represents a <strong>better</strong> thermal insulator. In Newton's exponential equation $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$, the decay exponent is proportional to $-k \cdot t$. As $k$ approaches zero, the exponential factor $e^{-kt}$ stays near 1.0, keeping core temperatures high and delaying heat loss over time.
         </div>
+      </div>
 
-        <div style="background: #ffffff; padding: 14px; border-radius: 6px; border-left: 4px solid #16a34a;">
-          <strong style="color: #0f172a;">Q3 Answer (MLI Combined Rationale):</strong>
-          <p style="color: #334155; font-size: 0.85rem; margin: 4px 0 0 0;">
-            MLI combines multiple distinct layers: cotton traps stationary air to minimize conduction, bubble wrap creates large sealed air pockets suppressing convection, and Mylar reflects thermal radiation. By targeting all three heat transfer pathways simultaneously, MLI achieves superior performance compared to any single material.
-          </p>
+      <div class="solution-item">
+        <div class="solution-title">Q3 Answer: Multi-Layer Insulation (MLI) Synergy</div>
+        <div class="solution-body">
+          <strong>Exemplar Response:</strong> MLI combines three complementary barriers: cotton traps microscopic stationary air pockets to block conduction; bubble wrap creates sealed air chambers that suppress fluid convection currents; and metallic Mylar reflects thermal radiation back into the core. By simultaneously targeting all three modes of heat transfer, the combination achieves a dramatically lower decay rate ($k = 0.015$) than any single material alone.
         </div>
+      </div>
 
-        <div style="background: #ffffff; padding: 14px; border-radius: 6px; border-left: 4px solid #9333ea;">
-          <strong style="color: #0f172a;">Q4 Answer (Physical vs Digital Twin Error Sources):</strong>
-          <p style="color: #334155; font-size: 0.85rem; margin: 4px 0 0 0;">
-            Acceptable answers include: (1) Sensor probe accidentally touching the jar wall instead of remaining centered; (2) Incomplete waterproofing causing cold water intrusion; (3) Ice bath warming slightly above 0°C; (4) Non-uniform water mixing inside the jar creating temperature gradients.
-          </p>
+      <div class="solution-item">
+        <div class="solution-title">Q4 Answer: Physical vs Digital Twin Discrepancy Sources</div>
+        <div class="solution-body">
+          <strong>Exemplar Response (Accept any two):</strong>
+          <ol style="margin: 4px 0 0 0; padding-left: 20px;">
+            <li>Sensor placement: probe tip touching container walls instead of hanging freely in water core.</li>
+            <li>Incomplete gland tightening leading to cold water seepage into capsule.</li>
+            <li>Thermal stratification: unmixed water inside jar creating localized temperature gradients.</li>
+            <li>Fluctuations in ice bath temperature above 0°C during prolonged testing.</li>
+          </ol>
         </div>
+      </div>
 
-        <div style="background: #ffffff; padding: 14px; border-radius: 6px; border-left: 4px solid #dc2626;">
-          <strong style="color: #0f172a;">Q5 Answer (Summer Classroom Adaptation):</strong>
-          <p style="color: #334155; font-size: 0.85rem; margin: 4px 0 0 0;">
-            Students should measure the actual temperature of the ice bath using their thermometer and enter that value (e.g. 4.5°C) into the $T_{\text{env}}$ input field in Mission Control. This ensures the digital twin math model uses the exact physical boundary condition of the room.
-          </p>
+      <div class="solution-item">
+        <div class="solution-title">Q5 Answer: Environmental Boundary Calibration</div>
+        <div class="solution-body">
+          <strong>Exemplar Response:</strong> Students should measure the actual ambient ice bath temperature using their DS18B20 thermometer and enter that exact value (e.g., $T_{\text{env}} = 4.5^\circ\text{C}$) into the $T_{\text{env}}$ parameter field in Mission Control. Updating the environmental boundary parameter ensures the mathematical digital twin accurate models physical classroom conditions.
         </div>
       </div>
     </div>
 
-    <!-- Action Buttons Footer -->
-    <div class="action-button-container" style="margin-top: 40px;">
-      <button class="btn-print" onclick="window.print();">
-        <i data-lucide="printer"></i> PRINT TEACHER MANUAL &amp; KEYS
+    <!-- SECTION 6: ASSESSMENT RUBRIC -->
+    <h2><i data-lucide="clipboard-check"></i> 6. ASSESSMENT RUBRIC &amp; GRADING MATRIX</h2>
+    
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>CRITERIA</th>
+          <th>EXEMPLARY (A / 90-100%)</th>
+          <th>PROFICIENT (B / 75-89%)</th>
+          <th>NEEDS RE-CALIBRATION (&lt;75%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Data Logging</strong></td>
+          <td>Complete 15-min table with accurate sensor logging &amp; detailed notes.</td>
+          <td>Missing 1-2 time intervals; basic notes logged.</td>
+          <td>Multiple blank intervals; incomplete data tables.</td>
+        </tr>
+        <tr>
+          <td><strong>Graph Accuracy</strong></td>
+          <td>Precise points plotted; clean solid &amp; dashed lines; fully labeled axes.</td>
+          <td>Points plotted with minor curve scaling inaccuracies.</td>
+          <td>Misaligned axes; points not connected; missing legend.</td>
+        </tr>
+        <tr>
+          <td><strong>Physics Analysis</strong></td>
+          <td>Thorough answers addressing conduction, convection, radiation, and $k$.</td>
+          <td>Correct identification of heat transfer modes with minor details missing.</td>
+          <td>Incorrect concepts; confuses radiation with conduction.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ACTION BUTTONS -->
+    <div class="action-bar no-print">
+      <button class="btn-action btn-primary" onclick="window.print();">
+        <i data-lucide="printer"></i> PRINT TEACHER MANUAL &amp; SOLUTIONS
       </button>
-      <a href="student_manual.html" class="btn-print" style="background: linear-gradient(135deg, var(--cyan), #00b8ff); color: #060913;">
+      <a href="student_manual.html" class="btn-action btn-secondary">
         <i data-lucide="book-open"></i> VIEW STUDENT MANUAL
       </a>
     </div>
 
-    <div class="footer-bar">
-      SPHERE: MISSION CONTROL // TEACHER PEDAGOGICAL MANUAL &amp; SOLUTIONS KEY // © 2026 PROJECT SPHERE INITIATIVE
-    </div>
+    <!-- FOOTER -->
+    <footer class="doc-footer">
+      SPHERE: MISSION CONTROL // TEACHER PEDAGOGICAL MANUAL &amp; SOLUTIONS // © 2026 PROJECT SPHERE INITIATIVE
+    </footer>
 
   </div>
 
+  <!-- Lucide Icons Script -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
