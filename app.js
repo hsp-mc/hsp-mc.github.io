@@ -25,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
       duration: 15 * 60, // 15 minutes in seconds
       secondsRemaining: 15 * 60,
       intervalId: null,
-      isRunning: false
+      isRunning: false,
+      lastTriggeredMinute: 0
     },
     
     // Audio Sound FX State
@@ -587,14 +588,16 @@ document.addEventListener('DOMContentLoaded', () => {
         state.timer.secondsRemaining--;
         updateTimerDisplay();
         
-        // 60-Second Logging Epoch Prompts
+        // Reliable Minute Epoch Auto-Popup Check
         const elapsedSeconds = state.timer.duration - state.timer.secondsRemaining;
-        if (elapsedSeconds > 0 && elapsedSeconds % 60 === 0 && state.timer.secondsRemaining >= 0) {
-          const minsElapsed = elapsedSeconds / 60;
-          logToConsole(`MISSION TIME [${String(minsElapsed).padStart(2, '0')}:00]: Epoch checkpoint! Transmit actual thermometer telemetry.`, 'warn');
-          showNotification(`Transmit physical telemetry for Minute ${minsElapsed}!`, 'info');
+        const currentMinute = Math.floor(elapsedSeconds / 60);
+
+        if (currentMinute > 0 && currentMinute > (state.timer.lastTriggeredMinute || 0) && state.timer.secondsRemaining >= 0) {
+          state.timer.lastTriggeredMinute = currentMinute;
+          logToConsole(`MISSION TIME [${String(currentMinute).padStart(2, '0')}:00]: Epoch checkpoint! Transmit actual thermometer telemetry.`, 'warn');
+          showNotification(`Minute ${currentMinute} Reached! Transmit physical telemetry.`, 'info');
           playEpochSound();
-          openEpochModal(minsElapsed);
+          openEpochModal(currentMinute);
         }
         
         if (state.timer.secondsRemaining <= 0) {
@@ -616,6 +619,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function resetTimer() {
     clearInterval(state.timer.intervalId);
     state.timer.isRunning = false;
+    state.timer.lastTriggeredMinute = 0;
     
     const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
     const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
@@ -832,6 +836,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // Centered Screen Telemetry Epoch Modal Controller
   // ==========================================================================
+  let activeModalTargetTime = null;
+
   const epochModalElements = {
     overlay: document.getElementById('epoch-modal-overlay'),
     minBadge: document.getElementById('modal-epoch-min'),
@@ -847,27 +853,39 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!epochModalElements.overlay) return;
     
     const elapsedSecs = state.timer.duration ? (state.timer.duration - state.timer.secondsRemaining) : 0;
-    const currentMins = minsElapsed !== undefined ? minsElapsed : (elapsedSecs / 60).toFixed(1);
-    
+    const currentMins = minsElapsed !== undefined ? minsElapsed : parseFloat((elapsedSecs / 60).toFixed(1));
+    activeModalTargetTime = typeof currentMins === 'number' ? currentMins : parseFloat(currentMins);
+
     if (epochModalElements.minBadge) {
-      epochModalElements.minBadge.textContent = Math.max(1, Math.floor(currentMins));
+      epochModalElements.minBadge.textContent = Math.max(1, Math.floor(activeModalTargetTime));
     }
     if (epochModalElements.elapsedDisplay) {
-      epochModalElements.elapsedDisplay.textContent = `${currentMins} MIN`;
+      epochModalElements.elapsedDisplay.textContent = `${activeModalTargetTime.toFixed(1)} MIN`;
     }
     if (epochModalElements.tempInput) {
       epochModalElements.tempInput.value = '';
-      setTimeout(() => epochModalElements.tempInput.focus(), 100);
     }
     
     epochModalElements.overlay.style.display = 'flex';
     lucide.createIcons();
+
+    if (epochModalElements.tempInput) {
+      setTimeout(() => epochModalElements.tempInput.focus(), 60);
+    }
   }
 
   function closeEpochModal() {
     if (epochModalElements.overlay) {
       epochModalElements.overlay.style.display = 'none';
     }
+  }
+
+  if (epochModalElements.overlay) {
+    epochModalElements.overlay.addEventListener('click', (e) => {
+      if (e.target === epochModalElements.overlay) {
+        closeEpochModal();
+      }
+    });
   }
 
   if (epochModalElements.btnClose) {
@@ -880,7 +898,7 @@ document.addEventListener('DOMContentLoaded', () => {
     epochModalElements.btnOpen.addEventListener('click', () => {
       playClickSound();
       const elapsedSecs = state.timer.duration ? (state.timer.duration - state.timer.secondsRemaining) : 0;
-      const currentMins = (elapsedSecs / 60).toFixed(1);
+      const currentMins = parseFloat((elapsedSecs / 60).toFixed(1));
       openEpochModal(currentMins);
     });
   }
@@ -895,8 +913,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (epochModalElements.form) {
     epochModalElements.form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const elapsedSecs = state.timer.duration ? (state.timer.duration - state.timer.secondsRemaining) : 0;
-      const timeVal = parseFloat((elapsedSecs / 60).toFixed(1));
+      let timeVal = activeModalTargetTime;
+      if (timeVal === null || timeVal === undefined || isNaN(timeVal)) {
+        const elapsedSecs = state.timer.duration ? (state.timer.duration - state.timer.secondsRemaining) : 0;
+        timeVal = parseFloat((elapsedSecs / 60).toFixed(1));
+      }
       const tempVal = parseFloat(epochModalElements.tempInput.value);
 
       const success = addTelemetryPoint(timeVal, tempVal);
