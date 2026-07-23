@@ -3,25 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPHERE: Mission Control - Teacher Pedagogical Manual</title>
+  <title>SPHERE: Mission Control - Teacher Pedagogical Manual & Solutions Key</title>
   <style>
-    /* Premium Theme variables matching SPHERE Mission Control */
+    /* Premium Light / Dark Mix Theme variables matching SPHERE Mission Control */
     :root {
       --bg-deep: #060913;
       --bg-panel: #101830;
+      --bg-card-light: #f8fafc;
+      --text-dark: #0f172a;
+      --text-muted-dark: #475569;
       --cyan: #00f2fe;
+      --cyan-dark: #0284c7;
       --orange: #ff9f43;
-      --text-bright: #e2e8f0;
-      --text-normal: #94a3b8;
+      --orange-dark: #d97706;
+      --green: #10b981;
+      --purple: #a855f7;
+      --text-bright: #f8fafc;
+      --text-normal: #cbd5e1;
       --text-dimmed: #64748b;
       --font-hud: 'Orbitron', sans-serif;
       --font-sans: 'Inter', sans-serif;
       --font-mono: 'Roboto Mono', monospace;
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@400;500;700&display=swap');
 
-    /* Global styling optimized for screen viewing */
+    /* Global styling with high readability Light/Dark Mix */
     body {
       background-color: var(--bg-deep);
       color: var(--text-bright);
@@ -32,13 +39,13 @@
     }
 
     .container {
-      max-width: 850px;
+      max-width: 900px;
       margin: 0 auto;
-      background: rgba(16, 24, 48, 0.7);
-      border: 1px solid rgba(255, 159, 67, 0.25);
-      border-radius: 12px;
+      background: rgba(16, 24, 48, 0.85);
+      border: 1px solid rgba(255, 159, 67, 0.3);
+      border-radius: 14px;
       padding: 40px;
-      box-shadow: 0 0 30px rgba(255, 159, 67, 0.08);
+      box-shadow: 0 0 35px rgba(255, 159, 67, 0.12);
     }
 
     h1, h2, h3, h4 {
@@ -56,13 +63,17 @@
       border-bottom: 2px solid rgba(255, 159, 67, 0.3);
       padding-bottom: 15px;
       margin-top: 0;
+      text-shadow: 0 0 12px rgba(255, 159, 67, 0.3);
     }
 
     h2 {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--orange);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
       padding-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     h3 {
@@ -78,7 +89,7 @@
 
     ul, ol {
       margin-bottom: 1.5em;
-      padding-left: 20px;
+      padding-left: 22px;
     }
 
     li {
@@ -86,44 +97,42 @@
       color: var(--text-bright);
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 0.9rem;
+    /* Light Mix Cards for Maximum Readability */
+    .card-light {
+      background: var(--bg-card-light);
+      color: var(--text-dark);
+      border-radius: 10px;
+      padding: 24px;
+      margin: 24px 0;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
-    th, td {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 10px 12px;
-      text-align: left;
+    .card-light h2, .card-light h3, .card-light h4 {
+      color: var(--text-dark);
+      text-shadow: none;
     }
 
-    th {
-      background: rgba(255, 159, 67, 0.1);
-      color: var(--orange);
+    .card-light p, .card-light li {
+      color: var(--text-muted-dark);
+    }
+
+    .card-light .badge-accent {
+      background: rgba(217, 119, 6, 0.1);
+      color: var(--orange-dark);
+      border: 1px solid rgba(217, 119, 6, 0.3);
+      padding: 4px 10px;
+      border-radius: 4px;
       font-family: var(--font-hud);
-      font-size: 0.8rem;
-    }
-
-    .risk-high {
-      color: #f43f5e;
-      font-weight: bold;
-    }
-    .risk-medium {
-      color: #f59e0b;
-      font-weight: bold;
-    }
-    .risk-low {
-      color: #10b981;
+      font-size: 0.75rem;
       font-weight: bold;
     }
 
     .highlight-box {
-      background: rgba(255, 159, 67, 0.05);
+      background: rgba(255, 159, 67, 0.06);
       border-left: 4px solid var(--orange);
-      padding: 15px 20px;
-      border-radius: 4px;
+      padding: 18px 22px;
+      border-radius: 6px;
       margin: 20px 0;
     }
 
@@ -131,10 +140,54 @@
       margin-bottom: 0;
     }
 
+    .equation-box {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px dashed rgba(255, 159, 67, 0.4);
+      font-family: var(--font-mono);
+      padding: 16px;
+      text-align: center;
+      font-size: 1.15rem;
+      color: var(--orange);
+      border-radius: 8px;
+      margin: 20px 0;
+      box-shadow: inset 0 0 15px rgba(255, 159, 67, 0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.85rem;
+      background: #ffffff;
+      color: var(--text-dark);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-family: var(--font-hud);
+      font-size: 0.75rem;
+    }
+
+    tr:nth-child(even) {
+      background: #f8fafc;
+    }
+
     .action-button-container {
       display: flex;
       justify-content: center;
+      gap: 15px;
       margin-bottom: 30px;
+      flex-wrap: wrap;
     }
 
     .btn-print {
@@ -146,9 +199,13 @@
       font-weight: bold;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       transition: all 0.2s ease;
       box-shadow: 0 0 15px rgba(255, 159, 67, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
     }
 
     .btn-print:hover {
@@ -162,7 +219,7 @@
       font-family: var(--font-hud);
       font-size: 0.75rem;
       color: var(--text-dimmed);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       padding-top: 20px;
     }
 
@@ -173,7 +230,7 @@
         color: #000000 !important;
         padding: 0;
         margin: 0;
-        font-size: 11pt;
+        font-size: 10pt;
       }
 
       .container {
@@ -192,42 +249,44 @@
       }
 
       h1 {
-        font-size: 24pt;
+        font-size: 20pt;
         border-bottom: 2pt solid #000000 !important;
         margin-top: 0;
       }
 
       h2 {
-        font-size: 16pt;
+        font-size: 14pt;
         border-bottom: 1pt solid #cccccc !important;
-        margin-top: 25pt;
+        margin-top: 20pt;
       }
 
       h3 {
-        font-size: 12pt;
-        margin-top: 18pt;
+        font-size: 11pt;
+        margin-top: 14pt;
       }
 
       p, li {
         color: #111111 !important;
       }
 
-      table {
-        border-collapse: collapse !important;
-      }
-
-      th, td {
-        border: 1px solid #666666 !important;
-        color: #000000 !important;
-      }
-
-      th {
-        background: #eeeeee !important;
+      .card-light {
+        background: #ffffff !important;
+        border: 1pt solid #999999 !important;
+        box-shadow: none !important;
+        margin: 15pt 0 !important;
+        padding: 12pt !important;
       }
 
       .highlight-box {
-        background: #fdf6ec !important;
-        border-left: 3pt solid #d97706 !important;
+        background: #f4f6f8 !important;
+        border-left: 3pt solid #333333 !important;
+        page-break-inside: avoid;
+      }
+
+      .equation-box {
+        background: #f8fafc !important;
+        color: #000000 !important;
+        border: 1pt dashed #666666 !important;
         page-break-inside: avoid;
       }
 
@@ -249,7 +308,6 @@
 </head>
 <body>
 
-
   <div class="container">
     
     <!-- NAVIGATION BAR -->
@@ -268,320 +326,171 @@
     </div>
 
     <!-- COVER PAGE / HEADER -->
-    <div style="text-align: center; margin-bottom: 40px;">
-      <div style="font-family: var(--font-hud); font-size: 0.9rem; color: var(--cyan); letter-spacing: 0.2em; margin-bottom: 10px;">EUROPEAN UNION STEM LABORATORY INITIATIVE</div>
+    <div style="text-align: center; margin-bottom: 35px;">
+      <div style="font-family: var(--font-hud); font-size: 0.85rem; color: var(--cyan); letter-spacing: 0.2em; margin-bottom: 8px;">EUROPEAN UNION STEM LABORATORY INITIATIVE</div>
       <h1>SPHERE: MISSION CONTROL</h1>
-      <div style="font-family: var(--font-hud); font-size: 1.2rem; color: var(--orange); letter-spacing: 0.1em; margin-top: 15px;">TEACHER PEDAGOGICAL DEPLOYMENT MANUAL</div>
-      <div style="font-size: 0.9rem; color: var(--text-dimmed); margin-top: 10px; font-family: var(--font-mono);">DOCUMENT REF // EU_SPHERE_INSTRUCTOR_V2</div>
+      <div style="font-family: var(--font-hud); font-size: 1.15rem; color: var(--orange); letter-spacing: 0.1em; margin-top: 12px;">TEACHER PEDAGOGICAL MANUAL &amp; SOLUTIONS KEY</div>
+      <div style="font-size: 0.85rem; color: var(--text-dimmed); margin-top: 8px; font-family: var(--font-mono);">DOCUMENT REF // EU_SPHERE_TEACHER_V2.1</div>
     </div>
-
-    <div class="highlight-box">
-      <strong>Instructor Overview:</strong> This document maps the SPHERE Thermal Suit experiment to standard European secondary physics frameworks. It includes lesson timings, safety protocols, expected analytical constants, and suggestions for discussion  to streamline execution in single-session classroom windows.
-    </div>
-
-    <div class="page-break"></div>
 
     <!-- SECTION 1 -->
-    <h2>1. CURRICULAR ALIGNMENT &amp; LESSON SCHEME</h2>
+    <h2><i data-lucide="award" style="width:20px; height:20px; color:var(--orange);"></i> 1. PEDAGOGICAL CONTEXT &amp; SYLLABUS ALIGNMENT</h2>
     <p>
-      This curriculum is aligned with the <strong>Inquiry-Based Science Education (IBSE)</strong> pedagogy, specifically mimicking the virtual-physical calibration workflows of the <strong>European Union Horizon 2020 SPHERE initiative</strong>. It directly maps to secondary physics curriculum segments covering:
+      The <strong>SPHERE: Mission Control Digital Twin Laboratory</strong> is an Inquiry-Based Science Education (IBSE) learning framework. It bridges physical thermal experiments with live mathematical simulation, designed specifically for secondary and upper-secondary physics and engineering curricula.
     </p>
-    <ul>
-      <li><strong>Thermodynamics:</strong> Thermal conduction, convection, radiation, thermal barriers, and specific heat capacity calculations.</li>
-      <li><strong>Mathematical Modeling:</strong> Rate equations, Newtonian decay curves, and parametric modeling.</li>
-      <li><strong>Digital Twin Concepts:</strong> Students use a simplified computer model to compare predicted and measured results.</li>
-    </ul>
 
-    <h3>Suggested Lesson Structure (45-60 Minutes):</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>TIMING</th>
-          <th>INQUIRY STEP</th>
-          <th>STUDENT ACTIVITIES &amp; MILESTONES</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>00 - 10 Min</strong></td>
-          <td>Engage &amp; Certify</td>
-          <td>Students review the deep-space context, read the student briefing, and complete the Pre-Flight Quiz to unlock mission telemetry.</td>
-        </tr>
-<tr>
-  <td><strong>10 - 20 Min</strong></td>
-  <td>Explore &amp; Construct</td>
-  <td>
-    Student crews construct one of four thermal protection systems:
-    <ul style="margin-top:8px; margin-bottom:0;">
-      <li>Bare Capsule</li>
-      <li>Bubble Wrap</li>
-      <li>Mylar</li>
-      <li>Mylar + Cotton + Bubble Wrap (MLI)</li>
+    <h3>Target Learning Outcomes:</h3>
+    <ul>
+      <li><strong>Thermodynamic Mechanisms:</strong> Differentiate between conduction, convection, and radiative heat transfer in complex insulating structures.</li>
+      <li><strong>Newtonian Mathematical Modeling:</strong> Apply Newton's Law of Cooling $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$ to predict exponential decay.</li>
+      <li><strong>Digital Twin Methodology:</strong> Evaluate discrepancies between physical sensor telemetry and computer models.</li>
+      <li><strong>Data Literacy &amp; Graphing:</strong> Manually log data points, plot continuous curves on grid paper templates, and calculate percentage correlation scores.</li>
     </ul>
-    They then install the temperature probe through the PG7 cable gland and prepare the capsule for testing.
-  </td>
-</tr>
-        <tr>
-          <td><strong>20 - 25 Min</strong></td>
-          <td>Model &amp; Predict</td>
-          <td>Crews open the <strong>Simulator</strong> tab, select their insulation schemes, configure parameters (<code style="font-family: var(--font-mono);">T₀ = 80°C</code>), and execute mathematical predictions.</td>
-        </tr>
-        <tr>
-          <td><strong>25 - 40 Min</strong></td>
-          <td>Explain &amp; Measure</td>
-          <td>Pour 80°C water into PET jars. Submerge in the 0°C ice baths. Start stopwatch. Students log temperatures every 60 seconds.</td>
-        </tr>
-        <tr>
-          <td><strong>40 - 45 Min</strong></td>
-          <td>Elaborate &amp; Grade</td>
-          <td>Analyze the resulting <strong>Thermal Correlation Score</strong>. Discuss convective leaks, and record grading coefficients.</td>
-        </tr>
-      </tbody>
-    </table>
 
     <!-- SECTION 2 -->
-    <h2>2. RISK ASSESSMENT &amp; HAZARD MITIGATION</h2>
+    <h2><i data-lucide="clock" style="width:20px; height:20px; color:var(--orange);"></i> 2. LESSON PLAN &amp; TIMELINE (60 MINUTES)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>TIME</th>
+          <th>PHASE</th>
+          <th>TEACHER &amp; STUDENT ACTIVITIES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>00–10 min</strong></td>
+          <td>Briefing &amp; Quiz</td>
+          <td>Introduce space thermal challenges. Students take the Pre-Flight Certification Quiz on Mission Control home page.</td>
+        </tr>
+        <tr>
+          <td><strong>10–20 min</strong></td>
+          <td>Hardware Prep</td>
+          <td>Students wrap PET jars with assigned insulation (Bare, Cotton, Mylar, MLI) and thread sensors through PG7 glands.</td>
+        </tr>
+        <tr>
+          <td><strong>20–35 min</strong></td>
+          <td>15m Live Experiment</td>
+          <td>Capsules dropped into 0°C ice water. Students record temperatures every 60s into Mission Control &amp; task sheet.</td>
+        </tr>
+        <tr>
+          <td><strong>35–48 min</strong></td>
+          <td>Graphing &amp; Scoring</td>
+          <td>Students plot manual paper graph curves and calculate Thermal Correlation Scores against the simulator digital twin.</td>
+        </tr>
+        <tr>
+          <td><strong>48–60 min</strong></td>
+          <td>Debrief &amp; Reflection</td>
+          <td>Group discussion analyzing sources of error, material decay constants ($k$), and spacesuit engineering trade-offs.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- SECTION 3 -->
+    <h2><i data-lucide="check-square" style="width:20px; height:20px; color:var(--orange);"></i> 3. THEORETICAL SOLUTION KEY &amp; DECAY CONSTANTS</h2>
     <p>
-      Enforce these standard safety mandates to guarantee zero accident rates during live laboratory sessions:
+      The following theoretical end temperatures ($t = 15$ min) assume initial hot water $T_0 = 80^\circ\text{C}$ and ice bath $T_{\text{env}} = 0^\circ\text{C}$:
     </p>
 
     <table>
       <thead>
         <tr>
-          <th>HAZARD</th>
-          <th>LEVEL</th>
-          <th>MANDATED MITIGATION STEPS</th>
+          <th>INSULATION DESIGN</th>
+          <th>DECAY CONSTANT (k)</th>
+          <th>EXPECTED END TEMP (15 MIN)</th>
+          <th>PRIMARY INSULATION MECHANISM</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><strong>Hot Water Scalding</strong></td>
-          <td class="risk-high">HIGH</td>
-          <td>Do not allow students to use water &gt; 80°C. Teachers should pre-boil and dispense water pre-mixed with cold tap water to lock thermal limits at exactly 80°C.</td>
+          <td><strong>A. Bare Capsule</strong></td>
+          <td>k ≈ 0.150 (or 0.082)</td>
+          <td>≈ 8°C – 23°C</td>
+          <td>Baseline control. Rapid uninsulated conduction &amp; convection.</td>
         </tr>
         <tr>
-          <td><strong>Melted Ice Slippages</strong></td>
-          <td class="risk-medium">MEDIUM</td>
-          <td>Place physical ice baths in high-density plastic trays. Provide moisture absorbent towels. Keep ice bath tables completely segregated from laptops and tablets.</td>
+          <td><strong>B. Cotton Layer</strong></td>
+          <td>k ≈ 0.080</td>
+          <td>≈ 24°C</td>
+          <td>Traps air pockets to suppress conductive heat transfer.</td>
         </tr>
         <tr>
-          <td><strong>Electrical Shock</strong></td>
-          <td class="risk-medium">MEDIUM</td>
-          <td>Only permit low-voltage, USB-powered or battery-powered digital sensor readouts. Keep the thermocouple cables long to maximize distance from the computer screen.</td>
+          <td><strong>C. Mylar Layer</strong></td>
+          <td>k ≈ 0.040</td>
+          <td>≈ 44°C</td>
+          <td>Reflects infrared thermal radiation back into capsule.</td>
         </tr>
         <tr>
-          <td><strong>Capsule Deformation</strong></td>
-          <td class="risk-low">LOW</td>
-          <td>Ensure thin PET food jars are not exposed to boiling 100°C temperatures which causes polymer warping. Enforce the strict 80°C limit.</td>
+          <td><strong>D. Full MLI (Combined)</strong></td>
+          <td>k ≈ 0.015</td>
+          <td>≈ 64°C</td>
+          <td>Multi-layer barrier addressing conduction, convection, and radiation.</td>
         </tr>
       </tbody>
     </table>
-
-    <div class="highlight-box" style="border-left-color: var(--cyan); background: rgba(0, 242, 254, 0.03);">
-      <strong>Summer &amp; High-Ambient Temperature Adjustments (~30°C):</strong><br>
-      High ambient temperatures in summer classrooms can accelerate ice-bath degradation and introduce safety risks. Enforce these pedagogical workarounds:
-      <ol style="margin-top: 10px; margin-bottom: 0;">
-        <li><strong>Thermal Baseline Safety Scaling:</strong> If ambient room temperatures are high, reduce the hot water target from <strong>80°C to 55°C–60°C</strong>. This eliminates scalding risks and thermal stress on PET caps while preserving perfect exponential Newtonian cooling curves. Students simply adjust their initial temperature parameter (<code style="font-family: var(--font-mono); color: var(--cyan);">T₀ = 60°C</code>) inside the digital twin simulator to maintain flawless correlation.</li>
-        <li><strong>Ice Bath Melt Compensation:</strong> In hot rooms, the ice bath temperature may rise to 3°C–6°C due to melting. Instruct students to measure the actual bath temperature with their probe at the start of the re-entry drop, and configure the environmental temperature (<code style="font-family: var(--font-mono); color: var(--cyan);">
-T<sub>env</sub>
-</code>) in both the simulator and chart overlays to match this observed value (e.g. <code style="font-family: var(--font-mono);">
-T<sub>env</sub>
-= 4.5°C</code>).</li>
-        <li><strong>Ice-Free Alternative Setup:</strong> If ice is logistically unavailable, students can use ambient room tap water (typically ~25°C–30°C) as their cooling environment. To simulate deep-space decay, configure the digital twin simulator with <code style="font-family: var(--font-mono); color: var(--cyan);">
-T<sub>env</sub>
- = 30°C</code> (or the measured tap water temperature) and <code style="font-family: var(--font-mono); color: var(--cyan);">T₀ = 60°C</code>. The mathematical model behaves identically, allowing valid heat transfer comparisons.</li>
-      </ol>
-    </div>
 
     <div class="page-break"></div>
 
-    <!-- SECTION 3 -->
-    <h2>3. ANALYTICAL SOLUTIONS KEY (NEWTONIAN DECAY CONSTANTS)</h2>
-    <p>
-      Crews configure their spacesuits with distinct insulation wraps. The following values are simplified educational estimates intended to demonstrate the relative effectiveness of different insulation strategies.
-    </p>
-<div class="highlight-box">
-<strong>Important:</strong> Actual classroom measurements may differ depending on wrapping quality, material thickness, sensor placement, room conditions, and ice-bath temperature.
-</div>
-<div class="highlight-box">
-<strong>Important Experimental Design Note:</strong><br>
-Students do not test bubble wrap as a standalone insulation system. Bubble wrap is only used as an outer protective layer in the combined configuration (Mylar + Cotton + Bubble Wrap). This reflects real engineering practice, where multiple materials are combined to reduce different heat-transfer mechanisms simultaneously.
-</div>
+    <!-- SECTION 4: TEACHER ANSWER KEY FOR STUDENT WORKSHEETS -->
+    <div class="card-light" id="answer-key">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #cbd5e1; padding-bottom: 10px; margin-bottom: 15px;">
+        <span class="badge-accent"><i data-lucide="check-circle-2" style="width: 14px; height: 14px; vertical-align: middle;"></i> OFFICIAL ANSWER KEY</span>
+        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted-dark);">INSTRUCTOR SOLUTIONS GUIDE</span>
+      </div>
 
-    
-<h3>Expected Cooling Rates after 15-Minute Submersion:</h3>
+      <h2 style="color: var(--text-dark); margin-top: 0;">4. QUESTION SHEET SOLUTION &amp; GRADING GUIDE</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>INSULATION DESIGN</th>
-      <th>DECAY CONSTANT (k)</th>
-      <th>EXPECTED END TEMP (15 MIN)</th>
-      <th>PRIMARY INSULATION EFFECT</th>
-    </tr>
-  </thead>
-  <tbody>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="background: #ffffff; padding: 14px; border-radius: 6px; border-left: 4px solid #0284c7;">
+          <strong style="color: #0f172a;">Q1 Answer (Mylar Mechanism):</strong>
+          <p style="color: #334155; font-size: 0.85rem; margin: 4px 0 0 0;">
+            Mylar has a highly reflective metallic coating that reflects infrared radiation (electromagnetic waves). In a vacuum, radiation is the dominant form of heat transfer. However, in an ice-water bath, conduction through direct liquid contact is extremely high. Mylar alone is thin and has high thermal conductivity, so it requires cotton or bubble wrap to block conductive heat transfer.
+          </p>
+        </div>
 
-    <tr>
-      <td><strong>A. Bare Capsule</strong></td>
-      <td>k ≈ 0.082</td>
-      <td>≈ 23°C</td>
-      <td>Baseline control. No additional insulation.</td>
-    </tr>
+        <div style="background: #ffffff; padding: 14px; border-radius: 6px; border-left: 4px solid #d97706;">
+          <strong style="color: #0f172a;">Q2 Answer (Decay Constant k):</strong>
+          <p style="color: #334155; font-size: 0.85rem; margin: 4px 0 0 0;">
+            A <strong>smaller</strong> $k$ value indicates a <strong>better</strong> thermal insulator. The term $-k \cdot t$ in the exponent determines how quickly temperature drops. Smaller $k$ values mean a slower decay rate, retaining heat inside the capsule for much longer.
+          </p>
+        </div>
 
-    <tr>
-      <td><strong>B. Bubble Wrap</strong></td>
-      <td>k ≈ 0.050</td>
-      <td>≈ 37°C</td>
-      <td>Reduces conductive heat transfer through trapped air within fibers.</td>
-    </tr>
+        <div style="background: #ffffff; padding: 14px; border-radius: 6px; border-left: 4px solid #16a34a;">
+          <strong style="color: #0f172a;">Q3 Answer (MLI Combined Rationale):</strong>
+          <p style="color: #334155; font-size: 0.85rem; margin: 4px 0 0 0;">
+            MLI combines multiple distinct layers: cotton traps stationary air to minimize conduction, bubble wrap creates large sealed air pockets suppressing convection, and Mylar reflects thermal radiation. By targeting all three heat transfer pathways simultaneously, MLI achieves superior performance compared to any single material.
+          </p>
+        </div>
 
-    <tr>
-      <td><strong>C. Mylar</strong></td>
-      <td>k ≈ 0.040</td>
-      <td>≈ 43°C</td>
-      <td>Reflects thermal radiation and reduces radiative heat loss.</td>
-    </tr>
+        <div style="background: #ffffff; padding: 14px; border-radius: 6px; border-left: 4px solid #9333ea;">
+          <strong style="color: #0f172a;">Q4 Answer (Physical vs Digital Twin Error Sources):</strong>
+          <p style="color: #334155; font-size: 0.85rem; margin: 4px 0 0 0;">
+            Acceptable answers include: (1) Sensor probe accidentally touching the jar wall instead of remaining centered; (2) Incomplete waterproofing causing cold water intrusion; (3) Ice bath warming slightly above 0°C; (4) Non-uniform water mixing inside the jar creating temperature gradients.
+          </p>
+        </div>
 
-    <tr>
-      <td><strong>D. Mylar + Cotton + Bubble Wrap (MLI)</strong></td>
-      <td>k ≈ 0.022</td>
-      <td>≈ 56°C</td>
-      <td>Combined reduction of radiation, conduction and convective losses.</td>
-    </tr>
-
-  </tbody>
-</table>
-
-    <!-- FIG 3: SOLUTIONS PLOT GRAPH -->
-    <div style="text-align: center; margin: 25px 0;">
-      <svg viewBox="0 0 600 280" style="background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; margin: 0 auto; display: block; max-width: 600px; width: 100%;">
-        <!-- Temp Grids -->
-        <line x1="60" y1="50" x2="480" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-        <text x="50" y="54" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="end">80°C</text>
-
-        <line x1="60" y1="95" x2="480" y2="95" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-        <text x="50" y="99" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="end">60°C</text>
-
-        <line x1="60" y1="140" x2="480" y2="140" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-        <text x="50" y="144" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="end">40°C</text>
-
-        <line x1="60" y1="185" x2="480" y2="185" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-        <text x="50" y="189" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="end">20°C</text>
-
-        <line x1="60" y1="230" x2="480" y2="230" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
-        <text x="50" y="234" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="end">0°C</text>
-
-        <!-- Time Grids -->
-        <line x1="60" y1="50" x2="60" y2="230" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
-        <text x="60" y="244" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="middle">0m</text>
-
-        <line x1="165" y1="50" x2="165" y2="230" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-        <text x="165" y="244" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="middle">3.75m</text>
-
-        <line x1="270" y1="50" x2="270" y2="230" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-        <text x="270" y="244" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="middle">7.5m</text>
-
-        <line x1="375" y1="50" x2="375" y2="230" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
-        <text x="375" y="244" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="middle">11.25m</text>
-
-        <line x1="480" y1="50" x2="480" y2="230" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
-        <text x="480" y="244" fill="#64748b" font-family="var(--font-mono, monospace)" font-size="8" text-anchor="middle">15m</text>
-
-        <!-- Curves -->
-<!-- 1. Mylar + Cotton + Bubble Wrap (Gold) -->
-        <path d="M 60 50 Q 270 65 480 86" fill="none" stroke="#f59e0b" stroke-width="2.5" />
-        <circle cx="480" cy="86" r="3.5" fill="#f59e0b" />
-        
-<!-- 2. Mylar (Green) -->
-        <path d="M 60 50 Q 270 80 480 120" fill="none" stroke="#10b981" stroke-width="2.5" />
-        <circle cx="480" cy="120" r="3.5" fill="#10b981" />
-
-<!-- 3. Bubble Wrap (Blue) -->
-        <path d="M 60 50 Q 270 95 480 140" fill="none" stroke="#4facfe" stroke-width="2.5" />
-        <circle cx="480" cy="140" r="3.5" fill="#4facfe" />
-
-<!-- 4. Bare Capsule (Red) -->
-        <path d="M 60 50 Q 270 125 480 179" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="3,2" />
-        <circle cx="480" cy="179" r="3.5" fill="#f43f5e" />
-
-        <text x="270" y="25" fill="#e2e8f0" font-family="var(--font-hud, Orbitron)" font-size="9" font-weight="bold" text-anchor="middle" letter-spacing="1">THEORETICAL EXTREME THERMAL DECAY CURVES</text>
-        
-        <!-- Legend -->
-        <rect x="492" y="45" width="98" height="135" rx="4" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" />
-        
-<rect x="500" y="55" width="6" height="6" fill="#f59e0b" />
-<text x="510" y="61" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Mylar+Cotton+BW (56°C)</text>
-
-<rect x="500" y="85" width="6" height="6" fill="#10b981" />
-<text x="510" y="91" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Mylar (43°C)</text>
-
-<rect x="500" y="115" width="6" height="6" fill="#4facfe" />
-<text x="510" y="121" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">BW (37°C)</text>
-
-<rect x="500" y="145" width="6" height="6" fill="#f43f5e" />
-<text x="510" y="151" fill="#94a3b8" font-family="var(--font-sans, Inter)" font-size="8" font-weight="bold">Bare (23°C)</text>
-      </svg>
-      <div style="font-size: 0.8rem; color: var(--text-dimmed); margin-top: 6px; font-family: var(--font-mono);">FIGURE 3: EXPECTED EXPONENTIAL COOLING CURVES (t = 0 to 15m)</div>
+        <div style="background: #ffffff; padding: 14px; border-radius: 6px; border-left: 4px solid #dc2626;">
+          <strong style="color: #0f172a;">Q5 Answer (Summer Classroom Adaptation):</strong>
+          <p style="color: #334155; font-size: 0.85rem; margin: 4px 0 0 0;">
+            Students should measure the actual temperature of the ice bath using their thermometer and enter that value (e.g. 4.5°C) into the $T_{\text{env}}$ input field in Mission Control. This ensures the digital twin math model uses the exact physical boundary condition of the room.
+          </p>
+        </div>
+      </div>
     </div>
 
-    <p>
-      <em>Note: Physical values may deviate by ±5% depending on wrapping tightness and capsule sealing. The <strong>Thermal Correlation Score</strong> provides a visual comparison between the measured data and the prediction model. It is intended as a discussion tool rather than a measure of success.</em>
-    </p>
+    <!-- Action Buttons Footer -->
+    <div class="action-button-container" style="margin-top: 40px;">
+      <button class="btn-print" onclick="window.print();">
+        <i data-lucide="printer"></i> PRINT TEACHER MANUAL &amp; KEYS
+      </button>
+      <a href="student_manual.html" class="btn-print" style="background: linear-gradient(135deg, var(--cyan), #00b8ff); color: #060913;">
+        <i data-lucide="book-open"></i> VIEW STUDENT MANUAL
+      </a>
+    </div>
 
-    <!-- SECTION 4 -->
-    <h2>4. CLASSROOM DISCUSSION &amp; REFLECTION</h2>
-    <p>
-      The goal is to develop a scientific understanding and engineering intuition rather than achieving specific results. Teachers are encouraged to let the students discuss and assess their results using the questions below:
-    </p>
-
-<ul>
-<li>Which type of insulation performed best and why?</li>
-
-<li>Did your measured temperatures match the simulated prediction? If not, what might explain the differences?</li>
-
-<li>Which heat transfer mechanisms are dominant in which material?</li>
-
-<li>How does this experiment differ from the actual conditions in space?</li>
-
-<li>What limitations does this experimental model have?</li>
-
-<li>How could the experiment be improved?</li>
-</ul>
-    
-<div class="highlight-box">
-<strong>Teacher Note:</strong> Deviations between prediction and measurement should be viewed as opportunities for scientific discussion rather than as mistakes. Real experiments rarely match theoretical models perfectly.
-</div>
-
-<h2>5. Experiment Limitations</h2>
-
-<p>
-This experiment is a simplified model of thermal protection in space and does not perfectly represent real astronaut conditions.
-</p>
-
-<ul>
-<li>Real space is a vacuum, while this experiment takes place in air and water.</li>
-
-<li>Heat transfer in space is dominated by radiation, whereas conduction and convection are significant in this experiment.</li>
-
-<li>Real spacesuits use many specialized insulation layers and active thermal control systems.</li>
-
-<li>Astronauts continuously generate heat through metabolism.</li>
-
-<li>The experiment is designed to illustrate heat transfer concepts rather than accurately reproduce space conditions.</li>
-</ul>
-
-
-<div class="action-button-container" style="margin-top:30px; margin-bottom:20px;">
-  <button class="btn-print" onclick="window.print();">
-    <i data-lucide="printer"></i>
-    SAVE MANUAL TO PDF / PRINT
-  </button>
-</div>
-
-<div class="footer-bar">
-  SPHERE: MISSION CONTROL // INSTRUCTOR PEDAGOGICAL DEPLOYMENT MANUAL // © 2026 PROJECT SPHERE INITIATIVE
-</div>
+    <div class="footer-bar">
+      SPHERE: MISSION CONTROL // TEACHER PEDAGOGICAL MANUAL &amp; SOLUTIONS KEY // © 2026 PROJECT SPHERE INITIATIVE
+    </div>
 
   </div>
 
