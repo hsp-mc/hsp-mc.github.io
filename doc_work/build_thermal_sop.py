@@ -417,10 +417,10 @@ def add_results_summary(document):
     for cell, text in zip(table.rows[0].cells, headers):
         set_cell_text(cell, text, bold=True, size=8.8, align=WD_ALIGN_PARAGRAPH.CENTER)
     rows = [
-        ("Full MLI", 77.6, 62.7, 14.9, 25.0, "93%", "A"),
+        ("Full MLI", 77.6, 62.7, 14.9, 74.1, "93%", "A"),
         ("Bubble wrap", 82.6, 52.6, 30.0, 52.1, "83%", "B"),
-        ("Bare control", 80.1, 35.2, 44.9, 74.7, "94%", "A"),
-        ("Mylar only", 80.5, 33.3, 47.2, 78.0, "3%", "F"),
+        ("Bare control", 80.1, 35.2, 44.9, 25.3, "94%", "A"),
+        ("Mylar only", 80.5, 33.3, 47.2, 22.0, "3%", "F"),
     ]
     fills = [PALE_GREEN, PALE_BLUE, GRAY, PALE_RED]
     for data, fill in zip(rows, fills):
@@ -538,16 +538,16 @@ def build():
     add_checklist_table(
         document,
         [
-            ("4 or 1 reused", "Identical thermal core / metal capsule with probe access", "Use the same water mass, container, and probe depth for every condition."),
+            ("4 / 1", "Identical thermal core / metal capsule with probe access", "Use the same water mass, container, and probe depth for every condition."),
             ("1 set", "Cotton or soft fibrous wrap", "Inner conductive barrier for the full MLI package."),
             ("1 roll", "Bubble wrap", "Convective/conductive shield; do not crush the bubbles."),
             ("1 sheet", "Reflective Mylar or emergency blanket", "Radiation shield and outer layer of the full MLI package."),
-            ("As needed", "Tape and elastic bands", "Secure layers without compressing them."),
-            ("1 per student", "Worksheet / lab report", "Hypothesis, raw data, calculations, and evaluation."),
+            ("—", "Tape and elastic bands", "Secure layers without compressing them."),
+            ("1 each", "Worksheet / lab report", "Hypothesis, raw data, calculations, and evaluation."),
         ],
     )
 
-    add_heading(document, "SAFETY AND CONTROL REQUIREMENTS", 2)
+    add_heading(document, "SAFETY AND CONTROL REQUIREMENTS", 2, page_break_before=True)
     add_callout(
         document,
         "HOT-WATER HAZARD.",

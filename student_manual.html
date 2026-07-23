@@ -8,43 +8,43 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
     /* ==========================================================================
        SPHERE MISSION CONTROL: OFFICIAL PRACTICAL MANUAL STYLESHEET
-       Theme: Executive Light Technical Document with High-Contrast Accents
+       Theme: Ultra-High Contrast Light Technical Document (WCAG AAA Compliant)
        ========================================================================== */
 
     :root {
-      /* Theme Palettes */
-      --bg-document: #f8fafc;
+      /* Base Theme Colors */
+      --bg-document: #f1f5f9;
       --bg-page: #ffffff;
-      --bg-subtle: #f1f5f9;
-      --bg-elevated: #e2e8f0;
+      --bg-subtle: #f8fafc;
+      --bg-card: #ffffff;
       
-      /* Primary Brand Accents (Student: Sky / Navy) */
-      --primary-600: #0284c7;
-      --primary-700: #0369a1;
-      --primary-800: #075985;
-      --primary-subtle: #f0f9ff;
-      --primary-border: #bae6fd;
+      /* High Contrast Brand Colors */
+      --primary-blue: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-bg: #e0f2fe;
+      --primary-border: #7dd3fc;
       
-      /* Secondary Accents */
       --accent-amber: #d97706;
-      --accent-amber-subtle: #fffbebe;
-      --accent-emerald: #059669;
-      --accent-purple: #7c3aed;
+      --accent-amber-dark: #92400e;
+      --accent-amber-bg: #fef3c7;
+      --accent-amber-border: #fcd34d;
+      
       --dark-navy: #0f172a;
       
-      /* Typography Colors */
-      --text-main: #0f172a;
+      /* High Contrast Text Tokens */
+      --text-heading: #0f172a;
+      --text-body: #1e293b;
       --text-muted: #334155;
-      --text-subtle: #64748b;
+      --text-subtle: #475569;
       --border-color: #cbd5e1;
-      --border-light: #e2e8f0;
+      --border-dark: #94a3b8;
 
-      /* Font Families */
+      /* Font Stacks */
       --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
       --font-hud: 'Orbitron', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -56,7 +56,7 @@
 
     body {
       background-color: var(--bg-document);
-      color: var(--text-main);
+      color: var(--text-body);
       font-family: var(--font-sans);
       line-height: 1.65;
       margin: 0;
@@ -72,7 +72,7 @@
       border: 1px solid var(--border-color);
       border-radius: 16px;
       padding: 45px 50px;
-      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 0 15px rgba(2, 132, 199, 0.05);
+      box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.08);
     }
 
     /* Sticky Navigation Bar */
@@ -80,10 +80,8 @@
       position: sticky;
       top: 15px;
       z-index: 1000;
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: #0f172a;
+      border: 1px solid #334155;
       border-radius: 12px;
       padding: 12px 20px;
       margin-bottom: 30px;
@@ -111,7 +109,6 @@
 
     .nav-btn-back:hover {
       color: #7dd3fc;
-      transform: translateX(-2px);
     }
 
     .nav-actions {
@@ -158,12 +155,12 @@
     .header-badge {
       display: inline-block;
       font-family: var(--font-hud);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--primary-700);
-      background: var(--primary-subtle);
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      background: var(--primary-bg);
       border: 1px solid var(--primary-border);
-      padding: 6px 16px;
+      padding: 6px 18px;
       border-radius: 50px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -172,9 +169,9 @@
 
     .doc-title {
       font-family: var(--font-hud);
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 900;
-      color: var(--dark-navy);
+      color: var(--text-heading);
       margin: 0;
       letter-spacing: 0.02em;
       text-transform: uppercase;
@@ -183,9 +180,9 @@
 
     .doc-subtitle {
       font-family: var(--font-sans);
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--primary-600);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-blue);
       margin-top: 10px;
       letter-spacing: 0.05em;
       text-transform: uppercase;
@@ -197,6 +194,7 @@
       gap: 20px;
       font-family: var(--font-mono);
       font-size: 0.8rem;
+      font-weight: 700;
       color: var(--text-subtle);
       margin-top: 15px;
     }
@@ -206,8 +204,8 @@
       font-family: var(--font-hud);
       font-size: 1.3rem;
       font-weight: 800;
-      color: var(--dark-navy);
-      border-bottom: 2px solid var(--border-light);
+      color: var(--text-heading);
+      border-bottom: 2px solid var(--border-color);
       padding-bottom: 10px;
       margin-top: 45px;
       margin-bottom: 20px;
@@ -218,26 +216,26 @@
     }
 
     h2 i {
-      color: var(--primary-600);
+      color: var(--primary-blue);
     }
 
     h3 {
       font-family: var(--font-sans);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--primary-700);
-      margin-top: 25px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-top: 28px;
       margin-bottom: 12px;
     }
 
     p {
-      color: var(--text-muted);
+      color: var(--text-body);
       font-size: 0.98rem;
       margin-bottom: 1.25em;
     }
 
     ul, ol {
-      color: var(--text-muted);
+      color: var(--text-body);
       font-size: 0.98rem;
       margin-bottom: 1.5em;
       padding-left: 24px;
@@ -247,62 +245,59 @@
       margin-bottom: 8px;
     }
 
-    /* Callout & Feature Boxes */
+    /* Callout Boxes */
     .callout-box {
-      background: var(--primary-subtle);
-      border-left: 5px solid var(--primary-600);
+      background: var(--primary-bg);
+      border-left: 6px solid var(--primary-blue);
       border-radius: 0 10px 10px 0;
       padding: 20px 24px;
       margin: 25px 0;
       border-top: 1px solid var(--primary-border);
       border-right: 1px solid var(--primary-border);
       border-bottom: 1px solid var(--primary-border);
+      color: var(--dark-navy);
     }
 
     .callout-box strong {
-      color: var(--primary-800);
-      font-weight: 700;
+      color: var(--primary-dark);
+      font-weight: 800;
     }
 
-    .callout-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Math Formula Block */
+    /* Formula Card (High Contrast Light/Dark Border system) */
     .formula-card {
-      background: var(--dark-navy);
-      color: #ffffff;
+      background: #ffffff;
+      border: 2px solid var(--dark-navy);
       border-radius: 12px;
       padding: 24px;
       margin: 25px 0;
       text-align: center;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
-      border: 1px solid #334155;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     }
 
     .formula-title {
       font-family: var(--font-hud);
       font-size: 0.85rem;
-      color: #38bdf8;
+      font-weight: 800;
+      color: var(--primary-dark);
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .formula-math {
       font-family: var(--font-mono);
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      color: #38bdf8;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 14px 20px;
+      color: var(--dark-navy);
+      background: var(--bg-subtle);
+      padding: 14px 24px;
       border-radius: 8px;
       display: inline-block;
       margin: 8px 0;
-      border: 1px dashed rgba(56, 189, 248, 0.4);
+      border: 2px dashed var(--primary-blue);
     }
 
-    /* Styled Cards for Insulation Types */
+    /* Insulation Grid */
     .insulation-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -311,23 +306,24 @@
     }
 
     .insulation-card {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
+      background: #ffffff;
+      border: 2px solid var(--border-color);
       border-radius: 10px;
       padding: 18px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: all 0.2s ease;
     }
 
     .insulation-card:hover {
+      border-color: var(--primary-blue);
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-      border-color: var(--primary-600);
+      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.12);
     }
 
     .insulation-card h4 {
       font-family: var(--font-hud);
       font-size: 0.85rem;
-      color: var(--primary-700);
+      font-weight: 800;
+      color: var(--primary-dark);
       margin: 0 0 8px 0;
       display: flex;
       align-items: center;
@@ -336,22 +332,22 @@
 
     .insulation-card .k-tag {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      background: #ffffff;
-      padding: 2px 8px;
+      font-size: 0.78rem;
+      background: var(--primary-bg);
+      color: var(--primary-dark);
+      padding: 3px 8px;
       border-radius: 4px;
-      border: 1px solid var(--border-color);
-      color: var(--dark-navy);
+      border: 1px solid var(--primary-border);
       font-weight: bold;
     }
 
     .insulation-card p {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       margin: 0;
     }
 
-    /* Tables */
+    /* Styled Tables */
     .styled-table {
       width: 100%;
       border-collapse: collapse;
@@ -360,8 +356,7 @@
       background: #ffffff;
       border-radius: 8px;
       overflow: hidden;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      border: 2px solid var(--border-color);
     }
 
     .styled-table th {
@@ -369,7 +364,7 @@
       color: #ffffff;
       font-family: var(--font-hud);
       font-size: 0.78rem;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.05em;
       padding: 12px 14px;
       text-align: center;
@@ -379,26 +374,23 @@
     .styled-table td {
       padding: 10px 12px;
       text-align: center;
-      border: 1px solid var(--border-light);
-      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      color: var(--text-body);
+      font-weight: 500;
     }
 
     .styled-table tr:nth-child(even) {
       background: var(--bg-subtle);
     }
 
-    .styled-table tr:hover {
-      background: var(--primary-subtle);
-    }
-
-    /* Section Worksheet Block */
+    /* Worksheet Box */
     .worksheet-card {
       background: #ffffff;
-      border: 2px solid var(--primary-600);
-      border-radius: 12px;
-      padding: 30px;
+      border: 3px solid var(--primary-blue);
+      border-radius: 14px;
+      padding: 32px;
       margin: 35px 0;
-      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.08);
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.1);
     }
 
     .worksheet-header {
@@ -412,9 +404,9 @@
 
     .worksheet-title {
       font-family: var(--font-hud);
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
-      color: var(--primary-700);
+      color: var(--primary-dark);
     }
 
     .meta-fill-grid {
@@ -431,6 +423,7 @@
     .meta-fill-item label {
       font-family: var(--font-hud);
       font-size: 0.7rem;
+      font-weight: 700;
       color: var(--text-subtle);
       display: block;
       margin-bottom: 4px;
@@ -442,38 +435,38 @@
       font-weight: bold;
     }
 
-    /* Questions List */
+    /* Question Block */
     .question-block {
-      background: var(--bg-subtle);
-      border-left: 4px solid var(--primary-600);
+      background: #ffffff;
+      border-left: 6px solid var(--primary-blue);
       border-radius: 0 8px 8px 0;
-      padding: 18px;
+      padding: 20px;
       margin-bottom: 20px;
-      border-top: 1px solid var(--border-light);
-      border-right: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
+      border-top: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
     }
 
     .question-title {
-      font-weight: 700;
+      font-weight: 800;
       color: var(--dark-navy);
+      font-size: 1rem;
       margin-bottom: 8px;
-      font-size: 0.95rem;
     }
 
     .answer-space {
-      background: #ffffff;
-      border: 1px dashed var(--border-color);
+      background: var(--bg-subtle);
+      border: 1.5px dashed var(--border-dark);
       border-radius: 6px;
-      min-height: 70px;
-      margin-top: 10px;
+      min-height: 75px;
+      margin-top: 12px;
       padding: 10px;
     }
 
-    /* Flashcard Grid */
+    /* EXPANDED FLASHCARD GRID (10 High-Contrast Flashcards) */
     .flashcard-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 16px;
       margin: 25px 0;
     }
@@ -481,7 +474,7 @@
     .flashcard {
       background: transparent;
       perspective: 1000px;
-      min-height: 160px;
+      min-height: 165px;
       cursor: pointer;
     }
 
@@ -512,33 +505,41 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     .flashcard-front {
-      background: var(--dark-navy);
-      color: #ffffff;
+      background: #ffffff;
+      color: var(--dark-navy);
+      border-color: var(--primary-blue);
+    }
+
+    .flashcard-front i {
+      color: var(--primary-blue);
+      margin-bottom: 8px;
     }
 
     .flashcard-front h4 {
       font-family: var(--font-hud);
       font-size: 0.85rem;
-      color: #38bdf8;
-      margin: 6px 0 0 0;
+      font-weight: 800;
+      color: var(--dark-navy);
+      margin: 0;
     }
 
     .flashcard-back {
-      background: var(--primary-subtle);
-      color: var(--dark-navy);
+      background: var(--dark-navy);
+      color: #ffffff;
+      border-color: var(--dark-navy);
       transform: rotateY(180deg);
-      border-color: var(--primary-border);
     }
 
     .flashcard-back p {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       margin: 0;
-      color: var(--text-muted);
+      color: #f1f5f9;
+      line-height: 1.45;
     }
 
     /* Print & Action Buttons */
@@ -553,7 +554,7 @@
     .btn-action {
       font-family: var(--font-hud);
       font-size: 0.85rem;
-      font-weight: 700;
+      font-weight: 800;
       padding: 14px 28px;
       border-radius: 8px;
       border: none;
@@ -567,12 +568,12 @@
     }
 
     .btn-primary {
-      background: var(--primary-600);
+      background: var(--primary-blue);
       color: #ffffff;
     }
 
     .btn-primary:hover {
-      background: var(--primary-700);
+      background: var(--primary-dark);
       transform: translateY(-2px);
       box-shadow: 0 6px 18px rgba(2, 132, 199, 0.3);
     }
@@ -583,7 +584,7 @@
     }
 
     .btn-secondary:hover {
-      background: #b45309;
+      background: var(--accent-amber-dark);
       transform: translateY(-2px);
       box-shadow: 0 6px 18px rgba(217, 119, 6, 0.3);
     }
@@ -592,15 +593,14 @@
       text-align: center;
       margin-top: 45px;
       padding-top: 20px;
-      border-top: 1px solid var(--border-light);
+      border-top: 1px solid var(--border-color);
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 700;
       color: var(--text-subtle);
     }
 
-    /* ==========================================================================
-       PRINT STYLES: OPTIMIZED FOR WHITE PAPER & PDF GENERATION
-       ========================================================================== */
+    /* PRINT STYLES */
     @media print {
       body {
         background: #ffffff !important;
@@ -629,12 +629,12 @@
       }
 
       h2 {
-        border-bottom: 1.5pt solid #000000 !important;
+        border-bottom: 2pt solid #000000 !important;
         margin-top: 18pt !important;
       }
 
       .worksheet-card {
-        border: 1pt solid #000000 !important;
+        border: 1.5pt solid #000000 !important;
         box-shadow: none !important;
         padding: 15pt !important;
         page-break-inside: avoid;
@@ -647,20 +647,7 @@
       }
 
       .styled-table td {
-        border: 1pt solid #666666 !important;
-      }
-
-      .formula-card {
-        background: #f8fafc !important;
-        color: #000000 !important;
-        border: 1pt dashed #000000 !important;
-        box-shadow: none !important;
-      }
-
-      .formula-math {
-        color: #000000 !important;
-        background: #ffffff !important;
-        border: 1pt solid #000000 !important;
+        border: 1pt solid #444444 !important;
       }
 
       .page-break {
@@ -766,23 +753,23 @@
       <li>Ensure the temperature sensor tip hangs suspended in the exact center of the 100ml jar without touching the container walls.</li>
     </ol>
 
-    <!-- FIGURE 1 SVG SCHEMATIC -->
+    <!-- FIGURE 1 SVG SCHEMATIC (High Contrast) -->
     <div style="text-align: center; margin: 30px 0;">
-      <svg viewBox="0 0 650 300" style="background: #ffffff; border: 2px solid var(--border-color); border-radius: 12px; max-width: 100%; height: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+      <svg viewBox="0 0 650 300" style="background: #ffffff; border: 2px solid var(--dark-navy); border-radius: 12px; max-width: 100%; height: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
         <!-- Background Tint for Ice Bath -->
-        <rect x="20" y="20" width="610" height="260" rx="8" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5" />
-        <text x="35" y="45" fill="#0369a1" font-family="var(--font-hud)" font-size="10" font-weight="bold" letter-spacing="1">ENVIRONMENT CHAMBER: ICE BATH (T_env = 0°C)</text>
+        <rect x="20" y="20" width="610" height="260" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+        <text x="35" y="45" fill="#0369a1" font-family="var(--font-hud)" font-size="11" font-weight="800" letter-spacing="1">ENVIRONMENT CHAMBER: ICE BATH (T_env = 0°C)</text>
 
         <!-- Container Jar Cap -->
-        <rect x="265" y="70" width="120" height="18" rx="4" fill="#1e293b" stroke="#475569" stroke-width="2" />
-        <line x1="255" y1="88" x2="395" y2="88" stroke="#475569" stroke-width="3" />
+        <rect x="265" y="70" width="120" height="18" rx="4" fill="#0f172a" stroke="#334155" stroke-width="2" />
+        <line x1="255" y1="88" x2="395" y2="88" stroke="#0f172a" stroke-width="3" />
 
         <!-- Container Jar Body -->
         <path d="M 270 88 L 270 230 C 270 242, 278 248, 290 248 L 360 248 C 372 248, 380 242, 380 230 L 380 88 Z" fill="#ffffff" stroke="#0284c7" stroke-width="3" />
         
         <!-- Water Core -->
-        <path d="M 274 110 L 274 228 C 274 236, 280 242, 290 242 L 360 242 C 370 242, 376 236, 376 228 L 376 110 Z" fill="rgba(56, 189, 248, 0.18)" />
-        <text x="325" y="165" fill="#0369a1" font-family="var(--font-hud)" font-size="10" font-weight="bold" text-anchor="middle">100ml CORE (80°C)</text>
+        <path d="M 274 110 L 274 228 C 274 236, 280 242, 290 242 L 360 242 C 370 242, 376 236, 376 228 L 376 110 Z" fill="rgba(2, 132, 199, 0.2)" />
+        <text x="325" y="165" fill="#0369a1" font-family="var(--font-hud)" font-size="10" font-weight="800" text-anchor="middle">100ml CORE (80°C)</text>
 
         <!-- PG7 Gland -->
         <rect x="313" y="45" width="24" height="25" rx="2" fill="#0f172a" stroke="#d97706" stroke-width="2" />
@@ -793,31 +780,27 @@
         <rect x="320" y="185" width="10" height="18" rx="3" fill="#d97706" stroke="#ffffff" stroke-width="1" />
 
         <!-- Arrow Callouts -->
-        <!-- Callout 1: Gland -->
-        <line x1="140" y1="57" x2="305" y2="57" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,4" />
+        <line x1="140" y1="57" x2="305" y2="57" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4,4" />
         <circle cx="305" cy="57" r="3" fill="#0284c7" />
-        <text x="30" y="55" fill="#0f172a" font-family="var(--font-sans)" font-size="11" font-weight="bold">PG7 Waterproof Gland</text>
-        <text x="30" y="68" fill="#64748b" font-family="var(--font-sans)" font-size="9.5">Seals cable entry under pressure</text>
+        <text x="25" y="55" fill="#0f172a" font-family="var(--font-sans)" font-size="11" font-weight="800">PG7 Waterproof Gland</text>
+        <text x="25" y="68" fill="#334155" font-family="var(--font-sans)" font-size="9.5" font-weight="600">Seals cable entry under pressure</text>
 
-        <!-- Callout 2: PET Jar -->
-        <line x1="140" y1="200" x2="265" y2="200" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,4" />
+        <line x1="140" y1="200" x2="265" y2="200" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4,4" />
         <circle cx="265" cy="200" r="3" fill="#0284c7" />
-        <text x="30" y="198" fill="#0f172a" font-family="var(--font-sans)" font-size="11" font-weight="bold">PET Capsule Outer Wall</text>
-        <text x="30" y="211" fill="#64748b" font-family="var(--font-sans)" font-size="9.5">100ml PET Food Jar</text>
+        <text x="25" y="198" fill="#0f172a" font-family="var(--font-sans)" font-size="11" font-weight="800">PET Capsule Outer Wall</text>
+        <text x="25" y="211" fill="#334155" font-family="var(--font-sans)" font-size="9.5" font-weight="600">100ml PET Food Jar</text>
 
-        <!-- Callout 3: Wire -->
-        <line x1="510" y1="100" x2="330" y2="100" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,4" />
+        <line x1="510" y1="100" x2="330" y2="100" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4,4" />
         <circle cx="330" cy="100" r="3" fill="#d97706" />
-        <text x="520" y="98" fill="#0f172a" font-family="var(--font-sans)" font-size="11" font-weight="bold">DS18B20 Sensor Wire</text>
-        <text x="520" y="111" fill="#64748b" font-family="var(--font-sans)" font-size="9.5">Digital 1-Wire interface</text>
+        <text x="520" y="98" fill="#0f172a" font-family="var(--font-sans)" font-size="11" font-weight="800">DS18B20 Sensor Wire</text>
+        <text x="520" y="111" fill="#334155" font-family="var(--font-sans)" font-size="9.5" font-weight="600">Digital 1-Wire interface</text>
 
-        <!-- Callout 4: Probe -->
-        <line x1="510" y1="194" x2="335" y2="194" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,4" />
+        <line x1="510" y1="194" x2="335" y2="194" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4,4" />
         <circle cx="335" cy="194" r="3" fill="#d97706" />
-        <text x="520" y="192" fill="#0f172a" font-family="var(--font-sans)" font-size="11" font-weight="bold">Centered Probe Tip</text>
-        <text x="520" y="205" fill="#64748b" font-family="var(--font-sans)" font-size="9.5">Suspended core measurement</text>
+        <text x="520" y="192" fill="#0f172a" font-family="var(--font-sans)" font-size="11" font-weight="800">Centered Probe Tip</text>
+        <text x="520" y="205" fill="#334155" font-family="var(--font-sans)" font-size="9.5" font-weight="600">Suspended core measurement</text>
       </svg>
-      <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-subtle); margin-top: 8px;">
+      <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-subtle); margin-top: 8px;">
         FIGURE 1: MECHANICAL ASSEMBLY DIAGRAM &amp; THERMAL PROBE SEEDING
       </div>
     </div>
@@ -856,12 +839,12 @@
     <div class="formula-card">
       <div class="formula-title">NEWTON'S LAW OF COOLING (EXPONENTIAL DECAY MODEL)</div>
       <div class="formula-math">T(t) = T_env + (T_0 - T_env) · e^(-k · t)</div>
-      <div style="font-size: 0.85rem; color: #94a3b8; margin-top: 10px;">
+      <div style="font-size: 0.88rem; color: var(--text-muted); font-weight: 600; margin-top: 10px;">
         Where: 
-        <strong style="color:#38bdf8">T(t)</strong> = Predicted Temp (°C) at minute <em>t</em> &nbsp;|&nbsp; 
-        <strong style="color:#38bdf8">T_env</strong> = Ice Bath Temp (0°C) &nbsp;|&nbsp; 
-        <strong style="color:#38bdf8">T_0</strong> = Initial Core Temp (80°C) &nbsp;|&nbsp; 
-        <strong style="color:#fbbf24">k</strong> = Cooling Constant (1/min)
+        <strong style="color:var(--primary-dark)">T(t)</strong> = Predicted Temp (°C) at minute <em>t</em> &nbsp;|&nbsp; 
+        <strong style="color:var(--primary-dark)">T_env</strong> = Ice Bath Temp (0°C) &nbsp;|&nbsp; 
+        <strong style="color:var(--primary-dark)">T_0</strong> = Initial Core Temp (80°C) &nbsp;|&nbsp; 
+        <strong style="color:var(--accent-amber-dark)">k</strong> = Cooling Rate Constant (1/min)
       </div>
     </div>
 
@@ -882,7 +865,7 @@
     <div class="worksheet-card" id="task-sheet">
       <div class="worksheet-header">
         <span class="worksheet-title"><i data-lucide="clipboard-list" style="vertical-align: middle;"></i> SECTION 6: STUDENT TASK SHEET &amp; GRAPH WORKBOOK</span>
-        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--primary-700); font-weight: bold;">WORKSHEET #01</span>
+        <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--primary-dark); font-weight: bold;">WORKSHEET #01</span>
       </div>
 
       <!-- Crew Metadata Form -->
@@ -901,7 +884,7 @@
         </div>
         <div class="meta-fill-item">
           <label>TESTED INSULATION CONFIGURATION:</label>
-          <div style="font-size: 0.85rem; font-weight: bold; color: var(--primary-700); padding-top: 4px;">
+          <div style="font-size: 0.88rem; font-weight: bold; color: var(--primary-dark); padding-top: 4px;">
             [ ] A: Bare &nbsp;&nbsp; [ ] B: Cotton &nbsp;&nbsp; [ ] C: Mylar &nbsp;&nbsp; [ ] D: MLI
           </div>
         </div>
@@ -940,12 +923,12 @@
 
       <h3>Part B. Printable Coordinate Graph Grid</h3>
       <p style="font-size: 0.88rem; color: var(--text-muted);">
-        Plot physical measurements as points <strong style="color: var(--primary-600);">(•)</strong> and connect with a solid line. Draw theoretical predicted temperatures as a dashed curve <strong style="color: var(--accent-amber);">(---)</strong>.
+        Plot physical measurements as points <strong style="color: var(--primary-dark);">(•)</strong> and connect with a solid line. Draw theoretical predicted temperatures as a dashed curve <strong style="color: var(--accent-amber-dark);">(---)</strong>.
       </p>
 
       <!-- SVG GRAPH GRID TEMPLATE -->
       <div style="text-align: center; margin: 20px 0;">
-        <svg viewBox="0 0 680 430" style="background: #ffffff; border: 2px solid var(--dark-navy); border-radius: 8px; max-width: 100%; height: auto;">
+        <svg viewBox="0 0 680 430" style="background: #ffffff; border: 2.5px solid var(--dark-navy); border-radius: 8px; max-width: 100%; height: auto;">
           <defs>
             <pattern id="grid-minor-std" width="10" height="10" patternUnits="userSpaceOnUse">
               <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.5"/>
@@ -957,28 +940,28 @@
           </defs>
 
           <!-- Graph Area -->
-          <rect x="75" y="35" width="560" height="330" fill="url(#grid-major-std)" stroke="#334155" stroke-width="2"/>
+          <rect x="75" y="35" width="560" height="330" fill="url(#grid-major-std)" stroke="#0f172a" stroke-width="2"/>
 
           <!-- Y-Axis Labels -->
-          <text x="60" y="40" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">80°C</text>
-          <text x="60" y="81" text-anchor="end" font-size="10" font-family="sans-serif" fill="#475569">70°C</text>
-          <text x="60" y="122" text-anchor="end" font-size="10" font-family="sans-serif" fill="#475569">60°C</text>
-          <text x="60" y="163" text-anchor="end" font-size="10" font-family="sans-serif" fill="#475569">50°C</text>
-          <text x="60" y="204" text-anchor="end" font-size="10" font-family="sans-serif" fill="#475569">40°C</text>
-          <text x="60" y="245" text-anchor="end" font-size="10" font-family="sans-serif" fill="#475569">30°C</text>
-          <text x="60" y="286" text-anchor="end" font-size="10" font-family="sans-serif" fill="#475569">20°C</text>
-          <text x="60" y="327" text-anchor="end" font-size="10" font-family="sans-serif" fill="#475569">10°C</text>
-          <text x="60" y="368" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">0°C</text>
+          <text x="60" y="40" text-anchor="end" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0f172a">80°C</text>
+          <text x="60" y="81" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">70°C</text>
+          <text x="60" y="122" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">60°C</text>
+          <text x="60" y="163" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">50°C</text>
+          <text x="60" y="204" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">40°C</text>
+          <text x="60" y="245" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">30°C</text>
+          <text x="60" y="286" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">20°C</text>
+          <text x="60" y="327" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">10°C</text>
+          <text x="60" y="368" text-anchor="end" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0f172a">0°C</text>
 
           <text x="22" y="200" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0f172a" transform="rotate(-90 22 200)">TEMPERATURE (°C)</text>
 
           <!-- X-Axis Labels -->
-          <text x="75" y="390" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">0m</text>
-          <text x="187" y="390" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#475569">3m</text>
-          <text x="299" y="390" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#475569">6m</text>
-          <text x="411" y="390" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#475569">9m</text>
-          <text x="523" y="390" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#475569">12m</text>
-          <text x="635" y="390" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">15m</text>
+          <text x="75" y="390" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0f172a">0m</text>
+          <text x="187" y="390" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">3m</text>
+          <text x="299" y="390" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">6m</text>
+          <text x="411" y="390" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">9m</text>
+          <text x="523" y="390" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">12m</text>
+          <text x="635" y="390" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0f172a">15m</text>
 
           <text x="355" y="414" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0f172a">MISSION ELAPSED TIME (MINUTES)</text>
           <text x="355" y="22" text-anchor="middle" font-size="12" font-family="sans-serif" font-weight="bold" fill="#0f172a">THERMAL DECAY COOLING CURVE</text>
@@ -988,23 +971,23 @@
       <h3>Part C. Manual Thermal Correlation Score Calculation</h3>
       <div style="background: var(--bg-subtle); padding: 18px; border-radius: 8px; border: 1px solid var(--border-color);">
         <p style="font-weight: bold; margin-bottom: 8px; color: var(--dark-navy);">Calculation Steps:</p>
-        <ol style="font-size: 0.88rem; margin-bottom: 12px; color: var(--text-muted);">
+        <ol style="font-size: 0.9rem; margin-bottom: 12px; color: var(--text-body);">
           <li>Sum the absolute differences in Column 4: <strong>Sum |ΔT| = ______________ °C</strong></li>
           <li>Calculate Average Error: <strong>Avg Error = Sum / 15 = ______________ °C</strong></li>
           <li>Compute Correlation Score: <strong>Score = 100 - (Avg Error × 5) = ______________ %</strong></li>
         </ol>
-        <div style="font-family: var(--font-hud); font-size: 0.85rem; font-weight: bold; color: var(--primary-700);">
+        <div style="font-family: var(--font-hud); font-size: 0.85rem; font-weight: 800; color: var(--primary-dark);">
           FINAL CREW PERFORMANCE RATING: [ ] A+ (95%+) &nbsp; [ ] A (90%+) &nbsp; [ ] B (80%+) &nbsp; [ ] C (70%+) &nbsp; [ ] RE-CALIBRATE (&lt;70%)
         </div>
       </div>
     </div>
 
-    <!-- SECTION 7: QUESTIONS SHEET -->
+    <!-- SECTION 7: EXPANDED QUESTION SHEET (Q1 - Q8) -->
     <h2><i data-lucide="help-circle"></i> 7. LAB ANALYSIS &amp; REFLECTION QUESTIONS</h2>
     
     <div class="question-block">
       <div class="question-title">Question 1: Thermal Radiation vs Conduction</div>
-      <p style="font-size: 0.88rem; margin-bottom: 6px;">
+      <p style="font-size: 0.9rem; margin-bottom: 6px;">
         Mylar is designed to reflect infrared radiation in space. Why does Mylar alone perform poorly when placed directly in an ice-water bath without an inner cotton or bubble layer?
       </p>
       <div class="answer-space"></div>
@@ -1012,7 +995,7 @@
 
     <div class="question-block">
       <div class="question-title">Question 2: Physical Meaning of Cooling Constant (k)</div>
-      <p style="font-size: 0.88rem; margin-bottom: 6px;">
+      <p style="font-size: 0.9rem; margin-bottom: 6px;">
         In Newton's Law of Cooling, does a smaller <em>k</em> value represent a better thermal insulator or a worse thermal insulator? Explain using the mathematical exponential formula.
       </p>
       <div class="answer-space"></div>
@@ -1020,7 +1003,7 @@
 
     <div class="question-block">
       <div class="question-title">Question 3: Multi-Layer Insulation (MLI) Synergy</div>
-      <p style="font-size: 0.88rem; margin-bottom: 6px;">
+      <p style="font-size: 0.9rem; margin-bottom: 6px;">
         Explain how combining Cotton + Bubble Wrap + Mylar in Configuration D creates a synergistic effect that outperforms any individual insulating material.
       </p>
       <div class="answer-space"></div>
@@ -1028,7 +1011,7 @@
 
     <div class="question-block">
       <div class="question-title">Question 4: Physical vs Digital Twin Discrepancy</div>
-      <p style="font-size: 0.88rem; margin-bottom: 6px;">
+      <p style="font-size: 0.9rem; margin-bottom: 6px;">
         Identify two potential sources of experimental error that could cause your physical sensor readings to deviate from the computer model prediction.
       </p>
       <div class="answer-space"></div>
@@ -1036,22 +1019,47 @@
 
     <div class="question-block">
       <div class="question-title">Question 5: Environmental Boundary Adjustments</div>
-      <p style="font-size: 0.88rem; margin-bottom: 6px;">
+      <p style="font-size: 0.9rem; margin-bottom: 6px;">
         If your classroom ice bath warms up from 0°C to 5°C during the experiment, how should you adjust the simulation inputs in Mission Control to preserve model validity?
       </p>
       <div class="answer-space"></div>
     </div>
 
-    <!-- INTERACTIVE REVISION FLASHCARDS -->
-    <h2><i data-lucide="sparkles"></i> INTERACTIVE STUDY HUB &amp; QUICK REVISION</h2>
-    <p style="font-size: 0.88rem;">Click on any card to reveal key thermodynamic concepts for your lab report:</p>
+    <div class="question-block">
+      <div class="question-title">Question 6: Water Volume &amp; Heat Capacity Scaling</div>
+      <p style="font-size: 0.9rem; margin-bottom: 6px;">
+        If the water volume inside the PET capsule was increased from 100ml to 200ml, how would the total heat capacity ($Q = m \cdot c \cdot \Delta T$) affect the cooling rate? Would $k$ increase or decrease?
+      </p>
+      <div class="answer-space"></div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-title">Question 7: Spacesuit Design Trade-Offs in EVA</div>
+      <p style="font-size: 0.9rem; margin-bottom: 6px;">
+        In real space missions (such as spacewalk Extravehicular Activities), why can't engineers simply add 50 layers of insulation to achieve a near-zero $k$ value? What mechanical trade-offs occur?
+      </p>
+      <div class="answer-space"></div>
+    </div>
+
+    <div class="question-block">
+      <div class="question-title">Question 8: Correlation Score Optimization</div>
+      <p style="font-size: 0.9rem; margin-bottom: 6px;">
+        Describe how your crew can refine your measurement techniques or hardware sealing to improve your Thermal Correlation Score from 75% to 95%+.
+      </p>
+      <div class="answer-space"></div>
+    </div>
+
+    <!-- EXPANDED INTERACTIVE REVISION FLASHCARDS (10 Flashcards) -->
+    <h2><i data-lucide="sparkles"></i> INTERACTIVE STUDY HUB &amp; REVISION CARDS</h2>
+    <p style="font-size: 0.9rem;">Click on any card to flip and reveal core thermodynamic concepts:</p>
     
     <div class="flashcard-grid no-print">
+      <!-- 1 -->
       <div class="flashcard" onclick="this.classList.toggle('flipped')">
         <div class="flashcard-inner">
           <div class="flashcard-front">
-            <i data-lucide="flame" style="width:24px; height:24px; color:#38bdf8;"></i>
-            <h4>CONDUCTION</h4>
+            <i data-lucide="flame" style="width:26px; height:26px;"></i>
+            <h4>1. CONDUCTION</h4>
           </div>
           <div class="flashcard-back">
             <p>Direct kinetic energy transfer through colliding molecules in solid or liquid contact.</p>
@@ -1059,11 +1067,12 @@
         </div>
       </div>
 
+      <!-- 2 -->
       <div class="flashcard" onclick="this.classList.toggle('flipped')">
         <div class="flashcard-inner">
           <div class="flashcard-front">
-            <i data-lucide="wind" style="width:24px; height:24px; color:#38bdf8;"></i>
-            <h4>CONVECTION</h4>
+            <i data-lucide="wind" style="width:26px; height:26px;"></i>
+            <h4>2. CONVECTION</h4>
           </div>
           <div class="flashcard-back">
             <p>Heat transfer via fluid motion (liquid or gas) driven by density &amp; temp differentials.</p>
@@ -1071,11 +1080,12 @@
         </div>
       </div>
 
+      <!-- 3 -->
       <div class="flashcard" onclick="this.classList.toggle('flipped')">
         <div class="flashcard-inner">
           <div class="flashcard-front">
-            <i data-lucide="sun" style="width:24px; height:24px; color:#38bdf8;"></i>
-            <h4>RADIATION</h4>
+            <i data-lucide="sun" style="width:26px; height:26px;"></i>
+            <h4>3. RADIATION</h4>
           </div>
           <div class="flashcard-back">
             <p>Electromagnetic thermal emission occurring without needing any physical medium.</p>
@@ -1083,14 +1093,93 @@
         </div>
       </div>
 
+      <!-- 4 -->
       <div class="flashcard" onclick="this.classList.toggle('flipped')">
         <div class="flashcard-inner">
           <div class="flashcard-front">
-            <i data-lucide="shield" style="width:24px; height:24px; color:#38bdf8;"></i>
-            <h4>MLI SYSTEM</h4>
+            <i data-lucide="shield" style="width:26px; height:26px;"></i>
+            <h4>4. MLI SYSTEM</h4>
           </div>
           <div class="flashcard-back">
             <p>Multi-Layer Insulation shielding conduction, convection, and radiation simultaneously.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <i data-lucide="trending-down" style="width:26px; height:26px;"></i>
+            <h4>5. NEWTON'S LAW</h4>
+          </div>
+          <div class="flashcard-back">
+            <p>Exponential decay equation T(t) = T_env + (T_0 - T_env)e^(-kt) predicting temp over time.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <i data-lucide="gauge" style="width:26px; height:26px;"></i>
+            <h4>6. DECAY RATE (k)</h4>
+          </div>
+          <div class="flashcard-back">
+            <p>Cooling constant (1/min). Smaller k values signify superior thermal insulation performance!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <i data-lucide="cpu" style="width:26px; height:26px;"></i>
+            <h4>7. DIGITAL TWIN</h4>
+          </div>
+          <div class="flashcard-back">
+            <p>Virtual real-time computer simulation synchronized with physical live telemetry data.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <i data-lucide="snowflake" style="width:26px; height:26px;"></i>
+            <h4>8. THERMAL SINK</h4>
+          </div>
+          <div class="flashcard-back">
+            <p>An environment (0°C ice bath) absorbing heat energy without changing its own temperature.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <i data-lucide="thermometer" style="width:26px; height:26px;"></i>
+            <h4>9. HEAT CAPACITY</h4>
+          </div>
+          <div class="flashcard-back">
+            <p>Total heat energy stored in liquid core: Q = m · c · ΔT. Greater mass cools down slower!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="flashcard" onclick="this.classList.toggle('flipped')">
+        <div class="flashcard-inner">
+          <div class="flashcard-front">
+            <i data-lucide="scale" style="width:26px; height:26px;"></i>
+            <h4>10. EQUILIBRIUM</h4>
+          </div>
+          <div class="flashcard-back">
+            <p>Thermal state reached when capsule temperature cools down to match ambient T_env (0°C).</p>
           </div>
         </div>
       </div>
