@@ -518,13 +518,13 @@
     }
 
     .flashcard-front {
-      background: #ffffff;
-      color: var(--dark-navy);
-      border-color: var(--primary-blue);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      border: 2px solid #0284c7;
     }
 
     .flashcard-front i {
-      color: var(--primary-blue);
+      color: #00f2fe;
       margin-bottom: 8px;
     }
 
@@ -532,14 +532,14 @@
       font-family: var(--font-hud);
       font-size: 0.85rem;
       font-weight: 800;
-      color: var(--dark-navy);
+      color: #ffffff;
       margin: 0;
     }
 
     .flashcard-back {
-      background: var(--dark-navy);
+      background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);
       color: #ffffff;
-      border-color: var(--dark-navy);
+      border: 2px solid #00f2fe;
       transform: rotateY(180deg);
     }
 
@@ -1304,9 +1304,9 @@
 
     <!-- ACTION BUTTONS -->
     <div class="action-bar no-print">
-      <button class="btn-action btn-primary" onclick="window.print();">
-        <i data-lucide="printer"></i> PRINT MANUAL &amp; WORKSHEET
-      </button>
+      <a href="V2.1_SPHERE_ Mission Control - Student User Manual.pdf" download="SPHERE_Student_User_Manual_V2.1.pdf" class="btn-action btn-primary" style="text-decoration:none;">
+        <i data-lucide="download"></i> DOWNLOAD STUDENT MANUAL (PDF)
+      </a>
       <a href="teacher_manual.html" class="btn-action btn-secondary">
         <i data-lucide="graduation-cap"></i> VIEW TEACHER ANSWER KEY
       </a>
