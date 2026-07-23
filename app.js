@@ -284,6 +284,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Log events in terminal console style
   function logToConsole(message, type = 'sys') {
+    if (!elements.sysConsole) return;
+    
     const timestamp = new Date().toLocaleTimeString();
     const line = document.createElement('div');
     line.className = 'terminal-line';
@@ -308,23 +310,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Display customized aerospace notification banner
   function showNotification(message, type = 'success') {
+    if (!elements.notification) return;
     elements.notification.className = `hud-notification ${type}`;
-    elements.notifText.textContent = message.toUpperCase();
+    if (elements.notifText) elements.notifText.textContent = message.toUpperCase();
     
     // Configure matching icon
-    if (type === 'success') {
-      elements.notifIcon.innerHTML = `<i data-lucide="check-circle" style="color: var(--green);"></i>`;
-    } else if (type === 'error') {
-      elements.notifIcon.innerHTML = `<i data-lucide="alert-triangle" style="color: var(--red);"></i>`;
-    } else {
-      elements.notifIcon.innerHTML = `<i data-lucide="info" style="color: var(--cyan);"></i>`;
+    if (elements.notifIcon) {
+      if (type === 'success') {
+        elements.notifIcon.innerHTML = `<i data-lucide="check-circle" style="color: var(--green);"></i>`;
+      } else if (type === 'error') {
+        elements.notifIcon.innerHTML = `<i data-lucide="alert-triangle" style="color: var(--red);"></i>`;
+      } else {
+        elements.notifIcon.innerHTML = `<i data-lucide="info" style="color: var(--cyan);"></i>`;
+      }
     }
     lucide.createIcons();
     
     // Toggle active animations
     elements.notification.classList.add('show');
     setTimeout(() => {
-      elements.notification.classList.remove('show');
+      if (elements.notification) elements.notification.classList.remove('show');
     }, 3500);
   }
 
@@ -554,20 +559,29 @@ document.addEventListener('DOMContentLoaded', () => {
       // Pause
       clearInterval(state.timer.intervalId);
       state.timer.isRunning = false;
-      elements.btnTimerToggle.innerHTML = `<i data-lucide="play"></i> START`;
-      elements.btnTimerToggle.className = "btn-hud btn-orange";
+      if (elements.btnTimerToggle) {
+        elements.btnTimerToggle.innerHTML = `<i data-lucide="play"></i> START`;
+        elements.btnTimerToggle.className = "btn-hud btn-orange";
+      }
       logToConsole("WARN: Countdown clock suspended.");
       showNotification("Timer Suspended", "error");
     } else {
       // Start
-      state.timer.isRunning = true;
-      elements.btnTimerToggle.innerHTML = `<i data-lucide="pause"></i> PAUSE`;
-      elements.btnTimerToggle.className = "btn-hud btn-orange btn-outline";
-      logToConsole("SYS: Re-entry thermal clock sequence initiated.");
-      showNotification("Timer Initiated", "success");
-      
       const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
       const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
+      
+      if (state.timer.secondsRemaining <= 0) {
+        state.timer.duration = duration * 60;
+        state.timer.secondsRemaining = state.timer.duration;
+      }
+
+      state.timer.isRunning = true;
+      if (elements.btnTimerToggle) {
+        elements.btnTimerToggle.innerHTML = `<i data-lucide="pause"></i> PAUSE`;
+        elements.btnTimerToggle.className = "btn-hud btn-orange btn-outline";
+      }
+      logToConsole("SYS: Re-entry thermal clock sequence initiated.");
+      showNotification("Timer Initiated", "success");
       
       state.timer.intervalId = setInterval(() => {
         state.timer.secondsRemaining--;
@@ -585,8 +599,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (state.timer.secondsRemaining <= 0) {
           clearInterval(state.timer.intervalId);
           state.timer.isRunning = false;
-          elements.btnTimerToggle.innerHTML = `<i data-lucide="play"></i> START`;
-          elements.btnTimerToggle.className = "btn-hud btn-orange";
+          if (elements.btnTimerToggle) {
+            elements.btnTimerToggle.innerHTML = `<i data-lucide="play"></i> START`;
+            elements.btnTimerToggle.className = "btn-hud btn-orange";
+          }
           logToConsole(`WARN: mission capsule time frame exhausted! ${duration} minute limit reached.`, "warn");
           showNotification("Mission Complete!", "error");
           playWarningSound();
@@ -607,26 +623,33 @@ document.addEventListener('DOMContentLoaded', () => {
     state.timer.secondsRemaining = state.timer.duration;
     
     updateTimerDisplay();
-    elements.btnTimerToggle.innerHTML = `<i data-lucide="play"></i> START`;
-    elements.btnTimerToggle.className = "btn-hud btn-orange";
+    if (elements.btnTimerToggle) {
+      elements.btnTimerToggle.innerHTML = `<i data-lucide="play"></i> START`;
+      elements.btnTimerToggle.className = "btn-hud btn-orange";
+    }
     logToConsole(`SYS: Mission clock reset to ${duration}:00.`);
     lucide.createIcons();
   }
 
   function updateTimerDisplay() {
+    if (!elements.timerDisplay) return;
     const mins = Math.floor(state.timer.secondsRemaining / 60);
     const secs = state.timer.secondsRemaining % 60;
     elements.timerDisplay.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   }
 
-  elements.btnTimerToggle.addEventListener('click', () => {
-    playClickSound();
-    toggleTimer();
-  });
-  elements.btnTimerReset.addEventListener('click', () => {
-    playClickSound();
-    resetTimer();
-  });
+  if (elements.btnTimerToggle) {
+    elements.btnTimerToggle.addEventListener('click', () => {
+      playClickSound();
+      toggleTimer();
+    });
+  }
+  if (elements.btnTimerReset) {
+    elements.btnTimerReset.addEventListener('click', () => {
+      playClickSound();
+      resetTimer();
+    });
+  }
 
   // Dynamic overlay Chart rendering
   function initTelemetryChart() {
@@ -795,19 +818,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Table synchronization
   function updateTelemetryTable() {
+    if (!elements.telemetryTbody) return;
+
     // Clear dynamic rows
     const rows = elements.telemetryTbody.querySelectorAll('tr:not(#empty-table-message)');
     rows.forEach(r => r.remove());
     
     if (state.telemetryPoints.length === 0) {
-      elements.emptyTableMsg.style.display = 'table-row';
-      elements.telemetryCorrelationScore.textContent = 'N/A';
-      elements.telemetryCorrelationGrade.textContent = 'NO DATA PACKETS';
-      elements.telemetryCorrelationGrade.className = 'glow-orange';
+      if (elements.emptyTableMsg) elements.emptyTableMsg.style.display = 'table-row';
+      if (elements.telemetryCorrelationScore) elements.telemetryCorrelationScore.textContent = 'N/A';
+      if (elements.telemetryCorrelationGrade) {
+        elements.telemetryCorrelationGrade.textContent = 'NO DATA PACKETS';
+        elements.telemetryCorrelationGrade.className = 'glow-orange';
+      }
       return;
     }
     
-    elements.emptyTableMsg.style.display = 'none';
+    if (elements.emptyTableMsg) elements.emptyTableMsg.style.display = 'none';
     
     // Calculate Thermal Correlation Score & Grade
     let sumAbsError = 0;
@@ -823,7 +850,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rawScore = 100 - (avgAbsError * 5.0);
     const finalScore = Math.max(0, Math.min(100, Math.round(rawScore)));
     
-    elements.telemetryCorrelationScore.textContent = `${finalScore}%`;
+    if (elements.telemetryCorrelationScore) elements.telemetryCorrelationScore.textContent = `${finalScore}%`;
     
     let grade = '';
     let gradeClass = '';
@@ -844,8 +871,10 @@ document.addEventListener('DOMContentLoaded', () => {
       gradeClass = 'glow-red';
     }
     
-    elements.telemetryCorrelationGrade.textContent = grade;
-    elements.telemetryCorrelationGrade.className = gradeClass;
+    if (elements.telemetryCorrelationGrade) {
+      elements.telemetryCorrelationGrade.textContent = grade;
+      elements.telemetryCorrelationGrade.className = gradeClass;
+    }
     
     // Sort array by time ascending
     const sorted = [...state.telemetryPoints].sort((a, b) => a.time - b.time);
