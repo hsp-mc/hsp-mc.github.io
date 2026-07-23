@@ -44,6 +44,12 @@
         <button class="nav-tab" data-target="telemetry">
           <i data-lucide="activity"></i> LIVE TELEMETRY
         </button>
+        <button class="nav-tab" data-target="study">
+          <i data-lucide="book-open"></i> STUDY &amp; FLASHCARDS
+        </button>
+        <button class="nav-tab" data-target="questions">
+          <i data-lucide="help-circle"></i> QUESTION SHEET
+        </button>
         <button class="nav-tab tab-admin" data-target="admin">
           <i data-lucide="shield-alert"></i> TEACHER PORTAL
         </button>
@@ -971,6 +977,311 @@ Understand how simplified scientific models can be used to represent real-world 
           </div>
         </div>
 
+      </section>
+
+      <!-- ==================== TAB 5: STUDY & FLASHCARDS HUB ==================== -->
+      <section id="study" class="view-section">
+        <div class="hud-panel-light" style="margin-bottom: 25px;">
+          <div class="panel-header">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 10px;">
+              <span class="panel-title"><i data-lucide="book-open"></i> SPACE THERMAL ENGINEERING STUDY HUB</span>
+              <span class="badge-mix badge-mix-cyan"><i data-lucide="sparkles"></i> HIGH SCHOOL STEM MODULE</span>
+            </div>
+          </div>
+          <p style="margin-bottom: 15px;">
+            Welcome to the Interactive Study Hub! High school space projects require a solid grasp of thermodynamics, radiative heat transfer, and digital twin modeling. Hover or tap on any 3D card below to flip it and reveal the underlying scientific concept.
+          </p>
+
+          <!-- Study Filter Bar -->
+          <div class="flashcards-header-bar">
+            <div class="filter-btn-group" id="flashcard-filter-group">
+              <button class="btn-filter active" data-filter="all">ALL CONCEPTS</button>
+              <button class="btn-filter" data-filter="thermo">NEWTON'S LAW</button>
+              <button class="btn-filter" data-filter="radiation">RADIATION &amp; MYLAR</button>
+              <button class="btn-filter" data-filter="mli">MLI SPACESUITS</button>
+              <button class="btn-filter" data-filter="twin">DIGITAL TWIN</button>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);" id="flipped-count-badge">FLIPPED: 0 / 6</span>
+              <button class="btn-hud" id="btn-flip-all" style="width: auto; padding: 6px 12px; font-size: 0.75rem; background: rgba(0, 242, 254, 0.1); border: 1px solid var(--cyan); color: var(--cyan);">
+                <i data-lucide="rotate-cw"></i> FLIP ALL
+              </button>
+              <button class="btn-hud" id="btn-reset-flashcards" style="width: auto; padding: 6px 12px; font-size: 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.2); color: var(--text-bright);">
+                <i data-lucide="refresh-cw"></i> RESET
+              </button>
+            </div>
+          </div>
+
+          <!-- 3D Flashcard Deck Grid -->
+          <div class="flashcard-grid" id="main-flashcard-grid">
+            <!-- Card 1 -->
+            <div class="flashcard" data-category="thermo">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="flame"></i></div>
+                  <div class="flashcard-title">NEWTON'S LAW OF COOLING</div>
+                  <div class="flashcard-desc">What formula describes how objects cool down in a surrounding reservoir?</div>
+                  <div style="font-size: 0.7rem; color: #0284c7; margin-top: 10px; font-weight: bold;">[ TAP TO REVEAL FORMULA ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="check-circle"></i></div>
+                  <div class="flashcard-title">T(t) = T<sub>env</sub> + (T₀ - T<sub>env</sub>)e<sup>-kt</sup></div>
+                  <div class="flashcard-desc">Heat loss rate is proportional to the temperature gap between capsule &amp; environment!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="flashcard" data-category="radiation">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="sun"></i></div>
+                  <div class="flashcard-title">RADIATIVE SHIELDING</div>
+                  <div class="flashcard-desc">How does Mylar protect spacecraft from extreme solar radiation in space?</div>
+                  <div style="font-size: 0.7rem; color: #0284c7; margin-top: 10px; font-weight: bold;">[ TAP TO REVEAL ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="shield"></i></div>
+                  <div class="flashcard-title">INFRARED REFLECTION</div>
+                  <div class="flashcard-desc">Mylar's metallic mirror coating reflects up to 90% of electromagnetic infrared radiation away!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="flashcard" data-category="mli">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="layers"></i></div>
+                  <div class="flashcard-title">MULTI-LAYER INSULATION (MLI)</div>
+                  <div class="flashcard-desc">Why do spacesuits use MLI instead of a single thick insulating material?</div>
+                  <div style="font-size: 0.7rem; color: #0284c7; margin-top: 10px; font-weight: bold;">[ TAP TO REVEAL ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="box"></i></div>
+                  <div class="flashcard-title">TRIPLE-BARRIER SHIELD</div>
+                  <div class="flashcard-desc">MLI blocks conduction (cotton), traps convection (bubble wrap), and reflects radiation (Mylar)!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="flashcard" data-category="thermo">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="trending-down"></i></div>
+                  <div class="flashcard-title">DECAY CONSTANT (k)</div>
+                  <div class="flashcard-desc">Does a lower k constant indicate superior or inferior thermal insulation?</div>
+                  <div style="font-size: 0.7rem; color: #0284c7; margin-top: 10px; font-weight: bold;">[ TAP TO REVEAL ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="award"></i></div>
+                  <div class="flashcard-title">LOWER k = SUPERIOR PROTECTION</div>
+                  <div class="flashcard-desc">A lower k value represents a slower thermal decay rate, keeping hot items warmer for much longer!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="flashcard" data-category="twin">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="cpu"></i></div>
+                  <div class="flashcard-title">DIGITAL TWIN ECOSYSTEM</div>
+                  <div class="flashcard-desc">What is a Digital Twin in aerospace mission engineering?</div>
+                  <div style="font-size: 0.7rem; color: #0284c7; margin-top: 10px; font-weight: bold;">[ TAP TO REVEAL ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="activity"></i></div>
+                  <div class="flashcard-title">REAL-TIME SIMULATION ENGINE</div>
+                  <div class="flashcard-desc">A computational model running math predictions synchronized directly with physical sensor telemetry!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="flashcard" data-category="twin">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="snowflake"></i></div>
+                  <div class="flashcard-title">ICE BATH VACUUM ANALOG</div>
+                  <div class="flashcard-desc">Why do we submerge the experimental capsule in a 0°C ice bath?</div>
+                  <div style="font-size: 0.7rem; color: #0284c7; margin-top: 10px; font-weight: bold;">[ TAP TO REVEAL ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="thermometer-snowflake"></i></div>
+                  <div class="flashcard-title">CONSTANT THERMAL SINK</div>
+                  <div class="flashcard-desc">Ice water maintains a constant 0°C reservoir mimicking the extreme temperature drop of space!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==================== TAB 6: STUDENT QUESTION & EVALUATION SHEET ==================== -->
+      <section id="questions" class="view-section">
+        <div class="hud-panel-light">
+          <div class="panel-header">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 10px;">
+              <span class="panel-title"><i data-lucide="help-circle"></i> STUDENT QUESTION &amp; EVALUATION SHEET</span>
+              <span class="badge-mix badge-mix-orange"><i data-lucide="clipboard"></i> EVALUATION WORKSHEET #02</span>
+            </div>
+          </div>
+          <p style="margin-bottom: 20px;">
+            Complete this interactive assessment sheet after finishing your laboratory trial. Test your understanding of thermal insulation, spacesuit engineering, and digital twin predictions!
+          </p>
+
+          <!-- Crew Info Block -->
+          <div style="background: #f1f5f9; padding: 18px; border-radius: 10px; border: 1px solid #cbd5e1; margin-bottom: 25px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <div>
+              <label style="font-family: var(--font-hud); font-size: 0.7rem; color: #475569; display: block; margin-bottom: 4px;">STUDENT / CREW NAME:</label>
+              <input type="text" id="quiz-student-name" placeholder="Enter student name..." class="hud-input" style="background: #fff; color: #0f172a; border-color: #cbd5e1;">
+            </div>
+            <div>
+              <label style="font-family: var(--font-hud); font-size: 0.7rem; color: #475569; display: block; margin-bottom: 4px;">TEAM / CREW ID:</label>
+              <input type="text" id="quiz-team-id" placeholder="e.g. ALPHA-01" class="hud-input" style="background: #fff; color: #0f172a; border-color: #cbd5e1;">
+            </div>
+            <div>
+              <label style="font-family: var(--font-hud); font-size: 0.7rem; color: #475569; display: block; margin-bottom: 4px;">LAB DATE:</label>
+              <input type="text" id="quiz-date" placeholder="YYYY-MM-DD" class="hud-input" style="background: #fff; color: #0f172a; border-color: #cbd5e1;">
+            </div>
+          </div>
+
+          <!-- Quiz Interactive Form -->
+          <div class="quiz-wrapper" id="student-quiz-form">
+
+            <!-- Question 1 -->
+            <div class="quiz-card" data-q="1">
+              <div class="quiz-q-num">QUESTION 01 // HEAT TRANSFER MECHANISMS</div>
+              <div class="quiz-question-text">
+                Mylar emergency blankets reflect up to 90% of electromagnetic radiation. Why is Mylar highly effective in deep space, but requires additional conduction barriers (like cotton) inside a liquid ice water bath?
+              </div>
+              <div class="quiz-options-group">
+                <label class="quiz-option-label">
+                  <input type="radio" name="q1" value="A">
+                  <span>A) Mylar dissolves in water, so cotton protects the metal surface.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q1" value="B">
+                  <span>B) Space heat transfer is dominated by thermal radiation (vacuum), whereas ice water heat transfer occurs primarily via direct conduction.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q1" value="C">
+                  <span>C) Cotton generates internal electrical heat when wet.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q1" value="B-alt">
+                  <span>D) Ice water reflects radiation back into the capsule.</span>
+                </label>
+              </div>
+              <div class="quiz-feedback" id="q1-feedback"></div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="quiz-card" data-q="2">
+              <div class="quiz-q-num">QUESTION 02 // DECAY COEFFICIENT INTERPRETATION</div>
+              <div class="quiz-question-text">
+                In Newton's Law of Cooling equation <code>T(t) = T_env + (T0 - T_env) * e^(-kt)</code>, what does a <strong>smaller k constant</strong> signify for space suit thermal envelope design?
+              </div>
+              <div class="quiz-options-group">
+                <label class="quiz-option-label">
+                  <input type="radio" name="q2" value="A">
+                  <span>A) The capsule cools down faster, indicating poor insulation.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q2" value="B">
+                  <span>B) The capsule maintains its heat much longer, indicating superior insulation efficiency.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q2" value="C">
+                  <span>C) The environmental ice bath temperature is increasing.</span>
+                </label>
+              </div>
+              <div class="quiz-feedback" id="q2-feedback"></div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="quiz-card" data-q="3">
+              <div class="quiz-q-num">QUESTION 03 // MULTI-LAYER INSULATION (MLI)</div>
+              <div class="quiz-question-text">
+                Why did the combined MLI configuration (Cotton + Bubble Wrap + Mylar) retain a higher temperature after 15 minutes compared to any single material used alone?
+              </div>
+              <div class="quiz-options-group">
+                <label class="quiz-option-label">
+                  <input type="radio" name="q3" value="A">
+                  <span>A) Each layer targets a distinct heat transfer mode (Cotton = conduction, Bubble Wrap = convection, Mylar = radiation).</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q3" value="B">
+                  <span>B) MLI adds mass which generates artificial nuclear energy inside the capsule.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q3" value="C">
+                  <span>C) Bubble wrap absorbs water and increases capsule heat capacity.</span>
+                </label>
+              </div>
+              <div class="quiz-feedback" id="q3-feedback"></div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="quiz-card" data-q="4">
+              <div class="quiz-q-num">QUESTION 04 // PHYSICAL VS DIGITAL TWIN DEVIATIONS</div>
+              <div class="quiz-question-text">
+                State two physical reasons why your real measured thermometer readings might not perfectly follow the smooth theoretical computer simulation curve.
+              </div>
+              <textarea class="quiz-textarea" id="q4-text" placeholder="Write your explanation here (e.g., sensor positioning near glass wall, ice melting, non-uniform water mixing)..."></textarea>
+              <div class="quiz-feedback" id="q4-feedback"></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="quiz-card" data-q="5">
+              <div class="quiz-q-num">QUESTION 05 // CLASSROOM CALIBRATION</div>
+              <div class="quiz-question-text">
+                If your ice bath melts slightly on a warm afternoon and its temperature rises from 0.0°C to 4.5°C, how should you adjust your Mission Control simulator variables?
+              </div>
+              <div class="quiz-options-group">
+                <label class="quiz-option-label">
+                  <input type="radio" name="q5" value="A">
+                  <span>A) Change initial hot water temperature (T0) to 4.5°C.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q5" value="B">
+                  <span>B) Change environmental temperature (T_env) input to 4.5°C in the simulator to update the Digital Twin model.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q5" value="C">
+                  <span>C) Ignore the temperature change because ice water is always 0°C.</span>
+                </label>
+              </div>
+              <div class="quiz-feedback" id="q5-feedback"></div>
+            </div>
+
+          </div>
+
+          <!-- Quiz Score Banner -->
+          <div class="quiz-score-banner" id="quiz-score-banner">
+            <div style="font-family: var(--font-hud); font-size: 0.9rem; color: #94a3b8; letter-spacing: 0.1em;">EVALUATION RESULT</div>
+            <div class="score-number" id="quiz-score-percent">0%</div>
+            <div class="score-badge" id="quiz-score-badge">GRADE: F</div>
+            <p id="quiz-score-summary" style="margin-top: 15px; font-size: 0.9rem; color: #e2e8f0;"></p>
+          </div>
+
+          <!-- Quiz Action Buttons -->
+          <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+            <button class="btn-hud" id="btn-grade-quiz" style="flex: 2; min-width: 200px; padding: 14px;">
+              <i data-lucide="check-square"></i> GRADE MY RESPONSES
+            </button>
+            <button class="btn-hud" onclick="window.print();" style="flex: 1; min-width: 150px; background: rgba(0, 242, 254, 0.1); border: 1px solid var(--cyan); color: var(--cyan);">
+              <i data-lucide="printer"></i> PRINT SHEET
+            </button>
+            <button class="btn-hud" id="btn-reset-quiz" style="flex: 1; min-width: 120px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.2); color: var(--text-bright);">
+              <i data-lucide="rotate-ccw"></i> RESET
+            </button>
+          </div>
+
+        </div>
       </section>
 
     </main>

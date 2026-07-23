@@ -1164,11 +1164,207 @@ document.addEventListener('DOMContentLoaded', () => {
     restoreQuizStatus();
   }
 
-  // Boot chart setups
+  // ==========================================================================
+  // 8. Interactive 3D Flashcard Study Hub Engine
+  // ==========================================================================
+  function initFlashcardsHub() {
+    const cards = document.querySelectorAll('.flashcard');
+    const filterBtns = document.querySelectorAll('#flashcard-filter-group .btn-filter');
+    const flippedBadge = document.getElementById('flipped-count-badge');
+    const btnFlipAll = document.getElementById('btn-flip-all');
+    const btnResetFlashcards = document.getElementById('btn-reset-flashcards');
+
+    if (!cards.length) return;
+
+    function updateFlippedCount() {
+      const flippedCount = document.querySelectorAll('.flashcard.flipped').length;
+      if (flippedBadge) {
+        flippedBadge.textContent = `FLIPPED: ${flippedCount} / ${cards.length}`;
+      }
+    }
+
+    // Toggle card flip on click
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+        updateFlippedCount();
+        playClickSound();
+      });
+    });
+
+    // Category Filtering
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Flip All
+    if (btnFlipAll) {
+      btnFlipAll.addEventListener('click', () => {
+        cards.forEach(card => card.classList.add('flipped'));
+        updateFlippedCount();
+        playSuccessSound();
+      });
+    }
+
+    // Reset Deck
+    if (btnResetFlashcards) {
+      btnResetFlashcards.addEventListener('click', () => {
+        cards.forEach(card => {
+          card.classList.remove('flipped');
+          card.style.display = 'block';
+        });
+        filterBtns.forEach(b => b.classList.remove('active'));
+        if (filterBtns[0]) filterBtns[0].classList.add('active');
+        updateFlippedCount();
+        playClickSound();
+      });
+    }
+  }
+
+  // ==========================================================================
+  // 9. Interactive Student Question Sheet Evaluation Engine
+  // ==========================================================================
+  function initQuizEngine() {
+    const btnGradeQuiz = document.getElementById('btn-grade-quiz');
+    const btnResetQuiz = document.getElementById('btn-reset-quiz');
+    const scoreBanner = document.getElementById('quiz-score-banner');
+    const scorePercentEl = document.getElementById('quiz-score-percent');
+    const scoreBadgeEl = document.getElementById('quiz-score-badge');
+    const scoreSummaryEl = document.getElementById('quiz-score-summary');
+
+    if (!btnGradeQuiz) return;
+
+    const answerKey = {
+      q1: 'B',
+      q2: 'B',
+      q3: 'A',
+      q5: 'B'
+    };
+
+    btnGradeQuiz.addEventListener('click', () => {
+      let correctCount = 0;
+      const totalQuestions = 5;
+
+      // Q1 Check
+      const q1Selected = document.querySelector('input[name="q1"]:checked');
+      const q1Feedback = document.getElementById('q1-feedback');
+      if (q1Selected && q1Selected.value === answerKey.q1) {
+        correctCount++;
+        q1Feedback.className = 'quiz-feedback correct';
+        q1Feedback.innerHTML = '✓ CORRECT! Space is a vacuum (radiation dominant), whereas ice bath heat loss occurs via conduction.';
+      } else {
+        q1Feedback.className = 'quiz-feedback incorrect';
+        q1Feedback.innerHTML = '✗ INCORRECT! Correct answer is B: Liquid ice water transfers heat primarily via direct conduction.';
+      }
+
+      // Q2 Check
+      const q2Selected = document.querySelector('input[name="q2"]:checked');
+      const q2Feedback = document.getElementById('q2-feedback');
+      if (q2Selected && q2Selected.value === answerKey.q2) {
+        correctCount++;
+        q2Feedback.className = 'quiz-feedback correct';
+        q2Feedback.innerHTML = '✓ CORRECT! A lower k constant represents a slower rate of cooling (superior insulation).';
+      } else {
+        q2Feedback.className = 'quiz-feedback incorrect';
+        q2Feedback.innerHTML = '✗ INCORRECT! Correct answer is B: Smaller k values mean heat is retained much longer.';
+      }
+
+      // Q3 Check
+      const q3Selected = document.querySelector('input[name="q3"]:checked');
+      const q3Feedback = document.getElementById('q3-feedback');
+      if (q3Selected && q3Selected.value === answerKey.q3) {
+        correctCount++;
+        q3Feedback.className = 'quiz-feedback correct';
+        q3Feedback.innerHTML = '✓ CORRECT! Multi-layer insulation combines cotton (conduction), bubble wrap (convection), and Mylar (radiation).';
+      } else {
+        q3Feedback.className = 'quiz-feedback incorrect';
+        q3Feedback.innerHTML = '✗ INCORRECT! Correct answer is A: MLI targets all three distinct heat transfer pathways.';
+      }
+
+      // Q4 Check (Text Area)
+      const q4Text = document.getElementById('q4-text');
+      const q4Feedback = document.getElementById('q4-feedback');
+      if (q4Text && q4Text.value.trim().length >= 10) {
+        correctCount++;
+        q4Feedback.className = 'quiz-feedback correct';
+        q4Feedback.innerHTML = '✓ EXPLANATION VERIFIED! Excellent physical reasoning on telemetry error sources.';
+      } else {
+        q4Feedback.className = 'quiz-feedback incorrect';
+        q4Feedback.innerHTML = '✗ INCOMPLETE! Please provide a written explanation (e.g., sensor placement near wall, ice melting, non-uniform water mixing).';
+      }
+
+      // Q5 Check
+      const q5Selected = document.querySelector('input[name="q5"]:checked');
+      const q5Feedback = document.getElementById('q5-feedback');
+      if (q5Selected && q5Selected.value === answerKey.q5) {
+        correctCount++;
+        q5Feedback.className = 'quiz-feedback correct';
+        q5Feedback.innerHTML = '✓ CORRECT! Adjusting T_env to 4.5°C recalibrates the Digital Twin mathematical model.';
+      } else {
+        q5Feedback.className = 'quiz-feedback incorrect';
+        q5Feedback.innerHTML = '✗ INCORRECT! Correct answer is B: Update T_env parameter in the simulator.';
+      }
+
+      // Calculate Percent
+      const percentage = Math.round((correctCount / totalQuestions) * 100);
+      scorePercentEl.textContent = `${percentage}%`;
+
+      // Grade Badge
+      let grade = 'F';
+      if (percentage >= 95) grade = 'A+';
+      else if (percentage >= 85) grade = 'A';
+      else if (percentage >= 75) grade = 'B';
+      else if (percentage >= 60) grade = 'C';
+
+      scoreBadgeEl.textContent = `GRADE: ${grade}`;
+
+      if (percentage >= 80) {
+        scoreSummaryEl.textContent = `Outstanding mission performance, Astronaut! Your crew scored ${correctCount}/${totalQuestions} questions correctly. You have mastered space thermal protection systems.`;
+        playSuccessSound();
+      } else {
+        scoreSummaryEl.textContent = `Evaluation complete. You answered ${correctCount}/${totalQuestions} questions correctly. Review the flashcard deck and re-test your thermal knowledge!`;
+        playWarningSound();
+      }
+
+      scoreBanner.classList.add('show');
+      showNotification(`EVALUATION GRADED: ${percentage}% (GRADE: ${grade})`, percentage >= 80 ? 'success' : 'error');
+    });
+
+    if (btnResetQuiz) {
+      btnResetQuiz.addEventListener('click', () => {
+        document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+        const q4Text = document.getElementById('q4-text');
+        if (q4Text) q4Text.value = '';
+        document.querySelectorAll('.quiz-feedback').forEach(f => {
+          f.className = 'quiz-feedback';
+          f.innerHTML = '';
+        });
+        scoreBanner.classList.remove('show');
+        showNotification("QUIZ RESET: All answers cleared.", "info");
+      });
+    }
+  }
+
+  // Boot chart setups & new hubs
   initTelemetryChart();
+  initFlashcardsHub();
+  initQuizEngine();
   
   // Load cached settings
   loadFromLocalStorage();
   
   logToConsole("SYS: Navigation systems aligned. Mission Control fully active.");
 });
+
