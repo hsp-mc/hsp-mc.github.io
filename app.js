@@ -1336,12 +1336,17 @@ document.addEventListener('DOMContentLoaded', () => {
       q1: 'B',
       q2: 'B',
       q3: 'A',
-      q5: 'B'
+      q5: 'B',
+      q6: 'A',
+      q7: 'A',
+      q8: 'A',
+      q9: 'B',
+      q10: 'A'
     };
 
     btnGradeQuiz.addEventListener('click', () => {
       let correctCount = 0;
-      const totalQuestions = 5;
+      const totalQuestions = 10;
 
       // Q1 Check
       const q1Selected = document.querySelector('input[name="q1"]:checked');
@@ -1401,6 +1406,66 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         q5Feedback.className = 'quiz-feedback incorrect';
         q5Feedback.innerHTML = '✗ INCORRECT! Correct answer is B: Update T_env parameter in the simulator.';
+      }
+
+      // Q6 Check
+      const q6Selected = document.querySelector('input[name="q6"]:checked');
+      const q6Feedback = document.getElementById('q6-feedback');
+      if (q6Selected && q6Selected.value === answerKey.q6) {
+        correctCount++;
+        q6Feedback.className = 'quiz-feedback correct';
+        q6Feedback.innerHTML = '✓ CORRECT! Thermal Conductivity (k) governs the conduction heat flux density across solid layers.';
+      } else {
+        q6Feedback.className = 'quiz-feedback incorrect';
+        q6Feedback.innerHTML = '✗ INCORRECT! Correct answer is A: Thermal Conductivity Coefficient (k).';
+      }
+
+      // Q7 Check
+      const q7Selected = document.querySelector('input[name="q7"]:checked');
+      const q7Feedback = document.getElementById('q7-feedback');
+      if (q7Selected && q7Selected.value === answerKey.q7) {
+        correctCount++;
+        q7Feedback.className = 'quiz-feedback correct';
+        q7Feedback.innerHTML = '✓ CORRECT! Vacuum lacks fluid mass, rendering natural and forced convection impossible.';
+      } else {
+        q7Feedback.className = 'quiz-feedback incorrect';
+        q7Feedback.innerHTML = '✗ INCORRECT! Correct answer is A: Deep space lacks fluid matter to form convective currents.';
+      }
+
+      // Q8 Check
+      const q8Selected = document.querySelector('input[name="q8"]:checked');
+      const q8Feedback = document.getElementById('q8-feedback');
+      if (q8Selected && q8Selected.value === answerKey.q8) {
+        correctCount++;
+        q8Feedback.className = 'quiz-feedback correct';
+        q8Feedback.innerHTML = '✓ CORRECT! Ethanol holds less heat per gram, causing temperature to plunge much faster.';
+      } else {
+        q8Feedback.className = 'quiz-feedback incorrect';
+        q8Feedback.innerHTML = '✗ INCORRECT! Correct answer is A: Lower heat capacity means faster temperature drop.';
+      }
+
+      // Q9 Check
+      const q9Selected = document.querySelector('input[name="q9"]:checked');
+      const q9Feedback = document.getElementById('q9-feedback');
+      if (q9Selected && q9Selected.value === answerKey.q9) {
+        correctCount++;
+        q9Feedback.className = 'quiz-feedback correct';
+        q9Feedback.innerHTML = '✓ CORRECT! Over time, the capsule approaches environmental equilibrium (T_env).';
+      } else {
+        q9Feedback.className = 'quiz-feedback incorrect';
+        q9Feedback.innerHTML = '✗ INCORRECT! Correct answer is B: The temperature approaches T_env asymptotically.';
+      }
+
+      // Q10 Check
+      const q10Selected = document.querySelector('input[name="q10"]:checked');
+      const q10Feedback = document.getElementById('q10-feedback');
+      if (q10Selected && q10Selected.value === answerKey.q10) {
+        correctCount++;
+        q10Feedback.className = 'quiz-feedback correct';
+        q10Feedback.innerHTML = '✓ CORRECT! Water leakage or active stirring accelerates forced convective heat loss beyond theoretical predictions.';
+      } else {
+        q10Feedback.className = 'quiz-feedback incorrect';
+        q10Feedback.innerHTML = '✗ INCORRECT! Correct answer is A: Capsule leakage or excess fluid turbulence.';
       }
 
       // Calculate Percent

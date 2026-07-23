@@ -1151,7 +1151,7 @@ padding-left:20px;
             </div>
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
               <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #0284c7; font-weight: bold;"
-                id="flipped-count-badge">FLIPPED: 0 / 6</span>
+                id="flipped-count-badge">FLIPPED: 0 / 12</span>
               <button class="btn-hud" id="btn-flip-all"
                 style="width: auto; padding: 6px 12px; font-size: 0.75rem; background: #e0f2fe; border: 1px solid #0284c7; color: #0369a1; border-radius: 20px; font-weight: 700;">
                 <i data-lucide="rotate-cw"></i> FLIP ALL
@@ -1281,6 +1281,114 @@ padding-left:20px;
                   <div class="flashcard-title">CONSTANT HEAT SINK</div>
                   <div class="flashcard-desc">Ice water keeps a steady 0°C environment, simulating the intense thermal
                     sink of deep space!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="flashcard" data-category="thermo">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="zap"></i></div>
+                  <div class="flashcard-title">FOURIER'S LAW OF CONDUCTION</div>
+                  <div class="flashcard-desc">How does heat move directly through solid materials?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
+                    ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="arrow-right-left"></i></div>
+                  <div class="flashcard-title">MOLECULAR VIBRATION</div>
+                  <div class="flashcard-desc">Heat flows from warm to cold via direct particle collisions (Q = -k · A · dT/dx).</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="flashcard" data-category="mli">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="wind"></i></div>
+                  <div class="flashcard-title">CONVECTION &amp; TRAPPED AIR</div>
+                  <div class="flashcard-desc">Why does bubble wrap block convective heat loss so effectively?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
+                    ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="disc"></i></div>
+                  <div class="flashcard-title">STAGNANT AIR POCKETS</div>
+                  <div class="flashcard-desc">Sealed micro air pockets stop fluid circulation currents from transferring heat!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 9 -->
+            <div class="flashcard" data-category="thermo">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="scale"></i></div>
+                  <div class="flashcard-title">THERMAL EQUILIBRIUM</div>
+                  <div class="flashcard-desc">When does net heat transfer between the capsule and environment drop to zero?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
+                    ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="check-check"></i></div>
+                  <div class="flashcard-title">EQUAL TEMPERATURES</div>
+                  <div class="flashcard-desc">When T_capsule = T_env, heat flow stops completely (dQ/dt = 0).</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 10 -->
+            <div class="flashcard" data-category="thermo">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="droplet"></i></div>
+                  <div class="flashcard-title">SPECIFIC HEAT CAPACITY</div>
+                  <div class="flashcard-desc">Why is liquid water (c = 4.184 J/g°C) ideal for telemetry lab trials?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
+                    ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="battery-charging"></i></div>
+                  <div class="flashcard-title">HIGH THERMAL MASS</div>
+                  <div class="flashcard-desc">Water holds vast heat energy, allowing precise, measurable decay over 15+ minutes!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 11 -->
+            <div class="flashcard" data-category="radiation">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="space"></i></div>
+                  <div class="flashcard-title">SPACE VACUUM SHIELDING</div>
+                  <div class="flashcard-desc">Can spacecraft lose heat by conduction in the vacuum of deep space?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
+                    ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="shield-alert"></i></div>
+                  <div class="flashcard-title">RADIATION ONLY</div>
+                  <div class="flashcard-desc">No! Vacuum has zero matter molecules, making thermal radiation the ONLY heat path!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 12 -->
+            <div class="flashcard" data-category="twin">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="line-chart"></i></div>
+                  <div class="flashcard-title">DECAY CURVE CURVATURE</div>
+                  <div class="flashcard-desc">Why is the T(t) graph steep initially and flatter toward 15 minutes?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
+                    ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="trending-down"></i></div>
+                  <div class="flashcard-title">SHRINKING TEMP GAP</div>
+                  <div class="flashcard-desc">Cooling rate depends on (T - T_env). As temperature drops, cooling slows down!</div>
                 </div>
               </div>
             </div>
@@ -1591,6 +1699,121 @@ padding-left:20px;
                 </label>
               </div>
               <div class="quiz-feedback" id="q5-feedback"></div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="quiz-card" data-q="6">
+              <div class="quiz-q-num">QUESTION 06 // FOURIER'S LAW &amp; THERMAL CONDUCTIVITY</div>
+              <div class="quiz-question-text">
+                Which physical material property dictates how rapidly thermal energy conducts directly through a solid envelope layer?
+              </div>
+              <div class="quiz-options-group">
+                <label class="quiz-option-label">
+                  <input type="radio" name="q6" value="A">
+                  <span>A) Thermal Conductivity Coefficient (k).</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q6" value="B">
+                  <span>B) Electrical Resistance (R).</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q6" value="C">
+                  <span>C) Surface Optical Pigment.</span>
+                </label>
+              </div>
+              <div class="quiz-feedback" id="q6-feedback"></div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="quiz-card" data-q="7">
+              <div class="quiz-q-num">QUESTION 07 // VACUUM &amp; FLUID MECHANICS</div>
+              <div class="quiz-question-text">
+                Why is convective heat transfer completely absent in the deep space vacuum outside Low Earth Orbit?
+              </div>
+              <div class="quiz-options-group">
+                <label class="quiz-option-label">
+                  <input type="radio" name="q7" value="A">
+                  <span>A) Deep space has no fluid medium (gas or liquid molecules) to form convective circulation currents.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q7" value="B">
+                  <span>B) Solar gravity locks all atoms in fixed positions.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q7" value="C">
+                  <span>C) Space suits operate at negative Kelvin temperatures.</span>
+                </label>
+              </div>
+              <div class="quiz-feedback" id="q7-feedback"></div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="quiz-card" data-q="8">
+              <div class="quiz-q-num">QUESTION 08 // SPECIFIC HEAT CAPACITY</div>
+              <div class="quiz-question-text">
+                Water has a high specific heat capacity (c = 4.184 J/g°C). If ethanol (c = 2.44 J/g°C) were used in the capsule instead of water, how would the cooling rate change?
+              </div>
+              <div class="quiz-options-group">
+                <label class="quiz-option-label">
+                  <input type="radio" name="q8" value="A">
+                  <span>A) Ethanol would cool down significantly faster because it stores less energy per degree Celsius.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q8" value="B">
+                  <span>B) Ethanol would cool down slower than water.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q8" value="C">
+                  <span>C) The cooling rate would remain identical.</span>
+                </label>
+              </div>
+              <div class="quiz-feedback" id="q8-feedback"></div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="quiz-card" data-q="9">
+              <div class="quiz-q-num">QUESTION 09 // ASYMPTOTIC BOUNDARY LIMITS</div>
+              <div class="quiz-question-text">
+                According to Newton's Law of Cooling, as time approaches infinity (t → ∞), what temperature value does T(t) approach asymptotically?
+              </div>
+              <div class="quiz-options-group">
+                <label class="quiz-option-label">
+                  <input type="radio" name="q9" value="A">
+                  <span>A) Absolute Zero (0 Kelvin).</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q9" value="B">
+                  <span>B) Environmental Temperature (T_env).</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q9" value="C">
+                  <span>C) Initial Capsule Temperature (T0).</span>
+                </label>
+              </div>
+              <div class="quiz-feedback" id="q9-feedback"></div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="quiz-card" data-q="10">
+              <div class="quiz-q-num">QUESTION 10 // TELEMETRY ANOMALY DIAGNOSTICS</div>
+              <div class="quiz-question-text">
+                If your physical test tube temperature drops significantly faster than the Digital Twin computer model predicts, which experimental anomaly occurred?
+              </div>
+              <div class="quiz-options-group">
+                <label class="quiz-option-label">
+                  <input type="radio" name="q10" value="A">
+                  <span>A) Unwanted water leakage occurred into the capsule or excess fluid stirring increased forced convection.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q10" value="B">
+                  <span>B) The ice bath was warmer than expected.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="q10" value="C">
+                  <span>C) The classroom lost atmospheric pressure.</span>
+                </label>
+              </div>
+              <div class="quiz-feedback" id="q10-feedback"></div>
             </div>
 
           </div>
