@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en-GB">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SPHERE | Thermal-Insulation Laboratory Worksheet</title>
-  
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;family=Orbitron:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;family=Orbitron:wght@600;700;800;900&amp;display=swap"
+    rel="stylesheet">
+
   <!-- KaTeX for Beautiful Math Formula Rendering -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
   <script defer src="katex-init.js"></script>
-  
+
   <style>
     /* ==========================================================================
        SPHERE MISSION CONTROL: 2-PAGE STUDENT TASK SHEET & GRAPH WORKBOOK
@@ -26,16 +29,16 @@
       --bg-document: #ffffff;
       --bg-page: #ffffff;
       --bg-subtle: #ffffff;
-      
+
       --primary-blue: #0284c7;
       --primary-dark: #0369a1;
       --primary-bg: #e0f2fe;
       --primary-border: #7dd3fc;
-      
+
       --accent-amber: #d97706;
       --accent-amber-dark: #92400e;
       --accent-amber-bg: #fef3c7;
-      
+
       --dark-navy: #0f172a;
       --text-heading: #0f172a;
       --text-body: #1e293b;
@@ -86,7 +89,8 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
     }
 
-    .doc-nav a, .doc-nav button {
+    .doc-nav a,
+    .doc-nav button {
       text-decoration: none;
       font-family: var(--font-hud);
       font-size: 0.74rem;
@@ -437,24 +441,113 @@
     }
 
     @media screen and (max-width: 700px) {
-      html, body { max-width: 100%; overflow-x: hidden; }
-      body { padding: 8px; }
-      .workbook-container { width: 100%; }
-      .doc-nav { position: static; padding: 10px; gap: 10px; align-items: stretch; flex-direction: column; }
-      .nav-actions { display: grid; grid-template-columns: 1fr; gap: 8px; }
-      .doc-nav a, .doc-nav button { min-height: 38px; justify-content: center; text-align: center; }
-      .sheet-page { padding: 18px 12px; border-radius: 10px; }
-      .page-header { align-items: flex-start; flex-wrap: wrap; gap: 8px; }
-      .sheet-title { width: 100%; font-size: clamp(1.2rem, 7vw, 1.55rem); overflow-wrap: anywhere; }
-      .meta-grid, .questions-grid { grid-template-columns: 1fr; }
-      .config-options, .rating-strip, .calc-row, .sign-box, .page-footer { align-items: flex-start; flex-direction: column; gap: 8px; }
-      .section-head { align-items: flex-start; flex-direction: column; gap: 6px; line-height: 1.35; }
-      .table-scroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .logging-table { min-width: 575px; }
-      .graph-container { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .calc-formula { max-width: 100%; margin: 5px 0 0; overflow-x: auto; }
-      .calc-line, .sign-line { width: min(140px, 40vw); }
-      .katex-display { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        padding: 8px;
+      }
+
+      .workbook-container {
+        width: 100%;
+      }
+
+      .doc-nav {
+        position: static;
+        padding: 10px;
+        gap: 10px;
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .nav-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .doc-nav a,
+      .doc-nav button {
+        min-height: 38px;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .sheet-page {
+        padding: 18px 12px;
+        border-radius: 10px;
+      }
+
+      .page-header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .sheet-title {
+        width: 100%;
+        font-size: clamp(1.2rem, 7vw, 1.55rem);
+        overflow-wrap: anywhere;
+      }
+
+      .meta-grid,
+      .questions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .config-options,
+      .rating-strip,
+      .calc-row,
+      .sign-box,
+      .page-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+        line-height: 1.35;
+      }
+
+      .table-scroll {
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .logging-table {
+        min-width: 575px;
+      }
+
+      .graph-container {
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .calc-formula {
+        max-width: 100%;
+        margin: 5px 0 0;
+        overflow-x: auto;
+      }
+
+      .calc-line,
+      .sign-line {
+        width: min(140px, 40vw);
+      }
+
+      .katex-display {
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
     }
 
     /* ==========================================================================
@@ -466,7 +559,8 @@
         margin: 8mm 10mm 8mm 10mm;
       }
 
-      html, body {
+      html,
+      body {
         background: #ffffff !important;
         color: #0f172a !important;
         padding: 0 !important;
@@ -562,6 +656,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="workbook-container">
@@ -572,7 +667,7 @@
         <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> MISSION CONTROL CONSOLE
       </a>
       <div style="font-family: var(--font-sans); font-size: 0.85rem; color: #ffffff; font-weight: 700;">
-        PRINTABLE 2-PAGE TASK SHEET &amp; GRAPH WORKBOOK
+        Task Sheet
       </div>
       <div class="nav-actions">
         <button type="button" onclick="window.print()" class="nav-btn-print">
@@ -629,84 +724,202 @@
           <span class="tag">60s INTERVALS</span>
         </div>
 
-        <div class="table-scroll"><table class="logging-table">
-          <thead>
-            <tr>
-              <th style="width: 12%;">ELAPSED TIME</th>
-              <th style="width: 20%;">OBSERVED TEMP ($T_{\text{obs}}$)</th>
-              <th style="width: 20%;">MODEL TEMP ($T_{\text{model}}$)</th>
-              <th style="width: 18%;">RESIDUAL $|\Delta T|$ ($^\circ\text{C}$)</th>
-              <th style="width: 30%;">OBSERVER FIELD NOTES &amp; BOUNDARY STATUS</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>$0\text{ min}$</strong></td><td>$80.0^\circ\text{C}$</td><td>$80.0^\circ\text{C}$</td><td>$0.0^\circ\text{C}$</td><td>Capsule submerged; ice bath boundary verified.</td></tr>
-            <tr><td><strong>$1\text{ min}$</strong></td><td></td><td></td><td></td><td>Check immersion depth and probe position.</td></tr>
-            <tr><td><strong>$2\text{ min}$</strong></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td><strong>$3\text{ min}$</strong></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td><strong>$4\text{ min}$</strong></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td><strong>$5\text{ min}$</strong></td><td></td><td></td><td></td><td>Mid-phase checkpoint; verify ice slurry volume.</td></tr>
-            <tr><td><strong>$6\text{ min}$</strong></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td><strong>$7\text{ min}$</strong></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td><strong>$8\text{ min}$</strong></td><td></td><td></td><td></td><td>Record any change in bath condition.</td></tr>
-            <tr><td><strong>$9\text{ min}$</strong></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td><strong>$10\text{ min}$</strong></td><td></td><td></td><td></td><td>Check for leakage or probe contact with the wall.</td></tr>
-            <tr><td><strong>$11\text{ min}$</strong></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td><strong>$12\text{ min}$</strong></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td><strong>$13\text{ min}$</strong></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td><strong>$14\text{ min}$</strong></td><td></td><td></td><td></td><td></td></tr>
-            <tr><td><strong>$15\text{ min}$</strong></td><td></td><td></td><td></td><td>Final reading; record bath temperature.</td></tr>
-          </tbody>
-        </table></div>
+        <div class="table-scroll">
+          <table class="logging-table">
+            <thead>
+              <tr>
+                <th style="width: 12%;">ELAPSED TIME</th>
+                <th style="width: 20%;">OBSERVED TEMP ($T_{\text{obs}}$)</th>
+                <th style="width: 20%;">MODEL TEMP ($T_{\text{model}}$)</th>
+                <th style="width: 18%;">RESIDUAL $|\Delta T|$ ($^\circ\text{C}$)</th>
+                <th style="width: 30%;">OBSERVER FIELD NOTES &amp; BOUNDARY STATUS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>$0\text{ min}$</strong></td>
+                <td>$80.0^\circ\text{C}$</td>
+                <td>$80.0^\circ\text{C}$</td>
+                <td>$0.0^\circ\text{C}$</td>
+                <td>Capsule submerged; ice bath boundary verified.</td>
+              </tr>
+              <tr>
+                <td><strong>$1\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Check immersion depth and probe position.</td>
+              </tr>
+              <tr>
+                <td><strong>$2\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>$3\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>$4\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>$5\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Mid-phase checkpoint; verify ice slurry volume.</td>
+              </tr>
+              <tr>
+                <td><strong>$6\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>$7\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>$8\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Record any change in bath condition.</td>
+              </tr>
+              <tr>
+                <td><strong>$9\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>$10\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Check for leakage or probe contact with the wall.</td>
+              </tr>
+              <tr>
+                <td><strong>$11\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>$12\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>$13\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>$14\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><strong>$15\text{ min}$</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Final reading; record bath temperature.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <!-- Part B: Coordinate Graph Grid -->
         <div class="section-head">
           <span>PART B. THERMAL COOLING CURVE GRAPH GRID</span>
           <span class="tag">EMPIRICAL (•) VS THEORETICAL (---)</span>
         </div>
-        
+
         <div class="graph-instructions">
-          Plot measured temperatures as solid points and connect them with a line. Plot the analytical reference-model values as a dashed line.
+          Plot measured temperatures as solid points and connect them with a line. Plot the analytical reference-model
+          values as a dashed line.
         </div>
 
         <div class="graph-container">
-          <svg viewBox="0 0 680 340" style="background: #ffffff; border: 2px solid var(--dark-navy); border-radius: 6px; width: 100%; height: auto; max-height: 255px;">
+          <svg viewBox="0 0 680 340"
+            style="background: #ffffff; border: 2px solid var(--dark-navy); border-radius: 6px; width: 100%; height: auto; max-height: 255px;">
             <defs>
               <pattern id="grid-minor-p1" width="10" height="8" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 8" fill="none" stroke="#f1f5f9" stroke-width="0.5"/>
+                <path d="M 10 0 L 0 0 0 8" fill="none" stroke="#f1f5f9" stroke-width="0.5" />
               </pattern>
               <pattern id="grid-major-p1" width="50" height="40" patternUnits="userSpaceOnUse">
-                <rect width="50" height="40" fill="url(#grid-minor-p1)"/>
-                <path d="M 50 0 L 0 0 0 40" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+                <rect width="50" height="40" fill="url(#grid-minor-p1)" />
+                <path d="M 50 0 L 0 0 0 40" fill="none" stroke="#cbd5e1" stroke-width="1.2" />
               </pattern>
             </defs>
 
             <!-- Graph Grid Area -->
-            <rect x="70" y="25" width="575" height="260" fill="url(#grid-major-p1)" stroke="#0f172a" stroke-width="2"/>
+            <rect x="70" y="25" width="575" height="260" fill="url(#grid-major-p1)" stroke="#0f172a" stroke-width="2" />
 
             <!-- Y-Axis Labels (0°C to 80°C) -->
-            <text x="58" y="29" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">80°C</text>
-            <text x="58" y="61" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">70°C</text>
-            <text x="58" y="94" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">60°C</text>
-            <text x="58" y="126" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">50°C</text>
-            <text x="58" y="159" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#0284c7">40°C</text>
-            <text x="58" y="191" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">30°C</text>
-            <text x="58" y="224" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">20°C</text>
-            <text x="58" y="256" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">10°C</text>
-            <text x="58" y="288" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">0°C</text>
+            <text x="58" y="29" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold"
+              fill="#0f172a">80°C</text>
+            <text x="58" y="61" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
+              fill="#334155">70°C</text>
+            <text x="58" y="94" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
+              fill="#334155">60°C</text>
+            <text x="58" y="126" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
+              fill="#334155">50°C</text>
+            <text x="58" y="159" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
+              fill="#0284c7">40°C</text>
+            <text x="58" y="191" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
+              fill="#334155">30°C</text>
+            <text x="58" y="224" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
+              fill="#334155">20°C</text>
+            <text x="58" y="256" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
+              fill="#334155">10°C</text>
+            <text x="58" y="288" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold"
+              fill="#0f172a">0°C</text>
 
-            <text x="20" y="155" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a" transform="rotate(-90 20 155)">TEMPERATURE (°C)</text>
+            <text x="20" y="155" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+              fill="#0f172a" transform="rotate(-90 20 155)">TEMPERATURE (°C)</text>
 
             <!-- X-Axis Labels (0m to 15m) -->
-            <text x="70" y="304" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">0m</text>
-            <text x="185" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">3m</text>
-            <text x="300" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">6m</text>
-            <text x="415" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">9m</text>
-            <text x="530" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">12m</text>
-            <text x="645" y="304" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">15m</text>
+            <text x="70" y="304" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+              fill="#0f172a">0m</text>
+            <text x="185" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold"
+              fill="#334155">3m</text>
+            <text x="300" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold"
+              fill="#334155">6m</text>
+            <text x="415" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold"
+              fill="#334155">9m</text>
+            <text x="530" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold"
+              fill="#334155">12m</text>
+            <text x="645" y="304" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+              fill="#0f172a">15m</text>
 
-            <text x="357" y="325" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">ELAPSED TIME (MINUTES)</text>
-            <text x="357" y="16" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">THERMAL DECAY COOLING CURVE TEMPLATE</text>
+            <text x="357" y="325" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+              fill="#0f172a">ELAPSED TIME (MINUTES)</text>
+            <text x="357" y="16" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+              fill="#0f172a">THERMAL DECAY COOLING CURVE TEMPLATE</text>
           </svg>
         </div>
       </div>
@@ -745,15 +958,18 @@
 
         <div class="calc-box">
           <div class="calc-row">
-            <span><strong>1. Sum of Absolute Residuals:</strong> <span class="calc-formula">$\sum |\Delta T| = \sum |T_{\text{obs}} - T_{\text{model}}|$</span></span>
+            <span><strong>1. Sum of Absolute Residuals:</strong> <span class="calc-formula">$\sum |\Delta T| = \sum
+                |T_{\text{obs}} - T_{\text{model}}|$</span></span>
             <span><strong>$\sum |\Delta T| =$ </strong> <span class="calc-line"></span> $^\circ\text{C}$</span>
           </div>
           <div class="calc-row">
-            <span><strong>2. Mean Absolute Error (MAE):</strong> <span class="calc-formula">$\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |T_{\text{obs},i}-T_{\text{model},i}|$</span></span>
+            <span><strong>2. Mean Absolute Error (MAE):</strong> <span class="calc-formula">$\text{MAE} = \frac{1}{n}
+                \sum_{i=1}^{n} |T_{\text{obs},i}-T_{\text{model},i}|$</span></span>
             <span><strong>$\text{MAE} =$ </strong> <span class="calc-line"></span> $^\circ\text{C}$</span>
           </div>
           <div class="calc-row">
-            <span><strong>3. Interpretation:</strong> Compare MAE with the thermometer accuracy and variation between repeated measurements.</span>
+            <span><strong>3. Interpretation:</strong> Compare MAE with the thermometer accuracy and variation between
+              repeated measurements.</span>
             <span><strong>Number of observations:</strong> <span class="calc-line"></span></span>
           </div>
 
@@ -777,7 +993,8 @@
             <div>
               <div class="q-title">Inquiry 1: Radiant Barriers vs. Direct Conduction</div>
               <div class="q-desc">
-                Reflective film can reduce radiative exchange when it faces a suitable gap. Why may it provide limited insulation when placed directly in ice water without a low-conductivity air or fibre spacer?
+                Reflective film can reduce radiative exchange when it faces a suitable gap. Why may it provide limited
+                insulation when placed directly in ice water without a low-conductivity air or fibre spacer?
               </div>
             </div>
             <div class="q-answer-space"></div>
@@ -788,7 +1005,8 @@
             <div>
               <div class="q-title">Inquiry 2: Understanding the Decay Constant ($k$)</div>
               <div class="q-desc">
-                In Newton's Law $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$, does a smaller $k$ value mean better or worse insulation? Explain how $k$ controls the cooling speed.
+                In Newton's Law $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$, does a smaller $k$ value mean
+                better or worse insulation? Explain how $k$ controls the cooling speed.
               </div>
             </div>
             <div class="q-answer-space"></div>
@@ -799,7 +1017,8 @@
             <div>
               <div class="q-title">Inquiry 3: Why Multi-Layer Insulation (MLI) Works</div>
               <div class="q-desc">
-                Why can the multilayer configuration reduce the cooling rate relative to a single layer? Discuss trapped air, fluid motion, radiation and interfacial resistance.
+                Why can the multilayer configuration reduce the cooling rate relative to a single layer? Discuss trapped
+                air, fluid motion, radiation and interfacial resistance.
               </div>
             </div>
             <div class="q-answer-space"></div>
@@ -810,7 +1029,8 @@
             <div>
               <div class="q-title">Inquiry 4: Real-World Experimental Factors</div>
               <div class="q-desc">
-                What physical factors in the lab might cause your sensor readings to drift away from the computer simulation? Name at least two specific factors (e.g. sensor depth, stirring, seal leaks).
+                What physical factors in the lab might cause your sensor readings to drift away from the computer
+                simulation? Name at least two specific factors (e.g. sensor depth, stirring, seal leaks).
               </div>
             </div>
             <div class="q-answer-space"></div>
@@ -821,7 +1041,9 @@
             <div>
               <div class="q-title">Inquiry 5: Ice Bath Temperature Drift</div>
               <div class="q-desc">
-                If the ice bath warms up from $0.0^\circ\text{C}$ to $4.5^\circ\text{C}$ during your 15-minute run, how should you update the environment temperature $T_{\text{env}}$ in Mission Control so the model stays accurate?
+                If the ice bath warms up from $0.0^\circ\text{C}$ to $4.5^\circ\text{C}$ during your 15-minute run, how
+                should you update the environment temperature $T_{\text{env}}$ in Mission Control so the model stays
+                accurate?
               </div>
             </div>
             <div class="q-answer-space tall"></div>
@@ -832,7 +1054,8 @@
             <div>
               <div class="q-title">Inquiry 6: Effect of Capsule Water Volume</div>
               <div class="q-desc">
-                If you doubled the water volume from $100\text{ mL}$ to $200\text{ mL}$, how would that extra thermal mass ($Q = mc_p\Delta T$) change the cooling rate and the value of $k$?
+                If you doubled the water volume from $100\text{ mL}$ to $200\text{ mL}$, how would that extra thermal
+                mass ($Q = mc_p\Delta T$) change the cooling rate and the value of $k$?
               </div>
             </div>
             <div class="q-answer-space tall"></div>
@@ -842,11 +1065,12 @@
 
       <!-- Page 2 Footer & Sign-off -->
       <div>
-        <div style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 8px 14px; border-radius: 6px; margin-bottom: 8px;">
+        <div
+          style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 8px 14px; border-radius: 6px; margin-bottom: 8px;">
           <div class="sign-box">
             <span><strong>STUDENT SIGNATURE:</strong> <span class="sign-line"></span></span>
             <span><strong>INSTRUCTOR VALIDATION:</strong> <span class="sign-line"></span></span>
-            <span><strong>EVALUATION SCORE:</strong> ________ / 100</span>
+            <span><strong>EVALUATION SCORE:</strong> <span class="sign-line"></span> / 100</span>
           </div>
         </div>
 
@@ -866,4 +1090,5 @@
     lucide.createIcons();
   </script>
 </body>
+
 </html>
