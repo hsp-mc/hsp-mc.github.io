@@ -353,38 +353,71 @@
       line-height: 1.45;
     }
 
-    /* Answer Key Solutions Block */
-    .answer-key-card {
+    /* 4 Separate Graphs Grid */
+    .graphs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .graph-card {
       background: #ffffff;
-      border: 3px solid var(--primary-amber);
-      border-radius: 14px;
-      padding: 32px;
-      margin: 20px 0 35px 0;
-      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.1);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+      text-align: center;
+    }
+
+    .graph-card svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Answer Key Solutions Block - Compact & Unstyled */
+    .answer-key-card, .answer-key-compact {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      margin: 15px 0 25px 0;
+      box-shadow: none;
     }
 
     .solution-item {
-      background: var(--bg-subtle);
-      border-left: 6px solid var(--accent-blue);
-      border-radius: 0 8px 8px 0;
-      padding: 20px;
-      margin-bottom: 22px;
-      border-top: 1px solid var(--border-color);
-      border-right: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
+      background: transparent;
+      border: none;
+      border-bottom: 1px dashed var(--border-color);
+      border-radius: 0;
+      padding: 8px 0;
+      margin-bottom: 8px;
+    }
+
+    .solution-item:last-child {
+      border-bottom: none;
     }
 
     .solution-title {
-      font-weight: 800;
+      font-weight: 700;
       color: var(--dark-navy);
-      font-size: 1rem;
-      margin-bottom: 8px;
+      font-size: 0.93rem;
+      margin-bottom: 3px;
     }
 
     .solution-body {
       color: var(--text-body);
-      font-size: 0.92rem;
-      line-height: 1.6;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .grading-note {
+      display: block;
+      font-style: italic;
+      color: var(--text-subtle);
+      font-size: 0.82rem;
+      margin-top: 2px;
     }
 
     .doc-footer {
@@ -499,22 +532,34 @@
         margin: 14pt 0 !important;
       }
 
-      .answer-key-card {
-        border: 2pt solid #d97706 !important;
-        box-shadow: none !important;
-        padding: 16pt !important;
+      .graphs-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10pt !important;
         break-inside: avoid;
         page-break-inside: avoid;
+      }
+
+      .graph-card {
+        border: 1pt solid #cbd5e1 !important;
+        box-shadow: none !important;
+        padding: 6pt !important;
+      }
+
+      .answer-key-card, .answer-key-compact {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
       }
 
       .solution-item {
         break-inside: avoid;
         page-break-inside: avoid;
-        border: 1pt solid #cbd5e1 !important;
-        border-left: 4pt solid #0284c7 !important;
-        background: #ffffff !important;
-        margin-bottom: 12pt !important;
-        padding: 12pt !important;
+        border: none !important;
+        border-bottom: 1pt dashed #cbd5e1 !important;
+        background: transparent !important;
+        margin-bottom: 6pt !important;
+        padding: 4pt 0 !important;
       }
 
       .styled-table {
@@ -765,89 +810,181 @@
         </tbody>
       </table>
 
-      <figure class="prediction-figure">
-        <svg viewBox="0 0 760 330" role="img" aria-labelledby="prediction-curves-title prediction-curves-desc">
-          <title id="prediction-curves-title">Predicted temperature curves for all four reference configurations</title>
-          <desc id="prediction-curves-desc">Line chart from zero to fifteen minutes showing the bare control, bubble wrap, reflective film and multilayer assembly predictions calculated from Newton's law of cooling.</desc>
+      <!-- 4 SEPARATE REFERENCE-MODEL PREDICTION GRAPHS -->
+      <h3 style="margin-top: 24px; margin-bottom: 12px;"><i data-lucide="line-chart"></i> INDIVIDUAL PREDICTION CURVES ($T_0=80.0^\circ\text{C}$, $T_{\text{env}}=0.0^\circ\text{C}$)</h3>
+      <div class="graphs-grid">
+        <!-- Graph A -->
+        <div class="graph-card">
+          <div style="font-weight:700; font-size:0.88rem; color:#0369a1; margin-bottom:6px;">
+            A. BARE CONTROL ($k \approx 0.150\text{ min}^{-1}$)
+          </div>
+          <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Bare Control">
+            <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+            <g stroke="#cbd5e1" stroke-width="1">
+              <line x1="50" y1="25" x2="350" y2="25"/>
+              <line x1="50" y1="60" x2="350" y2="60"/>
+              <line x1="50" y1="95" x2="350" y2="95"/>
+              <line x1="50" y1="130" x2="350" y2="130"/>
+              <line x1="50" y1="165" x2="350" y2="165"/>
+              <line x1="50" y1="25" x2="50" y2="165"/>
+              <line x1="110" y1="25" x2="110" y2="165"/>
+              <line x1="170" y1="25" x2="170" y2="165"/>
+              <line x1="230" y1="25" x2="230" y2="165"/>
+              <line x1="290" y1="25" x2="290" y2="165"/>
+              <line x1="350" y1="25" x2="350" y2="165"/>
+            </g>
+            <g font-family="sans-serif" font-size="9" fill="#334155">
+              <text x="42" y="28" text-anchor="end">80</text>
+              <text x="42" y="63" text-anchor="end">60</text>
+              <text x="42" y="98" text-anchor="end">40</text>
+              <text x="42" y="133" text-anchor="end">20</text>
+              <text x="42" y="168" text-anchor="end">0</text>
+              <text x="50" y="178" text-anchor="middle">0</text>
+              <text x="110" y="178" text-anchor="middle">3</text>
+              <text x="170" y="178" text-anchor="middle">6</text>
+              <text x="230" y="178" text-anchor="middle">9</text>
+              <text x="290" y="178" text-anchor="middle">12</text>
+              <text x="350" y="178" text-anchor="middle">15 min</text>
+            </g>
+            <polyline points="50,25 70,44.5 90,61.3 110,75.7 130,88.2 150,98.9 170,108.1 190,116 210,122.8 230,128.7 250,133.8 270,138.1 290,141.9 310,145.1 330,147.9 350,150.2" fill="none" stroke="#0369a1" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="350" cy="150.2" r="3.5" fill="#0369a1"/>
+            <text x="345" y="142" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#0369a1">8.4°C at 15m</text>
+          </svg>
+        </div>
 
-          <text x="380" y="22" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="800" fill="#0f172a">ALL REFERENCE-MODEL PREDICTIONS</text>
+        <!-- Graph B -->
+        <div class="graph-card">
+          <div style="font-weight:700; font-size:0.88rem; color:#15803d; margin-bottom:6px;">
+            B. BUBBLE WRAP ($k \approx 0.040\text{ min}^{-1}$)
+          </div>
+          <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Bubble Wrap">
+            <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+            <g stroke="#cbd5e1" stroke-width="1">
+              <line x1="50" y1="25" x2="350" y2="25"/>
+              <line x1="50" y1="60" x2="350" y2="60"/>
+              <line x1="50" y1="95" x2="350" y2="95"/>
+              <line x1="50" y1="130" x2="350" y2="130"/>
+              <line x1="50" y1="165" x2="350" y2="165"/>
+              <line x1="50" y1="25" x2="50" y2="165"/>
+              <line x1="110" y1="25" x2="110" y2="165"/>
+              <line x1="170" y1="25" x2="170" y2="165"/>
+              <line x1="230" y1="25" x2="230" y2="165"/>
+              <line x1="290" y1="25" x2="290" y2="165"/>
+              <line x1="350" y1="25" x2="350" y2="165"/>
+            </g>
+            <g font-family="sans-serif" font-size="9" fill="#334155">
+              <text x="42" y="28" text-anchor="end">80</text>
+              <text x="42" y="63" text-anchor="end">60</text>
+              <text x="42" y="98" text-anchor="end">40</text>
+              <text x="42" y="133" text-anchor="end">20</text>
+              <text x="42" y="168" text-anchor="end">0</text>
+              <text x="50" y="178" text-anchor="middle">0</text>
+              <text x="110" y="178" text-anchor="middle">3</text>
+              <text x="170" y="178" text-anchor="middle">6</text>
+              <text x="230" y="178" text-anchor="middle">9</text>
+              <text x="290" y="178" text-anchor="middle">12</text>
+              <text x="350" y="178" text-anchor="middle">15 min</text>
+            </g>
+            <polyline points="50,25 70,30.5 90,35.8 110,40.8 130,45.7 150,50.4 170,54.9 190,59.2 210,63.4 230,67.4 250,71.3 270,75.0 290,78.5 310,81.9 330,85.2 350,88.3" fill="none" stroke="#15803d" stroke-width="2.5" stroke-dasharray="8 4" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="350" cy="88.3" r="3.5" fill="#15803d"/>
+            <text x="345" y="80" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#15803d">43.9°C at 15m</text>
+          </svg>
+        </div>
 
-          <!-- Plot background and grid -->
-          <rect x="80" y="40" width="600" height="200" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
-          <g stroke="#cbd5e1" stroke-width="1">
-            <line x1="80" y1="40" x2="680" y2="40"/>
-            <line x1="80" y1="90" x2="680" y2="90"/>
-            <line x1="80" y1="140" x2="680" y2="140"/>
-            <line x1="80" y1="190" x2="680" y2="190"/>
-            <line x1="80" y1="240" x2="680" y2="240"/>
-            <line x1="80" y1="40" x2="80" y2="240"/>
-            <line x1="200" y1="40" x2="200" y2="240"/>
-            <line x1="320" y1="40" x2="320" y2="240"/>
-            <line x1="440" y1="40" x2="440" y2="240"/>
-            <line x1="560" y1="40" x2="560" y2="240"/>
-            <line x1="680" y1="40" x2="680" y2="240"/>
-          </g>
+        <!-- Graph C -->
+        <div class="graph-card">
+          <div style="font-weight:700; font-size:0.88rem; color:#c2410c; margin-bottom:6px;">
+            C. MYLAR FOIL ($k \approx 0.121\text{ min}^{-1}$)
+          </div>
+          <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Mylar Foil">
+            <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+            <g stroke="#cbd5e1" stroke-width="1">
+              <line x1="50" y1="25" x2="350" y2="25"/>
+              <line x1="50" y1="60" x2="350" y2="60"/>
+              <line x1="50" y1="95" x2="350" y2="95"/>
+              <line x1="50" y1="130" x2="350" y2="130"/>
+              <line x1="50" y1="165" x2="350" y2="165"/>
+              <line x1="50" y1="25" x2="50" y2="165"/>
+              <line x1="110" y1="25" x2="110" y2="165"/>
+              <line x1="170" y1="25" x2="170" y2="165"/>
+              <line x1="230" y1="25" x2="230" y2="165"/>
+              <line x1="290" y1="25" x2="290" y2="165"/>
+              <line x1="350" y1="25" x2="350" y2="165"/>
+            </g>
+            <g font-family="sans-serif" font-size="9" fill="#334155">
+              <text x="42" y="28" text-anchor="end">80</text>
+              <text x="42" y="63" text-anchor="end">60</text>
+              <text x="42" y="98" text-anchor="end">40</text>
+              <text x="42" y="133" text-anchor="end">20</text>
+              <text x="42" y="168" text-anchor="end">0</text>
+              <text x="50" y="178" text-anchor="middle">0</text>
+              <text x="110" y="178" text-anchor="middle">3</text>
+              <text x="170" y="178" text-anchor="middle">6</text>
+              <text x="230" y="178" text-anchor="middle">9</text>
+              <text x="290" y="178" text-anchor="middle">12</text>
+              <text x="350" y="178" text-anchor="middle">15 min</text>
+            </g>
+            <polyline points="50,25 70,43.6 90,59.8 110,73.9 130,86.0 150,96.5 170,105.7 190,113.6 210,120.5 230,126.5 250,131.7 270,136.2 290,140.1 310,143.5 330,146.4 350,148.9" fill="none" stroke="#c2410c" stroke-width="2.5" stroke-dasharray="3 4" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="350" cy="148.9" r="3.5" fill="#c2410c"/>
+            <text x="345" y="140" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#c2410c">13.0°C at 15m</text>
+          </svg>
+        </div>
 
-          <!-- Axes and tick labels -->
-          <g font-family="sans-serif" font-size="10" fill="#334155">
-            <text x="68" y="44" text-anchor="end">80</text>
-            <text x="68" y="94" text-anchor="end">60</text>
-            <text x="68" y="144" text-anchor="end">40</text>
-            <text x="68" y="194" text-anchor="end">20</text>
-            <text x="68" y="244" text-anchor="end">0</text>
-            <text x="80" y="258" text-anchor="middle">0</text>
-            <text x="200" y="258" text-anchor="middle">3</text>
-            <text x="320" y="258" text-anchor="middle">6</text>
-            <text x="440" y="258" text-anchor="middle">9</text>
-            <text x="560" y="258" text-anchor="middle">12</text>
-            <text x="680" y="258" text-anchor="middle">15</text>
-          </g>
-          <text x="380" y="280" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#0f172a">Elapsed time, t (min)</text>
-          <text x="20" y="140" text-anchor="middle" transform="rotate(-90 20 140)" font-family="sans-serif" font-size="11" font-weight="700" fill="#0f172a">Predicted temperature, T(t) (°C)</text>
-
-          <!-- Exact one-minute model samples joined as four complete curves -->
-          <polyline points="80,40 120,67.9 160,91.8 200,112.5 240,130.2 280,145.5 320,158.7 360,170 400,179.8 440,188.2 480,195.4 520,201.6 560,206.9 600,211.5 640,215.5 680,218.9" fill="none" stroke="#0369a1" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
-          <polyline points="80,40 120,47.8 160,55.4 200,62.6 240,69.6 280,76.3 320,82.7 360,88.8 400,94.8 440,100.5 480,105.9 520,111.2 560,116.2 600,121.1 640,125.8 680,130.2" fill="none" stroke="#15803d" stroke-width="3" stroke-dasharray="10 5" stroke-linejoin="round" stroke-linecap="round"/>
-          <polyline points="80,40 120,66.6 160,89.7 200,109.8 240,127.1 280,142.2 320,155.2 360,166.5 400,176.3 440,184.8 480,192.1 520,198.5 560,204 600,208.8 640,213 680,216.6" fill="none" stroke="#c2410c" stroke-width="3" stroke-dasharray="3 5" stroke-linejoin="round" stroke-linecap="round"/>
-          <polyline points="80,40 120,43 160,45.9 200,48.8 240,51.6 280,54.5 320,57.2 360,59.9 400,62.6 440,65.3 480,67.9 520,70.4 560,72.9 600,75.4 640,77.9 680,80.3" fill="none" stroke="#7e22ce" stroke-width="3" stroke-dasharray="12 4 3 4" stroke-linejoin="round" stroke-linecap="round"/>
-
-          <!-- Legend; line patterns also distinguish curves in greyscale printing -->
-          <g font-family="sans-serif" font-size="9.5" font-weight="700" fill="#0f172a">
-            <line x1="45" y1="307" x2="77" y2="307" stroke="#0369a1" stroke-width="3"/>
-            <text x="83" y="310">Bare, k=0.150</text>
-            <line x1="220" y1="307" x2="252" y2="307" stroke="#15803d" stroke-width="3" stroke-dasharray="10 5"/>
-            <text x="258" y="310">Bubble, k=0.040</text>
-            <line x1="404" y1="307" x2="436" y2="307" stroke="#c2410c" stroke-width="3" stroke-dasharray="3 5"/>
-            <text x="442" y="310">Reflective, k=0.121</text>
-            <line x1="592" y1="307" x2="624" y2="307" stroke="#7e22ce" stroke-width="3" stroke-dasharray="12 4 3 4"/>
-            <text x="630" y="310">Multilayer, k=0.015</text>
-          </g>
-        </svg>
-        <figcaption>
-          FIGURE 1: COMPLETE 0-15 MIN PREDICTION SET FOR $T_0=80.0^\circ\text{C}$ AND $T_{\text{env}}=0.0^\circ\text{C}$. Curves use one-minute samples of $T(t)=T_{\text{env}}+(T_0-T_{\text{env}})e^{-kt}$; line patterns remain distinguishable in greyscale.
-        </figcaption>
-      </figure>
+        <!-- Graph D -->
+        <div class="graph-card">
+          <div style="font-weight:700; font-size:0.88rem; color:#7e22ce; margin-bottom:6px;">
+            D. MULTILAYER ASSEMBLY ($k \approx 0.015\text{ min}^{-1}$)
+          </div>
+          <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Multilayer Assembly">
+            <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+            <g stroke="#cbd5e1" stroke-width="1">
+              <line x1="50" y1="25" x2="350" y2="25"/>
+              <line x1="50" y1="60" x2="350" y2="60"/>
+              <line x1="50" y1="95" x2="350" y2="95"/>
+              <line x1="50" y1="130" x2="350" y2="130"/>
+              <line x1="50" y1="165" x2="350" y2="165"/>
+              <line x1="50" y1="25" x2="50" y2="165"/>
+              <line x1="110" y1="25" x2="110" y2="165"/>
+              <line x1="170" y1="25" x2="170" y2="165"/>
+              <line x1="230" y1="25" x2="230" y2="165"/>
+              <line x1="290" y1="25" x2="290" y2="165"/>
+              <line x1="350" y1="25" x2="350" y2="165"/>
+            </g>
+            <g font-family="sans-serif" font-size="9" fill="#334155">
+              <text x="42" y="28" text-anchor="end">80</text>
+              <text x="42" y="63" text-anchor="end">60</text>
+              <text x="42" y="98" text-anchor="end">40</text>
+              <text x="42" y="133" text-anchor="end">20</text>
+              <text x="42" y="168" text-anchor="end">0</text>
+              <text x="50" y="178" text-anchor="middle">0</text>
+              <text x="110" y="178" text-anchor="middle">3</text>
+              <text x="170" y="178" text-anchor="middle">6</text>
+              <text x="230" y="178" text-anchor="middle">9</text>
+              <text x="290" y="178" text-anchor="middle">12</text>
+              <text x="350" y="178" text-anchor="middle">15 min</text>
+            </g>
+            <polyline points="50,25 70,27.1 90,29.1 110,31.2 130,33.1 150,35.1 170,37.0 190,38.9 210,40.8 230,42.6 250,44.4 270,46.2 290,47.9 310,49.6 330,51.3 350,53.0" fill="none" stroke="#7e22ce" stroke-width="2.5" stroke-dasharray="10 3 2 3" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="350" cy="53.0" r="3.5" fill="#7e22ce"/>
+            <text x="345" y="45" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#7e22ce">63.9°C at 15m</text>
+          </svg>
+        </div>
+      </div>
 
       <p><strong>Custom mode:</strong> Mission Control also provides an adjustable $k$ value for inquiry work. It is not shown as a fixed reference curve because its prediction changes with the instructor's selected value. <strong>Optional extension:</strong> A cotton-only configuration may be added as a fifth physical trial when time permits.</p>
     </section>
 
     <!-- SECTION 5: OFFICIAL QUESTION SHEET SOLUTIONS KEY (Q1 - Q8) -->
     <section class="doc-section" id="section-5">
-      <div class="answer-key-card" id="solutions-key">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px;">
-          <span style="font-family: var(--font-hud); font-size: 1.15rem; font-weight: 800; color: var(--primary-amber-dark);">
-            <i data-lucide="check-circle-2" style="vertical-align: middle;"></i> SECTION 5: OFFICIAL SOLUTIONS &amp; TEACHER ANSWER KEY
-          </span>
-          <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--dark-navy); font-weight: bold;">ANSWER KEY</span>
-        </div>
+      <h2><i data-lucide="check-circle-2"></i> 5. OFFICIAL SOLUTIONS &amp; TEACHER ANSWER KEY</h2>
+      
+      <p style="margin-bottom: 14px; font-size: 0.92rem; color: var(--text-subtle);">
+        This key covers the eight-question extended reflection set in the student manual. The standalone task sheet
+        contains six condensed practical inquiries. The separate 10-item online knowledge check auto-scores nine
+        multiple-choice items; its Question 4 requires instructor review and is excluded from the automatic percentage.
+        <strong>Online key:</strong> Q1 B, Q2 B, Q3 A, Q5 B, Q6 A, Q7 A, Q8 A, Q9 B, Q10 A.
+      </p>
 
-        <p style="margin-bottom: 16px;">
-          This key covers the eight-question extended reflection set in the student manual. The standalone task sheet
-          contains six condensed practical inquiries. The separate 10-item online knowledge check auto-scores nine
-          multiple-choice items; its Question 4 requires instructor review and is excluded from the automatic percentage.
-          Online key: Q1 B, Q2 B, Q3 A, Q5 B, Q6 A, Q7 A, Q8 A, Q9 B, Q10 A.
-        </p>
-
+      <div class="answer-key-compact" id="solutions-key">
         <!-- Q1 Solution -->
         <div class="solution-item">
           <div class="solution-title">Question 1: Why can reflective film provide limited insulation in direct water contact?</div>
@@ -855,7 +992,7 @@
             <strong>Sample answer:</strong> A reflective film can reduce radiative exchange, but it has little thickness
             and therefore provides limited resistance to conduction when it is in direct contact with the capsule and
             surrounding water. A low-conductivity spacer introduces trapped air and additional thermal resistance.
-            <br><em style="color: var(--text-subtle);">Marking guidance: award credit for distinguishing radiative performance from conductive resistance.</em>
+            <span class="grading-note">Marking guidance: award credit for distinguishing radiative performance from conductive resistance.</span>
           </div>
         </div>
 
@@ -874,13 +1011,10 @@
           <div class="solution-title">Question 3: Why can the multilayer assembly reduce cooling?</div>
           <div class="solution-body">
             <strong>Sample answer:</strong> The materials introduce complementary resistance mechanisms:
-            <ul style="margin: 6px 0 0 0; padding-left: 20px;">
-              <li><strong>Cotton</strong> traps air and reduces effective conduction.</li>
-              <li><strong>Bubble wrap</strong> limits air movement within sealed cells.</li>
-              <li><strong>Reflective film</strong> reduces radiative exchange when an air gap is present.</li>
-            </ul>
-            Interfaces between layers also add contact resistance. The measured result must be used to determine the
-            actual performance ($k \approx 0.015\text{ min}^{-1}$); no specific final temperature should be assumed without empirical data.
+            <strong>Cotton</strong> traps air and reduces effective conduction;
+            <strong>Bubble wrap</strong> limits air movement within sealed cells;
+            <strong>Reflective film</strong> reduces radiative exchange when an air gap is present.
+            Interfaces between layers also add contact resistance ($k \approx 0.015\text{ min}^{-1}$).
           </div>
         </div>
 
@@ -888,13 +1022,11 @@
         <div class="solution-item">
           <div class="solution-title">Question 4: Where could experimental errors come from?</div>
           <div class="solution-body">
-            <strong>Sample Answer (Accept any two sensible answers):</strong>
-            <ol style="margin: 4px 0 0 0; padding-left: 20px;">
-              <li>The sensor tip was touching the cold plastic jar wall instead of hanging in the middle of the water.</li>
-              <li>Water leaked into the jar through an incompletely sealed lid or probe opening.</li>
-              <li>The ice bath warmed up above $0.0^\circ\text{C}$ during the $15\text{ minutes}$.</li>
-              <li>The water inside the jar wasn't stirred, so warm water rose to the top and cold water sank to the bottom.</li>
-            </ol>
+            <strong>Sample answer (Accept any two):</strong>
+            (1) Sensor tip touching cold jar wall instead of water center.
+            (2) Water leaking into jar through incompletely sealed lid or opening.
+            (3) Ice bath warming up above $0.0^\circ\text{C}$ during 15 minutes.
+            (4) Water inside jar not stirred, causing thermal stratification.
           </div>
         </div>
 
@@ -902,8 +1034,8 @@
         <div class="solution-item">
           <div class="solution-title">Question 5: What happens if your ice bath warms up?</div>
           <div class="solution-body">
-            <strong>Sample Answer:</strong> Students should measure the real bath temperature (e.g. $T_{\text{env}} = 4.5^\circ\text{C}$) and type that new number into the $T_{\text{env}}$ box in the Mission Control simulator. Updating the environment temperature makes the theoretical curve ($T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$) match the real classroom conditions.
-            <br><em style="color: var(--text-subtle);">Grading Tip: Award credit if they mention updating $T_{\text{env}}$ or the environment temperature input in the software.</em>
+            <strong>Sample answer:</strong> Students should measure the real bath temperature (e.g. $T_{\text{env}} = 4.5^\circ\text{C}$) and type that new number into the $T_{\text{env}}$ box in the Mission Control simulator to match actual classroom conditions ($T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$).
+            <span class="grading-note">Grading Tip: Award credit if they mention updating $T_{\text{env}}$ in the software.</span>
           </div>
         </div>
 
@@ -911,31 +1043,29 @@
         <div class="solution-item">
           <div class="solution-title">Question 6: What if we double the water volume?</div>
           <div class="solution-body">
-            <strong>Sample Answer:</strong> Doubling the water from $100\text{ mL}$ to $200\text{ mL}$ doubles the mass of hot liquid ($Q = m \cdot c \cdot \Delta T$), meaning it holds twice as much thermal energy. Because there is more heat to lose through roughly the same surface area, it cools down <strong>slower</strong>, and the cooling constant <strong>$k$ decreases</strong>.
-            <br><em style="color: var(--text-subtle);">Grading Tip: Look for: cools slower and $k$ decreases.</em>
+            <strong>Sample answer:</strong> Doubling water ($100\text{ mL} \to 200\text{ mL}$) doubles mass of hot liquid ($Q = m \cdot c \cdot \Delta T$), holding twice as much thermal energy. With more heat to lose through roughly equal surface area, it cools <strong>slower</strong>, and cooling constant <strong>$k$ decreases</strong>.
+            <span class="grading-note">Grading Tip: Look for: cools slower and $k$ decreases.</span>
           </div>
         </div>
 
         <!-- Q7 Solution -->
-        <div class="solution-item q7-solution">
+        <div class="solution-item">
           <div class="solution-title">Question 7: Spacesuit Design Trade-Offs</div>
           <div class="solution-body">
-            <strong>Sample Answer:</strong> You can't simply keep adding layers because the spacesuit would become heavier, bulkier and stiffer, reducing joint mobility during a long spacewalk. The astronaut also generates metabolic heat, so the thermal-control system must reject heat as well as limit heat loss.
-            <br><em style="color: var(--text-subtle);">Grading Tip: Accept answers discussing joint flexibility/mobility, suit weight/bulk, or body heat buildup.</em>
+            <strong>Sample answer:</strong> Adding infinite layers makes the spacesuit heavier, bulkier, and stiffer, reducing joint mobility. Astronaut metabolic heat must also be rejected to prevent overheating.
+            <span class="grading-note">Grading Tip: Accept joint flexibility/mobility, suit weight/bulk, or body heat buildup.</span>
           </div>
         </div>
 
         <!-- Q8 Solution -->
-        <div class="solution-item q8-solution">
+        <div class="solution-item">
           <div class="solution-title">Question 8: How can the MAE be reduced?</div>
           <div class="solution-body">
-            <strong>Sample Answer:</strong>
-            <ol style="margin: 4px 0 0 0; padding-left: 20px;">
-              <li>Use a consistent lid-sealing method and leak-test the capsule before immersion.</li>
-              <li>Position the probe consistently near the centre of the liquid without contacting the wall; use a thermometer with documented accuracy (e.g. $\pm 0.5^\circ\text{C}$).</li>
-              <li>Swirl the jar gently before reading to keep the water mixed evenly.</li>
-              <li>Take readings at consistent recorded times ($\text{MAE} = \frac{1}{n}\sum_{i=1}^n |T_{\text{obs},i} - T_{\text{model},i}|$).</li>
-            </ol>
+            <strong>Sample answer:</strong>
+            (1) Use consistent lid-sealing method &amp; leak-test capsule.
+            (2) Position probe consistently near centre of liquid away from walls.
+            (3) Swirl jar gently before reading.
+            (4) Take readings at consistent recorded times ($\text{MAE} = \frac{1}{n}\sum_{i=1}^n |T_{\text{obs},i} - T_{\text{model},i}|$).
           </div>
         </div>
       </div>
