@@ -1774,10 +1774,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (q6Selected && q6Selected.value === answerKey.q6) {
         correctCount++;
         q6Feedback.className = 'quiz-feedback correct';
-        q6Feedback.innerHTML = '✓ Correct. Thermal conductivity ($\\lambda$), in W/(m·K), governs conductive heat transfer through a material.';
+        q6Feedback.innerHTML = '✓ Correct. Doubling thermal mass ($100\\text{ mL} \\to 200\\text{ mL}$) increases stored thermal energy ($Q = mc_p\\Delta T$), causing the liquid to cool more slowly and reducing the fitted decay constant $k$.';
       } else {
         q6Feedback.className = 'quiz-feedback incorrect';
-        q6Feedback.innerHTML = '✗ Review required. The correct answer is A: thermal conductivity ($\\lambda$).';
+        q6Feedback.innerHTML = '✗ Review required. The correct answer is A: the larger volume holds twice the thermal energy, cooling more slowly so $k$ decreases.';
       }
 
       // Q7 Check
