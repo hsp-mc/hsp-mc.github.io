@@ -558,6 +558,10 @@
         size: A4 portrait;
         margin: 8mm 10mm 8mm 10mm;
       }
+      @page landscape-page {
+        size: A4 landscape;
+        margin: 8mm 10mm 8mm 10mm;
+      }
 
       html,
       body {
@@ -586,7 +590,7 @@
         padding: 0 !important;
         margin: 0 !important;
         width: 100% !important;
-        height: 280mm !important;
+        height: 275mm !important;
         box-sizing: border-box !important;
         display: flex !important;
         flex-direction: column !important;
@@ -595,6 +599,16 @@
         break-after: page !important;
         page-break-inside: avoid !important;
         break-inside: avoid !important;
+      }
+
+      .sheet-page-landscape {
+        page: landscape-page !important;
+        height: 190mm !important;
+        width: 275mm !important;
+        page-break-before: always !important;
+        break-before: page !important;
+        page-break-after: always !important;
+        break-after: page !important;
       }
 
       .sheet-page:last-child {
@@ -679,6 +693,9 @@
     <!-- ==========================================================================
          PAGE 1: METADATA, TELEMETRY LOGGING TABLE & COORDINATE GRAPH GRID
          ========================================================================== -->
+        <!-- ==========================================================================
+         PAGE 1: METADATA & TELEMETRY LOGGING TABLE (0 TO 15 MIN)
+         ========================================================================== -->
     <div class="sheet-page" id="sheet-page-1">
       <div>
         <!-- Page 1 Header -->
@@ -689,7 +706,7 @@
             <div class="sheet-sub">STUDENT LABORATORY TASK SHEET &amp; EXPERIMENTAL REGISTER</div>
           </div>
           <div style="text-align: right;">
-            <span class="page-number-tag">PAGE 1 OF 2</span>
+            <span class="page-number-tag">PAGE 1 OF 3</span>
           </div>
         </header>
 
@@ -851,94 +868,113 @@
             </tbody>
           </table>
         </div>
-
-        <!-- Part B: Coordinate Graph Grid -->
-        <div class="section-head">
-          <span>PART B. THERMAL COOLING CURVE GRAPH GRID</span>
-          <span class="tag">EMPIRICAL (•) VS THEORETICAL (---)</span>
-        </div>
-
-        <div class="graph-instructions">
-          Plot measured temperatures as solid points and connect them with a line. Plot the analytical reference-model
-          values as a dashed line.
-        </div>
-
-        <div class="graph-container">
-          <svg viewBox="0 0 680 340"
-            style="background: #ffffff; border: 2px solid var(--dark-navy); border-radius: 6px; width: 100%; height: auto; max-height: 255px;">
-            <defs>
-              <pattern id="grid-minor-p1" width="10" height="8" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 8" fill="none" stroke="#f1f5f9" stroke-width="0.5" />
-              </pattern>
-              <pattern id="grid-major-p1" width="50" height="40" patternUnits="userSpaceOnUse">
-                <rect width="50" height="40" fill="url(#grid-minor-p1)" />
-                <path d="M 50 0 L 0 0 0 40" fill="none" stroke="#cbd5e1" stroke-width="1.2" />
-              </pattern>
-            </defs>
-
-            <!-- Graph Grid Area -->
-            <rect x="70" y="25" width="575" height="260" fill="url(#grid-major-p1)" stroke="#0f172a" stroke-width="2" />
-
-            <!-- Y-Axis Labels (0°C to 80°C) -->
-            <text x="58" y="29" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold"
-              fill="#0f172a">80°C</text>
-            <text x="58" y="61" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
-              fill="#334155">70°C</text>
-            <text x="58" y="94" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
-              fill="#334155">60°C</text>
-            <text x="58" y="126" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
-              fill="#334155">50°C</text>
-            <text x="58" y="159" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
-              fill="#0284c7">40°C</text>
-            <text x="58" y="191" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
-              fill="#334155">30°C</text>
-            <text x="58" y="224" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
-              fill="#334155">20°C</text>
-            <text x="58" y="256" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold"
-              fill="#334155">10°C</text>
-            <text x="58" y="288" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold"
-              fill="#0f172a">0°C</text>
-
-            <text x="20" y="155" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
-              fill="#0f172a" transform="rotate(-90 20 155)">TEMPERATURE (°C)</text>
-
-            <!-- X-Axis Labels (0m to 15m) -->
-            <text x="70" y="304" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
-              fill="#0f172a">0m</text>
-            <text x="185" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold"
-              fill="#334155">3m</text>
-            <text x="300" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold"
-              fill="#334155">6m</text>
-            <text x="415" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold"
-              fill="#334155">9m</text>
-            <text x="530" y="304" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold"
-              fill="#334155">12m</text>
-            <text x="645" y="304" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
-              fill="#0f172a">15m</text>
-
-            <text x="357" y="325" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
-              fill="#0f172a">ELAPSED TIME (MINUTES)</text>
-            <text x="357" y="16" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
-              fill="#0f172a">THERMAL DECAY COOLING CURVE TEMPLATE</text>
-          </svg>
-        </div>
       </div>
 
       <!-- Page 1 Footer -->
       <footer class="page-footer">
         <span>SPHERE: MISSION CONTROL &bull; STUDENT TASK SHEET</span>
-        <span>PART A &amp; PART B: TELEMETRY LOG &amp; COOLING GRAPH</span>
-        <span>CLASSROOM LABORATORY WORKBOOK</span>
+        <span>PART A: TELEMETRY LOGGING REGISTER</span>
+        <span>PAGE 1 OF 3</span>
       </footer>
     </div>
 
-
     <!-- ==========================================================================
-         PAGE 2: CALCULATIONS & LAB REFLECTION QUESTIONS (Q1 - Q6)
+         PAGE 2: PART B - HIGH-PRECISION LANDSCAPE GRAPH WORKBOOK
          ========================================================================== -->
-    <div class="sheet-page" id="sheet-page-2">
+    <div class="sheet-page sheet-page-landscape" id="sheet-page-2">
       <div>
         <!-- Page 2 Header -->
+        <header class="page-header">
+          <div>
+            <span class="brand-badge">HIGH-PRECISION GRAPH WORKBOOK &bull; LANDSCAPE</span>
+            <h1 class="sheet-title">SPHERE: MISSION CONTROL</h1>
+            <div class="sheet-sub">PART B. THERMAL COOLING CURVE GRAPH GRID (0 TO 15 MINUTES)</div>
+          </div>
+          <div style="text-align: right;">
+            <span class="page-number-tag">PAGE 2 OF 3 (LANDSCAPE)</span>
+          </div>
+        </header>
+
+        <div class="section-head">
+          <span>PART B. EXPERIMENTAL VS THEORETICAL COOLING CURVES</span>
+          <span class="tag">EMPIRICAL DATA (•) VS REFERENCE MODEL (---)</span>
+        </div>
+
+        <div class="graph-instructions" style="margin-bottom: 12px; font-size: 0.92rem;">
+          <strong>Plotting Instructions:</strong> Plot observed temperature readings ($T_{\text{obs}}$) as solid points ($\bullet$) and connect them with a smooth line. Plot the theoretical reference model ($T_{\text{model}}$) as a dashed curve ($\text{---}$). Use the 1-minute grid divisions for accurate coordinate plotting.
+        </div>
+
+        <div class="graph-container">
+          <svg viewBox="0 0 960 510"
+            style="background: #ffffff; border: 2px solid var(--dark-navy); border-radius: 8px; width: 100%; height: auto; max-height: 440px;">
+            <defs>
+              <pattern id="grid-minor-p2" width="14" height="10.625" patternUnits="userSpaceOnUse">
+                <path d="M 14 0 L 0 0 0 10.625" fill="none" stroke="#f1f5f9" stroke-width="0.5" />
+              </pattern>
+              <pattern id="grid-major-p2" width="56" height="53.125" patternUnits="userSpaceOnUse">
+                <rect width="56" height="53.125" fill="url(#grid-minor-p2)" />
+                <path d="M 56 0 L 0 0 0 53.125" fill="none" stroke="#cbd5e1" stroke-width="1.2" />
+              </pattern>
+            </defs>
+
+            <!-- Title Header inside SVG -->
+            <text x="495" y="22" text-anchor="middle" font-size="12" font-family="sans-serif" font-weight="bold" fill="#0f172a">
+              THERMAL DECAY COOLING CURVE WORKBOOK TEMPLATE (0–15 MIN)
+            </text>
+
+            <!-- Graph Grid Area (840px wide by 425px high) -->
+            <rect x="75" y="32" width="840" height="425" fill="url(#grid-major-p2)" stroke="#0f172a" stroke-width="2" />
+
+            <!-- Y-Axis Labels (0°C to 80°C at 53.125px intervals) -->
+            <text x="63" y="36" text-anchor="end" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0f172a">80°C</text>
+            <text x="63" y="89" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">70°C</text>
+            <text x="63" y="142" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">60°C</text>
+            <text x="63" y="195" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">50°C</text>
+            <text x="63" y="248" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0284c7">40°C</text>
+            <text x="63" y="301" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">30°C</text>
+            <text x="63" y="354" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">20°C</text>
+            <text x="63" y="407" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">10°C</text>
+            <text x="63" y="460" text-anchor="end" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0f172a">0°C</text>
+
+            <text x="22" y="245" text-anchor="middle" font-size="12" font-family="sans-serif" font-weight="bold" fill="#0f172a" transform="rotate(-90 22 245)">TEMPERATURE (°C)</text>
+
+            <!-- X-Axis Labels (0m to 15m at 56px intervals) -->
+            <text x="75" y="478" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0f172a">0m</text>
+            <text x="131" y="478" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">1m</text>
+            <text x="187" y="478" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">2m</text>
+            <text x="243" y="478" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">3m</text>
+            <text x="299" y="478" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">4m</text>
+            <text x="355" y="478" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0284c7">5m</text>
+            <text x="411" y="478" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">6m</text>
+            <text x="467" y="478" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">7m</text>
+            <text x="523" y="478" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">8m</text>
+            <text x="579" y="478" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">9m</text>
+            <text x="635" y="478" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0284c7">10m</text>
+            <text x="691" y="478" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">11m</text>
+            <text x="747" y="478" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">12m</text>
+            <text x="803" y="478" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">13m</text>
+            <text x="859" y="478" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#334155">14m</text>
+            <text x="915" y="478" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0f172a">15m</text>
+
+            <text x="495" y="502" text-anchor="middle" font-size="12" font-family="sans-serif" font-weight="bold" fill="#0f172a">ELAPSED TIME (MINUTES)</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Page 2 Footer -->
+      <footer class="page-footer">
+        <span>SPHERE: MISSION CONTROL &bull; STUDENT TASK SHEET</span>
+        <span>PART B: HIGH-PRECISION LANDSCAPE GRAPH WORKBOOK</span>
+        <span>PAGE 2 OF 3</span>
+      </footer>
+    </div>
+
+    <!-- ==========================================================================
+         PAGE 3: CALCULATIONS & LAB REFLECTION QUESTIONS (Q1 - Q6)
+         ========================================================================== -->
+    <div class="sheet-page" id="sheet-page-3">
+      <div>
+        <!-- Page 3 Header -->
         <header class="page-header">
           <div>
             <span class="brand-badge">MODEL AGREEMENT &bull; TECHNICAL ANALYSIS</span>
@@ -946,7 +982,7 @@
             <div class="sheet-sub">RESIDUAL, ERROR &amp; UNCERTAINTY ANALYSIS</div>
           </div>
           <div style="text-align: right;">
-            <span class="page-number-tag">PAGE 2 OF 2</span>
+            <span class="page-number-tag">PAGE 3 OF 3</span>
           </div>
         </header>
 
@@ -1063,7 +1099,7 @@
         </div>
       </div>
 
-      <!-- Page 2 Footer & Sign-off -->
+      <!-- Page 3 Footer & Sign-off -->
       <div>
         <div
           style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 8px 14px; border-radius: 6px; margin-bottom: 8px;">
@@ -1077,7 +1113,7 @@
         <footer class="page-footer">
           <span>SPHERE: MISSION CONTROL &bull; STUDENT TASK SHEET</span>
           <span>PART C &amp; PART D: ANALYSIS &amp; REFLECTION</span>
-          <span>END OF EXPERIMENTAL WORKBOOK (PAGE 2 OF 2)</span>
+          <span>END OF EXPERIMENTAL WORKBOOK (PAGE 3 OF 3)</span>
         </footer>
       </div>
     </div>
