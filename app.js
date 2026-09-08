@@ -521,8 +521,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Handle start and environmental temp inputs to update predicted temperature dynamically
   const updatePredictionStats = () => {
-    const selected = elements.insulationSelect.value;
-    const material = state.modelConstants[selected];
+    const selected = elements.insulationSelect ? elements.insulationSelect.value : state.selectedModel;
+    const material = state.modelConstants[selected] || state.modelConstants.bare;
     
     const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
     const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
@@ -532,11 +532,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     const predictedFinal = calculateNewtonTemperature(duration, material.k);
-    elements.simT15Val.textContent = `${predictedFinal.toFixed(1)}°C`;
+    if (elements.simT15Val) {
+      elements.simT15Val.textContent = `${predictedFinal.toFixed(1)}°C`;
+    }
   };
 
-  elements.simT0.addEventListener('input', updatePredictionStats);
-  elements.simTenv.addEventListener('input', updatePredictionStats);
+  if (elements.simT0) elements.simT0.addEventListener('input', updatePredictionStats);
+  if (elements.simTenv) elements.simTenv.addEventListener('input', updatePredictionStats);
   
   if (elements.simTime) {
     elements.simTime.addEventListener('input', () => {
@@ -546,31 +548,36 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Handle material parameters selection to update UI readouts immediately
-  elements.insulationSelect.addEventListener('change', (e) => {
-    playClickSound();
-    const selected = e.target.value;
-    
-    // Toggle Sandbox card visibility
-    if (selected === 'custom') {
-      if (elements.customSandboxTuner) {
-        elements.customSandboxTuner.style.display = 'block';
+  if (elements.insulationSelect) {
+    elements.insulationSelect.addEventListener('change', (e) => {
+      playClickSound();
+      const selected = e.target.value;
+      
+      // Toggle Sandbox card visibility
+      if (selected === 'custom') {
+        if (elements.customSandboxTuner) {
+          elements.customSandboxTuner.style.display = 'block';
+        }
+      } else {
+        if (elements.customSandboxTuner) {
+          elements.customSandboxTuner.style.display = 'none';
+        }
       }
-    } else {
-      if (elements.customSandboxTuner) {
-        elements.customSandboxTuner.style.display = 'none';
+      
+      updatePredictionStats();
+      const material = state.modelConstants[selected];
+      if (elements.simKVal && material) {
+        elements.simKVal.textContent = material.k.toFixed(3);
       }
-    }
-    
-    updatePredictionStats();
-    const material = state.modelConstants[selected];
-    elements.simKVal.textContent = material.k.toFixed(3);
-  });
+    });
+  }
 
   // Action: Compile Mathematical Curve
-  elements.btnRunSim.addEventListener('click', () => {
-    const selected = elements.insulationSelect.value;
-    state.selectedModel = selected;
-    const material = state.modelConstants[selected];
+  if (elements.btnRunSim) {
+    elements.btnRunSim.addEventListener('click', () => {
+      const selected = elements.insulationSelect ? elements.insulationSelect.value : state.selectedModel;
+      state.selectedModel = selected;
+      const material = state.modelConstants[selected] || state.modelConstants.bare;
     
     const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
     const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
@@ -618,6 +625,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Save state
     saveToLocalStorage();
   });
+}
 
   // Chart.js Prediction Render
   function renderSimulationChart(label, color) {
