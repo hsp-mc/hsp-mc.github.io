@@ -407,12 +407,8 @@
       background: var(--bg-subtle);
       border: 1px dashed var(--border-dark);
       border-radius: 4px;
-      height: 60px;
+      height: 42px;
       width: 100%;
-    }
-
-    .q-answer-space.tall {
-      height: 72px;
     }
 
     /* Page Footer Strip */
@@ -647,11 +643,7 @@
       .q-answer-space {
         background: #ffffff !important;
         border: 1pt dashed #94a3b8 !important;
-        height: 48pt !important;
-      }
-
-      .q-answer-space.tall {
-        height: 58pt !important;
+        height: 32pt !important;
       }
     }
   </style>
@@ -1003,10 +995,10 @@
           </div>
         </div>
 
-        <!-- Part D: Questions Grid (Q1 - Q6) -->
+        <!-- Part D: Questions Grid (Q1 - Q10) -->
         <div class="section-head">
           <span>PART D. POST-FLIGHT SCIENTIFIC INQUIRIES &amp; ANALYSIS</span>
-          <span class="tag">6 CORE CONCEPTS</span>
+          <span class="tag">10 CORE CONCEPTS</span>
         </div>
 
         <div class="questions-grid">
@@ -1068,7 +1060,7 @@
                 accurate?
               </div>
             </div>
-            <div class="q-answer-space tall"></div>
+            <div class="q-answer-space"></div>
           </div>
 
           <!-- Q6 -->
@@ -1080,7 +1072,51 @@
                 mass ($Q = mc_p\Delta T$) change the cooling rate and the value of $k$?
               </div>
             </div>
-            <div class="q-answer-space tall"></div>
+            <div class="q-answer-space"></div>
+          </div>
+
+          <!-- Q7 -->
+          <div class="q-card">
+            <div>
+              <div class="q-title">Inquiry 7: Spacesuit Design Trade-Offs</div>
+              <div class="q-desc">
+                Why can engineers not simply add an unlimited number of insulation layers to an EVA spacesuit? Discuss joint mobility, suit mass/bulk, and body heat buildup.
+              </div>
+            </div>
+            <div class="q-answer-space"></div>
+          </div>
+
+          <!-- Q8 -->
+          <div class="q-card">
+            <div>
+              <div class="q-title">Inquiry 8: Specific Heat Capacity &amp; Fluid Response</div>
+              <div class="q-desc">
+                If water ($c_p \approx 4184\text{ J/(kg}\cdot\text{K)}$) were replaced with a liquid of lower specific heat capacity keeping mass identical, how would the cooling rate change?
+              </div>
+            </div>
+            <div class="q-answer-space"></div>
+          </div>
+
+          <!-- Q9 -->
+          <div class="q-card">
+            <div>
+              <div class="q-title">Inquiry 9: Asymptotic Boundary Limits ($t \to \infty$)</div>
+              <div class="q-desc">
+                According to Newton's Law $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$, what temperature value does the capsule approach asymptotically as time $t \to \infty$?
+              </div>
+            </div>
+            <div class="q-answer-space"></div>
+          </div>
+
+          <!-- Q10 -->
+          <div class="q-card">
+            <div>
+              <div class="q-title">Inquiry 10: Telemetry Anomaly Diagnostics &amp; MAE</div>
+              <div class="q-desc">
+                If measured capsule temperature drops significantly faster than predicted, what physical anomaly is the most plausible explanation, and how can MAE be reduced?
+              </div>
+            </div>
+            <div class="q-answer-space"></div>
           </div>
         </div>
       </div>

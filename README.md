@@ -56,9 +56,7 @@ Model agreement is evaluated using
 
 The default cooling constants are educational reference values. They must be calibrated or validated with repeated measurements before being presented as empirical results.
 
-The learning materials use three deliberately different assessment formats: a six-inquiry printable task sheet, an
-eight-question extended reflection set in the student manual, and a 10-item online knowledge check. The online percentage
-covers nine multiple-choice items; its written uncertainty response requires instructor review.
+The learning materials use a single, unified 10-question assessment framework: a 10-inquiry printable task sheet (Inquiries 1–10), an online interactive evaluation sheet (Questions 1–10), and a complete 10-question instructor solution key in the Teacher Manual. The online percentage auto-scores nine multiple-choice items; its Question 4 requires instructor review.
 
 ## Experimental limitations
 
