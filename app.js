@@ -621,7 +621,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Chart.js Prediction Render
   function renderSimulationChart(label, color) {
-    const ctx = document.getElementById('simulationChart').getContext('2d');
+    const canvas = document.getElementById('simulationChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
     
     if (simulationChartInstance) {
       simulationChartInstance.destroy();
@@ -815,7 +817,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Dynamic overlay Chart rendering
   function initTelemetryChart() {
-    const ctx = document.getElementById('telemetryChart').getContext('2d');
+    const canvas = document.getElementById('telemetryChart');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
     
     telemetryChartInstance = new Chart(ctx, {
       type: 'line',
@@ -1175,16 +1179,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Clear telemetry completely
-  elements.btnClearTelemetry.addEventListener('click', () => {
-    playClickSound();
-    if (confirm("Are you sure you want to wipe all physical telemetry data? This cannot be undone.")) {
-      state.telemetryPoints = [];
-      updateTelemetryTable();
-      updateTelemetryChart();
-      saveToLocalStorage();
-      playWarningSound();
-    }
-  });
+  if (elements.btnClearTelemetry) {
+    elements.btnClearTelemetry.addEventListener('click', () => {
+      playClickSound();
+      if (confirm("Are you sure you want to wipe all physical telemetry data? This cannot be undone.")) {
+        state.telemetryPoints = [];
+        updateTelemetryTable();
+        updateTelemetryChart();
+        saveToLocalStorage();
+        playWarningSound();
+      }
+    });
+  }
 
   // Print a clean report document instead of printing the Mission Control UI.
   function printTelemetryLogbook() {
@@ -1308,86 +1314,92 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Mock autofill generator with authentic thermodynamic noise
-  elements.btnAutofill.addEventListener('click', () => {
-    playClickSound();
-    const material = state.modelConstants[state.selectedModel];
-    state.telemetryPoints = [];
-    
-    logToConsole(`SYS: Simulating real-world TVAC drop telemetry for model: ${material.name.toUpperCase()}`);
-    
-    const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
-    const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
-    
-    for (let t = 0; t <= duration; t += 1.0) {
-      if (t === 0) {
-        const t0Input = elements.simT0 ? parseFloat(elements.simT0.value) : 80.0;
-        const startT = isNaN(t0Input) ? 80.0 : t0Input;
-        state.telemetryPoints.push({ time: 0, temp: startT });
-        continue;
+  if (elements.btnAutofill) {
+    elements.btnAutofill.addEventListener('click', () => {
+      playClickSound();
+      const material = state.modelConstants[state.selectedModel];
+      state.telemetryPoints = [];
+      
+      logToConsole(`SYS: Simulating real-world TVAC drop telemetry for model: ${material.name.toUpperCase()}`);
+      
+      const durationInput = elements.simTime ? parseInt(elements.simTime.value) : 15;
+      const duration = isNaN(durationInput) || durationInput <= 0 ? 15 : durationInput;
+      
+      for (let t = 0; t <= duration; t += 1.0) {
+        if (t === 0) {
+          const t0Input = elements.simT0 ? parseFloat(elements.simT0.value) : 80.0;
+          const startT = isNaN(t0Input) ? 80.0 : t0Input;
+          state.telemetryPoints.push({ time: 0, temp: startT });
+          continue;
+        }
+        
+        // Base math predicted curve
+        const baseTemp = calculateNewtonTemperature(t, material.k);
+        
+        // Inject slight experimental noise (convective swings, sensor noise)
+        // noise range roughly +/- 0.5 to +/- 1.8 C depending on elapsed time
+        const noiseScalar = 0.5 + Math.sin(t) * 0.4;
+        const noise = (Math.random() - 0.5) * 2.5 * noiseScalar;
+        const finalTemp = Math.max(0, parseFloat((baseTemp + noise).toFixed(2)));
+        
+        state.telemetryPoints.push({ time: t, temp: finalTemp });
       }
       
-      // Base math predicted curve
-      const baseTemp = calculateNewtonTemperature(t, material.k);
+      updateTelemetryTable();
+      updateTelemetryChart();
+      saveToLocalStorage();
       
-      // Inject slight experimental noise (convective swings, sensor noise)
-      // noise range roughly +/- 0.5 to +/- 1.8 C depending on elapsed time
-      const noiseScalar = 0.5 + Math.sin(t) * 0.4;
-      const noise = (Math.random() - 0.5) * 2.5 * noiseScalar;
-      const finalTemp = Math.max(0, parseFloat((baseTemp + noise).toFixed(2)));
-      
-      state.telemetryPoints.push({ time: t, temp: finalTemp });
-    }
-    
-    updateTelemetryTable();
-    updateTelemetryChart();
-    saveToLocalStorage();
-    
-    logToConsole("LAB: Example measurement data loaded for demonstration.", "success");
-    showNotification("Example Measurements Loaded", "success");
-    playSuccessSound();
-  });
+      logToConsole("LAB: Example measurement data loaded for demonstration.", "success");
+      showNotification("Example Measurements Loaded", "success");
+      playSuccessSound();
+    });
+  }
 
   // ==========================================================================
   // 6. Teacher Portal classroom access gate (Module 5)
   // ==========================================================================
-  elements.adminLoginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    playClickSound();
-    const pw = elements.adminPasswordInput.value;
-    
-    if (pw === 'SPHERE2026') {
-      state.isAuthorized = true;
-      elements.adminLoginGate.style.display = 'none';
-      elements.adminAuthorizedDashboard.style.display = 'grid';
-      elements.adminPasswordInput.value = '';
+  if (elements.adminLoginForm) {
+    elements.adminLoginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      playClickSound();
+      const pw = elements.adminPasswordInput ? elements.adminPasswordInput.value : '';
       
-      logToConsole("SYS: Instructor access code accepted.", "success");
-      showNotification("Teacher Portal Open", "success");
-      playSuccessSound();
-      
-      sessionStorage.setItem('sphere_admin_auth', 'true');
-      lucide.createIcons();
-    } else {
-      showNotification("Incorrect Instructor Access Code", "error");
-      logToConsole("WARN: Incorrect instructor access code entered.", "warn");
-      playWarningSound();
-      elements.adminPasswordInput.value = '';
-    }
-  });
+      if (pw === 'SPHERE2026') {
+        state.isAuthorized = true;
+        if (elements.adminLoginGate) elements.adminLoginGate.style.display = 'none';
+        if (elements.adminAuthorizedDashboard) elements.adminAuthorizedDashboard.style.display = 'grid';
+        if (elements.adminPasswordInput) elements.adminPasswordInput.value = '';
+        
+        logToConsole("SYS: Instructor access code accepted.", "success");
+        showNotification("Teacher Portal Open", "success");
+        playSuccessSound();
+        
+        sessionStorage.setItem('sphere_admin_auth', 'true');
+        lucide.createIcons();
+      } else {
+        showNotification("Incorrect Instructor Access Code", "error");
+        logToConsole("WARN: Incorrect instructor access code entered.", "warn");
+        playWarningSound();
+        if (elements.adminPasswordInput) elements.adminPasswordInput.value = '';
+      }
+    });
+  }
 
-  elements.btnAdminLogout.addEventListener('click', () => {
-    playClickSound();
-    state.isAuthorized = false;
-    elements.adminAuthorizedDashboard.style.display = 'none';
-    elements.adminLoginGate.style.display = 'block';
-    
-    logToConsole("SYS: Instructor session locked.");
-    showNotification("Teacher Portal Closed", "info");
-    playWarningSound();
-    
-    sessionStorage.removeItem('sphere_admin_auth');
-    lucide.createIcons();
-  });
+  if (elements.btnAdminLogout) {
+    elements.btnAdminLogout.addEventListener('click', () => {
+      playClickSound();
+      state.isAuthorized = false;
+      if (elements.adminAuthorizedDashboard) elements.adminAuthorizedDashboard.style.display = 'none';
+      if (elements.adminLoginGate) elements.adminLoginGate.style.display = 'block';
+      
+      logToConsole("SYS: Instructor session locked.");
+      showNotification("Teacher Portal Closed", "info");
+      playWarningSound();
+      
+      sessionStorage.removeItem('sphere_admin_auth');
+      lucide.createIcons();
+    });
+  }
 
   // Pre-Flight Certification Quiz Evaluation
   function evaluateQuiz() {
@@ -1437,12 +1449,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   
-  elements.btnSubmitQuiz.addEventListener('click', evaluateQuiz);
+  if (elements.btnSubmitQuiz) {
+    elements.btnSubmitQuiz.addEventListener('click', evaluateQuiz);
+  }
 
   // Restore pre-flight quiz certification status on load
   function restoreQuizStatus() {
     const cachedQuiz = localStorage.getItem('sphere_quiz_certified');
-    if (cachedQuiz === 'true') {
+    if (cachedQuiz === 'true' && elements.quizStatusBadge) {
       elements.quizStatusBadge.textContent = "STATUS: CONCEPT CHECK PASSED";
       elements.quizStatusBadge.style.backgroundColor = "rgba(16, 185, 129, 0.1)";
       elements.quizStatusBadge.style.borderColor = "var(--green)";
@@ -1462,9 +1476,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Check existing session auth
   if (sessionStorage.getItem('sphere_admin_auth') === 'true') {
     state.isAuthorized = true;
-    elements.adminLoginGate.style.display = 'none';
-    elements.adminAuthorizedDashboard.style.display = 'grid';
-    lucide.createIcons();
+    if (elements.adminLoginGate) elements.adminLoginGate.style.display = 'none';
+    if (elements.adminAuthorizedDashboard) elements.adminAuthorizedDashboard.style.display = 'grid';
+    if (window.lucide) lucide.createIcons();
   }
 
   // ==========================================================================

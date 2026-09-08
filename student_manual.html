@@ -325,6 +325,29 @@
       border: 2px dashed var(--primary-blue);
     }
 
+    /* 4 Separate Graphs Grid */
+    .graphs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .graph-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+      text-align: center;
+    }
+
+    .graph-card svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
     /* Insulation Grid */
     .insulation-grid {
       display: grid;
@@ -660,7 +683,8 @@
 
       .insulation-grid,
       .meta-fill-grid,
-      .flashcard-grid {
+      .flashcard-grid,
+      .graphs-grid {
         grid-template-columns: 1fr;
       }
 
@@ -727,6 +751,20 @@
         page-break-inside: avoid;
         margin-bottom: 24pt !important;
         padding-top: 0;
+      }
+
+      .graphs-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10pt !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .graph-card {
+        border: 1pt solid #cbd5e1 !important;
+        box-shadow: none !important;
+        padding: 6pt !important;
       }
 
       h1,
@@ -860,7 +898,6 @@
 
     <!-- DOCUMENT HEADER (Clean, Human & Direct) -->
     <header class="doc-header">
-      <span class="header-badge">UNDERGRADUATE THERMAL ENGINEERING LABORATORY</span>
       <h1 class="doc-title">SPHERE: MISSION CONTROL</h1>
       <div class="doc-subtitle">Student Manual, Experimental Method and Analysis Guide</div>
     </header>
@@ -1256,6 +1293,166 @@
         <div
           style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-subtle); margin-top: 8px;">
           FIGURE 4: EXPONENTIAL DECAY PROFILES ACROSS HIGH VS LOW COOLING CONSTANTS (k)
+        </div>
+      </div>
+
+      <!-- 4 SEPARATE REFERENCE-MODEL PREDICTION GRAPHS -->
+      <h3 style="margin-top: 28px; margin-bottom: 12px; font-family: var(--font-hud); font-size: 0.95rem; font-weight: 800; color: var(--primary-dark); text-transform: uppercase;"><i data-lucide="line-chart"></i> INDIVIDUAL PREDICTION CURVES ($T_0=80.0^\circ\text{C}$, $T_{\text{env}}=0.0^\circ\text{C}$)</h3>
+      <div class="graphs-grid">
+        <!-- Graph A -->
+        <div class="graph-card">
+          <div style="font-weight:700; font-size:0.88rem; color:#0369a1; margin-bottom:6px;">
+            A. BARE CONTROL ($k \approx 0.150\text{ min}^{-1}$)
+          </div>
+          <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Bare Control">
+            <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+            <g stroke="#cbd5e1" stroke-width="1">
+              <line x1="50" y1="25" x2="350" y2="25"/>
+              <line x1="50" y1="60" x2="350" y2="60"/>
+              <line x1="50" y1="95" x2="350" y2="95"/>
+              <line x1="50" y1="130" x2="350" y2="130"/>
+              <line x1="50" y1="165" x2="350" y2="165"/>
+              <line x1="50" y1="25" x2="50" y2="165"/>
+              <line x1="110" y1="25" x2="110" y2="165"/>
+              <line x1="170" y1="25" x2="170" y2="165"/>
+              <line x1="230" y1="25" x2="230" y2="165"/>
+              <line x1="290" y1="25" x2="290" y2="165"/>
+              <line x1="350" y1="25" x2="350" y2="165"/>
+            </g>
+            <g font-family="sans-serif" font-size="9" fill="#334155">
+              <text x="42" y="28" text-anchor="end">80</text>
+              <text x="42" y="63" text-anchor="end">60</text>
+              <text x="42" y="98" text-anchor="end">40</text>
+              <text x="42" y="133" text-anchor="end">20</text>
+              <text x="42" y="168" text-anchor="end">0</text>
+              <text x="50" y="178" text-anchor="middle">0</text>
+              <text x="110" y="178" text-anchor="middle">3</text>
+              <text x="170" y="178" text-anchor="middle">6</text>
+              <text x="230" y="178" text-anchor="middle">9</text>
+              <text x="290" y="178" text-anchor="middle">12</text>
+              <text x="350" y="178" text-anchor="middle">15 min</text>
+            </g>
+            <polyline points="50,25 70,44.5 90,61.3 110,75.7 130,88.2 150,98.9 170,108.1 190,116 210,122.8 230,128.7 250,133.8 270,138.1 290,141.9 310,145.1 330,147.9 350,150.2" fill="none" stroke="#0369a1" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="350" cy="150.2" r="3.5" fill="#0369a1"/>
+            <text x="345" y="142" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#0369a1">8.4°C at 15m</text>
+          </svg>
+        </div>
+
+        <!-- Graph B -->
+        <div class="graph-card">
+          <div style="font-weight:700; font-size:0.88rem; color:#15803d; margin-bottom:6px;">
+            B. BUBBLE WRAP ($k \approx 0.040\text{ min}^{-1}$)
+          </div>
+          <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Bubble Wrap">
+            <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+            <g stroke="#cbd5e1" stroke-width="1">
+              <line x1="50" y1="25" x2="350" y2="25"/>
+              <line x1="50" y1="60" x2="350" y2="60"/>
+              <line x1="50" y1="95" x2="350" y2="95"/>
+              <line x1="50" y1="130" x2="350" y2="130"/>
+              <line x1="50" y1="165" x2="350" y2="165"/>
+              <line x1="50" y1="25" x2="50" y2="165"/>
+              <line x1="110" y1="25" x2="110" y2="165"/>
+              <line x1="170" y1="25" x2="170" y2="165"/>
+              <line x1="230" y1="25" x2="230" y2="165"/>
+              <line x1="290" y1="25" x2="290" y2="165"/>
+              <line x1="350" y1="25" x2="350" y2="165"/>
+            </g>
+            <g font-family="sans-serif" font-size="9" fill="#334155">
+              <text x="42" y="28" text-anchor="end">80</text>
+              <text x="42" y="63" text-anchor="end">60</text>
+              <text x="42" y="98" text-anchor="end">40</text>
+              <text x="42" y="133" text-anchor="end">20</text>
+              <text x="42" y="168" text-anchor="end">0</text>
+              <text x="50" y="178" text-anchor="middle">0</text>
+              <text x="110" y="178" text-anchor="middle">3</text>
+              <text x="170" y="178" text-anchor="middle">6</text>
+              <text x="230" y="178" text-anchor="middle">9</text>
+              <text x="290" y="178" text-anchor="middle">12</text>
+              <text x="350" y="178" text-anchor="middle">15 min</text>
+            </g>
+            <polyline points="50,25 70,30.5 90,35.8 110,40.8 130,45.7 150,50.4 170,54.9 190,59.2 210,63.4 230,67.4 250,71.3 270,75.0 290,78.5 310,81.9 330,85.2 350,88.3" fill="none" stroke="#15803d" stroke-width="2.5" stroke-dasharray="8 4" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="350" cy="88.3" r="3.5" fill="#15803d"/>
+            <text x="345" y="80" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#15803d">43.9°C at 15m</text>
+          </svg>
+        </div>
+
+        <!-- Graph C -->
+        <div class="graph-card">
+          <div style="font-weight:700; font-size:0.88rem; color:#c2410c; margin-bottom:6px;">
+            C. MYLAR FOIL ($k \approx 0.121\text{ min}^{-1}$)
+          </div>
+          <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Mylar Foil">
+            <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+            <g stroke="#cbd5e1" stroke-width="1">
+              <line x1="50" y1="25" x2="350" y2="25"/>
+              <line x1="50" y1="60" x2="350" y2="60"/>
+              <line x1="50" y1="95" x2="350" y2="95"/>
+              <line x1="50" y1="130" x2="350" y2="130"/>
+              <line x1="50" y1="165" x2="350" y2="165"/>
+              <line x1="50" y1="25" x2="50" y2="165"/>
+              <line x1="110" y1="25" x2="110" y2="165"/>
+              <line x1="170" y1="25" x2="170" y2="165"/>
+              <line x1="230" y1="25" x2="230" y2="165"/>
+              <line x1="290" y1="25" x2="290" y2="165"/>
+              <line x1="350" y1="25" x2="350" y2="165"/>
+            </g>
+            <g font-family="sans-serif" font-size="9" fill="#334155">
+              <text x="42" y="28" text-anchor="end">80</text>
+              <text x="42" y="63" text-anchor="end">60</text>
+              <text x="42" y="98" text-anchor="end">40</text>
+              <text x="42" y="133" text-anchor="end">20</text>
+              <text x="42" y="168" text-anchor="end">0</text>
+              <text x="50" y="178" text-anchor="middle">0</text>
+              <text x="110" y="178" text-anchor="middle">3</text>
+              <text x="170" y="178" text-anchor="middle">6</text>
+              <text x="230" y="178" text-anchor="middle">9</text>
+              <text x="290" y="178" text-anchor="middle">12</text>
+              <text x="350" y="178" text-anchor="middle">15 min</text>
+            </g>
+            <polyline points="50,25 70,43.6 90,59.8 110,73.9 130,86.0 150,96.5 170,105.7 190,113.6 210,120.5 230,126.5 250,131.7 270,136.2 290,140.1 310,143.5 330,146.4 350,148.9" fill="none" stroke="#c2410c" stroke-width="2.5" stroke-dasharray="3 4" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="350" cy="148.9" r="3.5" fill="#c2410c"/>
+            <text x="345" y="140" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#c2410c">13.0°C at 15m</text>
+          </svg>
+        </div>
+
+        <!-- Graph D -->
+        <div class="graph-card">
+          <div style="font-weight:700; font-size:0.88rem; color:#7e22ce; margin-bottom:6px;">
+            D. MULTILAYER ASSEMBLY ($k \approx 0.015\text{ min}^{-1}$)
+          </div>
+          <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Multilayer Assembly">
+            <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
+            <g stroke="#cbd5e1" stroke-width="1">
+              <line x1="50" y1="25" x2="350" y2="25"/>
+              <line x1="50" y1="60" x2="350" y2="60"/>
+              <line x1="50" y1="95" x2="350" y2="95"/>
+              <line x1="50" y1="130" x2="350" y2="130"/>
+              <line x1="50" y1="165" x2="350" y2="165"/>
+              <line x1="50" y1="25" x2="50" y2="165"/>
+              <line x1="110" y1="25" x2="110" y2="165"/>
+              <line x1="170" y1="25" x2="170" y2="165"/>
+              <line x1="230" y1="25" x2="230" y2="165"/>
+              <line x1="290" y1="25" x2="290" y2="165"/>
+              <line x1="350" y1="25" x2="350" y2="165"/>
+            </g>
+            <g font-family="sans-serif" font-size="9" fill="#334155">
+              <text x="42" y="28" text-anchor="end">80</text>
+              <text x="42" y="63" text-anchor="end">60</text>
+              <text x="42" y="98" text-anchor="end">40</text>
+              <text x="42" y="133" text-anchor="end">20</text>
+              <text x="42" y="168" text-anchor="end">0</text>
+              <text x="50" y="178" text-anchor="middle">0</text>
+              <text x="110" y="178" text-anchor="middle">3</text>
+              <text x="170" y="178" text-anchor="middle">6</text>
+              <text x="230" y="178" text-anchor="middle">9</text>
+              <text x="290" y="178" text-anchor="middle">12</text>
+              <text x="350" y="178" text-anchor="middle">15 min</text>
+            </g>
+            <polyline points="50,25 70,27.1 90,29.1 110,31.2 130,33.1 150,35.1 170,37.0 190,38.9 210,40.8 230,42.6 250,44.4 270,46.2 290,47.9 310,49.6 330,51.3 350,53.0" fill="none" stroke="#7e22ce" stroke-width="2.5" stroke-dasharray="10 3 2 3" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="350" cy="53.0" r="3.5" fill="#7e22ce"/>
+            <text x="345" y="45" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#7e22ce">63.9°C at 15m</text>
+          </svg>
         </div>
       </div>
     </section>

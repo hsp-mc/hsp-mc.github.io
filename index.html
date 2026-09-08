@@ -1087,110 +1087,6 @@
               </div>
             </div>
 
-            <!-- GRAPH RESEMBLANCE & DIAGNOSTIC CAUSES PANEL -->
-            <div class="hud-panel" id="discrepancy-analysis-panel">
-              <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="panel-title" style="display: flex; align-items: center; gap: 8px;">
-                  <i data-lucide="shield-alert" id="discrepancy-header-icon"
-                    style="color: var(--amber); width: 18px; height: 18px;"></i>
-                  MODEL VS GRAPH RESEMBLANCE DIAGNOSIS
-                </span>
-                <span class="panel-meta" id="discrepancy-status-badge"
-                  style="font-size: 0.75rem; padding: 3px 10px; border-radius: 4px; background: rgba(217, 119, 6, 0.15); color: #d97706; font-weight: 700; font-family: var(--font-mono);">
-                  AWAITING DATA
-                </span>
-              </div>
-
-              <!-- At-a-glance Summary Banner -->
-              <div id="discrepancy-summary-banner" class="discrepancy-banner-info">
-                <i data-lucide="info"
-                  style="width: 18px; height: 18px; flex-shrink: 0; color: var(--cyan); margin-top: 1px;"></i>
-                <span id="discrepancy-summary-text">
-                  Enter your recorded temperatures or click "Load Sample Data". Mission Control will evaluate whether
-                  your actual curve matches model predictions and highlight physical causes for any graph mismatch.
-                </span>
-              </div>
-
-              <!-- Root Cause Diagnosis Cards -->
-              <div style="margin-top: 12px; margin-bottom: 6px;">
-                <div class="sim-stat-title"
-                  style="font-size: 0.75rem; color: var(--text-dimmed); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">
-                  <i data-lucide="search-code"
-                    style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px;"></i>
-                  POTENTIAL PHYSICAL & EXPERIMENTAL CAUSES FOR GRAPH DISCREPANCY
-                </div>
-
-                <div class="discrepancy-causes-grid">
-                  <!-- Cause 1: Model Selection -->
-                  <div class="cause-card" id="cause-card-model">
-                    <div class="cause-title">
-                      <i data-lucide="layers"></i>
-                      1. Material Model / Constant ($k$) Mismatch
-                    </div>
-                    <p class="cause-desc">
-                      <strong>Symptom:</strong> Measured curve slope decays significantly faster or slower than
-                      predicted.<br>
-                      <strong>Cause:</strong> Selected reference model (Bare, Bubble Wrap, Mylar, Foam, Aerogel) or
-                      custom $k$ value does not reflect the actual insulator being tested.
-                    </p>
-                  </div>
-
-                  <!-- Cause 2: Environmental Drafts & Convection -->
-                  <div class="cause-card" id="cause-card-convection">
-                    <div class="cause-title">
-                      <i data-lucide="wind"></i>
-                      2. Room Air Currents & Drafts
-                    </div>
-                    <p class="cause-desc">
-                      <strong>Symptom:</strong> Temperatures systematically lower than model prediction.<br>
-                      <strong>Cause:</strong> Forced air currents or ventilation increase convective heat transfer
-                      coefficient ($h$). Check if ambient room temperature ($T_{\text{env}}$) fluctuated during trial.
-                    </p>
-                  </div>
-
-                  <!-- Cause 3: Lid Sealing & Evaporative Loss -->
-                  <div class="cause-card" id="cause-card-evaporation">
-                    <div class="cause-title">
-                      <i data-lucide="droplet"></i>
-                      3. Unsealed Lid & Evaporative Cooling
-                    </div>
-                    <p class="cause-desc">
-                      <strong>Symptom:</strong> Rapid early drop in temperature exceeding linear conduction
-                      predictions.<br>
-                      <strong>Cause:</strong> Unsealed stopper, loose lid, or open thermocouple port allows water vapor
-                      escape. Evaporation removes thermal energy far faster than pure surface conduction.
-                    </p>
-                  </div>
-
-                  <!-- Cause 4: Probe Placement & Stratification -->
-                  <div class="cause-card" id="cause-card-sensor">
-                    <div class="cause-title">
-                      <i data-lucide="thermometer"></i>
-                      4. Thermometer Placement & Fluid Stratification
-                    </div>
-                    <p class="cause-desc">
-                      <strong>Symptom:</strong> Reading scatter, spikes, or unexpected slope fluctuations.<br>
-                      <strong>Cause:</strong> Sensor touching vessel glass wall instead of fluid core depth, or
-                      un-stirred water creating thermal stratification (hot water floating over cooler fluid).
-                    </p>
-                  </div>
-
-                  <!-- Cause 5: Thermal Mass Inertia -->
-                  <div class="cause-card" id="cause-card-inertia">
-                    <div class="cause-title">
-                      <i data-lucide="clock"></i>
-                      5. Initial Glass Wall Thermal Mass (0–2 min)
-                    </div>
-                    <p class="cause-desc">
-                      <strong>Symptom:</strong> Steeper temperature drop specifically during the first 2 minutes.<br>
-                      <strong>Cause:</strong> Cold flask absorbing energy before reaching thermal equilibrium. Newton's
-                      Law assumes a lumped capacitance system with uniform container temperature.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <!-- Tabulated data readouts -->
             <div class="hud-panel">
               <div class="panel-header">
@@ -1569,7 +1465,7 @@ padding-left:20px;
               </button>
               <a href="flashcards.html" target="_blank" rel="noopener" class="btn-hud btn-outline"
                 style="width: auto; padding: 6px 14px; font-size: 0.78rem; border-radius: 20px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                <i data-lucide="printer"></i> PRINTABLE FLASHCARDS (PDF)
+                <i data-lucide="printer"></i> FLASHCARDS (PDF)
               </a>
               <button type="button" class="btn-hud btn-outline" id="btn-reset-flashcards"
                 style="width: auto; padding: 6px 14px; font-size: 0.78rem; border-radius: 20px;">
@@ -1985,7 +1881,8 @@ padding-left:20px;
             </div>
           </div>
           <p style="margin-bottom: 20px;">
-            Complete this 10-item online knowledge check after the laboratory trial. It aligns directly with the 10-inquiry
+            Complete this 10-item online knowledge check after the laboratory trial. It aligns directly with the
+            10-inquiry
             student task sheet (Inquiries 1–10) and the complete solution key in the Teacher Manual. Nine
             multiple-choice questions are auto-scored; Question 4 requires instructor review and is excluded from the
             automatic percentage.
@@ -2145,16 +2042,20 @@ padding-left:20px;
             <div class="quiz-card" data-q="6">
               <div class="quiz-q-num">QUESTION 06 // EFFECT OF CAPSULE WATER VOLUME</div>
               <div class="quiz-question-text">
-                If you double the hot water volume inside the capsule from $100\text{ mL}$ to $200\text{ mL}$, how does that extra thermal mass ($Q = m \cdot c_p \cdot \Delta T$) change the cooling rate and the fitted value of $k$?
+                If you double the hot water volume inside the capsule from $100\text{ mL}$ to $200\text{ mL}$, how does
+                that extra thermal mass ($Q = m \cdot c_p \cdot \Delta T$) change the cooling rate and the fitted value
+                of $k$?
               </div>
               <div class="quiz-options-group">
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q6" value="A">
-                  <span>A) The larger volume holds twice the thermal energy, so it cools more slowly and the fitted cooling constant $k$ decreases.</span>
+                  <span>A) The larger volume holds twice the thermal energy, so it cools more slowly and the fitted
+                    cooling constant $k$ decreases.</span>
                 </label>
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q6" value="B">
-                  <span>B) The larger volume cools faster because higher mass accelerates heat flow, increasing $k$.</span>
+                  <span>B) The larger volume cools faster because higher mass accelerates heat flow, increasing
+                    $k$.</span>
                 </label>
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q6" value="C">
