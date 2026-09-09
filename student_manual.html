@@ -1322,28 +1322,31 @@
         Review the actual experimental apparatus photos below. Ensure that your core jar, thermometer probe, lid seal, and insulation barriers match the specification before running tests:
       </p>
 
-      <!-- FEATURED LAB EQUIPMENT TOOLKIT SHOWCASE (LARGE & FULLY VISIBLE) -->
-      <div style="background: #ffffff; border: 2px solid var(--primary-blue); border-radius: 12px; padding: 22px; margin: 25px 0 30px 0; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.08);">
-        <div style="font-family: var(--font-hud); font-size: 1rem; font-weight: 800; color: var(--primary-dark); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+      <!-- FEATURED LAB EQUIPMENT TOOLKIT SHOWCASE (FULL-SCALE & MAXIMUM VISIBILITY) -->
+      <div style="background: #ffffff; border: 2px solid var(--primary-blue); border-radius: 12px; padding: 24px; margin: 25px 0 30px 0; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.08);">
+        <div style="font-family: var(--font-hud); font-size: 1rem; font-weight: 800; color: var(--primary-dark); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
           <i data-lucide="wrench" style="width: 20px; height: 20px; color: var(--primary-blue);"></i>
           Required Experimental Hardware &amp; Equipment Toolkit
         </div>
-        <div style="display: grid; grid-template-columns: 340px 1fr; gap: 24px; align-items: center;">
-          <div style="width: 100%; height: 380px; border-radius: 10px; overflow: hidden; border: 1.5px solid var(--primary-border); background: #ffffff; padding: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <div style="width: 100%; max-width: 600px; height: 480px; border-radius: 10px; overflow: hidden; border: 1.5px solid var(--primary-border); background: #ffffff; padding: 10px; margin: 0 auto; box-shadow: 0 4px 16px rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: center;">
             <img src="images/equipments.png" alt="Lab Equipment & Hardware Toolkit" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;">
           </div>
-          <div>
-            <h4 style="font-family: var(--font-hud); font-size: 0.95rem; font-weight: 800; color: var(--text-heading); margin: 0 0 10px 0; text-transform: uppercase;">Hardware Inventory &amp; Setup Check</h4>
-            <p style="font-size: 0.9rem; color: var(--text-body); margin: 0 0 12px 0; line-height: 1.6;">
-              As shown in the full-scale toolkit photograph on the left (<code>images/equipments.png</code>), verify that your lab station is equipped with all essential components before beginning assembly:
-            </p>
-            <ul style="font-size: 0.88rem; margin: 0 0 14px 0; padding-left: 20px; line-height: 1.6;">
-              <li><strong>Core Vessel:</strong> $100\text{ mL}$ wide-mouth glass jar with prepared probe lid.</li>
-              <li><strong>Digital Temperature Sensor:</strong> Waterproof stainless steel probe with LCD readout ($\pm 0.5^\circ\text{C}$).</li>
-              <li><strong>Thermal Protection Materials:</strong> Cotton fiber spacer, sealed bubble wrap, reflective Mylar foil, and securing tape.</li>
-              <li><strong>Ice-Water Sink Vessel:</strong> Outer bath container for $0.0^\circ\text{C}$ slurry immersion.</li>
-            </ul>
+          <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-heading); margin-top: 10px;">
+            PHOTO A: FULL EXPERIMENTAL HARDWARE &amp; TOOLKIT INVENTORY
           </div>
+        </div>
+        <div>
+          <h4 style="font-family: var(--font-hud); font-size: 0.95rem; font-weight: 800; color: var(--text-heading); margin: 0 0 10px 0; text-transform: uppercase;">Hardware Inventory &amp; Setup Checklist</h4>
+          <p style="font-size: 0.9rem; color: var(--text-body); margin: 0 0 12px 0; line-height: 1.6;">
+            As shown in the full-scale toolkit photograph above (<code>images/equipments.png</code>), verify that your lab station is equipped with all essential components before beginning assembly:
+          </p>
+          <ul style="font-size: 0.88rem; margin: 0; padding-left: 20px; line-height: 1.6;">
+            <li><strong>Core Vessel:</strong> $100\text{ mL}$ wide-mouth glass jar with prepared probe lid.</li>
+            <li><strong>Digital Temperature Sensor:</strong> Waterproof stainless steel probe with LCD readout ($\pm 0.5^\circ\text{C}$).</li>
+            <li><strong>Thermal Protection Materials:</strong> Cotton fiber spacer, sealed bubble wrap, reflective Mylar foil, and securing tape.</li>
+            <li><strong>Ice-Water Sink Vessel:</strong> Outer bath container for $0.0^\circ\text{C}$ slurry immersion.</li>
+          </ul>
         </div>
       </div>
 
@@ -1374,110 +1377,10 @@
         <li><strong>Verify Clearance:</strong> Ensure the metal probe tip never touches the glass vessel walls or bottom floor to prevent conduction artifacts through the glass shell.</li>
       </ol>
 
-      <!-- FIGURE 1 SVG SCHEMATIC (Pixel-Perfect Alignment & Correct Hardware Naming) -->
+      <!-- FIGURE 1 SCHEMATIC DIAGRAM -->
       <div style="text-align: center; margin: 30px 0;">
-        <svg viewBox="0 0 880 370"
-          style="background: #ffffff; border: 2px solid var(--dark-navy); border-radius: 12px; width: 100%; height: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: block; margin: 0 auto;">
-          <!-- Outer ice-water bath -->
-          <rect x="20" y="15" width="840" height="340" rx="10" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.8" />
-          <text x="35" y="38" fill="#0369a1" font-family="sans-serif" font-size="11" font-weight="bold"
-            letter-spacing="0.5">EXTERNAL ENVIRONMENT: 0.0°C ICE BATH SINK (T_env = 0.0°C)</text>
-
-          <!-- Outer Thermal Protection System (TPS Wrap) -->
-          <rect x="355" y="98" width="170" height="200" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"
-            stroke-dasharray="5,3" />
-
-          <!-- Glass Jar Chamber Body -->
-          <rect x="370" y="105" width="140" height="190" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2.5" />
-
-          <!-- Hot Water Core Fill (100 mL at 80.0°C) -->
-          <rect x="378" y="135" width="124" height="152" rx="5" fill="rgba(239, 68, 68, 0.12)" stroke="#fca5a5"
-            stroke-width="1.2" />
-          <line x1="378" y1="135" x2="502" y2="135" stroke="#ef4444" stroke-width="1.5" />
-          <text x="440" y="162" fill="#dc2626" font-family="sans-serif" font-size="10.5" font-weight="bold"
-            text-anchor="middle">HOT WATER CORE</text>
-          <text x="440" y="176" fill="#ef4444" font-family="sans-serif" font-size="9" font-weight="bold"
-            text-anchor="middle">100 mL (T_0 = 80.0°C)</text>
-
-          <!-- Airtight Threaded Jar Lid -->
-          <rect x="364" y="85" width="152" height="22" rx="4" fill="#0f172a" stroke="#334155" stroke-width="2" />
-
-          <!-- Sensor Lead Wire -->
-          <path d="M 440 15 L 440 52" stroke="#d97706" stroke-width="3" fill="none" />
-          <path d="M 440 85 L 440 220" stroke="#d97706" stroke-width="3" fill="none" />
-
-          <!-- Stainless thermometer probe tip -->
-          <rect x="432" y="220" width="16" height="32" rx="3" fill="#475569" stroke="#0f172a" stroke-width="2" />
-          <circle cx="440" cy="236" r="3" fill="#10b981" />
-
-          <!-- ================= LEFT CALLOUTS (text-anchor="end") ================= -->
-          <!-- 1. Probe lead and lid opening -->
-          <text x="250" y="64" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="end">Thermometer Probe Lead</text>
-          <text x="250" y="78" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Passes through prepared
-            lid opening</text>
-          <line x1="260" y1="68" x2="440" y2="68" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="440" cy="68" r="3.5" fill="#0284c7" />
-
-          <!-- 2. Threaded Jar Lid -->
-          <text x="250" y="124" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="end">Threaded Capsule Lid</text>
-          <text x="250" y="138" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Airtight
-            mechanical closure</text>
-          <line x1="260" y1="96" x2="364" y2="96" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="364" cy="96" r="3.5" fill="#0f172a" />
-
-          <!-- 3. Thermal Insulation Wrap (TPS) -->
-          <text x="250" y="194" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="end">Thermal Insulation Wrap (TPS)</text>
-          <text x="250" y="208" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Cotton + Bubble
-            + Mylar barrier</text>
-          <line x1="260" y1="198" x2="355" y2="198" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="355" cy="198" r="3.5" fill="#f59e0b" />
-
-          <!-- 4. Hot Core Liquid -->
-          <text x="250" y="264" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="end">Hot Water Core (100 mL)</text>
-          <text x="250" y="278" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Initial thermal
-            mass at 80.0°C</text>
-          <line x1="260" y1="268" x2="378" y2="268" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="378" cy="268" r="3.5" fill="#ef4444" />
-
-          <!-- ================= RIGHT CALLOUTS (text-anchor="start") ================= -->
-          <!-- 1. Digital Thermometer -->
-          <text x="630" y="44" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="start">Digital Thermometer</text>
-          <text x="630" y="58" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">Direct
-            temperature readout</text>
-          <line x1="440" y1="36" x2="620" y2="36" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="440" cy="36" r="3.5" fill="#d97706" />
-
-          <!-- 2. Glass Capsule Outer Shell -->
-          <text x="630" y="124" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="start">Glass Capsule Shell</text>
-          <text x="630" y="138" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">100 mL
-            transparent test chamber</text>
-          <line x1="510" y1="128" x2="620" y2="128" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="510" cy="128" r="3.5" fill="#0284c7" />
-
-          <!-- 3. Centered Probe Sensor Tip -->
-          <text x="630" y="234" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="start">Centered Thermometer Probe</text>
-          <text x="630" y="248" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">Suspended in
-            liquid (±0.5°C accuracy)</text>
-          <line x1="448" y1="236" x2="620" y2="236" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="448" cy="236" r="3.5" fill="#10b981" />
-
-          <!-- 4. Ice Bath Cold Sink -->
-          <text x="630" y="304" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="start">Ice-Water Bath</text>
-          <text x="630" y="318" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">Controlled
-            low-temperature boundary</text>
-          <line x1="530" y1="308" x2="620" y2="308" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="530" cy="308" r="3.5" fill="#0284c7" />
-        </svg>
-        <div
-          style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-subtle); margin-top: 8px;">
+        <img src="images/hardware-schematic.png" alt="Experimental Hardware Assembly &amp; Sensor Alignment Schematic" style="width: 100%; height: auto; max-width: 880px; border-radius: 12px; border: 2px solid var(--dark-navy); box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: block; margin: 0 auto;">
+        <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-subtle); margin-top: 8px;">
           FIGURE 1: EXPERIMENTAL HARDWARE ASSEMBLY &amp; SENSOR ALIGNMENT
         </div>
       </div>
