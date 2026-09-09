@@ -605,6 +605,121 @@
       color: var(--text-subtle);
     }
 
+    /* ILLUSTRATED WORKFLOW STEP CARDS & PHOTOS */
+    .workflow-step-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 20px;
+      align-items: center;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .workflow-step-card:hover {
+      border-color: var(--primary-blue);
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.12);
+    }
+
+    .workflow-img-wrap {
+      width: 100%;
+      height: 160px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1.5px solid var(--border-color);
+      background: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .workflow-step-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .workflow-step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-hud);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .workflow-step-title {
+      font-family: var(--font-hud);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin: 0 0 8px 0;
+    }
+
+    .workflow-step-desc {
+      font-size: 0.9rem;
+      color: var(--text-body);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .config-photo-box {
+      width: 100%;
+      height: 140px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      border: 1.5px solid var(--border-color);
+      background: #f8fafc;
+    }
+
+    .config-photo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hardware-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .hardware-photo-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+    }
+
+    .hardware-photo-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .hardware-photo-caption {
+      padding: 10px 14px;
+      background: var(--bg-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
     @media screen and (max-width: 700px) {
 
       html,
@@ -735,6 +850,33 @@
       .flashcard-grid,
       .hero-banner {
         display: none !important;
+      }
+
+      .workflow-step-card {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        display: grid !important;
+        grid-template-columns: 170px 1fr !important;
+        gap: 12pt !important;
+        border: 1pt solid #cbd5e1 !important;
+        box-shadow: none !important;
+        padding: 10pt !important;
+        margin-bottom: 12pt !important;
+      }
+
+      .workflow-img-wrap {
+        height: 110pt !important;
+        border: 1pt solid #cbd5e1 !important;
+      }
+
+      .hardware-photo-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10pt !important;
+        break-inside: avoid !important;
+      }
+
+      .hardware-photo-card img {
+        height: 120pt !important;
       }
 
       .container {
@@ -1170,15 +1312,32 @@
         </table>
       </div>
 
-      <h3>Quick Assembly Steps:</h3>
-      <ol>
-        <li><strong>Feed the Sensor:</strong> Slide the metal temperature probe through the prepared opening in the jar
-          lid.</li>
-        <li><strong>Set the Depth:</strong> Position and secure the lead so the probe remains at the required depth.</li>
-        <li><strong>Seal and Test:</strong> Seal the probe opening using the approved lab method, close the lid, and
-          complete a leak test before immersion.</li>
-        <li><strong>Center the Probe:</strong> Make sure the metal sensor tip hangs right in the center of the liquid
-          without touching the bottom or sides.</li>
+      <h3>Hardware Setup &amp; Physical Assembly:</h3>
+      <p>
+        Review the actual experimental apparatus photos below. Ensure that your core jar, thermometer probe, lid seal, and insulation barriers match the specification before running tests:
+      </p>
+
+      <!-- HARDWARE APPARATUS REAL PHOTOS GRID -->
+      <div class="hardware-photo-grid">
+        <div class="hardware-photo-card">
+          <img src="images/setup.jpg" alt="Complete Apparatus & Sensor Setup">
+          <div class="hardware-photo-caption">
+            PHOTO A: COMPLETE CAPSULE &amp; DIGITAL SENSOR SETUP
+          </div>
+        </div>
+        <div class="hardware-photo-card">
+          <img src="images/capsuleinside.jpg" alt="Capsule Core & Probe Centering">
+          <div class="hardware-photo-caption">
+            PHOTO B: CORE LIQUID &amp; CENTERED PROBE SUSPENSION
+          </div>
+        </div>
+      </div>
+
+      <ol style="margin-top: 15px;">
+        <li><strong>Feed the Sensor:</strong> Slide the metal temperature probe through the pre-drilled opening in the jar lid (see Photo A).</li>
+        <li><strong>Set the Depth &amp; Position:</strong> Position and secure the lead wire so the sensor hangs suspended in the vertical and horizontal center of the $100\text{ mL}$ liquid volume (see Photo B).</li>
+        <li><strong>Seal and Leak Test:</strong> Seal around the probe insertion hole using the approved lab sealant method. Screw lid tightly and perform a cold leak-check before hot liquid filling.</li>
+        <li><strong>Verify Clearance:</strong> Ensure the metal probe tip never touches the glass vessel walls or bottom floor to prevent conduction artifacts through the glass shell.</li>
       </ol>
 
       <!-- FIGURE 1 SVG SCHEMATIC (Pixel-Perfect Alignment & Correct Hardware Naming) -->
@@ -1299,21 +1458,59 @@
       </p>
 
       <div class="insulation-grid">
+        <!-- Configuration A -->
         <div class="insulation-card">
           <h4>A. BARE CONTROL <span class="k-tag">$k \approx 0.150\text{ min}^{-1}$</span></h4>
-          <p>Plain uninsulated jar. Shows how rapidly heat escapes through direct conduction and water currents.</p>
+          <p style="margin-bottom: 8px;">Plain uninsulated glass capsule. High cooling rate due to direct conduction through glass and rapid convective boundary currents.</p>
+          <div style="font-size: 0.8rem; font-weight: 700; color: #dc2626; background: #fef2f2; padding: 4px 8px; border-radius: 4px; border: 1px solid #fca5a5; display: inline-block;">Baseline Reference</div>
         </div>
+
+        <!-- Configuration B -->
         <div class="insulation-card">
+          <div class="config-photo-box">
+            <img src="images/bubblewrap-only.png" alt="Bubble Wrap Insulation Configuration">
+          </div>
           <h4>B. BUBBLE WRAP <span class="k-tag">$k \approx 0.040\text{ min}^{-1}$</span></h4>
-          <p>Two even layers of bubble wrap. Sealed air cells reduce fluid motion and slow heat transfer.</p>
+          <p>Two tightly wrapped layers of bubble wrap. Sealed air pockets eliminate natural fluid convection currents and trap air insulation.</p>
         </div>
+
+        <!-- Configuration C -->
         <div class="insulation-card">
+          <div class="config-photo-box">
+            <img src="images/Onlymylar.jpg" alt="Mylar Foil Reflective Blanket Insulation">
+          </div>
           <h4>C. MYLAR FOIL <span class="k-tag">$k \approx 0.121\text{ min}^{-1}$</span></h4>
-          <p>Shiny emergency blanket. Reflects radiant thermal infrared waves back toward the hot water.</p>
+          <p>Single-layer reflective radiant barrier. Low emissivity ($\epsilon \approx 0.03$) reflects infrared thermal radiation back into the capsule core.</p>
         </div>
+
+        <!-- Configuration D -->
         <div class="insulation-card">
+          <div class="config-photo-box">
+            <img src="images/full-mli.png" alt="Complete Multilayer Insulation Stack">
+          </div>
           <h4>D. MULTILAYER ASSEMBLY <span class="k-tag">$k \approx 0.015\text{ min}^{-1}$</span></h4>
-          <p>Combines cotton, bubble wrap and reflective film to increase effective thermal resistance.</p>
+          <p>Composite thermal shield. Combines inner cotton spacer, mid bubble wrap convection block, and outer Mylar radiant barrier for maximum $R_{\text{th}}$.</p>
+        </div>
+      </div>
+
+      <!-- MLI PARTS & COMPOSITE ASSEMBLY BREAKDOWN -->
+      <div style="background: #f8fafc; border: 1.5px solid var(--border-color); border-radius: 12px; padding: 18px 22px; margin: 20px 0 25px 0;">
+        <div style="font-family: var(--font-hud); font-size: 0.95rem; font-weight: 800; color: var(--primary-dark); text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="layers" style="width: 18px; height: 18px; color: var(--primary-blue);"></i>
+          Multilayer Insulation (MLI) Parts &amp; Layer Sequence
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: center;">
+          <div class="config-photo-box" style="height: 160px; margin: 0;">
+            <img src="images/full-mli-parts.png" alt="MLI Layer Breakdown Parts">
+          </div>
+          <div>
+            <p style="font-size: 0.88rem; color: var(--text-body); margin: 0 0 8px 0; line-height: 1.5;">
+              <strong>Step-by-step layer application:</strong> As shown in the parts diagram, first wrap the inner glass jar with fibrous cotton to inhibit conductive contact. Next, apply sealed bubble wrap to eliminate convective airflow. Finally, wrap with outer Mylar foil facing outward to bounce radiative heat back into the capsule.
+            </p>
+            <span style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--primary-dark);">
+              Resulting fitted decay constant: $k \approx 0.015\text{ min}^{-1}$ (10x slower cooling than bare jar!)
+            </span>
+          </div>
         </div>
       </div>
       <p><strong>Optional extension:</strong> Add a fifth cotton-only trial to isolate the contribution of the inner fibrous layer.</p>
@@ -1658,22 +1855,106 @@
         </div>
       </div>
 
-      <ol>
-        <li><strong>Complete the concept check:</strong> Review the heat-transfer questions before handling hot water.
-        </li>
-        <li><strong>Generate Model Prediction:</strong> Go to the <strong>Simulator</strong> tab, choose your team's
-          assigned insulation configuration, verify starting conditions ($T_0 = 80.0^\circ\text{C}$, $T_{\text{env}} =
-          0.0^\circ\text{C}$), and click <strong>RUN SIMULATION PREDICTION</strong>.</li>
-        <li><strong>Fill the Water Core:</strong> Carefully measure $100\text{ mL}$ of hot water at
-          $80.0^\circ\text{C}$, pour it into your jar, screw the cap on tightly, and verify the seal is leak-free.</li>
-        <li><strong>Submerge and start timing:</strong> Lower the capsule into the measured ice-water bath
-          ($0.0^\circ\text{C}$) and immediately start the timer in the <strong>Measurement Log</strong> tab.</li>
-        <li><strong>Log Temperature Every Minute:</strong> Every $60\text{ seconds}$ for $15\text{ minutes}$, write down
-          the observed temperature in your Task Sheet and enter it into Mission Control.</li>
-        <li><strong>Evaluate:</strong> Plot the measured and predicted curves, calculate residuals ($|\Delta T| =
-          |T_{\text{obs}} - T_{\text{model}}|$) and MAE ($\text{MAE} = \frac{1}{n}\sum_{i=1}^n |\Delta T_i|$), and
-          discuss the principal sources of uncertainty.</li>
-      </ol>
+      <!-- ILLUSTRATED 6-STAGE PRACTICAL STEP-BY-STEP WORKFLOW CARDS -->
+      <div style="margin-top: 25px;">
+
+        <!-- STEP 1 CARD -->
+        <div class="workflow-step-card">
+          <div class="workflow-img-wrap">
+            <img src="images/astronaut.png" alt="Spacecraft Physics Theory" class="workflow-step-img">
+          </div>
+          <div>
+            <div class="workflow-step-badge" style="background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc;">
+              STAGE 1 &bull; THEORY &amp; SAFETY SOP
+            </div>
+            <h4 class="workflow-step-title">1. Review Physics Theory &amp; Pass Pre-Flight Quiz</h4>
+            <p class="workflow-step-desc">
+              Before handling hot water, review Sections 1–4 of this manual. Understand Newton's Law of Cooling ($T(t) = T_{\text{env}} + (T_0 - T_{\text{env}}) e^{-kt}$), heat transfer mechanisms (conduction, convection, radiation), and experimental safety SOP. Ensure thermal safety gloves and protective eyewear are equipped.
+            </p>
+          </div>
+        </div>
+
+        <!-- STEP 2 CARD -->
+        <div class="workflow-step-card">
+          <div class="workflow-img-wrap">
+            <img src="images/website-setting up.PNG" alt="Mission Control Console Web Simulator Setup" class="workflow-step-img">
+          </div>
+          <div>
+            <div class="workflow-step-badge" style="background: #f0f9ff; color: #0284c7; border: 1px solid #7dd3fc;">
+              STAGE 2 &bull; SIMULATOR PREDICTION
+            </div>
+            <h4 class="workflow-step-title">2. Set Up Web Simulator &amp; Run Theoretical Curve</h4>
+            <p class="workflow-step-desc">
+              Launch the <strong>Mission Control Console</strong> software (`index.html`). Navigate to the <strong>Simulator</strong> tab, select your team's assigned insulation configuration (Bare, Bubble Wrap, Mylar, or Multilayer), verify initial parameters ($T_0 = 80.0^\circ\text{C}, T_{\text{env}} = 0.0^\circ\text{C}$), and click <strong>RUN SIMULATION PREDICTION</strong> to generate the baseline theoretical model curve.
+            </p>
+          </div>
+        </div>
+
+        <!-- STEP 3 CARD -->
+        <div class="workflow-step-card">
+          <div class="workflow-img-wrap">
+            <img src="images/input temp.jpg" alt="Filling 100 mL Water Core and Recording Baseline Initial Temperature" class="workflow-step-img">
+          </div>
+          <div>
+            <div class="workflow-step-badge" style="background: #fffbeb; color: #b45309; border: 1px solid #fcd34d;">
+              STAGE 3 &bull; CORE PREPARATION &amp; T₀ RECORDING
+            </div>
+            <h4 class="workflow-step-title">3. Prepare Liquid Core &amp; Record Initial Temperature ($T_0$)</h4>
+            <p class="workflow-step-desc">
+              Carefully measure exactly $100\text{ mL}$ of hot water heated to approximately $80.0^\circ\text{C}$. Pour the hot water into your glass capsule core, secure the prepared lid with thermometer probe inserted, seal tightly, and read the initial baseline temperature $T_0$ off the digital display. Record this exact value as your minute-0 starting data point ($t=0$).
+            </p>
+          </div>
+        </div>
+
+        <!-- STEP 4 CARD -->
+        <div class="workflow-step-card">
+          <div class="workflow-img-wrap">
+            <img src="images/bathwater-0temp.jpg" alt="Immersing Capsule into 0°C Ice Water Bath" class="workflow-step-img">
+          </div>
+          <div>
+            <div class="workflow-step-badge" style="background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc;">
+              STAGE 4 &bull; BOUNDARY SINK IMMERSION
+            </div>
+            <h4 class="workflow-step-title">4. Submerge Capsule in 0.0°C Ice Bath &amp; Start Timer</h4>
+            <p class="workflow-step-desc">
+              Verify the external ice-water slurry bath is stabilized at $0.0^\circ\text{C}$ ($T_{\text{env}}$). Gently lower the insulated capsule into the ice bath until the liquid core level is completely below the external ice-water line. Simultaneously hit <strong>START TIMER</strong> in the Mission Control Console <strong>Measurement Log</strong> tab.
+            </p>
+          </div>
+        </div>
+
+        <!-- STEP 5 CARD -->
+        <div class="workflow-step-card">
+          <div class="workflow-img-wrap">
+            <img src="images/working.jpg" alt="Active 15-Minute Temperature Measurement Run" class="workflow-step-img">
+          </div>
+          <div>
+            <div class="workflow-step-badge" style="background: #eef2ff; color: #4338ca; border: 1px solid #a5b4fc;">
+              STAGE 5 &bull; LIVE DATA LOGGING (15 MINS)
+            </div>
+            <h4 class="workflow-step-title">5. Log Temperatures Every 60 Seconds for 15 Minutes</h4>
+            <p class="workflow-step-desc">
+              Continuously monitor the digital thermometer reading during the active 15-minute cooling run. At every 60-second chime ($t = 1, 2, 3, \dots, 15\text{ min}$), read the observed temperature ($T_{\text{obs}}$) and immediately enter it into your paper <a href="student_task_sheet.html" style="color: #4f46e5; font-weight: 700; text-decoration: underline;">Student Task Sheet</a> log table and the live Mission Control Console interface.
+            </p>
+          </div>
+        </div>
+
+        <!-- STEP 6 CARD -->
+        <div class="workflow-step-card">
+          <div class="workflow-img-wrap">
+            <img src="images/full-mli.png" alt="Data Analysis and MAE Calculation" class="workflow-step-img">
+          </div>
+          <div>
+            <div class="workflow-step-badge" style="background: #ecfdf5; color: #047857; border: 1px solid #6ee7b7;">
+              STAGE 6 &bull; MODEL EVALUATION &amp; MAE SCORING
+            </div>
+            <h4 class="workflow-step-title">6. Compute Residuals ($|\Delta T|$) &amp; Calculate MAE Score</h4>
+            <p class="workflow-step-desc">
+              Once the 15-minute logging run concludes, compare your measured empirical curve ($T_{\text{obs}}$) against the theoretical model ($T_{\text{model}}$). Calculate the temperature absolute residuals $|\Delta T_i| = |T_{\text{obs},i} - T_{\text{model},i}|$ for each minute. Compute your team's Mean Absolute Error score ($\text{MAE} = \frac{1}{16}\sum_{i=0}^{15} |\Delta T_i|$), analyze sources of experimental error, and complete the analytical evaluation questions on your Task Sheet.
+            </p>
+          </div>
+        </div>
+
+      </div>
     </section>
 
     <!-- FOOTER -->
