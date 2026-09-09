@@ -695,7 +695,7 @@
 
     .hardware-photo-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 16px;
       margin: 20px 0;
     }
@@ -1325,15 +1325,27 @@
       <!-- HARDWARE APPARATUS REAL PHOTOS GRID -->
       <div class="hardware-photo-grid">
         <div class="hardware-photo-card">
-          <img src="images/setup.jpg" alt="Complete Apparatus & Sensor Setup">
+          <div class="config-photo-box" style="height: 180px; margin: 0;">
+            <img src="images/equipments.png" alt="Lab Equipment & Hardware Toolkit">
+          </div>
           <div class="hardware-photo-caption">
-            PHOTO A: COMPLETE CAPSULE &amp; DIGITAL SENSOR SETUP
+            PHOTO A: LAB EQUIPMENT &amp; HARDWARE TOOLKIT
           </div>
         </div>
         <div class="hardware-photo-card">
-          <img src="images/capsuleinside.jpg" alt="Capsule Core & Probe Centering">
+          <div class="config-photo-box" style="height: 180px; margin: 0;">
+            <img src="images/setup.jpg" alt="Complete Apparatus & Sensor Setup">
+          </div>
           <div class="hardware-photo-caption">
-            PHOTO B: CORE LIQUID &amp; CENTERED PROBE SUSPENSION
+            PHOTO B: COMPLETE CAPSULE &amp; SENSOR SETUP
+          </div>
+        </div>
+        <div class="hardware-photo-card">
+          <div class="config-photo-box" style="height: 180px; margin: 0;">
+            <img src="images/capsuleinside.jpg" alt="Capsule Core & Probe Centering">
+          </div>
+          <div class="hardware-photo-caption">
+            PHOTO C: CORE LIQUID &amp; CENTERED PROBE SUSPENSION
           </div>
         </div>
       </div>
@@ -1465,6 +1477,9 @@
       <div class="insulation-grid">
         <!-- Configuration A -->
         <div class="insulation-card">
+          <div class="config-photo-box">
+            <img src="images/barecapsule.jpeg" alt="Bare Control Glass Capsule Core">
+          </div>
           <h4>A. BARE CONTROL <span class="k-tag">$k \approx 0.150\text{ min}^{-1}$</span></h4>
           <p style="margin-bottom: 8px;">Plain uninsulated glass capsule. High cooling rate due to direct conduction through glass and rapid convective boundary currents.</p>
           <div style="font-size: 0.8rem; font-weight: 700; color: #dc2626; background: #fef2f2; padding: 4px 8px; border-radius: 4px; border: 1px solid #fca5a5; display: inline-block;">Baseline Reference</div>
