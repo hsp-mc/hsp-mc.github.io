@@ -547,7 +547,7 @@
     }
 
     /* ==========================================================================
-       STRICT 2-PAGE PRINT STYLES (A4 PORTRAIT)
+       STRICT 3-PAGE PRINT STYLES (A4 PORTRAIT)
        ========================================================================== */
     @media print {
       @page {
@@ -563,7 +563,8 @@
         margin: 0 !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-        font-size: 9pt;
+        font-size: 8.5pt;
+        width: 100% !important;
       }
 
       .no-print {
@@ -572,6 +573,7 @@
 
       .workbook-container {
         max-width: 100% !important;
+        width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
       }
@@ -582,7 +584,6 @@
         padding: 0 !important;
         margin: 0 !important;
         width: 100% !important;
-        height: 275mm !important;
         box-sizing: border-box !important;
         display: flex !important;
         flex-direction: column !important;
@@ -591,6 +592,9 @@
         break-after: page !important;
         page-break-inside: avoid !important;
         break-inside: avoid !important;
+        height: 275mm !important;
+        max-height: 277mm !important;
+        overflow: hidden !important;
       }
 
       .sheet-page:last-child {
@@ -598,52 +602,161 @@
         break-after: auto !important;
       }
 
+      .page-header {
+        margin-bottom: 6pt !important;
+        padding-bottom: 4pt !important;
+      }
+
+      .brand-badge {
+        font-size: 6.5pt !important;
+        padding: 2pt 8pt !important;
+      }
+
+      .sheet-title {
+        font-size: 1.25rem !important;
+      }
+
+      .sheet-sub {
+        font-size: 0.75rem !important;
+      }
+
       .meta-grid {
         background: #ffffff !important;
         border: 1pt solid #cbd5e1 !important;
-        padding: 8pt 12pt !important;
-        margin-bottom: 10pt !important;
+        padding: 6pt 10pt !important;
+        margin-bottom: 8pt !important;
+        gap: 6pt 14pt !important;
+      }
+
+      .meta-field label {
+        font-size: 6pt !important;
+      }
+
+      .section-head {
+        font-size: 8.5pt !important;
+        margin-top: 6pt !important;
+        margin-bottom: 6pt !important;
+        padding-bottom: 2pt !important;
+      }
+
+      .section-head span.tag {
+        font-size: 6.5pt !important;
+        padding: 1pt 6pt !important;
+      }
+
+      .table-scroll {
+        width: 100% !important;
+        overflow: visible !important;
       }
 
       .logging-table {
         border: 1pt solid #0f172a !important;
-        margin-bottom: 10pt !important;
+        margin-bottom: 6pt !important;
+        width: 100% !important;
       }
 
       .logging-table th {
         background: #0f172a !important;
         color: #ffffff !important;
-        padding: 4pt 6pt !important;
-        font-size: 7.5pt !important;
+        padding: 3pt 5pt !important;
+        font-size: 7.2pt !important;
       }
 
       .logging-table td {
         border: 1pt solid #cbd5e1 !important;
-        padding: 3pt 5pt !important;
-        font-size: 7.5pt !important;
-        height: 17pt !important;
+        padding: 2pt 4pt !important;
+        font-size: 7.2pt !important;
+        height: 15pt !important;
+      }
+
+      .graph-container {
+        width: 100% !important;
+        margin-top: 4pt !important;
+      }
+
+      .graph-container svg {
+        width: 100% !important;
+        max-height: 440px !important;
       }
 
       .calc-box {
         background: #f0f9ff !important;
         border: 1pt solid #0284c7 !important;
-        padding: 8pt 12pt !important;
+        padding: 6pt 10pt !important;
+        margin-bottom: 6pt !important;
+      }
+
+      .calc-row {
+        font-size: 7.5pt !important;
+        margin-bottom: 4pt !important;
+        gap: 10pt !important;
+      }
+
+      .calc-formula {
+        font-size: 7.5pt !important;
+        padding: 1pt 5pt !important;
+      }
+
+      .calc-line {
+        width: 100px !important;
+      }
+
+      .rating-strip {
+        margin-top: 5pt !important;
+        padding: 4pt 8pt !important;
+        font-size: 7pt !important;
       }
 
       .questions-grid {
-        gap: 8pt !important;
+        gap: 5pt !important;
+        margin-bottom: 6pt !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        width: 100% !important;
       }
 
       .q-card {
         border: 1pt solid #cbd5e1 !important;
         border-left: 3pt solid #0284c7 !important;
-        padding: 7pt 9pt !important;
+        padding: 4pt 6pt !important;
+        box-sizing: border-box !important;
+      }
+
+      .q-title {
+        font-size: 7.5pt !important;
+        margin-bottom: 2pt !important;
+      }
+
+      .q-desc {
+        font-size: 6.8pt !important;
+        line-height: 1.2 !important;
+        margin-bottom: 3pt !important;
       }
 
       .q-answer-space {
         background: #ffffff !important;
         border: 1pt dashed #94a3b8 !important;
-        height: 32pt !important;
+        height: 20pt !important;
+      }
+
+      .sign-box {
+        display: flex !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        font-size: 7.2pt !important;
+      }
+
+      .sign-line {
+        width: 90px !important;
+      }
+
+      .page-footer {
+        margin-top: 6pt !important;
+        padding-top: 4pt !important;
+        font-size: 6.5pt !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        width: 100% !important;
       }
     }
   </style>
