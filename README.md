@@ -12,7 +12,7 @@
 
 ![SPHERE thermal insulation laboratory cover](images/project-cover.png)
 
-[Launch Lab](https://hsp-mc.github.io/) · [Student Manual](SPHERE_Mission_Control_Student_Manual.pdf) · [Teacher Manual](SPHERE_Mission_Control_Teacher_Manual.pdf) · [Task Sheet](student_task_sheet.pdf) · [Flashcards](SPHERE_Mission_Control_Flashcards.pdf)
+[Launch Lab](https://hsp-mc.github.io/) · [Student Manual](resources/manuals/SPHERE_Mission_Control_Student_Manual.pdf) · [Teacher Manual](resources/manuals/SPHERE_Mission_Control_Teacher_Manual.pdf) · [Task Sheet](resources/worksheets/student_task_sheet.pdf) · [Flashcards](resources/flashcards/SPHERE_Mission_Control_Flashcards.pdf)
 
 </div>
 
@@ -91,10 +91,10 @@ The supplied cooling constants are educational reference values. Repeated measur
 | Resource | Web version | Printable version |
 | :--- | :---: | :---: |
 | Interactive laboratory | [`index.html`](index.html) | — |
-| Student manual | [`student_manual.html`](student_manual.html) | [PDF](SPHERE_Mission_Control_Student_Manual.pdf) |
-| Teacher manual and marking guide | [`teacher_manual.html`](teacher_manual.html) | [PDF](SPHERE_Mission_Control_Teacher_Manual.pdf) |
-| Laboratory task sheet | [`student_task_sheet.html`](student_task_sheet.html) | [PDF](student_task_sheet.pdf) |
-| Revision flashcards | [`flashcards.html`](flashcards.html) | [PDF](SPHERE_Mission_Control_Flashcards.pdf) |
+| Student manual | [Web](resources/manuals/student_manual.html) | [PDF](resources/manuals/SPHERE_Mission_Control_Student_Manual.pdf) |
+| Teacher manual and marking guide | [Web](resources/manuals/teacher_manual.html) | [PDF](resources/manuals/SPHERE_Mission_Control_Teacher_Manual.pdf) |
+| Laboratory task sheet | [Web](resources/worksheets/student_task_sheet.html) | [PDF](resources/worksheets/student_task_sheet.pdf) |
+| Revision flashcards | [Web](resources/flashcards/flashcards.html) | [PDF](resources/flashcards/SPHERE_Mission_Control_Flashcards.pdf) |
 
 The learning materials share one ten-question assessment framework: ten printable inquiries, ten online evaluation questions and a complete instructor solution key. Nine online multiple-choice items are scored automatically; Question 4 requires instructor review.
 
