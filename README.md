@@ -1,5 +1,7 @@
 # SPHERE Thermal Insulation Laboratory
 
+![SPHERE thermal insulation laboratory cover](images/project-cover.png)
+
 SPHERE is an undergraduate engineering laboratory demonstrator for comparing the transient cooling behaviour of insulated water capsules. The project combines a controlled ice-water-bath experiment, a lumped-parameter Newton cooling model, manual temperature acquisition and error analysis.
 
 ## Project team
