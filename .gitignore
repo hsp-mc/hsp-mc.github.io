@@ -13,3 +13,5 @@ Thumbs.db
 *.tar.gz
 *.tgz
 
+# Local project source documents
+Experimental_Toolkit_Thermal_Insulation_SOP_Illustrated.docx
