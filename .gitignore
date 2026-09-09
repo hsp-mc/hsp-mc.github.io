@@ -15,3 +15,7 @@ Thumbs.db
 
 # Local project source documents
 Experimental_Toolkit_Thermal_Insulation_SOP_Illustrated.docx
+Project_Draft_Updated.docx
+
+# Generated PDF working files
+/tmp/pdfs/
