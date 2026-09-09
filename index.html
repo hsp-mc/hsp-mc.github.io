@@ -55,10 +55,10 @@
               title="Open student laboratory manual">
               <i data-lucide="book-open" style="width: 12px; height: 12px;"></i> STUDENT MANUAL
             </a>
-            <button type="button" class="deliverable-btn deliverable-btn-teacher top-portal-btn" data-target="admin"
-              title="Open Teacher Portal">
-              <i data-lucide="shield-alert" style="width: 12px; height: 12px;"></i> TEACHER PORTAL
-            </button>
+            <a href="teacher_manual.html" target="_blank" rel="noopener" class="deliverable-btn deliverable-btn-teacher"
+              title="Open teacher laboratory manual">
+              <i data-lucide="book-open" style="width: 12px; height: 12px;"></i> TEACHER MANUAL
+            </a>
           </div>
 
           <!-- Clock & Audio -->
@@ -429,7 +429,7 @@
               <label class="form-label" style="font-size: 0.75rem; color: var(--cyan);">QUESTION 02: BUBBLE
                 WRAP</label>
               <p class="briefing-text" style="font-size: 0.85rem; margin-bottom: 8px;">In our physical experiment, we
-                wrap the PET capsule with bubble wrap. Which explanation best describes how its sealed air cells reduce
+                wrap the glass capsule with bubble wrap. Which explanation best describes how its sealed air cells reduce
                 heat transfer?</p>
               <div
                 style="display: grid; grid-template-columns: 1fr; gap: 8px; font-family: var(--font-sans); font-size: 0.85rem;">
@@ -515,7 +515,7 @@
               <rect x="355" y="98" width="170" height="200" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"
                 stroke-dasharray="5,3" />
 
-              <!-- PET Jar Chamber Body -->
+              <!-- Glass Jar Chamber Body -->
               <rect x="370" y="105" width="140" height="190" rx="8" fill="#ffffff" stroke="#0284c7"
                 stroke-width="2.5" />
 
@@ -581,9 +581,9 @@
               <line x1="440" y1="36" x2="620" y2="36" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3" />
               <circle cx="440" cy="36" r="3.5" fill="#d97706" />
 
-              <!-- 2. PET Capsule Outer Shell -->
+              <!-- 2. Glass Capsule Outer Shell -->
               <text x="630" y="124" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-                text-anchor="start">PET Capsule Shell</text>
+                text-anchor="start">Glass Capsule Shell</text>
               <text x="630" y="138" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">100 mL
                 transparent test chamber</text>
               <line x1="510" y1="128" x2="620" y2="128" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3" />
@@ -637,7 +637,7 @@
                 <p class="step-desc">
                   Add $100\text{ mL}$ of water at $80^\circ\text{C}$ using suitable heat-resistant handling equipment.
                 </p>
-                <span class="step-badge">$100\text{ mL}$ PET CORE // $80^\circ\text{C}$ TARGET</span>
+                <span class="step-badge">$100\text{ mL}$ GLASS CORE // $80^\circ\text{C}$ TARGET</span>
               </div>
             </div>
 
@@ -692,7 +692,7 @@
               </div>
               <div class="layer-bars-container">
                 <div class="layer-bar" style="background: #0284c7;">CORE WATER (80°C)</div>
-                <div class="layer-bar" style="background: #475569;">PET JAR WALL</div>
+                <div class="layer-bar" style="background: #475569;">GLASS JAR WALL</div>
                 <div class="layer-bar" style="background: #0284c7; border: 1px dashed #7dd3fc;">ICE BATH (0°C DIRECT)
                 </div>
               </div>
@@ -711,7 +711,7 @@
               </div>
               <div class="layer-bars-container">
                 <div class="layer-bar" style="background: #0284c7;">CORE WATER (80°C)</div>
-                <div class="layer-bar" style="background: #475569;">PET JAR WALL</div>
+                <div class="layer-bar" style="background: #475569;">GLASS JAR WALL</div>
                 <div class="layer-bar" style="background: #10b981;">TWO BUBBLE-WRAP LAYERS</div>
                 <div class="layer-bar" style="background: #0284c7; border: 1px dashed #7dd3fc;">ICE BATH (0°C)</div>
               </div>
@@ -730,7 +730,7 @@
               </div>
               <div class="layer-bars-container">
                 <div class="layer-bar" style="background: #0284c7;">CORE WATER (80°C)</div>
-                <div class="layer-bar" style="background: #475569;">PET JAR WALL</div>
+                <div class="layer-bar" style="background: #475569;">GLASS JAR WALL</div>
                 <div class="layer-bar" style="background: #d97706;">MYLAR REFLECTIVE SHIELD</div>
                 <div class="layer-bar" style="background: #0284c7; border: 1px dashed #7dd3fc;">ICE BATH (0°C)</div>
               </div>
@@ -1134,302 +1134,7 @@
         </div>
       </section>
 
-      <!-- ==================== TAB 5: TEACHER'S PORTAL ==================== -->
-      <section id="admin" class="view-section">
 
-        <!-- Teacher's Portal Dashboard -->
-        <div id="admin-authorized-dashboard" class="hud-grid hud-grid-2-1">
-          <!-- Left side: Safety Protocols -->
-          <div class="hud-panel panel-orange">
-            <div class="panel-header">
-              <span class="panel-title glow-orange"><i data-lucide="shield-alert"></i> SAFETY PROTOCOLS & HAZARD
-                ASSESSMENTS</span>
-              <span class="panel-meta">TEACHER_DIR // CODESET_1</span>
-            </div>
-
-            <h2 class="glow-orange" style="margin-bottom: 15px; font-size: 1.3rem;">CRITICAL CLASSROOM SAFETY PROTOCOLS
-            </h2>
-            <p class="briefing-text">
-              Thermodynamic experiments in school environments introduce manageable risks. Ensure the following rules
-              are strictly enforced during the lab drop:
-            </p>
-
-            <table class="risk-matrix-table">
-              <thead>
-                <tr>
-                  <th>HAZARD DESCRIPTION</th>
-                  <th>RISK LAYER</th>
-                  <th>MITIGATION MANDATE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Boiling Water Scalding</strong><br>Using boiling $100^\circ\text{C}$ water directly in
-                    school
-                    environments.</td>
-                  <td><span class="risk-badge risk-high">HIGH</span></td>
-                  <td>Enforce a strict <strong>$80^\circ\text{C}$ limit</strong>. Provide thermal kettles pre-programmed
-                    to $80^\circ\text{C}$ or
-                    use standard thermometers to lock temperatures before filling plastic capsules.</td>
-                </tr>
-                <tr>
-                  <td><strong>Ice-Bath Spillages</strong><br>Slips/trips from condensation, melted ice, or water spills
-                    around electricity.</td>
-                  <td><span class="risk-badge risk-medium">MEDIUM</span></td>
-                  <td>Establish a clear separation between the ice water reservoirs and any tablet or laptop charting
-                    stations. Provide absorbent fiber cloths.</td>
-                </tr>
-                <tr>
-                  <td><strong>Capsule Leakage</strong><br>PET plastic deformation if filled with temperatures &gt;
-                    $90^\circ\text{C}$.
-                  </td>
-                  <td><span class="risk-badge risk-low">LOW</span></td>
-                  <td>Never pour boiling water directly into thin plastic PET containers. Let water settle to
-                    $80^\circ\text{C}$, and
-                    seal the lid and probe opening using the approved lab method, then leak-test before immersion.</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <!-- Summer Conditions Alert Box -->
-            <div
-              style="margin-top: 20px; padding: 12px; background: rgba(0, 242, 254, 0.05); border: 1px solid rgba(0, 242, 254, 0.2); border-radius: 6px; font-family: var(--font-sans); font-size: 0.8rem;">
-              <span
-                style="color: var(--cyan); font-family: var(--font-hud); font-weight: bold; font-size: 0.75rem; letter-spacing: 0.05em; display: block; margin-bottom: 6px;">
-                <i data-lucide="sun" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px;"></i>
-                SUMMER/HIGH-AMBIENT PROTOCOL ($\sim 30^\circ\text{C}$)
-              </span>
-              <p class="step-desc" style="font-size: 0.8rem; margin: 0; line-height: 1.4;">
-                • <strong>Reduce Target Temp:</strong> Safety scale water down to
-                <strong>$55^\circ\text{C}\text{--}60^\circ\text{C}$</strong> to
-                neutralize scalding risks on hot days. The simulator supports any initial value.<br>
-                • <strong>Melt Compensation:</strong> Instruct students to measure actual bath temperature and input it
-                as $T_{\text{env}}$ in the simulator if ice melts above $0^\circ\text{C}$.<br>
-                • <strong>Ice-Free Option:</strong> Drop capsules in room-temperature tap water ($\sim
-                25^\circ\text{C}\text{--}30^\circ\text{C}$) and
-                configure $T_{\text{env}}$ accordingly.
-              </p>
-            </div>
-          </div>
-
-          <!-- Right side: Core Math Equations -->
-          <div class="hud-panel">
-            <div class="panel-header">
-              <span class="panel-title"><i data-lucide="book-open"></i> BOARDWORK KEYFRAMES & EQUATIONS</span>
-              <span class="panel-meta">MATH_THEORY // DIRECTIVE</span>
-            </div>
-
-            <h2 class="glow-cyan" style="font-size: 1.1rem; margin-bottom: 15px;">Instructor Guidance</h2>
-            <p class="briefing-text">
-              Use these explanations to anchor class theories on the chalkboard:
-            </p>
-
-            <div class="math-card">
-              <h3 style="font-size: 0.9rem; color: var(--cyan); margin-bottom: 5px;">1. SPECIFIC HEAT CAPACITY</h3>
-              <p class="briefing-text" style="font-size: 0.85rem; margin-bottom: 8px;">
-                Calculates total energy loss from internal core volume to surroundings:
-              </p>
-              <div class="math-equation">$$Q = m \cdot c \cdot \Delta T$$</div>
-              <p class="briefing-text" style="font-size: 0.75rem; margin-bottom: 0;">
-                Where: <strong>$m$</strong> = $0.1\text{ kg}$ ($100\text{ mL}$ water), <strong>$c$</strong> =
-                $4184\text{ J/kg}\cdot^\circ\text{C}$ (Specific heat
-                capacity of water), <strong>$\Delta T$</strong> = Temperature change. This equation calculates the
-                amount of
-                thermal energy gained or lost by water when its temperature changes.
-              </p>
-            </div>
-
-            <div class="math-card">
-              <h3 style="font-size: 0.9rem; color: var(--cyan); margin-bottom: 5px;">2. NEWTON'S LAW OF COOLING</h3>
-              <p class="briefing-text" style="font-size: 0.85rem; margin-bottom: 8px;">
-                Models the rate of heat loss proportional to temperature differences:
-              </p>
-              <div class="math-equation">$$T(t) = T_{\text{env}} + (T_0 - T_{\text{env}}) \cdot e^{-kt}$$</div>
-              <p class="briefing-text" style="font-size: 0.75rem; margin-bottom: 0;">
-                Where: <strong>$T_0$</strong> = $80^\circ\text{C}$, <strong>$T_{\text{env}}$</strong> =
-                $0^\circ\text{C}$ (ice bath), <strong>$k$</strong>
-                = insulation cooling constant, <strong>$t$</strong> = time. For this project, students do not need to
-                derive the equation. The model is used to explore how insulation affects cooling behaviour and how
-                mathematical predictions compare with experimental data.
-              </p>
-            </div>
-
-            <div class="math-card">
-
-              <h3 style="font-size:0.9rem;color:var(--cyan);margin-bottom:10px;">
-                LEARNING OBJECTIVES
-              </h3>
-
-              <ul style="
-font-size:0.85rem;
-line-height:1.8;
-padding-left:20px;
-">
-
-                <li>
-                  Describe the three heat transfer mechanisms:
-                  conduction, convection and radiation.
-                </li>
-
-                <li>
-                  Explain how insulation materials reduce heat transfer.
-                </li>
-
-                <li>
-                  Collect and record experimental temperature data.
-                </li>
-
-                <li>
-                  Interpret cooling curves and temperature graphs.
-                </li>
-
-                <li>
-                  Compare mathematical predictions with experimental measurements.
-                </li>
-
-                <li>
-                  Evaluate the effectiveness of different insulation materials.
-                </li>
-
-                <li>
-                  Understand how simplified scientific models can be used to represent real-world systems.
-                </li>
-
-              </ul>
-
-            </div>
-
-
-            <div
-              style="margin-top: 15px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 15px; display: flex; justify-content: space-between;">
-              <span style="font-size: 0.75rem; color: var(--text-dimmed);">Instructor resources active</span>
-            </div>
-          </div>
-
-          <!-- Economic & Kit Logistics Panel -->
-          <div class="hud-panel" style="grid-column: span 2; margin-top: 10px;">
-            <div class="panel-header">
-              <span class="panel-title"><i data-lucide="box"></i> TEST EQUIPMENT &amp; COST ESTIMATE</span>
-              <span class="panel-meta">BILL OF MATERIALS // 2026 ESTIMATE</span>
-            </div>
-
-            <h3 class="glow-cyan" style="font-size: 1.0rem; margin-bottom: 10px;">Commercial Off-the-Shelf Components
-            </h3>
-            <p class="briefing-text">
-              The test rig uses readily available components to limit cost and simplify replacement. The estimate below
-              is indicative; suppliers, tax and delivery costs should be documented in the final bill of materials.
-            </p>
-
-            <div class="sim-stats-container" style="grid-template-columns: 1fr 1fr 1fr; margin-top: 15px;">
-              <div class="sim-stat-box" style="text-align: left;">
-                <div class="sim-stat-title glow-orange">MATERIALS BUDGET</div>
-                <p class="step-desc" style="font-size: 0.8rem; margin-top: 5px;">
-                  • 4x PET jars: confirm current supplier price<br>
-                  • 4-pack Digital Probes: ~16€<br>
-                  • Suit Insulation Pack: ~8€<br>
-                  • Cold Testing Tub: ~5€<br>
-                  <strong>Estimated total:</strong> recalculate from current supplier quotes (excluding delivery and
-                  consumables)
-                </p>
-              </div>
-              <div class="sim-stat-box" style="text-align: left;">
-                <div class="sim-stat-title glow-cyan">MEASUREMENT METHOD</div>
-                <p class="step-desc" style="font-size: 0.8rem; margin-top: 5px;">
-                  • Record thermometer readings manually at 60-second intervals.<br>
-                  • Compare the observations with the lumped-parameter model using residuals and MAE.
-                </p>
-              </div>
-              <div class="sim-stat-box" style="text-align: left;">
-                <div class="sim-stat-title glow-green">CORE BENEFITS</div>
-                <p class="step-desc" style="font-size: 0.8rem; margin-top: 5px;">
-                  • A consistent probe depth and verified lid seal improve repeatability.<br>
-                  • The modular configurations support comparative testing with a common boundary condition.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Teacher's Manual & EU Lesson Keyframes -->
-          <div class="hud-panel panel-orange"
-            style="grid-column: span 2; margin-top: 15px; border-color: rgba(255, 159, 67, 0.45);">
-            <div class="panel-header">
-              <span class="panel-title glow-orange"><i data-lucide="graduation-cap"></i> INSTRUCTOR MANUAL
-                &amp; LABORATORY PLAN</span>
-              <span class="panel-meta">TEACHING PLAN // LEARNING OUTCOMES</span>
-            </div>
-
-            <h3 class="glow-orange" style="font-size: 1.1rem; margin-top: 15px; margin-bottom: 10px;">Engineering
-              Laboratory Learning Outcomes</h3>
-            <p class="briefing-text" style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 15px;">
-              This laboratory supports introductory university work in <strong>thermodynamics</strong>,
-              <strong>heat transfer</strong>, experimental methods and uncertainty-aware model validation. Any formal
-              programme or accreditation mapping should be completed against the requirements of the host institution.
-            </p>
-
-            <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
-              <div
-                style="background: rgba(255, 159, 67, 0.04); padding: 15px; border-radius: 8px; border: 1px solid rgba(255, 159, 67, 0.15);">
-                <h4 style="color: var(--orange); font-family: var(--font-hud); font-size: 0.85rem; margin-bottom: 8px;">
-                  1. SUGGESTED LABORATORY SCHEDULE (45 MINUTES)</h4>
-                <ul
-                  style="font-family: var(--font-sans); font-size: 0.85rem; color: var(--text-normal); margin-left: 20px; line-height: 1.6;">
-                  <li><strong>Minutes $0\text{--}10$ [Theory]:</strong> Review conduction, convection, radiation and the
-                    limitations of the water-bath analogue. Complete the concept check.</li>
-                  <li><strong>Minutes $10\text{--}20$ [Explore]:</strong> Hand out insulation materials (cotton, bubble
-                    wrap,
-                    Mylar). Students wrap their PET jar cores, insert the probes through the prepared lid openings, and
-                    complete the approved seal and leak test.
-                  </li>
-                  <li><strong>Minutes $20\text{--}25$ [Model]:</strong> Configure the analytical model and record the
-                    predicted temperature curve.</li>
-                  <li><strong>Minutes $25\text{--}40$ [Explain/Telemetry]:</strong> Pour $80^\circ\text{C}$ hot water
-                    inside capsules, drop them
-                    into the ice water tubs, start the stopwatch, and log the physical temperatures every $60\text{
-                    seconds}$.
-                  </li>
-                  <li><strong>Minutes $40\text{--}45$ [Evaluate]:</strong> Calculate residuals and MAE, then discuss
-                    uncertainty, repeatability and model limitations.</li>
-                </ul>
-              </div>
-
-              <div style="background: #f8fafc; padding: 18px; border-radius: 12px; border: 1px solid #cbd5e1;">
-                <h4
-                  style="color: #0369a1; font-family: var(--font-sans); font-weight: 700; font-size: 0.9rem; margin-bottom: 8px;">
-                  2.
-                  INSTRUCTOR SOLUTIONS &amp; COOLING RATES</h4>
-                <p class="briefing-text"
-                  style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; color: #475569;">
-                  These are assumed reference-model coefficients for worked examples, not expected experimental results:
-                </p>
-                <div
-                  style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-family: var(--font-mono); font-size: 0.8rem;">
-                  <div
-                    style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #fecaca; border-left: 4px solid var(--red); color: #1e293b; font-weight: 600;">
-                    • Bare Core: $k = 0.150\text{ min}^{-1}$ (approximately $8^\circ\text{C}$)</div>
-                  <div
-                    style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #fed7aa; border-left: 4px solid var(--orange); color: #1e293b; font-weight: 600;">
-                    • Bubble Wrap: $k = 0.040\text{ min}^{-1}$ (approximately $44^\circ\text{C}$)</div>
-                  <div
-                    style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #bae6fd; border-left: 4px solid var(--cyan); color: #1e293b; font-weight: 600;">
-                    • Mylar Wrap: $k = 0.121\text{ min}^{-1}$ (approximately $13^\circ\text{C}$)</div>
-                  <div
-                    style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #bbf7d0; border-left: 4px solid var(--green); color: #1e293b; font-weight: 600;">
-                    • Multi-Layer MLI: $k = 0.015\text{ min}^{-1}$ (Stays at $\sim 64^\circ\text{C}$)</div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              style="margin-top: 15px; border-top: 1px dashed rgba(255,159,67,0.3); padding-top: 12px; display: flex; justify-content: flex-end; gap: 10px;">
-              <a href="teacher_manual.html" target="_blank" rel="noopener" class="btn-hud btn-orange"
-                style="width: auto; padding: 8px 18px; font-size: 0.8rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 700;">
-                <i data-lucide="book-open" style="width: 16px; height: 16px;"></i> TEACHER MANUAL &amp;
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </section>
 
       <!-- ==================== TAB 5: STUDY & FLASHCARDS HUB ==================== -->
       <section id="study" class="view-section">
@@ -1458,7 +1163,7 @@ padding-left:20px;
             </div>
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
               <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #0284c7; font-weight: bold;"
-                id="flipped-count-badge">FLIPPED: 0 / 12</span>
+                id="flipped-count-badge">FLIPPED: 0 / 16</span>
               <button type="button" class="btn-hud" id="btn-flip-all"
                 style="width: auto; padding: 6px 14px; font-size: 0.78rem; border-radius: 20px;">
                 <i data-lucide="rotate-cw"></i> FLIP ALL
@@ -1474,7 +1179,7 @@ padding-left:20px;
             </div>
           </div>
 
-          <!-- 3D Flashcard Deck Grid -->
+          <!-- 3D Flashcard Deck Grid (16 Cards) -->
           <div class="flashcard-grid" id="main-flashcard-grid">
             <!-- Card 1 -->
             <div class="flashcard" data-category="thermo">
@@ -1482,55 +1187,53 @@ padding-left:20px;
                 <div class="flashcard-front">
                   <div class="flashcard-icon"><i data-lucide="flame"></i></div>
                   <div class="flashcard-title">NEWTON'S LAW OF COOLING</div>
-                  <div class="flashcard-desc">What equation predicts how fast a hot capsule loses heat in ice water?
-                  </div>
-                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
-                    FORMULA ]</div>
+                  <div class="flashcard-desc">What fundamental equation governs the rate of heat loss of a hot core capsule submerged in a cooler ambient fluid?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL FORMULA ]</div>
                 </div>
                 <div class="flashcard-back">
                   <div class="flashcard-icon"><i data-lucide="check-circle"></i></div>
-                  <div class="flashcard-title">$$T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$$</div>
-                  <div class="flashcard-desc">The cooling rate is directly proportional to the temperature gap $(T(t) -
-                    T_{\text{env}})$!</div>
+                  <div class="flashcard-title">EXPONENTIAL DECAY</div>
+                  <div class="flashcard-desc">
+                    $$T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$$<br>
+                    The cooling rate $\frac{dT}{dt}$ is directly proportional to the instantaneous temperature gap $(T(t) - T_{\text{env}})$.
+                  </div>
                 </div>
               </div>
             </div>
 
             <!-- Card 2 -->
-            <div class="flashcard" data-category="radiation">
+            <div class="flashcard" data-category="thermo">
               <div class="flashcard-inner">
                 <div class="flashcard-front">
-                  <div class="flashcard-icon"><i data-lucide="sun"></i></div>
-                  <div class="flashcard-title">RADIATIVE SHIELDING</div>
-                  <div class="flashcard-desc">How does shiny Mylar protect spacecraft from solar heat in space?</div>
-                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
-                    ANSWER ]</div>
+                  <div class="flashcard-icon"><i data-lucide="gauge"></i></div>
+                  <div class="flashcard-title">DECAY CONSTANT (k)</div>
+                  <div class="flashcard-desc">What does the constant $k$ quantify physically, and which capsule is better insulated: $k = 0.15\text{ min}^{-1}$ or $k = 0.015\text{ min}^{-1}$?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
-                  <div class="flashcard-icon"><i data-lucide="shield"></i></div>
-                  <div class="flashcard-title">INFRARED REFLECTION</div>
-                  <div class="flashcard-desc">A low-emissivity reflective surface reduces net radiative heat transfer.
-                  </div>
+                  <div class="flashcard-icon"><i data-lucide="award"></i></div>
+                  <div class="flashcard-title">LOWER-k CAPSULE ($k = 0.015\text{ min}^{-1}$)</div>
+                  <div class="flashcard-desc">For a lumped system, $k = \frac{hA}{mc}$ is an effective cooling constant. Under comparable conditions, a smaller $k$ produces a slower temperature decay.</div>
                 </div>
               </div>
             </div>
 
             <!-- Card 3 -->
-            <div class="flashcard" data-category="mli">
+            <div class="flashcard" data-category="thermo">
               <div class="flashcard-inner">
                 <div class="flashcard-front">
-                  <div class="flashcard-icon"><i data-lucide="layers"></i></div>
-                  <div class="flashcard-title">MULTILAYER TEST ASSEMBLY</div>
-                  <div class="flashcard-desc">Why can cotton, bubble wrap and reflective film perform better in
-                    combination?</div>
-                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
-                    ANSWER ]</div>
+                  <div class="flashcard-icon"><i data-lucide="arrow-right-left"></i></div>
+                  <div class="flashcard-title">FOURIER'S LAW OF CONDUCTION</div>
+                  <div class="flashcard-desc">How does thermal energy transfer directly through solid matter, and what formula defines conduction heat flow?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL FORMULA ]</div>
                 </div>
                 <div class="flashcard-back">
-                  <div class="flashcard-icon"><i data-lucide="box"></i></div>
-                  <div class="flashcard-title">COMBINED THERMAL RESISTANCE</div>
-                  <div class="flashcard-desc">The layers trap air, limit fluid motion and reduce radiative exchange;
-                    interfaces also add thermal resistance.</div>
+                  <div class="flashcard-icon"><i data-lucide="zap"></i></div>
+                  <div class="flashcard-title">MOLECULAR CONDUCTION</div>
+                  <div class="flashcard-desc">
+                    $$\dot Q = -\lambda A \frac{dT}{dx}$$<br>
+                    Heat conducts from warm to cold via direct microscopic particle collisions, governed by thermal conductivity $\lambda$ and area $A$.
+                  </div>
                 </div>
               </div>
             </div>
@@ -1539,75 +1242,72 @@ padding-left:20px;
             <div class="flashcard" data-category="thermo">
               <div class="flashcard-inner">
                 <div class="flashcard-front">
-                  <div class="flashcard-icon"><i data-lucide="trending-down"></i></div>
-                  <div class="flashcard-title">DECAY CONSTANT (k)</div>
-                  <div class="flashcard-desc">If Capsule A has $k = 0.15\text{ min}^{-1}$ and Capsule B has $k =
-                    0.015\text{ min}^{-1}$, which is better insulated?</div>
-                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
-                    ANSWER ]</div>
+                  <div class="flashcard-icon"><i data-lucide="scale"></i></div>
+                  <div class="flashcard-title">THERMAL EQUILIBRIUM</div>
+                  <div class="flashcard-desc">When does net heat transfer between the capsule core and the $0^\circ\text{C}$ ice bath drop to zero? What physical law governs this?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
-                  <div class="flashcard-icon"><i data-lucide="award"></i></div>
-                  <div class="flashcard-title">LOWER-k CAPSULE ($k = 0.015\text{ min}^{-1}$)</div>
-                  <div class="flashcard-desc">For the stated values, the smaller cooling constant produces a slower
-                    exponential temperature decay.</div>
+                  <div class="flashcard-icon"><i data-lucide="check-check"></i></div>
+                  <div class="flashcard-title">ZEROTH LAW EQUILIBRIUM</div>
+                  <div class="flashcard-desc">
+                    $$T_{\text{capsule}} = T_{\text{env}}$$<br>
+                    When capsule temperature equals environment temperature, net heat flow stops completely ($\frac{dQ}{dt} = 0$).
+                  </div>
                 </div>
               </div>
             </div>
 
             <!-- Card 5 -->
-            <div class="flashcard" data-category="twin">
+            <div class="flashcard" data-category="radiation">
               <div class="flashcard-inner">
                 <div class="flashcard-front">
-                  <div class="flashcard-icon"><i data-lucide="cpu"></i></div>
-                  <div class="flashcard-title">ANALYTICAL REFERENCE MODEL</div>
-                  <div class="flashcard-desc">What assumptions are used in the SPHERE Newton cooling model?</div>
-                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
-                    ANSWER ]</div>
+                  <div class="flashcard-icon"><i data-lucide="sun"></i></div>
+                  <div class="flashcard-title">SPACE VACUUM RADIATION</div>
+                  <div class="flashcard-desc">Which heat-transfer mechanism can cross a vacuum between separated bodies, and what law governs it?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL FORMULA ]</div>
                 </div>
                 <div class="flashcard-back">
-                  <div class="flashcard-icon"><i data-lucide="activity"></i></div>
-                  <div class="flashcard-title">LUMPED-PARAMETER MODEL</div>
-                  <div class="flashcard-desc">The model assumes a uniform capsule temperature, constant bath temperature
-                    and a constant fitted cooling coefficient.</div>
+                  <div class="flashcard-icon"><i data-lucide="shield-alert"></i></div>
+                  <div class="flashcard-title">STEFAN-BOLTZMANN RADIATION</div>
+                  <div class="flashcard-desc">
+                    $$P_{\text{rad}} = \epsilon \sigma A (T^4 - T_{\text{env}}^4)$$<br>
+                    Thermal radiation crosses a vacuum as electromagnetic photons. Conduction cannot occur across empty space without direct physical contact.
+                  </div>
                 </div>
               </div>
             </div>
 
             <!-- Card 6 -->
-            <div class="flashcard" data-category="twin">
+            <div class="flashcard" data-category="radiation">
               <div class="flashcard-inner">
                 <div class="flashcard-front">
-                  <div class="flashcard-icon"><i data-lucide="snowflake"></i></div>
-                  <div class="flashcard-title">ICE-WATER BOUNDARY</div>
-                  <div class="flashcard-desc">Why use an ice-water bath during the comparative tests?</div>
-                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
-                    ANSWER ]</div>
+                  <div class="flashcard-icon"><i data-lucide="shield"></i></div>
+                  <div class="flashcard-title">MYLAR RADIATIVE SHIELD</div>
+                  <div class="flashcard-desc">How does thin shiny aluminized Mylar foil protect spacecraft and astronauts from extreme solar thermal radiation?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
-                  <div class="flashcard-icon"><i data-lucide="thermometer-snowflake"></i></div>
-                  <div class="flashcard-title">CONSTANT HEAT SINK</div>
-                  <div class="flashcard-desc">An ice-water slurry provides a relatively stable cold boundary. Measure
-                    its actual temperature.</div>
+                  <div class="flashcard-icon"><i data-lucide="sparkles"></i></div>
+                  <div class="flashcard-title">INFRARED REFLECTANCE</div>
+                  <div class="flashcard-desc">An aluminized reflective film has high infrared reflectance and low emissivity ($\epsilon$), greatly reducing radiative heat transfer.</div>
                 </div>
               </div>
             </div>
 
             <!-- Card 7 -->
-            <div class="flashcard" data-category="thermo">
+            <div class="flashcard" data-category="mli">
               <div class="flashcard-inner">
                 <div class="flashcard-front">
-                  <div class="flashcard-icon"><i data-lucide="zap"></i></div>
-                  <div class="flashcard-title">FOURIER'S LAW OF CONDUCTION</div>
-                  <div class="flashcard-desc">How does heat move directly through solid materials?</div>
-                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
-                    ANSWER ]</div>
+                  <div class="flashcard-icon"><i data-lucide="wind"></i></div>
+                  <div class="flashcard-title">CONVECTIVE AIR TRAPPING</div>
+                  <div class="flashcard-desc">How do the sealed air cells in bubble wrap reduce thermal energy transfer?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
-                  <div class="flashcard-icon"><i data-lucide="arrow-right-left"></i></div>
-                  <div class="flashcard-title">$$\dot Q = -\lambda A \frac{dT}{dx}$$</div>
-                  <div class="flashcard-desc">Heat conducts from warm to cold via direct microscopic particle
-                    collisions.</div>
+                  <div class="flashcard-icon"><i data-lucide="disc"></i></div>
+                  <div class="flashcard-title">STAGNANT AIR POCKETS</div>
+                  <div class="flashcard-desc">Trapped air has low thermal conductivity ($\lambda_{\text{air}} \approx 0.026\text{ W/(m}\cdot\text{K)}$), while small sealed cells suppress bulk fluid convection circulation.</div>
                 </div>
               </div>
             </div>
@@ -1616,76 +1316,69 @@ padding-left:20px;
             <div class="flashcard" data-category="mli">
               <div class="flashcard-inner">
                 <div class="flashcard-front">
-                  <div class="flashcard-icon"><i data-lucide="wind"></i></div>
-                  <div class="flashcard-title">CONVECTION &amp; TRAPPED AIR</div>
-                  <div class="flashcard-desc">How do the sealed air cells in bubble wrap reduce heat transfer?</div>
-                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
-                    ANSWER ]</div>
+                  <div class="flashcard-icon"><i data-lucide="layers"></i></div>
+                  <div class="flashcard-title">MULTI-LAYER INSULATION (MLI)</div>
+                  <div class="flashcard-desc">Why do spacesuits and satellites stack Cotton + Bubble Wrap + Mylar in composite layers?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
-                  <div class="flashcard-icon"><i data-lucide="disc"></i></div>
-                  <div class="flashcard-title">STAGNANT AIR POCKETS</div>
-                  <div class="flashcard-desc">The trapped air has low thermal conductivity, and the small cells suppress
-                    bulk air circulation. Heat transfer is reduced, not eliminated.</div>
+                  <div class="flashcard-icon"><i data-lucide="box"></i></div>
+                  <div class="flashcard-title">TRIPLE HEAT SHIELD</div>
+                  <div class="flashcard-desc">Composite synergy: Cotton blocks solid conduction, Bubble Wrap suppresses fluid convection, and Mylar reflects infrared radiation.</div>
                 </div>
               </div>
             </div>
 
             <!-- Card 9 -->
-            <div class="flashcard" data-category="thermo">
+            <div class="flashcard" data-category="twin">
               <div class="flashcard-inner">
                 <div class="flashcard-front">
-                  <div class="flashcard-icon"><i data-lucide="scale"></i></div>
-                  <div class="flashcard-title">THERMAL EQUILIBRIUM</div>
-                  <div class="flashcard-desc">When does net heat transfer between the capsule and environment drop to
-                    zero?</div>
-                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
-                    ANSWER ]</div>
+                  <div class="flashcard-icon"><i data-lucide="cpu"></i></div>
+                  <div class="flashcard-title">ANALYTICAL REFERENCE MODEL</div>
+                  <div class="flashcard-desc">What key assumptions does the SPHERE Newton cooling model make?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
-                  <div class="flashcard-icon"><i data-lucide="check-check"></i></div>
-                  <div class="flashcard-title">$$T_{\text{capsule}} = T_{\text{env}}$$</div>
-                  <div class="flashcard-desc">When capsule temperature equals environment, net heat flow stops
-                    completely ($\frac{dQ}{dt} = 0$).</div>
+                  <div class="flashcard-icon"><i data-lucide="activity"></i></div>
+                  <div class="flashcard-title">LUMPED-PARAMETER MODEL</div>
+                  <div class="flashcard-desc">It assumes a uniform capsule core temperature, a constant bath temperature, and a constant effective cooling coefficient $k$.</div>
                 </div>
               </div>
             </div>
 
             <!-- Card 10 -->
-            <div class="flashcard" data-category="thermo">
+            <div class="flashcard" data-category="twin">
               <div class="flashcard-inner">
                 <div class="flashcard-front">
-                  <div class="flashcard-icon"><i data-lucide="droplet"></i></div>
-                  <div class="flashcard-title">SPECIFIC HEAT CAPACITY</div>
-                  <div class="flashcard-desc">Why is liquid water ($c = 4184\text{ J/kg}\cdot^\circ\text{C}$) ideal for
-                    telemetry lab trials?</div>
-                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
-                    ANSWER ]</div>
+                  <div class="flashcard-icon"><i data-lucide="snowflake"></i></div>
+                  <div class="flashcard-title">ICE-WATER BOUNDARY</div>
+                  <div class="flashcard-desc">Why is an ice-water slurry used in the comparative experiment?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
-                  <div class="flashcard-icon"><i data-lucide="battery-charging"></i></div>
-                  <div class="flashcard-title">HIGH THERMAL MASS</div>
-                  <div class="flashcard-desc">Water holds vast thermal energy, allowing precise, measurable exponential
-                    decay over 15+ minutes!</div>
+                  <div class="flashcard-icon"><i data-lucide="thermometer-snowflake"></i></div>
+                  <div class="flashcard-title">CONSTANT HEAT SINK</div>
+                  <div class="flashcard-desc">An ice-water slurry provides a stable, repeatable cold boundary ($0.0^\circ\text{C}$). Measure its actual temperature for accurate model comparisons.</div>
                 </div>
               </div>
             </div>
 
             <!-- Card 11 -->
-            <div class="flashcard" data-category="radiation">
+            <div class="flashcard" data-category="thermo">
               <div class="flashcard-inner">
                 <div class="flashcard-front">
-                  <div class="flashcard-icon"><i data-lucide="space"></i></div>
-                  <div class="flashcard-title">SPACE VACUUM SHIELDING</div>
-                  <div class="flashcard-desc">Can spacecraft lose heat by conduction in the vacuum of deep space?</div>
-                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
-                    ANSWER ]</div>
+                  <div class="flashcard-icon"><i data-lucide="droplet"></i></div>
+                  <div class="flashcard-title">HEAT CAPACITY OF WATER</div>
+                  <div class="flashcard-desc">Why is liquid water ($c = 4184\text{ J/kg}\cdot^\circ\text{C}$) ideal for capsule core telemetry trials? What is the heat formula?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL FORMULA ]</div>
                 </div>
                 <div class="flashcard-back">
-                  <div class="flashcard-icon"><i data-lucide="shield-alert"></i></div>
-                  <div class="flashcard-title">RADIATION ONLY</div>
-                  <div class="flashcard-desc">Radiation crosses a vacuum; conduction can still occur through solid
-                    structural contacts.</div>
+                  <div class="flashcard-icon"><i data-lucide="battery-charging"></i></div>
+                  <div class="flashcard-title">HIGH THERMAL MASS</div>
+                  <div class="flashcard-desc">
+                    $$Q = m \cdot c \cdot \Delta T$$<br>
+                    Water stores large thermal energy per gram, producing smooth, measurable exponential decay over $15+\text{ minutes}$ without dropping instantly.
+                  </div>
                 </div>
               </div>
             </div>
@@ -1696,16 +1389,89 @@ padding-left:20px;
                 <div class="flashcard-front">
                   <div class="flashcard-icon"><i data-lucide="line-chart"></i></div>
                   <div class="flashcard-title">DECAY CURVE CURVATURE</div>
-                  <div class="flashcard-desc">Why is the $T(t)$ graph steep initially and flatter toward 15 minutes?
-                  </div>
-                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL
-                    ANSWER ]</div>
+                  <div class="flashcard-desc">Why is the temperature-time graph $T(t)$ steep at $t = 0$ and increasingly flat toward $t = 15\text{ min}$?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
                 </div>
                 <div class="flashcard-back">
                   <div class="flashcard-icon"><i data-lucide="trending-down"></i></div>
-                  <div class="flashcard-title">SHRINKING $\Delta T$ GAP</div>
-                  <div class="flashcard-desc">Cooling rate is proportional to $(T(t) - T_{\text{env}})$. As temperature
-                    difference decreases, cooling rate slows down!</div>
+                  <div class="flashcard-title">SHRINKING TEMP GAP</div>
+                  <div class="flashcard-desc">Cooling rate is proportional to $(T(t) - T_{\text{env}})$. As temperature difference decreases, cooling rate slows down asymptotically!</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 13 -->
+            <div class="flashcard" data-category="twin">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="percent"></i></div>
+                  <div class="flashcard-title">MEAN ABSOLUTE ERROR (MAE)</div>
+                  <div class="flashcard-desc">How is the Mean Absolute Error between measured telemetry and predicted temperatures calculated?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL FORMULA ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="target"></i></div>
+                  <div class="flashcard-title">MODEL RESIDUALS</div>
+                  <div class="flashcard-desc">
+                    $$\mathrm{MAE} = \frac{1}{n}\sum_{i=1}^{n}|T_{\mathrm{meas},i} - T_{\mathrm{model},i}|$$<br>
+                    MAE quantifies the average magnitude of temperature prediction errors across all measured time steps in $^\circ\text{C}$.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 14 -->
+            <div class="flashcard" data-category="twin">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="crosshair"></i></div>
+                  <div class="flashcard-title">PROBE PLACEMENT PROTOCOL</div>
+                  <div class="flashcard-desc">Why should the thermometer probe be positioned near the centre of the liquid rather than touching the capsule wall?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="alert-triangle"></i></div>
+                  <div class="flashcard-title">BULK FLUID TEMPERATURE</div>
+                  <div class="flashcard-desc">Wall contact biases readings toward local boundary layer temperatures rather than the bulk core liquid temperature, introducing systematic error.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 15 -->
+            <div class="flashcard" data-category="thermo">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="file-text"></i></div>
+                  <div class="flashcard-title">SI UNITS REFERENCE</div>
+                  <div class="flashcard-desc">What are the standard SI units for temperature $T$, thermal energy $Q$, thermal conductivity $\lambda$, and cooling constant $k$?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="book-open"></i></div>
+                  <div class="flashcard-title">UNITS CHEAT SHEET</div>
+                  <div class="flashcard-desc">
+                    • Temperature ($T$): $\text{K}$ or $^\circ\text{C}$<br>
+                    • Energy ($Q$): Joules ($\text{J}$)<br>
+                    • Decay Constant ($k$): $\text{min}^{-1}$ or $\text{s}^{-1}$<br>
+                    • Conductivity ($\lambda$): $\text{W}/(\text{m}\cdot\text{K})$
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 16 -->
+            <div class="flashcard" data-category="mli">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <div class="flashcard-icon"><i data-lucide="shield-check"></i></div>
+                  <div class="flashcard-title">MULTILAYER CONFIGURATION</div>
+                  <div class="flashcard-desc">Which tested configuration achieves the smallest cooling constant $k$, and why?</div>
+                  <div style="font-size: 0.75rem; color: #0284c7; margin-top: 12px; font-weight: 800;">[ TAP TO REVEAL ANSWER ]</div>
+                </div>
+                <div class="flashcard-back">
+                  <div class="flashcard-icon"><i data-lucide="trophy"></i></div>
+                  <div class="flashcard-title">OPTIMAL THERMAL RESISTANCE</div>
+                  <div class="flashcard-desc">The combined Cotton + Bubble Wrap + Reflective Mylar assembly provides maximum resistance ($k \approx 0.015\text{ min}^{-1}$) by tackling all 3 heat transfer modes.</div>
                 </div>
               </div>
             </div>

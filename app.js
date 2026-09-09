@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // UI Element Caches
   const elements = {
-    tabs: document.querySelectorAll('.nav-tab, .top-portal-btn'),
+    tabs: document.querySelectorAll('.nav-tab'),
     sections: document.querySelectorAll('.view-section'),
     mobileMenuToggle: document.getElementById('mobile-menu-toggle'),
     mobileMenuCurrent: document.getElementById('mobile-menu-current'),
@@ -1364,50 +1364,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // 6. Teacher Portal classroom access gate (Module 5)
+  // 6. Teacher Laboratory Deliverables (Instructor Guide in Teacher Manual)
   // ==========================================================================
-  if (elements.adminLoginForm) {
-    elements.adminLoginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      playClickSound();
-      const pw = elements.adminPasswordInput ? elements.adminPasswordInput.value : '';
-      
-      if (pw === 'SPHERE2026') {
-        state.isAuthorized = true;
-        if (elements.adminLoginGate) elements.adminLoginGate.style.display = 'none';
-        if (elements.adminAuthorizedDashboard) elements.adminAuthorizedDashboard.style.display = 'grid';
-        if (elements.adminPasswordInput) elements.adminPasswordInput.value = '';
-        
-        logToConsole("SYS: Instructor access code accepted.", "success");
-        showNotification("Teacher Portal Open", "success");
-        playSuccessSound();
-        
-        sessionStorage.setItem('sphere_admin_auth', 'true');
-        lucide.createIcons();
-      } else {
-        showNotification("Incorrect Instructor Access Code", "error");
-        logToConsole("WARN: Incorrect instructor access code entered.", "warn");
-        playWarningSound();
-        if (elements.adminPasswordInput) elements.adminPasswordInput.value = '';
-      }
-    });
-  }
-
-  if (elements.btnAdminLogout) {
-    elements.btnAdminLogout.addEventListener('click', () => {
-      playClickSound();
-      state.isAuthorized = false;
-      if (elements.adminAuthorizedDashboard) elements.adminAuthorizedDashboard.style.display = 'none';
-      if (elements.adminLoginGate) elements.adminLoginGate.style.display = 'block';
-      
-      logToConsole("SYS: Instructor session locked.");
-      showNotification("Teacher Portal Closed", "info");
-      playWarningSound();
-      
-      sessionStorage.removeItem('sphere_admin_auth');
-      lucide.createIcons();
-    });
-  }
 
   // Pre-Flight Certification Quiz Evaluation
   function evaluateQuiz() {
@@ -1481,13 +1439,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Check existing session auth
-  if (sessionStorage.getItem('sphere_admin_auth') === 'true') {
-    state.isAuthorized = true;
-    if (elements.adminLoginGate) elements.adminLoginGate.style.display = 'none';
-    if (elements.adminAuthorizedDashboard) elements.adminAuthorizedDashboard.style.display = 'grid';
-    if (window.lucide) lucide.createIcons();
-  }
+
 
   // ==========================================================================
   // 7. Local Storage Persistence Caching

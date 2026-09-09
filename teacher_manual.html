@@ -235,6 +235,57 @@
       margin-bottom: 8px;
     }
 
+    /* Risk Matrix Badges & Protocol Alert Boxes */
+    .risk-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-family: var(--font-hud);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .risk-high { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .risk-medium { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .risk-low { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+
+    .protocol-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-left: 5px solid #0284c7;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      color: #1e293b;
+    }
+    .protocol-box-title {
+      color: #0369a1;
+      font-family: var(--font-hud);
+      font-weight: 800;
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .math-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid var(--primary-amber);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .math-card h3 {
+      font-size: 0.95rem;
+      color: var(--primary-amber-dark);
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
     /* Callout Boxes */
     .callout-box {
       background: var(--primary-amber-bg);
@@ -483,10 +534,13 @@
       }
 
       .doc-section {
-        break-inside: avoid-page;
-        page-break-inside: avoid;
-        margin-bottom: 24pt !important;
+        margin-bottom: 20pt !important;
         padding-top: 0;
+      }
+
+      .page-break-before-print {
+        break-before: page !important;
+        page-break-before: always !important;
       }
 
       h1, h2, h3, h4, h5, h6 {
@@ -691,22 +745,43 @@
     <!-- SUMMARY CALLOUT -->
     <div class="callout-box">
       <strong>Scope:</strong>
-      The activity is intended for introductory undergraduate engineering or physics teaching. Instructors should adapt
+      The activity is intended for introductory physics teaching. Instructors should adapt
       the risk assessment, supervision ratio and assessment weighting to local institutional requirements.
     </div>
 
     <!-- SECTION 1 -->
     <section class="doc-section" id="section-1">
-      <h2><i data-lucide="award"></i> 1. LEARNING OUTCOMES</h2>
+      <h2><i data-lucide="award"></i> 1. LEARNING OUTCOMES &amp; CORE MATHEMATICAL THEORY</h2>
       <p>
-        On completion, students should be able to:
+        On completion of this laboratory module, students should be able to:
       </p>
       <ul>
-        <li>Distinguish conduction, convection and radiation in the test system.</li>
+        <li>Distinguish conduction, convection and radiation mechanisms within the capsule insulation system.</li>
         <li>Apply Newton's law of cooling, $$T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt},$$ and interpret the fitted cooling constant $k$ ($\text{min}^{-1}$).</li>
-        <li>Acquire and plot temperature data ($T_{\text{obs}}$) at defined time intervals ($t = 0\text{ to }15\text{ min}$).</li>
-        <li>Calculate residuals ($|\Delta T| = |T_{\text{obs}} - T_{\text{model}}|$) and MAE ($\text{MAE} = \frac{1}{n} \sum_{i=1}^n |\Delta T_i|$), then discuss uncertainty and limitations of the lumped-parameter model.</li>
+        <li>Acquire and plot physical temperature observations ($T_{\text{obs}}$) at 60-second intervals ($t = 0\text{ to }15\text{ min}$).</li>
+        <li>Calculate temperature residuals ($|\Delta T| = |T_{\text{obs}} - T_{\text{model}}|$) and Mean Absolute Error ($\text{MAE} = \frac{1}{n} \sum_{i=1}^n |\Delta T_i|$), evaluating model limitations and experimental uncertainty.</li>
       </ul>
+
+      <h3 style="margin-top: 24px;"><i data-lucide="book-open"></i> 1.2 INSTRUCTOR BOARDWORK KEYFRAMES &amp; EQUATIONS</h3>
+      <p>Use these core mathematical formulations to anchor class explanations during introductory chalkboard briefings:</p>
+      
+      <div class="math-card">
+        <h3 style="margin-top:0;">1. SPECIFIC HEAT CAPACITY EQUATION</h3>
+        <p style="font-size: 0.9rem; margin-bottom: 8px;">Calculates total thermal energy dissipation from internal liquid core to surroundings:</p>
+        <div style="text-align: center; margin: 10px 0; font-size: 1.1rem;">$$Q = m \cdot c \cdot \Delta T$$</div>
+        <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-subtle);">
+          Where: <strong>$m$</strong> = $0.1\text{ kg}$ ($100\text{ mL}$ water mass), <strong>$c$</strong> = $4184\text{ J/(kg}\cdot^\circ\text{C)}$ (specific heat capacity of liquid water), and <strong>$\Delta T$</strong> = temperature change ($^\circ\text{C}$). This quantifies thermal energy lost over time.
+        </p>
+      </div>
+
+      <div class="math-card">
+        <h3 style="margin-top:0;">2. NEWTON'S LAW OF COOLING (FIRST-ORDER LUMPED MODEL)</h3>
+        <p style="font-size: 0.9rem; margin-bottom: 8px;">Models the transient rate of heat loss as proportional to temperature difference:</p>
+        <div style="text-align: center; margin: 10px 0; font-size: 1.1rem;">$$T(t) = T_{\text{env}} + (T_0 - T_{\text{env}}) \cdot e^{-kt}$$</div>
+        <p style="font-size: 0.85rem; margin-bottom: 0; color: var(--text-subtle);">
+          Where: <strong>$T_0$</strong> = initial water temperature ($80.0^\circ\text{C}$ nominal), <strong>$T_{\text{env}}$</strong> = environmental bath temperature ($0.0^\circ\text{C}$ nominal ice-water slurry), <strong>$k$</strong> = insulation decay constant ($\text{min}^{-1}$), and <strong>$t$</strong> = time ($\text{min}$).
+        </p>
+      </div>
     </section>
 
     <!-- SECTION 2 -->
@@ -753,16 +828,102 @@
 
     <!-- SECTION 3 -->
     <section class="doc-section" id="section-3">
-      <h2><i data-lucide="wrench"></i> 3. LAB SETUP &amp; SAFETY CHECKLIST</h2>
+      <h2><i data-lucide="shield-alert"></i> 3. LAB SETUP, SAFETY PROTOCOLS &amp; COTS LOGISTICS</h2>
+      
       <p>
-        Complete and document the following controls before the session:
+        Thermodynamic experiments in school and university environments introduce manageable risks. Complete and document the following controls before and during the session:
       </p>
+
+      <h3>3.1 CRITICAL CLASSROOM SAFETY CHECKLIST</h3>
       <ul>
-        <li><strong>Hot-water control:</strong> Do not use boiling water. Prepare water at $80.0^\circ\text{C}$ and use heat-resistant gloves, eye protection and a stable pouring area in accordance with the local risk assessment.</li>
-        <li><strong>Bath condition:</strong> Prepare an ice-water slurry and measure its temperature. Do not assume an exact $0.0^\circ\text{C}$ boundary without verifying.</li>
+        <li><strong>Hot-water control:</strong> Do not use boiling water ($100^\circ\text{C}$). Prepare water at <strong>$80.0^\circ\text{C}$ maximum</strong> and use heat-resistant gloves, eye protection and a stable pouring area.</li>
+        <li><strong>Bath condition:</strong> Prepare an ice-water slurry and measure its temperature. Do not assume an exact $0.0^\circ\text{C}$ boundary without verifying with a calibrated digital probe.</li>
         <li><strong>Leak Prevention:</strong> Check that students seal the probe opening using the approved lab method and complete a leak test before immersion.</li>
-        <li><strong>Probe Placement:</strong> Check that each probe hangs in the center of the liquid and isn't pressed against the plastic jar walls.</li>
+        <li><strong>Probe Placement:</strong> Check that each probe hangs in the center of the liquid and isn't pressed against the glass jar walls.</li>
       </ul>
+
+      <h3>3.2 HAZARD RISK ASSESSMENT MATRIX</h3>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th style="width: 28%;">HAZARD DESCRIPTION</th>
+            <th style="width: 15%;">RISK LEVEL</th>
+            <th style="width: 57%;">MITIGATION MANDATE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Boiling Water Scalding</strong><br>Using boiling $100^\circ\text{C}$ water directly in student environments.</td>
+            <td><span class="risk-badge risk-high">HIGH</span></td>
+            <td>Enforce a strict <strong>$80^\circ\text{C}$ upper limit</strong>. Provide thermal kettles pre-programmed to $80^\circ\text{C}$ or use standard thermometers to lock temperatures before filling glass test capsules.</td>
+          </tr>
+          <tr>
+            <td><strong>Ice-Bath Spillages</strong><br>Slips/trips from condensation, melted ice, or water spills around electricity.</td>
+            <td><span class="risk-badge risk-medium">MEDIUM</span></td>
+            <td>Establish a clear physical separation between ice-water reservoirs and any tablet or laptop charting stations. Provide absorbent microfiber cloths.</td>
+          </tr>
+          <tr>
+            <td><strong>Capsule Leakage &amp; Thermal Shock</strong><br>Glass jar thermal shock risk if filled with extreme temperatures (&gt; $90^\circ\text{C}$).</td>
+            <td><span class="risk-badge risk-low">LOW</span></td>
+            <td>Never pour boiling water directly into glass jars. Allow water to settle to $80^\circ\text{C}$, seal lid and probe opening using approved lab method, then leak-test before immersion.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Summer Protocol Box -->
+      <div class="protocol-box">
+        <div class="protocol-box-title">
+          <i data-lucide="sun" style="width: 16px; height: 16px;"></i>
+          SUMMER &amp; HIGH-AMBIENT TEMPERATURE PROTOCOL ($\sim 30^\circ\text{C}$)
+        </div>
+        <ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; line-height: 1.5;">
+          <li><strong>Reduce Target Water Temp:</strong> Safety scale water down to <strong>$55^\circ\text{C}\text{--}60^\circ\text{C}$</strong> to neutralize scalding risks on hot days. The software simulator supports any initial value.</li>
+          <li><strong>Ice Melt Compensation:</strong> Instruct students to measure actual bath temperature and input it as $T_{\text{env}}$ in Mission Control if ice melts above $0.0^\circ\text{C}$.</li>
+          <li><strong>Ice-Free Testing Option:</strong> Drop capsules into room-temperature tap water ($\sim 25^\circ\text{C}\text{--}30^\circ\text{C}$) and configure $T_{\text{env}}$ accordingly in the software.</li>
+        </ul>
+      </div>
+
+      <h3 class="page-break-before-print">3.3 COMMERCIAL OFF-THE-SHELF (COTS) COMPONENTS &amp; COST ESTIMATE</h3>
+      <p>The test rig uses readily available commercial off-the-shelf components to limit cost and simplify replacement:</p>
+      
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>COMPONENT / MATERIAL</th>
+            <th>DESCRIPTION &amp; SPECIFICATION</th>
+            <th>ESTIMATED BUDGET</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Glass Test Capsules</strong></td>
+            <td>4x cylindrical glass jars ($100\text{ mL}$ internal water volume)</td>
+            <td>Confirm supplier quote</td>
+          </tr>
+          <tr>
+            <td><strong>Digital Probes</strong></td>
+            <td>4-pack waterproof digital probe thermometers ($\pm 0.5^\circ\text{C}$ accuracy)</td>
+            <td>~16 €</td>
+          </tr>
+          <tr>
+            <td><strong>Suit Insulation Pack</strong></td>
+            <td>Cotton wool, bubble wrap, reflective Mylar emergency foil sheets</td>
+            <td>~8 €</td>
+          </tr>
+          <tr>
+            <td><strong>Cold Testing Tub</strong></td>
+            <td>Plastic ice-water immersion basin</td>
+            <td>~5 €</td>
+          </tr>
+          <tr>
+            <td colspan="2"><strong>ESTIMATED TOTAL MATERIALS BUDGET (excl. delivery &amp; consumables)</strong></td>
+            <td><strong>~29 €</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size: 0.88rem; color: var(--text-subtle); margin-top: 8px;">
+        <strong>Measurement Method &amp; Repeatability:</strong> Record thermometer readings manually at 60-second intervals. A consistent probe depth hanging in liquid center and a verified lid seal ensure high repeatability and minimize Mean Absolute Error (MAE) against theoretical predictions.
+      </p>
     </section>
 
     <!-- SECTION 4 -->
@@ -1081,7 +1242,7 @@
 
     <!-- SECTION 6: ASSESSMENT RUBRIC -->
     <section class="doc-section" id="section-6">
-      <h2><i data-lucide="clipboard-check"></i> 6. GRADING RUBRIC &amp; CHECKLIST</h2>
+      <h2><i data-lucide="clipboard-check"></i> 6. GRADING RUBRIC</h2>
       
       <table class="styled-table">
         <thead>
