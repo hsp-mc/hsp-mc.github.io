@@ -1421,6 +1421,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Restore pre-flight quiz certification status on load
   function restoreQuizStatus() {
+    // A certification result may persist between visits, but the quiz must
+    // always open unanswered so students make a fresh attempt themselves.
+    document.querySelectorAll('input[name^="preflight-q"]').forEach((input) => {
+      input.checked = false;
+    });
+
     const cachedQuiz = localStorage.getItem('sphere_quiz_certified');
     if (cachedQuiz === 'true' && elements.quizStatusBadge) {
       elements.quizStatusBadge.textContent = "STATUS: CONCEPT CHECK PASSED";
@@ -1428,14 +1434,6 @@ document.addEventListener('DOMContentLoaded', () => {
       elements.quizStatusBadge.style.borderColor = "var(--green)";
       elements.quizStatusBadge.style.color = "var(--green)";
       elements.quizStatusBadge.classList.add('glow-green');
-      
-      // Auto check correct answers for educational reinforcement
-      const q1El = document.querySelector('input[name="preflight-q1"][value="radiation"]');
-      const q2El = document.querySelector('input[name="preflight-q2"][value="convection"]');
-      const q3El = document.querySelector('input[name="preflight-q3"][value="convection"]');
-      if (q1El) q1El.checked = true;
-      if (q2El) q2El.checked = true;
-      if (q3El) q3El.checked = true;
     }
   }
 
