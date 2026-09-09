@@ -383,19 +383,28 @@
 
     .insulation-card .k-tag {
       font-family: var(--font-mono);
-      font-size: 0.78rem;
+      font-size: 0.68rem;
       background: var(--primary-bg);
       color: var(--primary-dark);
-      padding: 3px 8px;
+      padding: 2px 6px;
       border-radius: 4px;
       border: 1px solid var(--primary-border);
-      font-weight: bold;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .insulation-card .k-tag .katex {
+      font-size: 0.88em;
     }
 
     .insulation-card p {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
       margin: 0;
+    }
+
+    .insulation-card p .katex {
+      font-size: 0.9em;
     }
 
     /* Styled Tables */
@@ -894,8 +903,8 @@
       }
 
       .doc-section {
-        break-inside: avoid-page;
-        page-break-inside: avoid;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
         margin-bottom: 24pt !important;
         padding-top: 0;
       }
@@ -904,14 +913,16 @@
         display: grid !important;
         grid-template-columns: 1fr 1fr !important;
         gap: 10pt !important;
-        break-inside: avoid;
-        page-break-inside: avoid;
+        break-inside: auto !important;
+        page-break-inside: auto !important;
       }
 
       .graph-card {
         border: 1pt solid #cbd5e1 !important;
         box-shadow: none !important;
         padding: 6pt !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
       }
 
       h1,
@@ -963,10 +974,27 @@
         margin: 14pt 0 !important;
       }
 
-      .formula-card,
-      .insulation-grid {
+      .formula-card {
         break-inside: avoid;
         page-break-inside: avoid;
+      }
+
+      .insulation-grid {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10pt !important;
+      }
+
+      .insulation-card {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      div[style*="height: 480px"] {
+        height: 260pt !important;
+        max-height: 260pt !important;
       }
 
       .worksheet-card {
@@ -1553,7 +1581,7 @@
               <li><strong>Layer 2 (Middle Bubble Wrap):</strong> Apply sealed bubble wrap to eliminate convective fluid circulation.</li>
               <li><strong>Layer 3 (Outer Mylar Shield):</strong> Enclose with shiny Mylar foil to reflect radiative infrared heat waves back inside.</li>
             </ol>
-            <div style="background: var(--primary-bg); border: 1px solid var(--primary-border); padding: 8px 12px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--primary-dark);">
+            <div style="background: var(--primary-bg); border: 1px solid var(--primary-border); padding: 5px 10px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; color: var(--primary-dark);">
               Resulting fitted decay constant: $k \approx 0.015\text{ min}^{-1}$ (10x slower cooling than bare jar!)
             </div>
           </div>
