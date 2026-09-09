@@ -627,20 +627,21 @@
 
     .workflow-img-wrap {
       width: 100%;
-      height: 160px;
+      height: 190px;
       border-radius: 8px;
       overflow: hidden;
       border: 1.5px solid var(--border-color);
-      background: #f8fafc;
+      background: #ffffff;
+      padding: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .workflow-step-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
       display: block;
     }
 
@@ -674,18 +675,22 @@
 
     .config-photo-box {
       width: 100%;
-      height: 140px;
+      height: 180px;
       border-radius: 8px;
       overflow: hidden;
       margin-bottom: 12px;
       border: 1.5px solid var(--border-color);
-      background: #f8fafc;
+      background: #ffffff;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .config-photo-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
     }
 
     .hardware-photo-grid {
@@ -1494,22 +1499,28 @@
       </div>
 
       <!-- MLI PARTS & COMPOSITE ASSEMBLY BREAKDOWN -->
-      <div style="background: #f8fafc; border: 1.5px solid var(--border-color); border-radius: 12px; padding: 18px 22px; margin: 20px 0 25px 0;">
-        <div style="font-family: var(--font-hud); font-size: 0.95rem; font-weight: 800; color: var(--primary-dark); text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-          <i data-lucide="layers" style="width: 18px; height: 18px; color: var(--primary-blue);"></i>
-          Multilayer Insulation (MLI) Parts &amp; Layer Sequence
+      <div style="background: #ffffff; border: 2px solid var(--primary-blue); border-radius: 12px; padding: 22px; margin: 25px 0 30px 0; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.08);">
+        <div style="font-family: var(--font-hud); font-size: 0.98rem; font-weight: 800; color: var(--primary-dark); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="layers" style="width: 20px; height: 20px; color: var(--primary-blue);"></i>
+          Multilayer Insulation (MLI) Parts &amp; Layer Sequence Diagram
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: center;">
-          <div class="config-photo-box" style="height: 160px; margin: 0;">
-            <img src="images/full-mli-parts.png" alt="MLI Layer Breakdown Parts">
+        <div style="display: grid; grid-template-columns: 240px 1fr; gap: 20px; align-items: center;">
+          <div style="width: 100%; height: 230px; border-radius: 10px; overflow: hidden; border: 1.5px solid var(--primary-border); background: #ffffff; padding: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.06);">
+            <img src="images/full-mli-parts.png" alt="MLI Layer Breakdown Parts" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;">
           </div>
           <div>
-            <p style="font-size: 0.88rem; color: var(--text-body); margin: 0 0 8px 0; line-height: 1.5;">
-              <strong>Step-by-step layer application:</strong> As shown in the parts diagram, first wrap the inner glass jar with fibrous cotton to inhibit conductive contact. Next, apply sealed bubble wrap to eliminate convective airflow. Finally, wrap with outer Mylar foil facing outward to bounce radiative heat back into the capsule.
+            <h4 style="font-family: var(--font-hud); font-size: 0.92rem; font-weight: 800; color: var(--text-heading); margin: 0 0 8px 0; text-transform: uppercase;">Step-by-Step Layer Application Sequence</h4>
+            <p style="font-size: 0.88rem; color: var(--text-body); margin: 0 0 10px 0; line-height: 1.55;">
+              As clearly illustrated in the <strong>MLI Parts Diagram</strong> (<code>images/full-mli-parts.png</code>) on the left, assemble the multi-barrier thermal protection system layer by layer:
             </p>
-            <span style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--primary-dark);">
+            <ol style="font-size: 0.86rem; margin: 0 0 12px 0; padding-left: 20px; line-height: 1.5;">
+              <li><strong>Layer 1 (Inner Cotton Spacer):</strong> Wrap the glass core jar first to block direct conductive heat pathways.</li>
+              <li><strong>Layer 2 (Middle Bubble Wrap):</strong> Apply sealed bubble wrap to eliminate convective fluid circulation.</li>
+              <li><strong>Layer 3 (Outer Mylar Shield):</strong> Enclose with shiny Mylar foil to reflect radiative infrared heat waves back inside.</li>
+            </ol>
+            <div style="background: var(--primary-bg); border: 1px solid var(--primary-border); padding: 8px 12px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--primary-dark);">
               Resulting fitted decay constant: $k \approx 0.015\text{ min}^{-1}$ (10x slower cooling than bare jar!)
-            </span>
+            </div>
           </div>
         </div>
       </div>
