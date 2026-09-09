@@ -389,12 +389,7 @@
       padding: 2px 6px;
       border-radius: 4px;
       border: 1px solid var(--primary-border);
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .insulation-card .k-tag .katex {
-      font-size: 0.88em;
+      font-weight: bold;
     }
 
     .insulation-card p {
@@ -844,7 +839,7 @@
     @media print {
       @page {
         size: A4 portrait;
-        margin: 14mm 15mm 14mm 15mm;
+        margin: 12mm 14mm 12mm 14mm;
       }
 
       body {
@@ -852,8 +847,8 @@
         color: #0f172a !important;
         padding: 0 !important;
         margin: 0 !important;
-        font-size: 10pt;
-        line-height: 1.55;
+        font-size: 9.8pt;
+        line-height: 1.5;
         font-family: var(--font-sans);
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
@@ -864,6 +859,48 @@
       .flashcard-grid,
       .hero-banner {
         display: none !important;
+      }
+
+      .top-workflow-box {
+        break-after: page !important;
+        page-break-after: always !important;
+        margin-bottom: 0 !important;
+        padding: 12pt 14pt !important;
+      }
+
+      .top-workflow-box svg {
+        min-width: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      .top-workflow-box div[style*="grid-template-columns"] {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 6pt !important;
+      }
+
+      .top-workflow-box div[style*="grid-template-columns"] > div {
+        padding: 6pt 8pt !important;
+      }
+
+      .top-workflow-box div[style*="grid-template-columns"] > div p {
+        font-size: 7.2pt !important;
+        line-height: 1.3 !important;
+      }
+
+      #section-1,
+      #section-2,
+      .equipment-showcase-box,
+      .setup-photos-box,
+      #section-3,
+      .mli-breakdown-box,
+      #section-4,
+      .individual-curves-box,
+      #section-5 {
+        break-before: page !important;
+        page-break-before: always !important;
       }
 
       .workflow-step-card {
@@ -923,6 +960,10 @@
         padding: 6pt !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
+      }
+
+      .graph-card div[style*="font-weight:700"] {
+        font-size: 0.78rem !important;
       }
 
       h1,
@@ -1065,13 +1106,16 @@
         <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> MISSION CONTROL CONSOLE
       </a>
       <div class="nav-actions">
-        <a href="student_task_sheet.html" class="nav-btn-pdf" style="border-color: #6366f1; color: #4f46e5; background: rgba(99, 102, 241, 0.08);">
+        <a href="student_task_sheet.html" class="nav-btn-pdf"
+          style="border-color: #6366f1; color: #4f46e5; background: rgba(99, 102, 241, 0.08);">
           <i data-lucide="file-spreadsheet" style="width: 14px; height: 14px;"></i> TASK SHEET
         </a>
-        <a href="flashcards.html" class="nav-btn-pdf" style="border-color: #10b981; color: #059669; background: rgba(16, 185, 129, 0.08);">
+        <a href="flashcards.html" class="nav-btn-pdf"
+          style="border-color: #10b981; color: #059669; background: rgba(16, 185, 129, 0.08);">
           <i data-lucide="layers" style="width: 14px; height: 14px;"></i> FLASH CARDS
         </a>
-        <a href="SPHERE_Mission_Control_Student_Manual.pdf" download="SPHERE_Mission_Control_Student_Manual.pdf" class="nav-btn-pdf">
+        <a href="SPHERE_Mission_Control_Student_Manual.pdf" download="SPHERE_Mission_Control_Student_Manual.pdf"
+          class="nav-btn-pdf">
           <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> DOWNLOAD PDF
         </a>
       </div>
@@ -1105,129 +1149,172 @@
     </div>
 
     <!-- WORKFLOW & FLOWCHART SECTION -->
-    <div style="background: #ffffff; border: 2px solid var(--primary-dark); border-radius: 14px; padding: 24px 28px; margin: 30px 0 35px 0; box-shadow: 0 6px 20px rgba(2, 132, 199, 0.08);">
-      <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
+    <div class="top-workflow-box"
+      style="background: #ffffff; border: 2px solid var(--primary-dark); border-radius: 14px; padding: 24px 28px; margin: 30px 0 35px 0; box-shadow: 0 6px 20px rgba(2, 132, 199, 0.08);">
+      <div
+        style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
         <div style="display: flex; align-items: center; gap: 10px;">
           <i data-lucide="workflow" style="width: 24px; height: 24px; color: var(--primary-blue);"></i>
-          <h3 style="margin: 0; font-family: var(--font-hud); font-size: 1.15rem; font-weight: 800; color: var(--text-heading); letter-spacing: 0.02em; text-transform: uppercase;">
+          <h3
+            style="margin: 0; font-family: var(--font-hud); font-size: 1.15rem; font-weight: 800; color: var(--text-heading); letter-spacing: 0.02em; text-transform: uppercase;">
             WORKFLOW
           </h3>
         </div>
-        <span style="background: #0284c7; color: #ffffff; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase;">
+        <span
+          style="background: #0284c7; color: #ffffff; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase;">
           RECOMMENDED SEQUENCE
         </span>
       </div>
 
       <p style="font-size: 0.95rem; color: var(--text-body); margin-bottom: 18px; line-height: 1.55;">
-        To achieve maximum learning outcome and experimental precision, follow the <strong>5-Stage Master Execution Flowchart</strong> below. Complete all activities in sequence: review theory first, assemble hardware, collect lab data, complete your Task Sheet analysis, and test knowledge with Flash Cards.
+        To achieve maximum learning outcome and experimental precision, follow the <strong>5-Stage Master Execution
+          Flowchart</strong> below. Complete all activities in sequence: review theory first, assemble hardware, collect
+        lab data, complete your Task Sheet analysis, and test knowledge with Flash Cards.
       </p>
 
       <!-- VISUAL 5-STAGE WORKFLOW FLOWCHART SVG -->
       <div style="text-align: center; margin: 15px 0 22px 0; overflow-x: auto;">
-        <svg viewBox="0 0 760 115" style="background: #f8fafc; border: 1.5px solid var(--border-color); border-radius: 12px; min-width: 700px; width: 100%; height: auto; padding: 5px;">
+        <svg viewBox="0 0 710 105"
+          style="background: #f8fafc; border: 1.5px solid var(--border-color); border-radius: 12px; width: 100%; height: auto; padding: 5px;">
           <defs>
-            <marker id="flow-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <marker id="flow-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6"
+              orient="auto-start-reverse">
               <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7" />
             </marker>
           </defs>
 
           <!-- Stage 1 -->
-          <rect x="12" y="15" width="128" height="75" rx="8" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.8" />
-          <text x="76" y="38" font-family="sans-serif" font-size="10" font-weight="800" text-anchor="middle" fill="#0369a1">1. FOLLOW MANUAL</text>
-          <text x="76" y="54" font-family="sans-serif" font-size="8.2" text-anchor="middle" fill="#334155">Read Physics Theory</text>
-          <text x="76" y="68" font-family="sans-serif" font-size="8" font-weight="600" text-anchor="middle" fill="#0284c7">&amp; Safety SOP</text>
+          <rect x="8" y="15" width="122" height="75" rx="8" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.8" />
+          <text x="69" y="38" font-family="sans-serif" font-size="10" font-weight="800" text-anchor="middle"
+            fill="#0369a1">1. FOLLOW MANUAL</text>
+          <text x="69" y="54" font-family="sans-serif" font-size="8.2" text-anchor="middle" fill="#334155">Read Physics
+            Theory</text>
+          <text x="69" y="68" font-family="sans-serif" font-size="8" font-weight="600" text-anchor="middle"
+            fill="#0284c7">&amp; Safety SOP</text>
 
-          <path d="M 142 52 L 158 52" stroke="#0284c7" stroke-width="2" marker-end="url(#flow-arrow)" />
+          <path d="M 132 52 L 144 52" stroke="#0284c7" stroke-width="2" marker-end="url(#flow-arrow)" />
 
           <!-- Stage 2 -->
-          <rect x="160" y="15" width="128" height="75" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.8" />
-          <text x="224" y="38" font-family="sans-serif" font-size="10" font-weight="800" text-anchor="middle" fill="#92400e">2. ASSEMBLE PROJECT</text>
-          <text x="224" y="54" font-family="sans-serif" font-size="8.2" text-anchor="middle" fill="#334155">Build Jar Core &amp;</text>
-          <text x="224" y="68" font-family="sans-serif" font-size="8" font-weight="600" text-anchor="middle" fill="#d97706">Insulation Layer</text>
+          <rect x="146" y="15" width="122" height="75" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.8" />
+          <text x="207" y="38" font-family="sans-serif" font-size="10" font-weight="800" text-anchor="middle"
+            fill="#92400e">2. ASSEMBLE PROJECT</text>
+          <text x="207" y="54" font-family="sans-serif" font-size="8.2" text-anchor="middle" fill="#334155">Build Jar
+            Core &amp;</text>
+          <text x="207" y="68" font-family="sans-serif" font-size="8" font-weight="600" text-anchor="middle"
+            fill="#d97706">Insulation Layer</text>
 
-          <path d="M 290 52 L 306 52" stroke="#0284c7" stroke-width="2" marker-end="url(#flow-arrow)" />
+          <path d="M 270 52 L 282 52" stroke="#0284c7" stroke-width="2" marker-end="url(#flow-arrow)" />
 
           <!-- Stage 3 -->
-          <rect x="308" y="15" width="128" height="75" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8" />
-          <text x="372" y="38" font-family="sans-serif" font-size="10" font-weight="800" text-anchor="middle" fill="#0369a1">3. RECORD LAB DATA</text>
-          <text x="372" y="54" font-family="sans-serif" font-size="8.2" text-anchor="middle" fill="#334155">Run Simulator &amp;</text>
-          <text x="372" y="68" font-family="sans-serif" font-size="8" font-weight="600" text-anchor="middle" fill="#0284c7">Log 15-Min Temps</text>
+          <rect x="284" y="15" width="122" height="75" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8" />
+          <text x="345" y="38" font-family="sans-serif" font-size="10" font-weight="800" text-anchor="middle"
+            fill="#0369a1">3. RECORD LAB DATA</text>
+          <text x="345" y="54" font-family="sans-serif" font-size="8.2" text-anchor="middle" fill="#334155">Run
+            Simulator &amp;</text>
+          <text x="345" y="68" font-family="sans-serif" font-size="8" font-weight="600" text-anchor="middle"
+            fill="#0284c7">Log 15-Min Temps</text>
 
-          <path d="M 438 52 L 454 52" stroke="#0284c7" stroke-width="2" marker-end="url(#flow-arrow)" />
+          <path d="M 408 52 L 420 52" stroke="#0284c7" stroke-width="2" marker-end="url(#flow-arrow)" />
 
           <!-- Stage 4 -->
-          <rect x="456" y="15" width="132" height="75" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.8" />
-          <text x="522" y="38" font-family="sans-serif" font-size="10" font-weight="800" text-anchor="middle" fill="#3730a3">4. TASK SHEET</text>
-          <text x="522" y="54" font-family="sans-serif" font-size="8.2" text-anchor="middle" fill="#334155">Plot Data &amp; Compute</text>
-          <text x="522" y="68" font-family="sans-serif" font-size="8" font-weight="600" text-anchor="middle" fill="#4f46e5">Residuals &amp; MAE</text>
+          <rect x="422" y="15" width="126" height="75" rx="8" fill="#eef2ff" stroke="#6366f1" stroke-width="1.8" />
+          <text x="485" y="38" font-family="sans-serif" font-size="10" font-weight="800" text-anchor="middle"
+            fill="#3730a3">4. TASK SHEET</text>
+          <text x="485" y="54" font-family="sans-serif" font-size="8.2" text-anchor="middle" fill="#334155">Plot Data
+            &amp; Compute</text>
+          <text x="485" y="68" font-family="sans-serif" font-size="8" font-weight="600" text-anchor="middle"
+            fill="#4f46e5">Residuals &amp; MAE</text>
 
-          <path d="M 590 52 L 606 52" stroke="#0284c7" stroke-width="2" marker-end="url(#flow-arrow)" />
+          <path d="M 550 52 L 562 52" stroke="#0284c7" stroke-width="2" marker-end="url(#flow-arrow)" />
 
           <!-- Stage 5 -->
-          <rect x="608" y="15" width="138" height="75" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.8" />
-          <text x="677" y="38" font-family="sans-serif" font-size="10" font-weight="800" text-anchor="middle" fill="#065f46">5. FLASH CARDS</text>
-          <text x="677" y="54" font-family="sans-serif" font-size="8.2" text-anchor="middle" fill="#334155">Study Concepts &amp;</text>
-          <text x="677" y="68" font-family="sans-serif" font-size="8" font-weight="600" text-anchor="middle" fill="#059669">Master Thermal Physics</text>
+          <rect x="564" y="15" width="134" height="75" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.8" />
+          <text x="631" y="38" font-family="sans-serif" font-size="10" font-weight="800" text-anchor="middle"
+            fill="#065f46">5. FLASH CARDS</text>
+          <text x="631" y="54" font-family="sans-serif" font-size="8.2" text-anchor="middle" fill="#334155">Study
+            Concepts &amp;</text>
+          <text x="631" y="68" font-family="sans-serif" font-size="8" font-weight="600" text-anchor="middle"
+            fill="#059669">Master Thermal Physics</text>
         </svg>
-        <div style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-subtle); margin-top: 8px;">
+        <div
+          style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-subtle); margin-top: 8px;">
           FIGURE 1: END-TO-END STUDENT LABORATORY &amp; TASK COMPLETION FLOWCHART
         </div>
       </div>
 
       <!-- DETAILED 5-STEP GUIDELINE CARDS -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 20px;">
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 20px;">
         <!-- Step 1 Card -->
         <div style="background: #f0f9ff; border: 1.5px solid #7dd3fc; border-radius: 10px; padding: 14px 16px;">
-          <div style="font-family: var(--font-hud); font-size: 0.8rem; font-weight: 800; color: #0369a1; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
-            <span style="background: #0284c7; color: #ffffff; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800;">1</span>
+          <div
+            style="font-family: var(--font-hud); font-size: 0.8rem; font-weight: 800; color: #0369a1; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+            <span
+              style="background: #0284c7; color: #ffffff; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800;">1</span>
             Follow Manual First
           </div>
           <p style="font-size: 0.84rem; margin: 0; color: #334155; line-height: 1.45;">
-            Read Sections 1–4 of this manual. Review Newton's Law of Cooling, heat transfer mechanisms (conduction, convection, radiation), and experimental safety SOP before handling hot water.
+            Read Sections 1–4 of this manual. Review Newton's Law of Cooling, heat transfer mechanisms (conduction,
+            convection, radiation), and experimental safety SOP before handling hot water.
           </p>
         </div>
 
         <!-- Step 2 Card -->
         <div style="background: #fffbeb; border: 1.5px solid #fcd34d; border-radius: 10px; padding: 14px 16px;">
-          <div style="font-family: var(--font-hud); font-size: 0.8rem; font-weight: 800; color: #92400e; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
-            <span style="background: #d97706; color: #ffffff; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800;">2</span>
+          <div
+            style="font-family: var(--font-hud); font-size: 0.8rem; font-weight: 800; color: #92400e; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+            <span
+              style="background: #d97706; color: #ffffff; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800;">2</span>
             Assemble Project
           </div>
           <p style="font-size: 0.84rem; margin: 0; color: #334155; line-height: 1.45;">
-            Assemble the $100\text{ mL}$ core water container, seal the temperature probe, and apply your team's assigned insulation configuration (Bare Control, Cotton Fiber, Bubble Wrap, or Reflective Film).
+            Assemble the $100\text{ mL}$ core water container, seal the temperature probe, and apply your team's
+            assigned insulation configuration (Bare Control, Cotton Fiber, Bubble Wrap, or Reflective Film).
           </p>
         </div>
 
         <!-- Step 3 Card -->
         <div style="background: #e0f2fe; border: 1.5px solid #7dd3fc; border-radius: 10px; padding: 14px 16px;">
-          <div style="font-family: var(--font-hud); font-size: 0.8rem; font-weight: 800; color: #0369a1; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
-            <span style="background: #0284c7; color: #ffffff; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800;">3</span>
+          <div
+            style="font-family: var(--font-hud); font-size: 0.8rem; font-weight: 800; color: #0369a1; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+            <span
+              style="background: #0284c7; color: #ffffff; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800;">3</span>
             Record Lab Data
           </div>
           <p style="font-size: 0.84rem; margin: 0; color: #334155; line-height: 1.45;">
-            Run theoretical predictions on Mission Control Console (`index.html`). Lower capsule into $0^\circ\text{C}$ ice bath and record temperatures every 60s for 15 mins in Mission Control and your paper log.
+            Run theoretical predictions on Mission Control Console (`index.html`). Lower capsule into $0^\circ\text{C}$
+            ice bath and record temperatures every 60s for 15 mins in Mission Control and your paper log.
           </p>
         </div>
 
         <!-- Step 4 Card -->
         <div style="background: #eef2ff; border: 1.5px solid #a5b4fc; border-radius: 10px; padding: 14px 16px;">
-          <div style="font-family: var(--font-hud); font-size: 0.8rem; font-weight: 800; color: #3730a3; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
-            <span style="background: #6366f1; color: #ffffff; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800;">4</span>
+          <div
+            style="font-family: var(--font-hud); font-size: 0.8rem; font-weight: 800; color: #3730a3; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+            <span
+              style="background: #6366f1; color: #ffffff; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800;">4</span>
             Complete Task Sheet
           </div>
           <p style="font-size: 0.84rem; margin: 0; color: #334155; line-height: 1.45;">
-            Open <a href="student_task_sheet.html" style="color: #4f46e5; font-weight: 700; text-decoration: underline;">Student Task Sheet</a>. Log readings, plot curves, compute temperature residuals ($|\Delta T|$) and MAE score, and answer analytical evaluation questions.
+            Open <a href="student_task_sheet.html"
+              style="color: #4f46e5; font-weight: 700; text-decoration: underline;">Student Task Sheet</a>. Log
+            readings, plot curves, compute temperature residuals ($|\Delta T|$) and MAE score, and answer analytical
+            evaluation questions.
           </p>
         </div>
 
         <!-- Step 5 Card -->
         <div style="background: #ecfdf5; border: 1.5px solid #6ee7b7; border-radius: 10px; padding: 14px 16px;">
-          <div style="font-family: var(--font-hud); font-size: 0.8rem; font-weight: 800; color: #065f46; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
-            <span style="background: #10b981; color: #ffffff; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800;">5</span>
+          <div
+            style="font-family: var(--font-hud); font-size: 0.8rem; font-weight: 800; color: #065f46; text-transform: uppercase; margin-bottom: 6px; display: flex; align-items: center; gap: 8px;">
+            <span
+              style="background: #10b981; color: #ffffff; border-radius: 50%; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800;">5</span>
             Review Flash Cards
           </div>
           <p style="font-size: 0.84rem; margin: 0; color: #334155; line-height: 1.45;">
-            Open <a href="flashcards.html" style="color: #059669; font-weight: 700; text-decoration: underline;">SPHERE Flash Cards</a>. Test your understanding of thermal insulation concepts, Newton's law formulas, residual calculations, and aerospace applications.
+            Open <a href="flashcards.html" style="color: #059669; font-weight: 700; text-decoration: underline;">SPHERE
+              Flash Cards</a>. Test your understanding of thermal insulation concepts, Newton's law formulas, residual
+            calculations, and aerospace applications.
           </p>
         </div>
       </div>
@@ -1347,169 +1434,188 @@
 
       <h3>Hardware Setup &amp; Physical Assembly:</h3>
       <p>
-        Review the actual experimental apparatus photos below. Ensure that your core jar, thermometer probe, lid seal, and insulation barriers match the specification before running tests:
+        Review the actual experimental apparatus photos below. Ensure that your core jar, thermometer probe, lid seal,
+        and insulation barriers match the specification before running tests:
       </p>
 
       <!-- FEATURED LAB EQUIPMENT TOOLKIT SHOWCASE (FULL-SCALE & MAXIMUM VISIBILITY) -->
-      <div style="background: #ffffff; border: 2px solid var(--primary-blue); border-radius: 12px; padding: 24px; margin: 25px 0 30px 0; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.08);">
-        <div style="font-family: var(--font-hud); font-size: 1rem; font-weight: 800; color: var(--primary-dark); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+      <div class="equipment-showcase-box"
+        style="background: #ffffff; border: 2px solid var(--primary-blue); border-radius: 12px; padding: 24px; margin: 25px 0 30px 0; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.08);">
+        <div
+          style="font-family: var(--font-hud); font-size: 1rem; font-weight: 800; color: var(--primary-dark); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
           <i data-lucide="wrench" style="width: 20px; height: 20px; color: var(--primary-blue);"></i>
           Required Experimental Hardware &amp; Equipment Toolkit
         </div>
         <div style="text-align: center; margin-bottom: 20px;">
-          <div style="width: 100%; max-width: 600px; height: 480px; border-radius: 10px; overflow: hidden; border: 1.5px solid var(--primary-border); background: #ffffff; padding: 10px; margin: 0 auto; box-shadow: 0 4px 16px rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: center;">
-            <img src="images/equipments.png" alt="Lab Equipment & Hardware Toolkit" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;">
+          <div
+            style="width: 100%; max-width: 600px; height: 480px; border-radius: 10px; overflow: hidden; border: 1.5px solid var(--primary-border); background: #ffffff; padding: 10px; margin: 0 auto; box-shadow: 0 4px 16px rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: center;">
+            <img src="images/equipments.png" alt="Lab Equipment & Hardware Toolkit"
+              style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;">
           </div>
-          <div style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-heading); margin-top: 10px;">
+          <div
+            style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-heading); margin-top: 10px;">
             PHOTO A: FULL EXPERIMENTAL HARDWARE &amp; TOOLKIT INVENTORY
           </div>
         </div>
         <div>
-          <h4 style="font-family: var(--font-hud); font-size: 0.95rem; font-weight: 800; color: var(--text-heading); margin: 0 0 10px 0; text-transform: uppercase;">Hardware Inventory &amp; Setup Checklist</h4>
+          <h4
+            style="font-family: var(--font-hud); font-size: 0.95rem; font-weight: 800; color: var(--text-heading); margin: 0 0 10px 0; text-transform: uppercase;">
+            Hardware Inventory &amp; Setup Checklist</h4>
           <p style="font-size: 0.9rem; color: var(--text-body); margin: 0 0 12px 0; line-height: 1.6;">
-            As shown in the full-scale toolkit photograph above (<code>images/equipments.png</code>), verify that your lab station is equipped with all essential components before beginning assembly:
+            As shown in the full-scale toolkit photograph above (<code>images/equipments.png</code>), verify that your
+            lab station is equipped with all essential components before beginning assembly:
           </p>
           <ul style="font-size: 0.88rem; margin: 0; padding-left: 20px; line-height: 1.6;">
             <li><strong>Core Vessel:</strong> $100\text{ mL}$ wide-mouth glass jar with prepared probe lid.</li>
-            <li><strong>Digital Temperature Sensor:</strong> Waterproof stainless steel probe with LCD readout ($\pm 0.5^\circ\text{C}$).</li>
-            <li><strong>Thermal Protection Materials:</strong> Cotton fiber spacer, sealed bubble wrap, reflective Mylar foil, and securing tape.</li>
-            <li><strong>Ice-Water Sink Vessel:</strong> Outer bath container for $0.0^\circ\text{C}$ slurry immersion.</li>
+            <li><strong>Digital Temperature Sensor:</strong> Waterproof stainless steel probe with LCD readout ($\pm
+              0.5^\circ\text{C}$).</li>
+            <li><strong>Thermal Protection Materials:</strong> Cotton fiber spacer, sealed bubble wrap, reflective Mylar
+              foil, and securing tape.</li>
+            <li><strong>Ice-Water Sink Vessel:</strong> Outer bath container for $0.0^\circ\text{C}$ slurry immersion.
+            </li>
           </ul>
         </div>
       </div>
 
-      <!-- HARDWARE APPARATUS REAL PHOTOS GRID -->
-      <div class="hardware-photo-grid" style="grid-template-columns: 1fr 1fr;">
-        <div class="hardware-photo-card">
-          <div class="config-photo-box" style="height: 220px; margin: 0;">
-            <img src="images/setup.jpg" alt="Complete Apparatus & Sensor Setup">
+      <!-- HARDWARE APPARATUS REAL PHOTOS GRID & ALIGNMENT DIAGRAM -->
+      <div class="setup-photos-box">
+        <div class="hardware-photo-grid" style="grid-template-columns: 1fr 1fr;">
+          <div class="hardware-photo-card">
+            <div class="config-photo-box" style="height: 220px; margin: 0;">
+              <img src="images/setup.jpg" alt="Complete Apparatus & Sensor Setup">
+            </div>
+            <div class="hardware-photo-caption">
+              PHOTO A: COMPLETE CAPSULE &amp; SENSOR SETUP
+            </div>
           </div>
-          <div class="hardware-photo-caption">
-            PHOTO A: COMPLETE CAPSULE &amp; SENSOR SETUP
+          <div class="hardware-photo-card">
+            <div class="config-photo-box" style="height: 220px; margin: 0;">
+              <img src="images/capsuleinside.jpg" alt="Capsule Core & Probe Centering">
+            </div>
+            <div class="hardware-photo-caption">
+              PHOTO B: CORE LIQUID &amp; CENTERED PROBE SUSPENSION
+            </div>
           </div>
         </div>
-        <div class="hardware-photo-card">
-          <div class="config-photo-box" style="height: 220px; margin: 0;">
-            <img src="images/capsuleinside.jpg" alt="Capsule Core & Probe Centering">
+
+        <ol style="margin-top: 15px;">
+          <li><strong>Feed the Sensor:</strong> Slide the metal temperature probe through the pre-drilled opening in the
+            jar lid (see Photo A).</li>
+          <li><strong>Set the Depth &amp; Position:</strong> Position and secure the lead wire so the sensor hangs
+            suspended in the vertical and horizontal center of the $100\text{ mL}$ liquid volume (see Photo B).</li>
+          <li><strong>Seal and Leak Test:</strong> Seal around the probe insertion hole using the approved lab sealant
+            method. Screw lid tightly and perform a cold leak-check before hot liquid filling.</li>
+          <li><strong>Verify Clearance:</strong> Ensure the metal probe tip never touches the glass vessel walls or bottom
+            floor to prevent conduction artifacts through the glass shell.</li>
+        </ol>
+
+        <!-- FIGURE 1 SVG SCHEMATIC (Pixel-Perfect Alignment & Correct Hardware Naming) -->
+        <div style="text-align: center; margin: 30px 0;">
+          <svg viewBox="0 0 880 370"
+            style="background: #ffffff; border: 2px solid var(--dark-navy); border-radius: 12px; width: 100%; height: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: block; margin: 0 auto;">
+            <!-- Outer ice-water bath -->
+            <rect x="20" y="15" width="840" height="340" rx="10" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.8" />
+            <text x="35" y="38" fill="#0369a1" font-family="sans-serif" font-size="11" font-weight="bold"
+              letter-spacing="0.5">EXTERNAL ENVIRONMENT: 0.0°C ICE BATH SINK (T_env = 0.0°C)</text>
+
+            <!-- Outer Thermal Protection System (TPS Wrap) -->
+            <rect x="355" y="98" width="170" height="200" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"
+              stroke-dasharray="5,3" />
+
+            <!-- Glass Jar Chamber Body -->
+            <rect x="370" y="105" width="140" height="190" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2.5" />
+
+            <!-- Hot Water Core Fill (100 mL at 80.0°C) -->
+            <rect x="378" y="135" width="124" height="152" rx="5" fill="rgba(239, 68, 68, 0.12)" stroke="#fca5a5"
+              stroke-width="1.2" />
+            <line x1="378" y1="135" x2="502" y2="135" stroke="#ef4444" stroke-width="1.5" />
+            <text x="440" y="162" fill="#dc2626" font-family="sans-serif" font-size="10.5" font-weight="bold"
+              text-anchor="middle">HOT WATER CORE</text>
+            <text x="440" y="176" fill="#ef4444" font-family="sans-serif" font-size="9" font-weight="bold"
+              text-anchor="middle">100 mL (T_0 = 80.0°C)</text>
+
+            <!-- Airtight Threaded Jar Lid -->
+            <rect x="364" y="85" width="152" height="22" rx="4" fill="#0f172a" stroke="#334155" stroke-width="2" />
+
+            <!-- Sensor Lead Wire -->
+            <path d="M 440 15 L 440 52" stroke="#d97706" stroke-width="3" fill="none" />
+            <path d="M 440 85 L 440 220" stroke="#d97706" stroke-width="3" fill="none" />
+
+            <!-- Stainless thermometer probe tip -->
+            <rect x="432" y="220" width="16" height="32" rx="3" fill="#475569" stroke="#0f172a" stroke-width="2" />
+            <circle cx="440" cy="236" r="3" fill="#10b981" />
+
+            <!-- ================= LEFT CALLOUTS (text-anchor="end") ================= -->
+            <!-- 1. Probe lead and lid opening -->
+            <text x="250" y="64" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
+              text-anchor="end">Thermometer Probe Lead</text>
+            <text x="250" y="78" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Passes through
+              prepared
+              lid opening</text>
+            <line x1="260" y1="68" x2="440" y2="68" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3" />
+            <circle cx="440" cy="68" r="3.5" fill="#0284c7" />
+
+            <!-- 2. Threaded Jar Lid -->
+            <text x="250" y="124" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
+              text-anchor="end">Threaded Capsule Lid</text>
+            <text x="250" y="138" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Airtight
+              mechanical closure</text>
+            <line x1="260" y1="96" x2="364" y2="96" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="3,3" />
+            <circle cx="364" cy="96" r="3.5" fill="#0f172a" />
+
+            <!-- 3. Thermal Insulation Wrap (TPS) -->
+            <text x="250" y="194" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
+              text-anchor="end">Thermal Insulation Wrap (TPS)</text>
+            <text x="250" y="208" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Cotton + Bubble
+              + Mylar barrier</text>
+            <line x1="260" y1="198" x2="355" y2="198" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,3" />
+            <circle cx="355" cy="198" r="3.5" fill="#f59e0b" />
+
+            <!-- 4. Hot Core Liquid -->
+            <text x="250" y="264" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
+              text-anchor="end">Hot Water Core (100 mL)</text>
+            <text x="250" y="278" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Initial thermal
+              mass at 80.0°C</text>
+            <line x1="260" y1="268" x2="378" y2="268" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3" />
+            <circle cx="378" cy="268" r="3.5" fill="#ef4444" />
+
+            <!-- ================= RIGHT CALLOUTS (text-anchor="start") ================= -->
+            <!-- 1. Digital Thermometer -->
+            <text x="630" y="44" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
+              text-anchor="start">Digital Thermometer</text>
+            <text x="630" y="58" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">Direct
+              temperature readout</text>
+            <line x1="440" y1="36" x2="620" y2="36" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3" />
+            <circle cx="440" cy="36" r="3.5" fill="#d97706" />
+
+            <!-- 2. Glass Capsule Outer Shell -->
+            <text x="630" y="124" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
+              text-anchor="start">Glass Capsule Shell</text>
+            <text x="630" y="138" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">100 mL
+              transparent test chamber</text>
+            <line x1="510" y1="128" x2="620" y2="128" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3" />
+            <circle cx="510" cy="128" r="3.5" fill="#0284c7" />
+
+            <!-- 3. Centered Probe Sensor Tip -->
+            <text x="630" y="234" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
+              text-anchor="start">Centered Thermometer Probe</text>
+            <text x="630" y="248" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">Suspended in
+              liquid (±0.5°C accuracy)</text>
+            <line x1="448" y1="236" x2="620" y2="236" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,3" />
+            <circle cx="448" cy="236" r="3.5" fill="#10b981" />
+
+            <!-- 4. Ice Bath Cold Sink -->
+            <text x="630" y="304" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
+              text-anchor="start">Ice-Water Bath</text>
+            <text x="630" y="318" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">Controlled
+              low-temperature boundary</text>
+            <line x1="530" y1="308" x2="620" y2="308" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3" />
+            <circle cx="530" cy="308" r="3.5" fill="#0284c7" />
+          </svg>
+          <div
+            style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-subtle); margin-top: 8px;">
+            FIGURE 1: EXPERIMENTAL HARDWARE ASSEMBLY &amp; SENSOR ALIGNMENT
           </div>
-          <div class="hardware-photo-caption">
-            PHOTO B: CORE LIQUID &amp; CENTERED PROBE SUSPENSION
-          </div>
-        </div>
-      </div>
-
-      <ol style="margin-top: 15px;">
-        <li><strong>Feed the Sensor:</strong> Slide the metal temperature probe through the pre-drilled opening in the jar lid (see Photo A).</li>
-        <li><strong>Set the Depth &amp; Position:</strong> Position and secure the lead wire so the sensor hangs suspended in the vertical and horizontal center of the $100\text{ mL}$ liquid volume (see Photo B).</li>
-        <li><strong>Seal and Leak Test:</strong> Seal around the probe insertion hole using the approved lab sealant method. Screw lid tightly and perform a cold leak-check before hot liquid filling.</li>
-        <li><strong>Verify Clearance:</strong> Ensure the metal probe tip never touches the glass vessel walls or bottom floor to prevent conduction artifacts through the glass shell.</li>
-      </ol>
-
-      <!-- FIGURE 1 SVG SCHEMATIC (Pixel-Perfect Alignment & Correct Hardware Naming) -->
-      <div style="text-align: center; margin: 30px 0;">
-        <svg viewBox="0 0 880 370"
-          style="background: #ffffff; border: 2px solid var(--dark-navy); border-radius: 12px; width: 100%; height: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: block; margin: 0 auto;">
-          <!-- Outer ice-water bath -->
-          <rect x="20" y="15" width="840" height="340" rx="10" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.8" />
-          <text x="35" y="38" fill="#0369a1" font-family="sans-serif" font-size="11" font-weight="bold"
-            letter-spacing="0.5">EXTERNAL ENVIRONMENT: 0.0°C ICE BATH SINK (T_env = 0.0°C)</text>
-
-          <!-- Outer Thermal Protection System (TPS Wrap) -->
-          <rect x="355" y="98" width="170" height="200" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"
-            stroke-dasharray="5,3" />
-
-          <!-- Glass Jar Chamber Body -->
-          <rect x="370" y="105" width="140" height="190" rx="8" fill="#ffffff" stroke="#0284c7" stroke-width="2.5" />
-
-          <!-- Hot Water Core Fill (100 mL at 80.0°C) -->
-          <rect x="378" y="135" width="124" height="152" rx="5" fill="rgba(239, 68, 68, 0.12)" stroke="#fca5a5"
-            stroke-width="1.2" />
-          <line x1="378" y1="135" x2="502" y2="135" stroke="#ef4444" stroke-width="1.5" />
-          <text x="440" y="162" fill="#dc2626" font-family="sans-serif" font-size="10.5" font-weight="bold"
-            text-anchor="middle">HOT WATER CORE</text>
-          <text x="440" y="176" fill="#ef4444" font-family="sans-serif" font-size="9" font-weight="bold"
-            text-anchor="middle">100 mL (T_0 = 80.0°C)</text>
-
-          <!-- Airtight Threaded Jar Lid -->
-          <rect x="364" y="85" width="152" height="22" rx="4" fill="#0f172a" stroke="#334155" stroke-width="2" />
-
-          <!-- Sensor Lead Wire -->
-          <path d="M 440 15 L 440 52" stroke="#d97706" stroke-width="3" fill="none" />
-          <path d="M 440 85 L 440 220" stroke="#d97706" stroke-width="3" fill="none" />
-
-          <!-- Stainless thermometer probe tip -->
-          <rect x="432" y="220" width="16" height="32" rx="3" fill="#475569" stroke="#0f172a" stroke-width="2" />
-          <circle cx="440" cy="236" r="3" fill="#10b981" />
-
-          <!-- ================= LEFT CALLOUTS (text-anchor="end") ================= -->
-          <!-- 1. Probe lead and lid opening -->
-          <text x="250" y="64" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="end">Thermometer Probe Lead</text>
-          <text x="250" y="78" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Passes through prepared
-            lid opening</text>
-          <line x1="260" y1="68" x2="440" y2="68" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="440" cy="68" r="3.5" fill="#0284c7" />
-
-          <!-- 2. Threaded Jar Lid -->
-          <text x="250" y="124" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="end">Threaded Capsule Lid</text>
-          <text x="250" y="138" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Airtight
-            mechanical closure</text>
-          <line x1="260" y1="96" x2="364" y2="96" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="364" cy="96" r="3.5" fill="#0f172a" />
-
-          <!-- 3. Thermal Insulation Wrap (TPS) -->
-          <text x="250" y="194" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="end">Thermal Insulation Wrap (TPS)</text>
-          <text x="250" y="208" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Cotton + Bubble
-            + Mylar barrier</text>
-          <line x1="260" y1="198" x2="355" y2="198" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="355" cy="198" r="3.5" fill="#f59e0b" />
-
-          <!-- 4. Hot Core Liquid -->
-          <text x="250" y="264" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="end">Hot Water Core (100 mL)</text>
-          <text x="250" y="278" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Initial thermal
-            mass at 80.0°C</text>
-          <line x1="260" y1="268" x2="378" y2="268" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="378" cy="268" r="3.5" fill="#ef4444" />
-
-          <!-- ================= RIGHT CALLOUTS (text-anchor="start") ================= -->
-          <!-- 1. Digital Thermometer -->
-          <text x="630" y="44" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="start">Digital Thermometer</text>
-          <text x="630" y="58" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">Direct
-            temperature readout</text>
-          <line x1="440" y1="36" x2="620" y2="36" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="440" cy="36" r="3.5" fill="#d97706" />
-
-          <!-- 2. Glass Capsule Outer Shell -->
-          <text x="630" y="124" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="start">Glass Capsule Shell</text>
-          <text x="630" y="138" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">100 mL
-            transparent test chamber</text>
-          <line x1="510" y1="128" x2="620" y2="128" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="510" cy="128" r="3.5" fill="#0284c7" />
-
-          <!-- 3. Centered Probe Sensor Tip -->
-          <text x="630" y="234" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="start">Centered Thermometer Probe</text>
-          <text x="630" y="248" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">Suspended in
-            liquid (±0.5°C accuracy)</text>
-          <line x1="448" y1="236" x2="620" y2="236" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="448" cy="236" r="3.5" fill="#10b981" />
-
-          <!-- 4. Ice Bath Cold Sink -->
-          <text x="630" y="304" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
-            text-anchor="start">Ice-Water Bath</text>
-          <text x="630" y="318" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">Controlled
-            low-temperature boundary</text>
-          <line x1="530" y1="308" x2="620" y2="308" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3" />
-          <circle cx="530" cy="308" r="3.5" fill="#0284c7" />
-        </svg>
-        <div
-          style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--text-subtle); margin-top: 8px;">
-          FIGURE 1: EXPERIMENTAL HARDWARE ASSEMBLY &amp; SENSOR ALIGNMENT
         </div>
       </div>
     </section>
@@ -1529,8 +1635,11 @@
             <img src="images/barecapsule.jpeg" alt="Bare Control Glass Capsule Core">
           </div>
           <h4>A. BARE CONTROL <span class="k-tag">$k \approx 0.150\text{ min}^{-1}$</span></h4>
-          <p style="margin-bottom: 8px;">Plain uninsulated glass capsule. High cooling rate due to direct conduction through glass and rapid convective boundary currents.</p>
-          <div style="font-size: 0.8rem; font-weight: 700; color: #dc2626; background: #fef2f2; padding: 4px 8px; border-radius: 4px; border: 1px solid #fca5a5; display: inline-block;">Baseline Reference</div>
+          <p style="margin-bottom: 8px;">Plain uninsulated glass capsule. High cooling rate due to direct conduction
+            through glass and rapid convective boundary currents.</p>
+          <div
+            style="font-size: 0.8rem; font-weight: 700; color: #dc2626; background: #fef2f2; padding: 4px 8px; border-radius: 4px; border: 1px solid #fca5a5; display: inline-block;">
+            Baseline Reference</div>
         </div>
 
         <!-- Configuration B -->
@@ -1539,7 +1648,8 @@
             <img src="images/bubblewrap-only.png" alt="Bubble Wrap Insulation Configuration">
           </div>
           <h4>B. BUBBLE WRAP <span class="k-tag">$k \approx 0.040\text{ min}^{-1}$</span></h4>
-          <p>Two tightly wrapped layers of bubble wrap. Sealed air pockets eliminate natural fluid convection currents and trap air insulation.</p>
+          <p>Two tightly wrapped layers of bubble wrap. Sealed air pockets eliminate natural fluid convection currents
+            and trap air insulation.</p>
         </div>
 
         <!-- Configuration C -->
@@ -1548,7 +1658,8 @@
             <img src="images/Onlymylar.jpg" alt="Mylar Foil Reflective Blanket Insulation">
           </div>
           <h4>C. MYLAR FOIL <span class="k-tag">$k \approx 0.121\text{ min}^{-1}$</span></h4>
-          <p>Single-layer reflective radiant barrier. Low emissivity ($\epsilon \approx 0.03$) reflects infrared thermal radiation back into the capsule core.</p>
+          <p>Single-layer reflective radiant barrier. Low emissivity ($\epsilon \approx 0.03$) reflects infrared thermal
+            radiation back into the capsule core.</p>
         </div>
 
         <!-- Configuration D -->
@@ -1557,37 +1668,50 @@
             <img src="images/full-mli.png" alt="Complete Multilayer Insulation Stack">
           </div>
           <h4>D. MULTILAYER ASSEMBLY <span class="k-tag">$k \approx 0.015\text{ min}^{-1}$</span></h4>
-          <p>Composite thermal shield. Combines inner cotton spacer, mid bubble wrap convection block, and outer Mylar radiant barrier for maximum $R_{\text{th}}$.</p>
+          <p>Composite thermal shield. Combines inner cotton spacer, mid bubble wrap convection block, and outer Mylar
+            radiant barrier for maximum $R_{\text{th}}$.</p>
         </div>
       </div>
 
       <!-- MLI PARTS & COMPOSITE ASSEMBLY BREAKDOWN -->
-      <div style="background: #ffffff; border: 2px solid var(--primary-blue); border-radius: 12px; padding: 22px; margin: 25px 0 30px 0; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.08);">
-        <div style="font-family: var(--font-hud); font-size: 0.98rem; font-weight: 800; color: var(--primary-dark); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+      <div class="mli-breakdown-box"
+        style="background: #ffffff; border: 2px solid var(--primary-blue); border-radius: 12px; padding: 22px; margin: 25px 0 30px 0; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.08);">
+        <div
+          style="font-family: var(--font-hud); font-size: 0.98rem; font-weight: 800; color: var(--primary-dark); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
           <i data-lucide="layers" style="width: 20px; height: 20px; color: var(--primary-blue);"></i>
           Multilayer Insulation (MLI) Parts &amp; Layer Sequence Diagram
         </div>
         <div style="display: grid; grid-template-columns: 240px 1fr; gap: 20px; align-items: center;">
-          <div style="width: 100%; height: 230px; border-radius: 10px; overflow: hidden; border: 1.5px solid var(--primary-border); background: #ffffff; padding: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.06);">
-            <img src="images/full-mli-parts.png" alt="MLI Layer Breakdown Parts" style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;">
+          <div
+            style="width: 100%; height: 230px; border-radius: 10px; overflow: hidden; border: 1.5px solid var(--primary-border); background: #ffffff; padding: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.06);">
+            <img src="images/full-mli-parts.png" alt="MLI Layer Breakdown Parts"
+              style="max-width: 100%; max-height: 100%; object-fit: contain; display: block;">
           </div>
           <div>
-            <h4 style="font-family: var(--font-hud); font-size: 0.92rem; font-weight: 800; color: var(--text-heading); margin: 0 0 8px 0; text-transform: uppercase;">Step-by-Step Layer Application Sequence</h4>
+            <h4
+              style="font-family: var(--font-hud); font-size: 0.92rem; font-weight: 800; color: var(--text-heading); margin: 0 0 8px 0; text-transform: uppercase;">
+              Step-by-Step Layer Application Sequence</h4>
             <p style="font-size: 0.88rem; color: var(--text-body); margin: 0 0 10px 0; line-height: 1.55;">
-              As clearly illustrated in the <strong>MLI Parts Diagram</strong> (<code>images/full-mli-parts.png</code>) on the left, assemble the multi-barrier thermal protection system layer by layer:
+              As clearly illustrated in the <strong>MLI Parts Diagram</strong> (<code>images/full-mli-parts.png</code>)
+              on the left, assemble the multi-barrier thermal protection system layer by layer:
             </p>
             <ol style="font-size: 0.86rem; margin: 0 0 12px 0; padding-left: 20px; line-height: 1.5;">
-              <li><strong>Layer 1 (Inner Cotton Spacer):</strong> Wrap the glass core jar first to block direct conductive heat pathways.</li>
-              <li><strong>Layer 2 (Middle Bubble Wrap):</strong> Apply sealed bubble wrap to eliminate convective fluid circulation.</li>
-              <li><strong>Layer 3 (Outer Mylar Shield):</strong> Enclose with shiny Mylar foil to reflect radiative infrared heat waves back inside.</li>
+              <li><strong>Layer 1 (Inner Cotton Spacer):</strong> Wrap the glass core jar first to block direct
+                conductive heat pathways.</li>
+              <li><strong>Layer 2 (Middle Bubble Wrap):</strong> Apply sealed bubble wrap to eliminate convective fluid
+                circulation.</li>
+              <li><strong>Layer 3 (Outer Mylar Shield):</strong> Enclose with shiny Mylar foil to reflect radiative
+                infrared heat waves back inside.</li>
             </ol>
-            <div style="background: var(--primary-bg); border: 1px solid var(--primary-border); padding: 5px 10px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; color: var(--primary-dark);">
+            <div
+              style="background: var(--primary-bg); border: 1px solid var(--primary-border); padding: 5px 10px; border-radius: 6px; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; color: var(--primary-dark);">
               Resulting fitted decay constant: $k \approx 0.015\text{ min}^{-1}$ (10x slower cooling than bare jar!)
             </div>
           </div>
         </div>
       </div>
-      <p><strong>Optional extension:</strong> Add a fifth cotton-only trial to isolate the contribution of the inner fibrous layer.</p>
+      <p><strong>Optional extension:</strong> Add a fifth cotton-only trial to isolate the contribution of the inner
+        fibrous layer.</p>
 
       <!-- FIGURE 3 SVG: MLI LAYER STACK ANATOMY -->
       <div style="text-align: center; margin: 25px 0;">
@@ -1703,162 +1827,183 @@
       </div>
 
       <!-- 4 SEPARATE REFERENCE-MODEL PREDICTION GRAPHS -->
-      <h3 style="margin-top: 28px; margin-bottom: 12px; font-family: var(--font-hud); font-size: 0.95rem; font-weight: 800; color: var(--primary-dark); text-transform: uppercase;"><i data-lucide="line-chart"></i> INDIVIDUAL PREDICTION CURVES ($T_0=80.0^\circ\text{C}$, $T_{\text{env}}=0.0^\circ\text{C}$)</h3>
-      <div class="graphs-grid">
-        <!-- Graph A -->
-        <div class="graph-card">
-          <div style="font-weight:700; font-size:0.88rem; color:#0369a1; margin-bottom:6px;">
-            A. BARE CONTROL ($k \approx 0.150\text{ min}^{-1}$)
+      <div class="individual-curves-box">
+        <h3
+          style="margin-top: 28px; margin-bottom: 12px; font-family: var(--font-hud); font-size: 0.95rem; font-weight: 800; color: var(--primary-dark); text-transform: uppercase;">
+          <i data-lucide="line-chart"></i> INDIVIDUAL PREDICTION CURVES ($T_0=80.0^\circ\text{C}$,
+          $T_{\text{env}}=0.0^\circ\text{C}$)
+        </h3>
+        <div class="graphs-grid">
+          <!-- Graph A -->
+          <div class="graph-card">
+            <div style="font-weight:700; font-size:0.88rem; color:#0369a1; margin-bottom:6px;">
+              A. BARE CONTROL ($k \approx 0.150\text{ min}^{-1}$)
+            </div>
+            <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Bare Control">
+              <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1" />
+              <g stroke="#cbd5e1" stroke-width="1">
+                <line x1="50" y1="25" x2="350" y2="25" />
+                <line x1="50" y1="60" x2="350" y2="60" />
+                <line x1="50" y1="95" x2="350" y2="95" />
+                <line x1="50" y1="130" x2="350" y2="130" />
+                <line x1="50" y1="165" x2="350" y2="165" />
+                <line x1="50" y1="25" x2="50" y2="165" />
+                <line x1="110" y1="25" x2="110" y2="165" />
+                <line x1="170" y1="25" x2="170" y2="165" />
+                <line x1="230" y1="25" x2="230" y2="165" />
+                <line x1="290" y1="25" x2="290" y2="165" />
+                <line x1="350" y1="25" x2="350" y2="165" />
+              </g>
+              <g font-family="sans-serif" font-size="9" fill="#334155">
+                <text x="42" y="28" text-anchor="end">80</text>
+                <text x="42" y="63" text-anchor="end">60</text>
+                <text x="42" y="98" text-anchor="end">40</text>
+                <text x="42" y="133" text-anchor="end">20</text>
+                <text x="42" y="168" text-anchor="end">0</text>
+                <text x="50" y="178" text-anchor="middle">0</text>
+                <text x="110" y="178" text-anchor="middle">3</text>
+                <text x="170" y="178" text-anchor="middle">6</text>
+                <text x="230" y="178" text-anchor="middle">9</text>
+                <text x="290" y="178" text-anchor="middle">12</text>
+                <text x="350" y="178" text-anchor="middle">15 min</text>
+              </g>
+              <polyline
+                points="50,25 70,44.5 90,61.3 110,75.7 130,88.2 150,98.9 170,108.1 190,116 210,122.8 230,128.7 250,133.8 270,138.1 290,141.9 310,145.1 330,147.9 350,150.2"
+                fill="none" stroke="#0369a1" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" />
+              <circle cx="350" cy="150.2" r="3.5" fill="#0369a1" />
+              <text x="345" y="142" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700"
+                fill="#0369a1">8.4°C at 15m</text>
+            </svg>
           </div>
-          <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Bare Control">
-            <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
-            <g stroke="#cbd5e1" stroke-width="1">
-              <line x1="50" y1="25" x2="350" y2="25"/>
-              <line x1="50" y1="60" x2="350" y2="60"/>
-              <line x1="50" y1="95" x2="350" y2="95"/>
-              <line x1="50" y1="130" x2="350" y2="130"/>
-              <line x1="50" y1="165" x2="350" y2="165"/>
-              <line x1="50" y1="25" x2="50" y2="165"/>
-              <line x1="110" y1="25" x2="110" y2="165"/>
-              <line x1="170" y1="25" x2="170" y2="165"/>
-              <line x1="230" y1="25" x2="230" y2="165"/>
-              <line x1="290" y1="25" x2="290" y2="165"/>
-              <line x1="350" y1="25" x2="350" y2="165"/>
-            </g>
-            <g font-family="sans-serif" font-size="9" fill="#334155">
-              <text x="42" y="28" text-anchor="end">80</text>
-              <text x="42" y="63" text-anchor="end">60</text>
-              <text x="42" y="98" text-anchor="end">40</text>
-              <text x="42" y="133" text-anchor="end">20</text>
-              <text x="42" y="168" text-anchor="end">0</text>
-              <text x="50" y="178" text-anchor="middle">0</text>
-              <text x="110" y="178" text-anchor="middle">3</text>
-              <text x="170" y="178" text-anchor="middle">6</text>
-              <text x="230" y="178" text-anchor="middle">9</text>
-              <text x="290" y="178" text-anchor="middle">12</text>
-              <text x="350" y="178" text-anchor="middle">15 min</text>
-            </g>
-            <polyline points="50,25 70,44.5 90,61.3 110,75.7 130,88.2 150,98.9 170,108.1 190,116 210,122.8 230,128.7 250,133.8 270,138.1 290,141.9 310,145.1 330,147.9 350,150.2" fill="none" stroke="#0369a1" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-            <circle cx="350" cy="150.2" r="3.5" fill="#0369a1"/>
-            <text x="345" y="142" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#0369a1">8.4°C at 15m</text>
-          </svg>
-        </div>
 
-        <!-- Graph B -->
-        <div class="graph-card">
-          <div style="font-weight:700; font-size:0.88rem; color:#15803d; margin-bottom:6px;">
-            B. BUBBLE WRAP ($k \approx 0.040\text{ min}^{-1}$)
+          <!-- Graph B -->
+          <div class="graph-card">
+            <div style="font-weight:700; font-size:0.88rem; color:#15803d; margin-bottom:6px;">
+              B. BUBBLE WRAP ($k \approx 0.040\text{ min}^{-1}$)
+            </div>
+            <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Bubble Wrap">
+              <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1" />
+              <g stroke="#cbd5e1" stroke-width="1">
+                <line x1="50" y1="25" x2="350" y2="25" />
+                <line x1="50" y1="60" x2="350" y2="60" />
+                <line x1="50" y1="95" x2="350" y2="95" />
+                <line x1="50" y1="130" x2="350" y2="130" />
+                <line x1="50" y1="165" x2="350" y2="165" />
+                <line x1="50" y1="25" x2="50" y2="165" />
+                <line x1="110" y1="25" x2="110" y2="165" />
+                <line x1="170" y1="25" x2="170" y2="165" />
+                <line x1="230" y1="25" x2="230" y2="165" />
+                <line x1="290" y1="25" x2="290" y2="165" />
+                <line x1="350" y1="25" x2="350" y2="165" />
+              </g>
+              <g font-family="sans-serif" font-size="9" fill="#334155">
+                <text x="42" y="28" text-anchor="end">80</text>
+                <text x="42" y="63" text-anchor="end">60</text>
+                <text x="42" y="98" text-anchor="end">40</text>
+                <text x="42" y="133" text-anchor="end">20</text>
+                <text x="42" y="168" text-anchor="end">0</text>
+                <text x="50" y="178" text-anchor="middle">0</text>
+                <text x="110" y="178" text-anchor="middle">3</text>
+                <text x="170" y="178" text-anchor="middle">6</text>
+                <text x="230" y="178" text-anchor="middle">9</text>
+                <text x="290" y="178" text-anchor="middle">12</text>
+                <text x="350" y="178" text-anchor="middle">15 min</text>
+              </g>
+              <polyline
+                points="50,25 70,30.5 90,35.8 110,40.8 130,45.7 150,50.4 170,54.9 190,59.2 210,63.4 230,67.4 250,71.3 270,75.0 290,78.5 310,81.9 330,85.2 350,88.3"
+                fill="none" stroke="#15803d" stroke-width="2.5" stroke-dasharray="8 4" stroke-linejoin="round"
+                stroke-linecap="round" />
+              <circle cx="350" cy="88.3" r="3.5" fill="#15803d" />
+              <text x="345" y="80" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700"
+                fill="#15803d">43.9°C at 15m</text>
+            </svg>
           </div>
-          <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Bubble Wrap">
-            <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
-            <g stroke="#cbd5e1" stroke-width="1">
-              <line x1="50" y1="25" x2="350" y2="25"/>
-              <line x1="50" y1="60" x2="350" y2="60"/>
-              <line x1="50" y1="95" x2="350" y2="95"/>
-              <line x1="50" y1="130" x2="350" y2="130"/>
-              <line x1="50" y1="165" x2="350" y2="165"/>
-              <line x1="50" y1="25" x2="50" y2="165"/>
-              <line x1="110" y1="25" x2="110" y2="165"/>
-              <line x1="170" y1="25" x2="170" y2="165"/>
-              <line x1="230" y1="25" x2="230" y2="165"/>
-              <line x1="290" y1="25" x2="290" y2="165"/>
-              <line x1="350" y1="25" x2="350" y2="165"/>
-            </g>
-            <g font-family="sans-serif" font-size="9" fill="#334155">
-              <text x="42" y="28" text-anchor="end">80</text>
-              <text x="42" y="63" text-anchor="end">60</text>
-              <text x="42" y="98" text-anchor="end">40</text>
-              <text x="42" y="133" text-anchor="end">20</text>
-              <text x="42" y="168" text-anchor="end">0</text>
-              <text x="50" y="178" text-anchor="middle">0</text>
-              <text x="110" y="178" text-anchor="middle">3</text>
-              <text x="170" y="178" text-anchor="middle">6</text>
-              <text x="230" y="178" text-anchor="middle">9</text>
-              <text x="290" y="178" text-anchor="middle">12</text>
-              <text x="350" y="178" text-anchor="middle">15 min</text>
-            </g>
-            <polyline points="50,25 70,30.5 90,35.8 110,40.8 130,45.7 150,50.4 170,54.9 190,59.2 210,63.4 230,67.4 250,71.3 270,75.0 290,78.5 310,81.9 330,85.2 350,88.3" fill="none" stroke="#15803d" stroke-width="2.5" stroke-dasharray="8 4" stroke-linejoin="round" stroke-linecap="round"/>
-            <circle cx="350" cy="88.3" r="3.5" fill="#15803d"/>
-            <text x="345" y="80" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#15803d">43.9°C at 15m</text>
-          </svg>
-        </div>
 
-        <!-- Graph C -->
-        <div class="graph-card">
-          <div style="font-weight:700; font-size:0.88rem; color:#c2410c; margin-bottom:6px;">
-            C. MYLAR FOIL ($k \approx 0.121\text{ min}^{-1}$)
+          <!-- Graph C -->
+          <div class="graph-card">
+            <div style="font-weight:700; font-size:0.88rem; color:#c2410c; margin-bottom:6px;">
+              C. MYLAR FOIL ($k \approx 0.121\text{ min}^{-1}$)
+            </div>
+            <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Mylar Foil">
+              <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1" />
+              <g stroke="#cbd5e1" stroke-width="1">
+                <line x1="50" y1="25" x2="350" y2="25" />
+                <line x1="50" y1="60" x2="350" y2="60" />
+                <line x1="50" y1="95" x2="350" y2="95" />
+                <line x1="50" y1="130" x2="350" y2="130" />
+                <line x1="50" y1="165" x2="350" y2="165" />
+                <line x1="50" y1="25" x2="50" y2="165" />
+                <line x1="110" y1="25" x2="110" y2="165" />
+                <line x1="170" y1="25" x2="170" y2="165" />
+                <line x1="230" y1="25" x2="230" y2="165" />
+                <line x1="290" y1="25" x2="290" y2="165" />
+                <line x1="350" y1="25" x2="350" y2="165" />
+              </g>
+              <g font-family="sans-serif" font-size="9" fill="#334155">
+                <text x="42" y="28" text-anchor="end">80</text>
+                <text x="42" y="63" text-anchor="end">60</text>
+                <text x="42" y="98" text-anchor="end">40</text>
+                <text x="42" y="133" text-anchor="end">20</text>
+                <text x="42" y="168" text-anchor="end">0</text>
+                <text x="50" y="178" text-anchor="middle">0</text>
+                <text x="110" y="178" text-anchor="middle">3</text>
+                <text x="170" y="178" text-anchor="middle">6</text>
+                <text x="230" y="178" text-anchor="middle">9</text>
+                <text x="290" y="178" text-anchor="middle">12</text>
+                <text x="350" y="178" text-anchor="middle">15 min</text>
+              </g>
+              <polyline
+                points="50,25 70,43.6 90,59.8 110,73.9 130,86.0 150,96.5 170,105.7 190,113.6 210,120.5 230,126.5 250,131.7 270,136.2 290,140.1 310,143.5 330,146.4 350,148.9"
+                fill="none" stroke="#c2410c" stroke-width="2.5" stroke-dasharray="3 4" stroke-linejoin="round"
+                stroke-linecap="round" />
+              <circle cx="350" cy="148.9" r="3.5" fill="#c2410c" />
+              <text x="345" y="140" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700"
+                fill="#c2410c">13.0°C at 15m</text>
+            </svg>
           </div>
-          <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Mylar Foil">
-            <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
-            <g stroke="#cbd5e1" stroke-width="1">
-              <line x1="50" y1="25" x2="350" y2="25"/>
-              <line x1="50" y1="60" x2="350" y2="60"/>
-              <line x1="50" y1="95" x2="350" y2="95"/>
-              <line x1="50" y1="130" x2="350" y2="130"/>
-              <line x1="50" y1="165" x2="350" y2="165"/>
-              <line x1="50" y1="25" x2="50" y2="165"/>
-              <line x1="110" y1="25" x2="110" y2="165"/>
-              <line x1="170" y1="25" x2="170" y2="165"/>
-              <line x1="230" y1="25" x2="230" y2="165"/>
-              <line x1="290" y1="25" x2="290" y2="165"/>
-              <line x1="350" y1="25" x2="350" y2="165"/>
-            </g>
-            <g font-family="sans-serif" font-size="9" fill="#334155">
-              <text x="42" y="28" text-anchor="end">80</text>
-              <text x="42" y="63" text-anchor="end">60</text>
-              <text x="42" y="98" text-anchor="end">40</text>
-              <text x="42" y="133" text-anchor="end">20</text>
-              <text x="42" y="168" text-anchor="end">0</text>
-              <text x="50" y="178" text-anchor="middle">0</text>
-              <text x="110" y="178" text-anchor="middle">3</text>
-              <text x="170" y="178" text-anchor="middle">6</text>
-              <text x="230" y="178" text-anchor="middle">9</text>
-              <text x="290" y="178" text-anchor="middle">12</text>
-              <text x="350" y="178" text-anchor="middle">15 min</text>
-            </g>
-            <polyline points="50,25 70,43.6 90,59.8 110,73.9 130,86.0 150,96.5 170,105.7 190,113.6 210,120.5 230,126.5 250,131.7 270,136.2 290,140.1 310,143.5 330,146.4 350,148.9" fill="none" stroke="#c2410c" stroke-width="2.5" stroke-dasharray="3 4" stroke-linejoin="round" stroke-linecap="round"/>
-            <circle cx="350" cy="148.9" r="3.5" fill="#c2410c"/>
-            <text x="345" y="140" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#c2410c">13.0°C at 15m</text>
-          </svg>
-        </div>
 
-        <!-- Graph D -->
-        <div class="graph-card">
-          <div style="font-weight:700; font-size:0.88rem; color:#7e22ce; margin-bottom:6px;">
-            D. MULTILAYER ASSEMBLY ($k \approx 0.015\text{ min}^{-1}$)
+          <!-- Graph D -->
+          <div class="graph-card">
+            <div style="font-weight:700; font-size:0.88rem; color:#7e22ce; margin-bottom:6px;">
+              D. MULTILAYER ASSEMBLY ($k \approx 0.015\text{ min}^{-1}$)
+            </div>
+            <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Multilayer Assembly">
+              <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1" />
+              <g stroke="#cbd5e1" stroke-width="1">
+                <line x1="50" y1="25" x2="350" y2="25" />
+                <line x1="50" y1="60" x2="350" y2="60" />
+                <line x1="50" y1="95" x2="350" y2="95" />
+                <line x1="50" y1="130" x2="350" y2="130" />
+                <line x1="50" y1="165" x2="350" y2="165" />
+                <line x1="50" y1="25" x2="50" y2="165" />
+                <line x1="110" y1="25" x2="110" y2="165" />
+                <line x1="170" y1="25" x2="170" y2="165" />
+                <line x1="230" y1="25" x2="230" y2="165" />
+                <line x1="290" y1="25" x2="290" y2="165" />
+                <line x1="350" y1="25" x2="350" y2="165" />
+              </g>
+              <g font-family="sans-serif" font-size="9" fill="#334155">
+                <text x="42" y="28" text-anchor="end">80</text>
+                <text x="42" y="63" text-anchor="end">60</text>
+                <text x="42" y="98" text-anchor="end">40</text>
+                <text x="42" y="133" text-anchor="end">20</text>
+                <text x="42" y="168" text-anchor="end">0</text>
+                <text x="50" y="178" text-anchor="middle">0</text>
+                <text x="110" y="178" text-anchor="middle">3</text>
+                <text x="170" y="178" text-anchor="middle">6</text>
+                <text x="230" y="178" text-anchor="middle">9</text>
+                <text x="290" y="178" text-anchor="middle">12</text>
+                <text x="350" y="178" text-anchor="middle">15 min</text>
+              </g>
+              <polyline
+                points="50,25 70,27.1 90,29.1 110,31.2 130,33.1 150,35.1 170,37.0 190,38.9 210,40.8 230,42.6 250,44.4 270,46.2 290,47.9 310,49.6 330,51.3 350,53.0"
+                fill="none" stroke="#7e22ce" stroke-width="2.5" stroke-dasharray="10 3 2 3" stroke-linejoin="round"
+                stroke-linecap="round" />
+              <circle cx="350" cy="53.0" r="3.5" fill="#7e22ce" />
+              <text x="345" y="45" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700"
+                fill="#7e22ce">63.9°C at 15m</text>
+            </svg>
           </div>
-          <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Multilayer Assembly">
-            <rect x="50" y="25" width="300" height="140" fill="#f8fafc" stroke="#0f172a" stroke-width="1"/>
-            <g stroke="#cbd5e1" stroke-width="1">
-              <line x1="50" y1="25" x2="350" y2="25"/>
-              <line x1="50" y1="60" x2="350" y2="60"/>
-              <line x1="50" y1="95" x2="350" y2="95"/>
-              <line x1="50" y1="130" x2="350" y2="130"/>
-              <line x1="50" y1="165" x2="350" y2="165"/>
-              <line x1="50" y1="25" x2="50" y2="165"/>
-              <line x1="110" y1="25" x2="110" y2="165"/>
-              <line x1="170" y1="25" x2="170" y2="165"/>
-              <line x1="230" y1="25" x2="230" y2="165"/>
-              <line x1="290" y1="25" x2="290" y2="165"/>
-              <line x1="350" y1="25" x2="350" y2="165"/>
-            </g>
-            <g font-family="sans-serif" font-size="9" fill="#334155">
-              <text x="42" y="28" text-anchor="end">80</text>
-              <text x="42" y="63" text-anchor="end">60</text>
-              <text x="42" y="98" text-anchor="end">40</text>
-              <text x="42" y="133" text-anchor="end">20</text>
-              <text x="42" y="168" text-anchor="end">0</text>
-              <text x="50" y="178" text-anchor="middle">0</text>
-              <text x="110" y="178" text-anchor="middle">3</text>
-              <text x="170" y="178" text-anchor="middle">6</text>
-              <text x="230" y="178" text-anchor="middle">9</text>
-              <text x="290" y="178" text-anchor="middle">12</text>
-              <text x="350" y="178" text-anchor="middle">15 min</text>
-            </g>
-            <polyline points="50,25 70,27.1 90,29.1 110,31.2 130,33.1 150,35.1 170,37.0 190,38.9 210,40.8 230,42.6 250,44.4 270,46.2 290,47.9 310,49.6 330,51.3 350,53.0" fill="none" stroke="#7e22ce" stroke-width="2.5" stroke-dasharray="10 3 2 3" stroke-linejoin="round" stroke-linecap="round"/>
-            <circle cx="350" cy="53.0" r="3.5" fill="#7e22ce"/>
-            <text x="345" y="45" text-anchor="end" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#7e22ce">63.9°C at 15m</text>
-          </svg>
         </div>
       </div>
     </section>
@@ -1943,7 +2088,9 @@
             </div>
             <h4 class="workflow-step-title">1. Review Physics Theory &amp; Pass Pre-Flight Quiz</h4>
             <p class="workflow-step-desc">
-              Before handling hot water, review Sections 1–4 of this manual. Understand Newton's Law of Cooling ($T(t) = T_{\text{env}} + (T_0 - T_{\text{env}}) e^{-kt}$), heat transfer mechanisms (conduction, convection, radiation), and experimental safety SOP. Ensure thermal safety gloves and protective eyewear are equipped.
+              Before handling hot water, review Sections 1–4 of this manual. Understand Newton's Law of Cooling ($T(t) =
+              T_{\text{env}} + (T_0 - T_{\text{env}}) e^{-kt}$), heat transfer mechanisms (conduction, convection,
+              radiation), and experimental safety SOP. Ensure thermal safety gloves and protective eyewear are equipped.
             </p>
           </div>
         </div>
@@ -1951,7 +2098,8 @@
         <!-- STEP 2 CARD -->
         <div class="workflow-step-card">
           <div class="workflow-img-wrap">
-            <img src="images/website-setting up.PNG" alt="Mission Control Console Web Simulator Setup" class="workflow-step-img">
+            <img src="images/website-setting up.PNG" alt="Mission Control Console Web Simulator Setup"
+              class="workflow-step-img">
           </div>
           <div>
             <div class="workflow-step-badge" style="background: #f0f9ff; color: #0284c7; border: 1px solid #7dd3fc;">
@@ -1959,7 +2107,11 @@
             </div>
             <h4 class="workflow-step-title">2. Set Up Web Simulator &amp; Run Theoretical Curve</h4>
             <p class="workflow-step-desc">
-              Launch the <strong>Mission Control Console</strong> software (`index.html`). Navigate to the <strong>Simulator</strong> tab, select your team's assigned insulation configuration (Bare, Bubble Wrap, Mylar, or Multilayer), verify initial parameters ($T_0 = 80.0^\circ\text{C}, T_{\text{env}} = 0.0^\circ\text{C}$), and click <strong>RUN SIMULATION PREDICTION</strong> to generate the baseline theoretical model curve.
+              Launch the <strong>Mission Control Console</strong> software (`index.html`). Navigate to the
+              <strong>Simulator</strong> tab, select your team's assigned insulation configuration (Bare, Bubble Wrap,
+              Mylar, or Multilayer), verify initial parameters ($T_0 = 80.0^\circ\text{C}, T_{\text{env}} =
+              0.0^\circ\text{C}$), and click <strong>RUN SIMULATION PREDICTION</strong> to generate the baseline
+              theoretical model curve.
             </p>
           </div>
         </div>
@@ -1967,7 +2119,8 @@
         <!-- STEP 3 CARD -->
         <div class="workflow-step-card">
           <div class="workflow-img-wrap">
-            <img src="images/input temp.jpg" alt="Filling 100 mL Water Core and Recording Baseline Initial Temperature" class="workflow-step-img">
+            <img src="images/input temp.jpg" alt="Filling 100 mL Water Core and Recording Baseline Initial Temperature"
+              class="workflow-step-img">
           </div>
           <div>
             <div class="workflow-step-badge" style="background: #fffbeb; color: #b45309; border: 1px solid #fcd34d;">
@@ -1975,7 +2128,10 @@
             </div>
             <h4 class="workflow-step-title">3. Prepare Liquid Core &amp; Record Initial Temperature ($T_0$)</h4>
             <p class="workflow-step-desc">
-              Carefully measure exactly $100\text{ mL}$ of hot water heated to approximately $80.0^\circ\text{C}$. Pour the hot water into your glass capsule core, secure the prepared lid with thermometer probe inserted, seal tightly, and read the initial baseline temperature $T_0$ off the digital display. Record this exact value as your minute-0 starting data point ($t=0$).
+              Carefully measure exactly $100\text{ mL}$ of hot water heated to approximately $80.0^\circ\text{C}$. Pour
+              the hot water into your glass capsule core, secure the prepared lid with thermometer probe inserted, seal
+              tightly, and read the initial baseline temperature $T_0$ off the digital display. Record this exact value
+              as your minute-0 starting data point ($t=0$).
             </p>
           </div>
         </div>
@@ -1983,7 +2139,8 @@
         <!-- STEP 4 CARD -->
         <div class="workflow-step-card">
           <div class="workflow-img-wrap">
-            <img src="images/bathwater-0temp.jpg" alt="Immersing Capsule into 0°C Ice Water Bath" class="workflow-step-img">
+            <img src="images/bathwater-0temp.jpg" alt="Immersing Capsule into 0°C Ice Water Bath"
+              class="workflow-step-img">
           </div>
           <div>
             <div class="workflow-step-badge" style="background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc;">
@@ -1991,7 +2148,10 @@
             </div>
             <h4 class="workflow-step-title">4. Submerge Capsule in 0.0°C Ice Bath &amp; Start Timer</h4>
             <p class="workflow-step-desc">
-              Verify the external ice-water slurry bath is stabilized at $0.0^\circ\text{C}$ ($T_{\text{env}}$). Gently lower the insulated capsule into the ice bath until the liquid core level is completely below the external ice-water line. Simultaneously hit <strong>START TIMER</strong> in the Mission Control Console <strong>Measurement Log</strong> tab.
+              Verify the external ice-water slurry bath is stabilized at $0.0^\circ\text{C}$ ($T_{\text{env}}$). Gently
+              lower the insulated capsule into the ice bath until the liquid core level is completely below the external
+              ice-water line. Simultaneously hit <strong>START TIMER</strong> in the Mission Control Console
+              <strong>Measurement Log</strong> tab.
             </p>
           </div>
         </div>
@@ -2007,7 +2167,11 @@
             </div>
             <h4 class="workflow-step-title">5. Log Temperatures Every 60 Seconds for 15 Minutes</h4>
             <p class="workflow-step-desc">
-              Continuously monitor the digital thermometer reading during the active 15-minute cooling run. At every 60-second chime ($t = 1, 2, 3, \dots, 15\text{ min}$), read the observed temperature ($T_{\text{obs}}$) and immediately enter it into your paper <a href="student_task_sheet.html" style="color: #4f46e5; font-weight: 700; text-decoration: underline;">Student Task Sheet</a> log table and the live Mission Control Console interface.
+              Continuously monitor the digital thermometer reading during the active 15-minute cooling run. At every
+              60-second chime ($t = 1, 2, 3, \dots, 15\text{ min}$), read the observed temperature ($T_{\text{obs}}$)
+              and immediately enter it into your paper <a href="student_task_sheet.html"
+                style="color: #4f46e5; font-weight: 700; text-decoration: underline;">Student Task Sheet</a> log table
+              and the live Mission Control Console interface.
             </p>
           </div>
         </div>
@@ -2015,7 +2179,8 @@
         <!-- STEP 6 CARD -->
         <div class="workflow-step-card">
           <div class="workflow-img-wrap">
-            <img src="images/predicted-curve.png" alt="Mission Control Console Predicted Cooling Curve & Residual Analysis" class="workflow-step-img">
+            <img src="images/predicted-curve.png"
+              alt="Mission Control Console Predicted Cooling Curve & Residual Analysis" class="workflow-step-img">
           </div>
           <div>
             <div class="workflow-step-badge" style="background: #ecfdf5; color: #047857; border: 1px solid #6ee7b7;">
@@ -2023,7 +2188,11 @@
             </div>
             <h4 class="workflow-step-title">6. Compute Residuals ($|\Delta T|$) &amp; Calculate MAE Score</h4>
             <p class="workflow-step-desc">
-              Once the 15-minute logging run concludes, compare your measured empirical curve ($T_{\text{obs}}$) against the theoretical model ($T_{\text{model}}$). Calculate the temperature absolute residuals $|\Delta T_i| = |T_{\text{obs},i} - T_{\text{model},i}|$ for each minute. Compute your team's Mean Absolute Error score ($\text{MAE} = \frac{1}{16}\sum_{i=0}^{15} |\Delta T_i|$), analyze sources of experimental error, and complete the analytical evaluation questions on your Task Sheet.
+              Once the 15-minute logging run concludes, compare your measured empirical curve ($T_{\text{obs}}$) against
+              the theoretical model ($T_{\text{model}}$). Calculate the temperature absolute residuals $|\Delta T_i| =
+              |T_{\text{obs},i} - T_{\text{model},i}|$ for each minute. Compute your team's Mean Absolute Error score
+              ($\text{MAE} = \frac{1}{16}\sum_{i=0}^{15} |\Delta T_i|$), analyze sources of experimental error, and
+              complete the analytical evaluation questions on your Task Sheet.
             </p>
           </div>
         </div>
