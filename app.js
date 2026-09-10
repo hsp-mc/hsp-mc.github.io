@@ -1279,8 +1279,8 @@ document.addEventListener('DOMContentLoaded', () => {
           @media print { #telemetry-print-report { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
         </style>
         <header>
-          <h1>SPACESUIT THERMAL SHIELDING KIT</h1>
-          <div class="subtitle">SPHERE Mission Control · Model and Measurement Report</div>
+          <h1>SPHERE TELEMETRY LOGBOOK</h1>
+          <div class="subtitle">Spacesuit Thermal Shielding Kit · Model and Measurement Report</div>
         </header>
         <section class="meta">
           <div><strong>Selected model</strong><span>${model.name}</span></div>

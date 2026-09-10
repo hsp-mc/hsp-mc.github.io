@@ -1,8 +1,8 @@
 <div align="center">
 
-# Spacesuit Thermal Shielding Kit
+# SPHERE
 
-### SPHERE Mission Control
+### Spacesuit Thermal Shielding Kit
 
 **An interactive undergraduate engineering experiment for modelling, measuring and evaluating transient cooling.**
 
@@ -146,6 +146,6 @@ The interface loads KaTeX, Chart.js, Lucide icons and web fonts from public cont
 
 <div align="center">
 
-**Spacesuit Thermal Shielding Kit · Observe the transient response. Test the model. Explain the difference.**
+**SPHERE · Spacesuit Thermal Shielding Kit · Observe the transient response. Test the model. Explain the difference.**
 
 </div>
