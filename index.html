@@ -102,7 +102,7 @@
           <i data-lucide="book-open"></i> STUDY &amp; FLASHCARDS
         </button>
         <button type="button" class="nav-tab" data-target="questions">
-          <i data-lucide="help-circle"></i> QUESTION SHEET
+          <i data-lucide="gamepad-2"></i> QUIZ
         </button>
       </nav>
     </header>
@@ -261,10 +261,10 @@
                   <span class="workflow-stage-pill">STAGE 6</span>
                   <span class="step-icon"><i data-lucide="help-circle"></i></span>
                 </div>
-                <div class="step-title">Task Sheet &amp; Quiz</div>
-                <div class="step-desc">Answer analysis questions and fill out the printable experimental workbook.</div>
+                <div class="step-title">Quiz Challenge</div>
+                <div class="step-desc">Race other mission teams through ten timed questions and climb the live leaderboard.</div>
               </div>
-              <div class="step-action-tag">COMPLETE SHEET <i data-lucide="arrow-right"
+              <div class="step-action-tag">START QUIZ <i data-lucide="arrow-right"
                   style="width: 12px; height: 12px;"></i></div>
             </div>
           </div>
@@ -1655,41 +1655,56 @@
 
       <!-- ==================== TAB 6: STUDENT QUESTION & EVALUATION SHEET ==================== -->
       <section id="questions" class="view-section">
-        <div class="hud-panel-light">
-          <div class="panel-header">
-            <div
-              style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 10px;">
-              <span class="panel-title"><i data-lucide="help-circle"></i> STUDENT QUESTION &amp; EVALUATION SHEET</span>
-              <span class="badge-mix badge-mix-orange"><i data-lucide="clipboard"></i> EVALUATION WORKSHEET #02</span>
+        <div class="quiz-arena">
+          <div class="quiz-game-topbar">
+            <div class="quiz-game-brand">
+              <span class="quiz-live-dot"></span>
+              <span>SPHERE QUIZ CHALLENGE</span>
             </div>
+            <button type="button" class="quiz-topbar-button" id="btn-open-leaderboard">
+              <i data-lucide="trophy"></i> LIVE LEADERBOARD
+            </button>
           </div>
-          <p style="margin-bottom: 20px;">
-            Complete this 10-item online knowledge check together as a group after the laboratory trial. It aligns directly with the
-            10-inquiry student task sheet (Inquiries 1–10) and the complete solution key in the Teacher Manual. All 10
-            answers are included in the displayed result.
-          </p>
 
-          <!-- Group Info Block -->
-          <div
-            style="background: #f1f5f9; padding: 18px; border-radius: 10px; border: 1px solid #cbd5e1; margin-bottom: 25px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-            <div>
-              <label for="quiz-group-name"
-                style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">GROUP
-                NAME:</label>
-              <input type="text" id="quiz-group-name" placeholder="Enter group name..." class="hud-input" required
-                maxlength="50" style="background: #fff; color: #0f172a; border-color: #cbd5e1;">
+          <!-- Quiz lobby -->
+          <div class="quiz-lobby" id="quiz-lobby">
+            <div class="quiz-lobby-icon"><i data-lucide="users"></i></div>
+            <p class="quiz-eyebrow">10 QUESTIONS · 30 SECONDS EACH</p>
+            <h2>Ready, crew?</h2>
+            <p class="quiz-lobby-copy">Choose a team name, gather around one device and race the other mission teams. Correct and faster answers earn more points.</p>
+            <div class="quiz-lobby-fields">
+              <div>
+                <label for="quiz-group-name">TEAM NAME</label>
+                <input type="text" id="quiz-group-name" placeholder="e.g. Lunar Legends" class="hud-input" required maxlength="50">
+              </div>
+              <div>
+                <label for="quiz-date">LAB DATE</label>
+                <input type="date" id="quiz-date" class="hud-input">
+              </div>
             </div>
-            <div>
-              <label for="quiz-date"
-                style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">LAB
-                DATE:</label>
-              <input type="date" id="quiz-date" class="hud-input"
-                style="background: #fff; color: #0f172a; border-color: #cbd5e1;">
+            <button type="button" class="quiz-start-button" id="btn-start-quiz">
+              START CHALLENGE <i data-lucide="rocket"></i>
+            </button>
+          </div>
+
+          <!-- In-game scoreboard -->
+          <div class="quiz-play-hud" id="quiz-play-hud" hidden>
+            <div class="quiz-hud-stat">
+              <span>QUESTION</span>
+              <strong id="quiz-progress-label">1 / 10</strong>
             </div>
+            <div class="quiz-progress-track" aria-hidden="true">
+              <span id="quiz-progress-fill"></span>
+            </div>
+            <div class="quiz-hud-stat quiz-hud-points">
+              <span>POINTS</span>
+              <strong id="quiz-live-points">0</strong>
+            </div>
+            <div class="quiz-timer" id="quiz-timer" aria-live="polite">30</div>
           </div>
 
           <!-- Quiz Interactive Form -->
-          <div class="quiz-wrapper" id="student-quiz-form">
+          <div class="quiz-wrapper quiz-game-board" id="student-quiz-form" hidden>
 
             <!-- Question 1 -->
             <div class="quiz-card" data-q="1">
@@ -1940,23 +1955,21 @@
 
           <!-- Quiz Score Banner -->
           <div class="quiz-score-banner" id="quiz-score-banner">
-            <div style="font-family: var(--font-hud); font-size: 0.9rem; color: #94a3b8; letter-spacing: 0.1em;">
-              EVALUATION RESULT</div>
+            <div class="quiz-result-kicker">MISSION COMPLETE</div>
+            <div class="quiz-result-group" id="quiz-result-group">QUIZ RESULT</div>
             <div class="score-number" id="quiz-score-percent">0%</div>
-            <p id="quiz-score-summary" style="margin-top: 15px; font-size: 0.9rem; color: #e2e8f0;"></p>
+            <div class="quiz-result-points"><span id="quiz-final-points">0</span> POINTS</div>
+            <p id="quiz-score-summary"></p>
           </div>
 
           <!-- Quiz Action Buttons -->
-          <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+          <div class="quiz-game-actions" id="quiz-game-actions" hidden>
             <button type="button" class="btn-hud btn-orange" id="btn-grade-quiz"
               style="flex: 2; min-width: 200px; padding: 14px;">
-              <i data-lucide="check-square"></i> CHECK GROUP RESPONSES
+              <i data-lucide="lock"></i> LOCK IN ANSWER
             </button>
             <button type="button" class="btn-hud btn-outline" id="btn-reset-quiz" style="flex: 1; min-width: 140px;">
-              <i data-lucide="rotate-ccw"></i> RESET RESPONSES
-            </button>
-            <button type="button" class="btn-hud btn-outline" id="btn-open-leaderboard" style="flex: 1; min-width: 160px;">
-              <i data-lucide="trophy"></i> LEADERBOARD
+              <i data-lucide="rotate-ccw"></i> RESTART
             </button>
           </div>
 
@@ -2037,12 +2050,15 @@
       <div class="leaderboard-table-wrap">
         <table class="leaderboard-table">
           <thead>
-            <tr><th>#</th><th>Group</th><th>Score</th></tr>
+            <tr><th>#</th><th>Team</th><th>Score</th></tr>
           </thead>
           <tbody id="leaderboard-rows"></tbody>
         </table>
         <p id="leaderboard-empty" class="leaderboard-empty">No scores yet. Grade a response to add the first result.</p>
       </div>
+      <button type="button" class="quiz-leaderboard-continue" id="btn-leaderboard-continue" hidden>
+        CONTINUE TO NEXT QUESTION <i data-lucide="arrow-right"></i>
+      </button>
     </div>
   </div>
 

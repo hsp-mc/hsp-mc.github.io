@@ -1658,13 +1658,27 @@ document.addEventListener('DOMContentLoaded', () => {
   function initQuizEngine() {
     const btnGradeQuiz = document.getElementById('btn-grade-quiz');
     const btnResetQuiz = document.getElementById('btn-reset-quiz');
+    const btnStartQuiz = document.getElementById('btn-start-quiz');
     const labDateInput = document.getElementById('quiz-date');
+    const quizLobby = document.getElementById('quiz-lobby');
+    const quizPlayHud = document.getElementById('quiz-play-hud');
+    const quizGameBoard = document.getElementById('student-quiz-form');
+    const quizGameActions = document.getElementById('quiz-game-actions');
+    const quizCards = Array.from(document.querySelectorAll('#student-quiz-form .quiz-card'));
+    const quizProgressLabel = document.getElementById('quiz-progress-label');
+    const quizProgressFill = document.getElementById('quiz-progress-fill');
+    const quizLivePoints = document.getElementById('quiz-live-points');
+    const quizTimer = document.getElementById('quiz-timer');
     const scoreBanner = document.getElementById('quiz-score-banner');
     const scorePercentEl = document.getElementById('quiz-score-percent');
     const scoreSummaryEl = document.getElementById('quiz-score-summary');
+    const quizFinalPoints = document.getElementById('quiz-final-points');
+    const quizResultGroup = document.getElementById('quiz-result-group');
     const btnOpenLeaderboard = document.getElementById('btn-open-leaderboard');
     const leaderboardOverlay = document.getElementById('leaderboard-modal-overlay');
     const btnCloseLeaderboard = document.getElementById('btn-close-leaderboard');
+    const btnLeaderboardContinue = document.getElementById('btn-leaderboard-continue');
+    const leaderboardTitle = document.getElementById('leaderboard-modal-title');
     const leaderboardRows = document.getElementById('leaderboard-rows');
     const leaderboardEmpty = document.getElementById('leaderboard-empty');
     const leaderboardStatus = document.getElementById('leaderboard-status');
@@ -1716,7 +1730,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const saved = JSON.parse(localStorage.getItem(leaderboardStorageKey) || '[]');
         if (!Array.isArray(saved)) return [];
         return saved.map(entry => {
-          const groupName = entry.groupName || entry.student || 'Unnamed Group';
+          const groupName = entry.groupName || entry.student || 'Unnamed Team';
           const labDate = entry.labDate || entry.lab_date || '';
           return {
             ...entry,
@@ -1734,7 +1748,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!leaderboardRows || !leaderboardEmpty) return;
 
       const rankedEntries = entries
-        .sort((a, b) => b.percentage - a.percentage || b.savedAt - a.savedAt)
+        .sort((a, b) => (b.points || 0) - (a.points || 0) || b.percentage - a.percentage || b.savedAt - a.savedAt)
         .slice(0, 20);
 
       leaderboardRows.replaceChildren();
@@ -1742,7 +1756,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       rankedEntries.forEach((entry, index) => {
         const row = document.createElement('tr');
-        [index + 1, entry.groupName, `${entry.correct}/10 (${entry.percentage}%)`]
+        [index + 1, entry.groupName, entry.points ? `${entry.points.toLocaleString()} pts` : `${entry.correct}/10 (${entry.percentage}%)`]
           .forEach(value => {
             const cell = document.createElement('td');
             cell.textContent = value;
@@ -1763,7 +1777,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         const response = await fetch(
-          `${supabaseUrl}/rest/v1/quiz_scores?select=student,lab_date,correct,percentage,created_at&order=percentage.desc,created_at.asc&limit=100`,
+          `${supabaseUrl}/rest/v1/quiz_scores?select=student,team,lab_date,correct,percentage,created_at&order=percentage.desc,created_at.asc&limit=100`,
           {
             headers: supabaseHeaders()
           }
@@ -1783,6 +1797,7 @@ document.addEventListener('DOMContentLoaded', () => {
             groupName: entry.student,
             correct: entry.correct,
             percentage: entry.percentage,
+            points: Number.parseInt(entry.team, 10) || entry.correct * 1000,
             savedAt: Date.parse(entry.created_at) || 0
           });
         });
@@ -1796,19 +1811,30 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    function openLeaderboard() {
+    function openLeaderboard(roundMode = false) {
       if (!leaderboardOverlay) return;
       renderLeaderboard();
+      if (leaderboardTitle) {
+        leaderboardTitle.querySelector('span').textContent = roundMode
+          ? `ROUND ${currentQuestion + 1} STANDINGS`
+          : 'QUIZ LEADERBOARD';
+      }
+      if (btnLeaderboardContinue) {
+        btnLeaderboardContinue.hidden = !roundMode;
+        btnLeaderboardContinue.innerHTML = currentQuestion === quizCards.length - 1
+          ? 'SEE QUIZ RESULT <i data-lucide="trophy"></i>'
+          : 'CONTINUE TO NEXT QUESTION <i data-lucide="arrow-right"></i>';
+      }
       leaderboardOverlay.style.display = 'flex';
       if (typeof lucide !== 'undefined') lucide.createIcons();
-      if (btnCloseLeaderboard) btnCloseLeaderboard.focus();
+      (roundMode ? btnLeaderboardContinue : btnCloseLeaderboard)?.focus();
     }
 
     function closeLeaderboard() {
       if (leaderboardOverlay) leaderboardOverlay.style.display = 'none';
     }
 
-    async function saveLeaderboardEntry(correct, percentage) {
+    async function saveLeaderboardEntry(correct, percentage, points) {
       const groupName = document.getElementById('quiz-group-name')?.value.trim() || '';
       const labDate = document.getElementById('quiz-date')?.value.trim() || '';
       const identity = `${groupName.toLowerCase()}|${labDate}`;
@@ -1820,6 +1846,7 @@ document.addEventListener('DOMContentLoaded', () => {
         labDate,
         correct,
         percentage,
+        points,
         savedAt: Date.now()
       });
 
@@ -1841,6 +1868,8 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({
             // The existing database field name is retained for compatibility.
             student: groupName,
+            // The legacy team field carries game points without requiring a database migration.
+            team: String(points),
             lab_date: labDate,
             correct,
             percentage
@@ -1854,7 +1883,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    if (btnOpenLeaderboard) btnOpenLeaderboard.addEventListener('click', openLeaderboard);
+    if (btnOpenLeaderboard) btnOpenLeaderboard.addEventListener('click', () => openLeaderboard(false));
     if (btnCloseLeaderboard) btnCloseLeaderboard.addEventListener('click', closeLeaderboard);
     if (leaderboardOverlay) {
       leaderboardOverlay.addEventListener('click', event => {
@@ -1865,170 +1894,194 @@ document.addEventListener('DOMContentLoaded', () => {
       if (event.key === 'Escape' && leaderboardOverlay?.style.display === 'flex') closeLeaderboard();
     });
 
-    btnGradeQuiz.addEventListener('click', () => {
-      const groupNameInput = document.getElementById('quiz-group-name');
-      if (!groupNameInput || !groupNameInput.value.trim()) {
-        showNotification('Enter a group name before checking responses.', 'error');
-        if (groupNameInput) groupNameInput.focus();
+    let currentQuestion = 0;
+    let correctCount = 0;
+    let gamePoints = 0;
+    let secondsRemaining = 30;
+    let questionTimerId = null;
+    let answerLocked = false;
+    let gameFinished = false;
+
+    function setGameButton(label, icon) {
+      btnGradeQuiz.innerHTML = `<i data-lucide="${icon}"></i> ${label}`;
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function stopQuestionTimer() {
+      if (questionTimerId) window.clearInterval(questionTimerId);
+      questionTimerId = null;
+    }
+
+    function updateGameHud() {
+      quizProgressLabel.textContent = `${currentQuestion + 1} / ${quizCards.length}`;
+      quizProgressFill.style.width = `${((currentQuestion + 1) / quizCards.length) * 100}%`;
+      quizLivePoints.textContent = gamePoints.toLocaleString();
+      quizTimer.textContent = secondsRemaining;
+      quizTimer.classList.toggle('is-urgent', secondsRemaining <= 8);
+    }
+
+    function startQuestionTimer() {
+      stopQuestionTimer();
+      secondsRemaining = 30;
+      updateGameHud();
+      questionTimerId = window.setInterval(() => {
+        secondsRemaining -= 1;
+        updateGameHud();
+        if (secondsRemaining <= 0) lockCurrentAnswer(true);
+      }, 1000);
+    }
+
+    function showQuestion(index) {
+      currentQuestion = index;
+      answerLocked = false;
+      quizCards.forEach((card, cardIndex) => card.classList.toggle('is-active', cardIndex === index));
+      setGameButton('LOCK IN ANSWER', 'lock');
+      btnGradeQuiz.disabled = false;
+      startQuestionTimer();
+      refreshMath(quizCards[index]);
+      quizCards[index].querySelector('input, textarea')?.focus({ preventScroll: true });
+    }
+
+    function currentAnswerIsCorrect() {
+      const questionNumber = currentQuestion + 1;
+      if (questionNumber === 4) {
+        return (document.getElementById('q4-text')?.value.trim().length || 0) >= 10;
+      }
+      const selected = document.querySelector(`input[name="worksheet-q${questionNumber}"]:checked`);
+      return Boolean(selected && selected.value === answerKey[`q${questionNumber}`]);
+    }
+
+    function revealAnswer(card, wasCorrect, timedOut) {
+      const questionNumber = currentQuestion + 1;
+      const feedback = document.getElementById(`q${questionNumber}-feedback`);
+      const labels = card.querySelectorAll('.quiz-option-label');
+      labels.forEach(label => {
+        const input = label.querySelector('input');
+        input.disabled = true;
+        if (input.value === answerKey[`q${questionNumber}`]) label.classList.add('is-correct');
+        if (input.checked && !wasCorrect) label.classList.add('is-wrong');
+      });
+      const textarea = card.querySelector('textarea');
+      if (textarea) textarea.disabled = true;
+      feedback.className = `quiz-feedback ${wasCorrect ? 'correct' : 'incorrect'}`;
+      feedback.textContent = timedOut ? 'Time is up — no points this round.' : wasCorrect ? 'Correct — speed bonus added!' : 'Not quite — get ready for the next one.';
+    }
+
+    async function lockCurrentAnswer(timedOut = false) {
+      if (answerLocked) return;
+      const card = quizCards[currentQuestion];
+      const questionNumber = currentQuestion + 1;
+      const hasResponse = questionNumber === 4
+        ? Boolean(document.getElementById('q4-text')?.value.trim())
+        : Boolean(document.querySelector(`input[name="worksheet-q${questionNumber}"]:checked`));
+      if (!hasResponse && !timedOut) {
+        showNotification('Choose an answer before locking it in.', 'error');
         return;
       }
 
-      let correctCount = 0;
-      const totalQuestions = 10;
-
-      // Q1 Check
-      const q1Selected = document.querySelector('input[name="worksheet-q1"]:checked');
-      const q1Feedback = document.getElementById('q1-feedback');
-      if (q1Selected && q1Selected.value === answerKey.q1) {
-        correctCount++;
-        q1Feedback.className = 'quiz-feedback correct';
-        q1Feedback.innerHTML = '✓ Correct.';
-      } else {
-        q1Feedback.className = 'quiz-feedback incorrect';
-        q1Feedback.innerHTML = '✗ Incorrect.';
-      }
-
-      // Q2 Check
-      const q2Selected = document.querySelector('input[name="worksheet-q2"]:checked');
-      const q2Feedback = document.getElementById('q2-feedback');
-      if (q2Selected && q2Selected.value === answerKey.q2) {
-        correctCount++;
-        q2Feedback.className = 'quiz-feedback correct';
-        q2Feedback.innerHTML = '✓ Correct.';
-      } else {
-        q2Feedback.className = 'quiz-feedback incorrect';
-        q2Feedback.innerHTML = '✗ Incorrect.';
-      }
-
-      // Q3 Check
-      const q3Selected = document.querySelector('input[name="worksheet-q3"]:checked');
-      const q3Feedback = document.getElementById('q3-feedback');
-      if (q3Selected && q3Selected.value === answerKey.q3) {
-        correctCount++;
-        q3Feedback.className = 'quiz-feedback correct';
-        q3Feedback.innerHTML = '✓ Correct.';
-      } else {
-        q3Feedback.className = 'quiz-feedback incorrect';
-        q3Feedback.innerHTML = '✗ Incorrect.';
-      }
-
-      // Q4 Check (Text Area)
-      const q4Text = document.getElementById('q4-text');
-      const q4Feedback = document.getElementById('q4-feedback');
-      if (q4Text && q4Text.value.trim().length >= 10) {
-        correctCount++;
-        q4Feedback.className = 'quiz-feedback correct';
-        q4Feedback.innerHTML = '✓ Correct.';
-      } else {
-        q4Feedback.className = 'quiz-feedback incorrect';
-        q4Feedback.innerHTML = '✗ Incorrect.';
-      }
-
-      // Q5 Check
-      const q5Selected = document.querySelector('input[name="worksheet-q5"]:checked');
-      const q5Feedback = document.getElementById('q5-feedback');
-      if (q5Selected && q5Selected.value === answerKey.q5) {
-        correctCount++;
-        q5Feedback.className = 'quiz-feedback correct';
-        q5Feedback.innerHTML = '✓ Correct.';
-      } else {
-        q5Feedback.className = 'quiz-feedback incorrect';
-        q5Feedback.innerHTML = '✗ Incorrect.';
-      }
-
-      // Q6 Check
-      const q6Selected = document.querySelector('input[name="worksheet-q6"]:checked');
-      const q6Feedback = document.getElementById('q6-feedback');
-      if (q6Selected && q6Selected.value === answerKey.q6) {
-        correctCount++;
-        q6Feedback.className = 'quiz-feedback correct';
-        q6Feedback.innerHTML = '✓ Correct.';
-      } else {
-        q6Feedback.className = 'quiz-feedback incorrect';
-        q6Feedback.innerHTML = '✗ Incorrect.';
-      }
-
-      // Q7 Check
-      const q7Selected = document.querySelector('input[name="worksheet-q7"]:checked');
-      const q7Feedback = document.getElementById('q7-feedback');
-      if (q7Selected && q7Selected.value === answerKey.q7) {
-        correctCount++;
-        q7Feedback.className = 'quiz-feedback correct';
-        q7Feedback.innerHTML = '✓ Correct.';
-      } else {
-        q7Feedback.className = 'quiz-feedback incorrect';
-        q7Feedback.innerHTML = '✗ Incorrect.';
-      }
-
-      // Q8 Check
-      const q8Selected = document.querySelector('input[name="worksheet-q8"]:checked');
-      const q8Feedback = document.getElementById('q8-feedback');
-      if (q8Selected && q8Selected.value === answerKey.q8) {
-        correctCount++;
-        q8Feedback.className = 'quiz-feedback correct';
-        q8Feedback.innerHTML = '✓ Correct.';
-      } else {
-        q8Feedback.className = 'quiz-feedback incorrect';
-        q8Feedback.innerHTML = '✗ Incorrect.';
-      }
-
-      // Q9 Check
-      const q9Selected = document.querySelector('input[name="worksheet-q9"]:checked');
-      const q9Feedback = document.getElementById('q9-feedback');
-      if (q9Selected && q9Selected.value === answerKey.q9) {
-        correctCount++;
-        q9Feedback.className = 'quiz-feedback correct';
-        q9Feedback.innerHTML = '✓ Correct.';
-      } else {
-        q9Feedback.className = 'quiz-feedback incorrect';
-        q9Feedback.innerHTML = '✗ Incorrect.';
-      }
-
-      // Q10 Check
-      const q10Selected = document.querySelector('input[name="worksheet-q10"]:checked');
-      const q10Feedback = document.getElementById('q10-feedback');
-      if (q10Selected && q10Selected.value === answerKey.q10) {
-        correctCount++;
-        q10Feedback.className = 'quiz-feedback correct';
-        q10Feedback.innerHTML = '✓ Correct.';
-      } else {
-        q10Feedback.className = 'quiz-feedback incorrect';
-        q10Feedback.innerHTML = '✗ Incorrect.';
-      }
-
-      // Calculate Percent
-      const incorrectCount = totalQuestions - correctCount;
-      const percentage = Math.round((correctCount / totalQuestions) * 100);
-
-      scorePercentEl.textContent = `${percentage}%`;
-
-      scoreSummaryEl.textContent = `Correct answers: ${correctCount}. Incorrect answers: ${incorrectCount}.`;
-      saveLeaderboardEntry(correctCount, percentage);
-
-      if (percentage >= 80) {
+      answerLocked = true;
+      stopQuestionTimer();
+      const wasCorrect = !timedOut && currentAnswerIsCorrect();
+      if (wasCorrect) {
+        correctCount += 1;
+        gamePoints += 600 + Math.round((secondsRemaining / 30) * 400);
         playSuccessSound();
       } else {
         playWarningSound();
       }
+      revealAnswer(card, wasCorrect, timedOut);
+      updateGameHud();
+      setGameButton('VIEW ROUND STANDINGS', 'trophy');
+      const roundPercentage = correctCount * 10;
+      await saveLeaderboardEntry(correctCount, roundPercentage, gamePoints);
+      openLeaderboard(true);
+    }
 
+    function finishQuiz() {
+      stopQuestionTimer();
+      gameFinished = true;
+      const percentage = Math.round((correctCount / quizCards.length) * 100);
+      const incorrectCount = quizCards.length - correctCount;
+      const groupName = document.getElementById('quiz-group-name').value.trim();
+      scorePercentEl.textContent = `${percentage}%`;
+      quizFinalPoints.textContent = gamePoints.toLocaleString();
+      quizResultGroup.textContent = groupName;
+      scoreSummaryEl.textContent = `${correctCount} correct · ${incorrectCount} missed · Score submitted to the leaderboard.`;
+      quizGameBoard.hidden = true;
+      quizPlayHud.hidden = true;
       scoreBanner.classList.add('show');
-      showNotification(`Correct: ${correctCount}. Incorrect: ${incorrectCount}.`, percentage >= 80 ? 'success' : 'error');
-      refreshMath();
-    });
+      setGameButton('PLAY AGAIN', 'rotate-ccw');
+      saveLeaderboardEntry(correctCount, percentage, gamePoints);
+      showNotification(`${groupName}: ${gamePoints.toLocaleString()} points!`, percentage >= 80 ? 'success' : 'info');
+    }
 
-    if (btnResetQuiz) {
-      btnResetQuiz.addEventListener('click', () => {
-        document.querySelectorAll('#student-quiz-form input[type="radio"]').forEach(r => r.checked = false);
-        const q4Text = document.getElementById('q4-text');
-        if (q4Text) q4Text.value = '';
-        document.querySelectorAll('.quiz-feedback').forEach(f => {
-          f.className = 'quiz-feedback';
-          f.innerHTML = '';
-        });
-        scoreBanner.classList.remove('show');
-        showNotification("Worksheet Responses Reset", "info");
+    function resetQuiz(showLobby = true) {
+      stopQuestionTimer();
+      currentQuestion = 0;
+      correctCount = 0;
+      gamePoints = 0;
+      answerLocked = false;
+      gameFinished = false;
+      document.querySelectorAll('#student-quiz-form input[type="radio"]').forEach(input => {
+        input.checked = false;
+        input.disabled = false;
+      });
+      const q4Text = document.getElementById('q4-text');
+      if (q4Text) {
+        q4Text.value = '';
+        q4Text.disabled = false;
+      }
+      document.querySelectorAll('.quiz-option-label').forEach(label => label.classList.remove('is-correct', 'is-wrong'));
+      document.querySelectorAll('.quiz-feedback').forEach(feedback => {
+        feedback.className = 'quiz-feedback';
+        feedback.textContent = '';
+      });
+      scoreBanner.classList.remove('show');
+      quizLobby.hidden = !showLobby;
+      quizPlayHud.hidden = showLobby;
+      quizGameBoard.hidden = showLobby;
+      quizGameActions.hidden = showLobby;
+    }
+
+    if (btnStartQuiz) {
+      btnStartQuiz.addEventListener('click', () => {
+        const groupNameInput = document.getElementById('quiz-group-name');
+        if (!groupNameInput.value.trim()) {
+          showNotification('Enter a team name to join the challenge.', 'error');
+          groupNameInput.focus();
+          return;
+        }
+        resetQuiz(false);
+        quizLobby.hidden = true;
+        quizPlayHud.hidden = false;
+        quizGameBoard.hidden = false;
+        quizGameActions.hidden = false;
+        showQuestion(0);
+        playEpochSound();
       });
     }
+
+    btnGradeQuiz.addEventListener('click', () => {
+      if (gameFinished) {
+        resetQuiz(true);
+        return;
+      }
+      if (!answerLocked) {
+        lockCurrentAnswer(false);
+        return;
+      }
+      openLeaderboard(true);
+    });
+
+    if (btnLeaderboardContinue) {
+      btnLeaderboardContinue.addEventListener('click', () => {
+        closeLeaderboard();
+        if (currentQuestion === quizCards.length - 1) finishQuiz();
+        else showQuestion(currentQuestion + 1);
+      });
+    }
+
+    if (btnResetQuiz) btnResetQuiz.addEventListener('click', () => resetQuiz(true));
   }
 
   function refreshMath(targetEl) {
