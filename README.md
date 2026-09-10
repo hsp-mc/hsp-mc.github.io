@@ -1,8 +1,8 @@
 <div align="center">
 
-# SPHERE
+# Spacesuit Thermal Shielding Kit
 
-### Thermal Insulation Laboratory
+### SPHERE Mission Control
 
 **An interactive undergraduate engineering experiment for modelling, measuring and evaluating transient cooling.**
 
@@ -10,7 +10,7 @@
 [![Engineering Education](https://img.shields.io/badge/ENGINEERING-EDUCATION-2563EB?style=for-the-badge)](#learning-outcomes)
 [![Safety Critical](https://img.shields.io/badge/HOT_WATER-SUPERVISION_REQUIRED-D97706?style=for-the-badge)](#safety)
 
-![SPHERE thermal insulation laboratory cover](images/project-cover.png)
+![Spacesuit Thermal Shielding Kit cover](images/project-cover.png)
 
 [Launch Lab](https://hsp-mc.github.io/) · [Student Manual](resources/manuals/SPHERE_Mission_Control_Student_Manual.pdf) · [Teacher Manual](resources/manuals/SPHERE_Mission_Control_Teacher_Manual.pdf) · [Task Sheet](resources/worksheets/student_task_sheet.pdf) · [Flashcards](resources/flashcards/SPHERE_Mission_Control_Flashcards.pdf)
 
@@ -20,7 +20,7 @@
 
 ## Mission overview
 
-SPHERE is an undergraduate engineering laboratory demonstrator for comparing the transient cooling behaviour of insulated water capsules. It combines a controlled ice-water-bath experiment with a lumped-parameter Newton cooling model, manual temperature acquisition and error analysis.
+Spacesuit Thermal Shielding Kit is a SPHERE engineering laboratory demonstrator for comparing the transient cooling behaviour of insulated water capsules. It combines a controlled ice-water-bath experiment with a lumped-parameter Newton cooling model, manual temperature acquisition and error analysis.
 
 Students construct a layered test article, predict its temperature response, collect measurements and evaluate how well a simplified mathematical model represents the physical system.
 
@@ -146,6 +146,6 @@ The interface loads KaTeX, Chart.js, Lucide icons and web fonts from public cont
 
 <div align="center">
 
-**SPHERE · Observe the transient response. Test the model. Explain the difference.**
+**Spacesuit Thermal Shielding Kit · Observe the transient response. Test the model. Explain the difference.**
 
 </div>

@@ -1,5 +1,5 @@
 /**
- * SPHERE thermal-insulation laboratory application
+ * Spacesuit Thermal Shielding Kit application
  * Interactive model, measurement log and assessment logic
  */
 
@@ -1279,8 +1279,8 @@ document.addEventListener('DOMContentLoaded', () => {
           @media print { #telemetry-print-report { print-color-adjust: exact; -webkit-print-color-adjust: exact; } }
         </style>
         <header>
-          <h1>SPHERE TELEMETRY LOGBOOK</h1>
-          <div class="subtitle">Thermal Lab · Model and Measurement Report</div>
+          <h1>SPACESUIT THERMAL SHIELDING KIT</h1>
+          <div class="subtitle">SPHERE Mission Control · Model and Measurement Report</div>
         </header>
         <section class="meta">
           <div><strong>Selected model</strong><span>${model.name}</span></div>
@@ -2059,5 +2059,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load cached settings
   loadFromLocalStorage();
   
-  logToConsole("SYS: SPHERE laboratory interface ready.");
+  logToConsole("SYS: Spacesuit Thermal Shielding Kit interface ready.");
 });
