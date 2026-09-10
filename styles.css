@@ -1962,16 +1962,44 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 0 0 15px var(--cyan-glow);
 }
 
-.score-badge {
-  display: inline-block;
+.leaderboard-modal-card {
+  max-width: 720px;
+}
+
+.leaderboard-table-wrap {
+  overflow-x: auto;
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #0f172a;
+  font-size: 0.9rem;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  padding: 11px 10px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.leaderboard-table th {
+  color: #475569;
   font-family: var(--font-hud);
-  font-size: 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.leaderboard-table td:nth-child(4) {
   font-weight: 700;
-  padding: 6px 18px;
-  border-radius: 20px;
-  background: var(--orange);
-  color: var(--bg-deep);
-  margin-top: 10px;
+}
+
+.leaderboard-empty {
+  margin: 20px 0;
+  color: #64748b;
+  text-align: center;
 }
 
 /* ==========================================================================

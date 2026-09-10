@@ -1660,8 +1660,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnResetQuiz = document.getElementById('btn-reset-quiz');
     const scoreBanner = document.getElementById('quiz-score-banner');
     const scorePercentEl = document.getElementById('quiz-score-percent');
-    const scoreBadgeEl = document.getElementById('quiz-score-badge');
     const scoreSummaryEl = document.getElementById('quiz-score-summary');
+    const btnOpenLeaderboard = document.getElementById('btn-open-leaderboard');
+    const leaderboardOverlay = document.getElementById('leaderboard-modal-overlay');
+    const btnCloseLeaderboard = document.getElementById('btn-close-leaderboard');
+    const leaderboardRows = document.getElementById('leaderboard-rows');
+    const leaderboardEmpty = document.getElementById('leaderboard-empty');
+    const leaderboardStatus = document.getElementById('leaderboard-status');
+    const leaderboardStorageKey = 'sphereQuizLeaderboard';
+    const leaderboardConfig = window.SPHERE_LEADERBOARD_CONFIG || {};
+    const supabaseUrl = String(leaderboardConfig.supabaseUrl || '').replace(/\/$/, '');
+    const supabasePublicKey = String(
+      leaderboardConfig.supabasePublishableKey || leaderboardConfig.supabaseAnonKey || ''
+    );
+    const sharedLeaderboardEnabled = Boolean(
+      supabaseUrl &&
+      supabasePublicKey &&
+      !supabaseUrl.includes('YOUR_') &&
+      !supabasePublicKey.includes('YOUR_')
+    );
+
+    function supabaseHeaders(extraHeaders = {}) {
+      const headers = { apikey: supabasePublicKey, ...extraHeaders };
+      // Legacy JWT anon keys use a Bearer header; current publishable keys do not.
+      if (supabasePublicKey.startsWith('eyJ')) {
+        headers.Authorization = `Bearer ${supabasePublicKey}`;
+      }
+      return headers;
+    }
 
     if (!btnGradeQuiz) return;
 
@@ -1677,9 +1703,169 @@ document.addEventListener('DOMContentLoaded', () => {
       q10: 'A'
     };
 
+    function getLeaderboard() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(leaderboardStorageKey) || '[]');
+        if (!Array.isArray(saved)) return [];
+        return saved.map(entry => ({
+          ...entry,
+          groupName: entry.groupName || entry.student || 'Unnamed Group',
+          groupId: entry.groupId || entry.team || ''
+        }));
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function renderLeaderboardEntries(entries) {
+      if (!leaderboardRows || !leaderboardEmpty) return;
+
+      const rankedEntries = entries
+        .sort((a, b) => b.percentage - a.percentage || b.savedAt - a.savedAt)
+        .slice(0, 20);
+
+      leaderboardRows.replaceChildren();
+      leaderboardEmpty.style.display = rankedEntries.length ? 'none' : 'block';
+
+      rankedEntries.forEach((entry, index) => {
+        const row = document.createElement('tr');
+        [index + 1, entry.groupName, entry.groupId || '—', `${entry.correct}/10 (${entry.percentage}%)`]
+          .forEach(value => {
+            const cell = document.createElement('td');
+            cell.textContent = value;
+            row.appendChild(cell);
+          });
+        leaderboardRows.appendChild(row);
+      });
+    }
+
+    async function renderLeaderboard() {
+      if (!sharedLeaderboardEnabled) {
+        if (leaderboardStatus) leaderboardStatus.textContent = 'Local mode: add the Supabase details to enable multi-device sync.';
+        renderLeaderboardEntries(getLeaderboard());
+        return;
+      }
+
+      if (leaderboardStatus) leaderboardStatus.textContent = 'Loading shared scores…';
+
+      try {
+        const response = await fetch(
+          `${supabaseUrl}/rest/v1/quiz_scores?select=student,team,lab_date,correct,percentage,created_at&order=percentage.desc,created_at.asc&limit=100`,
+          {
+            headers: supabaseHeaders()
+          }
+        );
+
+        if (!response.ok) throw new Error(`Leaderboard request failed (${response.status})`);
+
+        const sharedEntries = await response.json();
+        const uniqueEntries = [];
+        const identities = new Set();
+
+        sharedEntries.forEach(entry => {
+          const identity = `${entry.student.toLowerCase()}|${(entry.team || '').toLowerCase()}|${entry.lab_date || ''}`;
+          if (identities.has(identity)) return;
+          identities.add(identity);
+          uniqueEntries.push({
+            groupName: entry.student,
+            groupId: entry.team || '',
+            correct: entry.correct,
+            percentage: entry.percentage,
+            savedAt: Date.parse(entry.created_at) || 0
+          });
+        });
+
+        if (leaderboardStatus) leaderboardStatus.textContent = 'Live scores synced across classroom devices.';
+        renderLeaderboardEntries(uniqueEntries);
+      } catch (error) {
+        console.warn('Unable to load shared leaderboard:', error);
+        if (leaderboardStatus) leaderboardStatus.textContent = 'Sync unavailable. Showing scores saved on this device.';
+        renderLeaderboardEntries(getLeaderboard());
+      }
+    }
+
+    function openLeaderboard() {
+      if (!leaderboardOverlay) return;
+      renderLeaderboard();
+      leaderboardOverlay.style.display = 'flex';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      if (btnCloseLeaderboard) btnCloseLeaderboard.focus();
+    }
+
+    function closeLeaderboard() {
+      if (leaderboardOverlay) leaderboardOverlay.style.display = 'none';
+    }
+
+    async function saveLeaderboardEntry(correct, percentage) {
+      const groupName = document.getElementById('quiz-group-name')?.value.trim() || '';
+      const groupId = document.getElementById('quiz-group-id')?.value.trim() || '';
+      const labDate = document.getElementById('quiz-date')?.value.trim() || '';
+      const identity = `${groupName.toLowerCase()}|${groupId.toLowerCase()}|${labDate}`;
+      const entries = getLeaderboard().filter(entry => entry.identity !== identity);
+
+      entries.push({
+        identity,
+        groupName,
+        groupId,
+        labDate,
+        correct,
+        percentage,
+        savedAt: Date.now()
+      });
+
+      try {
+        localStorage.setItem(leaderboardStorageKey, JSON.stringify(entries.slice(-100)));
+      } catch (error) {
+        console.warn('Unable to save leaderboard result:', error);
+      }
+
+      if (!sharedLeaderboardEnabled) return;
+
+      try {
+        const response = await fetch(`${supabaseUrl}/rest/v1/quiz_scores`, {
+          method: 'POST',
+          headers: supabaseHeaders({
+            'Content-Type': 'application/json',
+            Prefer: 'return=minimal'
+          }),
+          body: JSON.stringify({
+            // Existing database field names are retained for compatibility.
+            student: groupName,
+            team: groupId,
+            lab_date: labDate,
+            correct,
+            percentage
+          })
+        });
+
+        if (!response.ok) throw new Error(`Leaderboard submission failed (${response.status})`);
+      } catch (error) {
+        console.warn('Unable to sync leaderboard result:', error);
+        showNotification('Score saved locally; leaderboard sync is unavailable.', 'error');
+      }
+    }
+
+    if (btnOpenLeaderboard) btnOpenLeaderboard.addEventListener('click', openLeaderboard);
+    if (btnCloseLeaderboard) btnCloseLeaderboard.addEventListener('click', closeLeaderboard);
+    if (leaderboardOverlay) {
+      leaderboardOverlay.addEventListener('click', event => {
+        if (event.target === leaderboardOverlay) closeLeaderboard();
+      });
+    }
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && leaderboardOverlay?.style.display === 'flex') closeLeaderboard();
+    });
+
     btnGradeQuiz.addEventListener('click', () => {
+      const groupNameInput = document.getElementById('quiz-group-name');
+      if (!groupNameInput || !groupNameInput.value.trim()) {
+        showNotification('Enter a group name before checking responses.', 'error');
+        if (groupNameInput) groupNameInput.focus();
+        return;
+      }
+
       let correctCount = 0;
-      const totalAutoGraded = 9;
+      const totalQuestions = 10;
 
       // Q1 Check
       const q1Selected = document.querySelector('input[name="worksheet-q1"]:checked');
@@ -1687,10 +1873,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (q1Selected && q1Selected.value === answerKey.q1) {
         correctCount++;
         q1Feedback.className = 'quiz-feedback correct';
-        q1Feedback.innerHTML = '✓ Correct. Radiation dominates external heat transfer in vacuum, whereas the water-bath experiment is governed mainly by conduction and convection.';
+        q1Feedback.innerHTML = '✓ Correct.';
       } else {
         q1Feedback.className = 'quiz-feedback incorrect';
-        q1Feedback.innerHTML = '✗ Review required. The correct answer is B.';
+        q1Feedback.innerHTML = '✗ Incorrect.';
       }
 
       // Q2 Check
@@ -1699,10 +1885,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (q2Selected && q2Selected.value === answerKey.q2) {
         correctCount++;
         q2Feedback.className = 'quiz-feedback correct';
-        q2Feedback.innerHTML = '✓ Correct. A lower cooling constant represents a slower approach to the ambient temperature.';
+        q2Feedback.innerHTML = '✓ Correct.';
       } else {
         q2Feedback.className = 'quiz-feedback incorrect';
-        q2Feedback.innerHTML = '✗ Review required. The correct answer is B: a smaller cooling constant corresponds to slower cooling.';
+        q2Feedback.innerHTML = '✗ Incorrect.';
       }
 
       // Q3 Check
@@ -1711,21 +1897,22 @@ document.addEventListener('DOMContentLoaded', () => {
       if (q3Selected && q3Selected.value === answerKey.q3) {
         correctCount++;
         q3Feedback.className = 'quiz-feedback correct';
-        q3Feedback.innerHTML = '✓ Correct. The layers reduce different heat-transfer pathways and introduce additional thermal resistance.';
+        q3Feedback.innerHTML = '✓ Correct.';
       } else {
         q3Feedback.className = 'quiz-feedback incorrect';
-        q3Feedback.innerHTML = '✗ Review required. The correct answer is A.';
+        q3Feedback.innerHTML = '✗ Incorrect.';
       }
 
       // Q4 Check (Text Area)
       const q4Text = document.getElementById('q4-text');
       const q4Feedback = document.getElementById('q4-feedback');
       if (q4Text && q4Text.value.trim().length >= 10) {
-        q4Feedback.className = 'quiz-feedback';
-        q4Feedback.innerHTML = 'Response recorded for instructor review. It is not included in the automatic score.';
+        correctCount++;
+        q4Feedback.className = 'quiz-feedback correct';
+        q4Feedback.innerHTML = '✓ Correct.';
       } else {
         q4Feedback.className = 'quiz-feedback incorrect';
-        q4Feedback.innerHTML = 'Provide two physical reasons for instructor review. This response is not auto-scored.';
+        q4Feedback.innerHTML = '✗ Incorrect.';
       }
 
       // Q5 Check
@@ -1734,10 +1921,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (q5Selected && q5Selected.value === answerKey.q5) {
         correctCount++;
         q5Feedback.className = 'quiz-feedback correct';
-        q5Feedback.innerHTML = '✓ Correct. Set $T_{\\text{env}}$ to the measured bath temperature before recalculating the reference curve.';
+        q5Feedback.innerHTML = '✓ Correct.';
       } else {
         q5Feedback.className = 'quiz-feedback incorrect';
-        q5Feedback.innerHTML = '✗ Review required. The correct answer is B: update $T_{\\text{env}}$ in the model.';
+        q5Feedback.innerHTML = '✗ Incorrect.';
       }
 
       // Q6 Check
@@ -1746,10 +1933,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (q6Selected && q6Selected.value === answerKey.q6) {
         correctCount++;
         q6Feedback.className = 'quiz-feedback correct';
-        q6Feedback.innerHTML = '✓ Correct. Doubling thermal mass ($100\\text{ mL} \\to 200\\text{ mL}$) increases stored thermal energy ($Q = mc_p\\Delta T$), causing the liquid to cool more slowly and reducing the fitted decay constant $k$.';
+        q6Feedback.innerHTML = '✓ Correct.';
       } else {
         q6Feedback.className = 'quiz-feedback incorrect';
-        q6Feedback.innerHTML = '✗ Review required. The correct answer is A: the larger volume holds twice the thermal energy, cooling more slowly so $k$ decreases.';
+        q6Feedback.innerHTML = '✗ Incorrect.';
       }
 
       // Q7 Check
@@ -1758,10 +1945,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (q7Selected && q7Selected.value === answerKey.q7) {
         correctCount++;
         q7Feedback.className = 'quiz-feedback correct';
-        q7Feedback.innerHTML = '✓ Correct. An idealised vacuum has no continuous fluid medium to support bulk convective transport.';
+        q7Feedback.innerHTML = '✓ Correct.';
       } else {
         q7Feedback.className = 'quiz-feedback incorrect';
-        q7Feedback.innerHTML = '✗ Review required. The correct answer is A: an idealised vacuum has no continuous fluid medium for convection.';
+        q7Feedback.innerHTML = '✗ Incorrect.';
       }
 
       // Q8 Check
@@ -1770,10 +1957,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (q8Selected && q8Selected.value === answerKey.q8) {
         correctCount++;
         q8Feedback.className = 'quiz-feedback correct';
-        q8Feedback.innerHTML = '✓ Correct. For equal mass and comparable heat-transfer conditions, the lower specific heat capacity produces a faster temperature decrease.';
+        q8Feedback.innerHTML = '✓ Correct.';
       } else {
         q8Feedback.className = 'quiz-feedback incorrect';
-        q8Feedback.innerHTML = '✗ INCORRECT! Correct answer is A: Lower heat capacity means faster temperature drop.';
+        q8Feedback.innerHTML = '✗ Incorrect.';
       }
 
       // Q9 Check
@@ -1782,10 +1969,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (q9Selected && q9Selected.value === answerKey.q9) {
         correctCount++;
         q9Feedback.className = 'quiz-feedback correct';
-        q9Feedback.innerHTML = '✓ CORRECT! Over time, the capsule approaches environmental equilibrium ($T_{\\text{env}}$).';
+        q9Feedback.innerHTML = '✓ Correct.';
       } else {
         q9Feedback.className = 'quiz-feedback incorrect';
-        q9Feedback.innerHTML = '✗ INCORRECT! Correct answer is B: The temperature approaches $T_{\\text{env}}$ asymptotically.';
+        q9Feedback.innerHTML = '✗ Incorrect.';
       }
 
       // Q10 Check
@@ -1794,35 +1981,29 @@ document.addEventListener('DOMContentLoaded', () => {
       if (q10Selected && q10Selected.value === answerKey.q10) {
         correctCount++;
         q10Feedback.className = 'quiz-feedback correct';
-        q10Feedback.innerHTML = '✓ CORRECT! Water leakage or active stirring accelerates forced convective heat loss beyond theoretical predictions.';
+        q10Feedback.innerHTML = '✓ Correct.';
       } else {
         q10Feedback.className = 'quiz-feedback incorrect';
-        q10Feedback.innerHTML = '✗ INCORRECT! Correct answer is A: Capsule leakage or excess fluid turbulence.';
+        q10Feedback.innerHTML = '✗ Incorrect.';
       }
 
       // Calculate Percent
-      const percentage = Math.round((correctCount / totalAutoGraded) * 100);
+      const incorrectCount = totalQuestions - correctCount;
+      const percentage = Math.round((correctCount / totalQuestions) * 100);
+
       scorePercentEl.textContent = `${percentage}%`;
 
-      // Grade Badge
-      let grade = 'F';
-      if (percentage >= 95) grade = 'A+';
-      else if (percentage >= 85) grade = 'A';
-      else if (percentage >= 75) grade = 'B';
-      else if (percentage >= 60) grade = 'C';
-
-      scoreBadgeEl.textContent = `GRADE: ${grade}`;
+      scoreSummaryEl.textContent = `Correct answers: ${correctCount}. Incorrect answers: ${incorrectCount}.`;
+      saveLeaderboardEntry(correctCount, percentage);
 
       if (percentage >= 80) {
-        scoreSummaryEl.textContent = `Auto-scored result: ${correctCount}/${totalAutoGraded} multiple-choice answers are correct. Question 4 remains subject to instructor review.`;
         playSuccessSound();
       } else {
-        scoreSummaryEl.textContent = `Auto-scored result: ${correctCount}/${totalAutoGraded} multiple-choice answers are correct. Review the relevant theory and discuss Question 4 with the instructor.`;
         playWarningSound();
       }
 
       scoreBanner.classList.add('show');
-      showNotification(`EVALUATION GRADED: ${percentage}% (GRADE: ${grade})`, percentage >= 80 ? 'success' : 'error');
+      showNotification(`Correct: ${correctCount}. Incorrect: ${incorrectCount}.`, percentage >= 80 ? 'success' : 'error');
       refreshMath();
     });
 

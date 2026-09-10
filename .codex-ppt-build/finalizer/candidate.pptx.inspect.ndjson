@@ -1,0 +1,426 @@
+{"kind":"deck","id":"pr/hoxydz","name":"Deck"}
+{"kind":"layout","layoutId":"e24ed405-e9d6-418f-ac8a-4120faca484b","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"da6b60c2-8c9f-42fa-a15f-a314d4fc6ea7","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/ncujrz","slide":1,"title":"TUM HUMAN SPACEFLIGHT TECHNOLOGY","textShapes":7}
+{"kind":"shape","id":"sh/l4f6hkb6","slide":1,"bbox":[0,0,760,720]}
+{"kind":"shape","id":"sh/0365oful","slide":1,"bbox":[690,0,85,720]}
+{"kind":"textbox","id":"sh/bydobat4","slide":1,"text":"TUM HUMAN SPACEFLIGHT TECHNOLOGY","textPreview":"TUM HUMAN SPACEFLIGHT TECHNOLOGY","textChars":32,"textLines":1,"bbox":[62,54,500,24]}
+{"kind":"textbox","id":"sh/qd4ni5cj","slide":1,"text":"SPHERE","textPreview":"SPHERE","textChars":6,"textLines":1,"bbox":[62,132,520,72]}
+{"kind":"textbox","id":"sh/d0v6d0bu","slide":1,"text":"Thermal Insulation Laboratory","textPreview":"Thermal Insulation Laboratory","textChars":29,"textLines":1,"bbox":[62,207,580,68]}
+{"kind":"textbox","id":"sh/czm5kvu9","slide":1,"text":"A classroom experiment linking transient heat transfer, physical testing and model validation","textPreview":"A classroom experiment linking transient heat transfer, physical testing and model validation","textChars":93,"textLines":1,"bbox":[62,302,555,88]}
+{"kind":"shape","id":"sh/vuhonut8","slide":1,"bbox":[62,422,500,4]}
+{"kind":"textbox","id":"sh/ato7upcn","slide":1,"text":"FINAL PROJECT PRESENTATION","textPreview":"FINAL PROJECT PRESENTATION","textChars":26,"textLines":1,"bbox":[62,446,480,28]}
+{"kind":"textbox","id":"sh/4ny1wjed","slide":1,"text":"Piyath Vithanage  ·  Elio Krollpfeiffer\nDilan Fernando  ·  Nuhansee Migelhewage","textPreview":"Piyath Vithanage  ·  Elio Krollpfeiffer | Dilan Fernando  ·  Nuhansee Migelhewage","textChars":79,"textLines":2,"bbox":[62,495,565,68]}
+{"kind":"textbox","id":"sh/poripovy","slide":1,"text":"9 September 2026","textPreview":"9 September 2026","textChars":16,"textLines":1,"bbox":[62,636,240,26]}
+{"kind":"image","id":"im/ruhkzexo","slide":1,"name":"","geometry":"roundRect","alt":"astronaut.png","bbox":[690,0,590,720]}
+{"kind":"notes","id":"nt/ncujrz","slide":1,"text":"Suggested timing: 0:30\n\nOpen with the project purpose: SPHERE turns a spacesuit thermal-control challenge into a measurable classroom experiment. Introduce the four-person team and preview the link between theory, the physical test, and Mission Control.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- README.md\n- output/pdf/SPHERE_Thermal_Insulation_Project_Report_Updated.pdf"}
+{"kind":"slide","id":"sl/e67zxe","slide":2,"title":"FINAL PRESENTATION","textShapes":11}
+{"kind":"textbox","id":"sh/1g36183i","slide":2,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/uds76t4r","slide":2,"text":"From spacesuit thermal control to a classroom experiment","textPreview":"From spacesuit thermal control to a classroom experiment","textChars":56,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/felozylc","slide":2,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/sbap4jml","slide":2,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/tcj6xo36","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/7a1ovel0","slide":2,"text":"THE ENGINEERING QUESTION","textPreview":"THE ENGINEERING QUESTION","textChars":24,"textLines":1,"bbox":[652,155,480,22]}
+{"kind":"textbox","id":"sh/kna50jmp","slide":2,"text":"How do layered materials change the transient cooling of a protected thermal mass?","textPreview":"How do layered materials change the transient cooling of a protected thermal mass?","textChars":82,"textLines":1,"bbox":[652,188,520,100]}
+{"kind":"shape","id":"sh/5oj6to3a","slide":2,"bbox":[652,328,8,8]}
+{"kind":"textbox","id":"sh/tk7epcj6","slide":2,"text":"Warm water represents the protected thermal mass.","textPreview":"Warm water represents the protected thermal mass.","textChars":49,"textLines":1,"bbox":[676,320,496,54]}
+{"kind":"shape","id":"sh/sjexg7il","slide":2,"bbox":[652,386,8,8]}
+{"kind":"textbox","id":"sh/ri5wn210","slide":2,"text":"An ice-water bath supplies a repeatable cold boundary.","textPreview":"An ice-water bath supplies a repeatable cold boundary.","textChars":54,"textLines":1,"bbox":[676,378,496,54]}
+{"kind":"shape","id":"sh/6hwfex0v","slide":2,"bbox":[652,444,8,8]}
+{"kind":"textbox","id":"sh/5gnelsja","slide":2,"text":"Four insulation builds create a controlled comparison.","textPreview":"Four insulation builds create a controlled comparison.","textChars":54,"textLines":1,"bbox":[676,436,496,54]}
+{"kind":"shape","id":"sh/4fedc7ip","slide":2,"bbox":[652,502,8,8]}
+{"kind":"textbox","id":"sh/je5wj214","slide":2,"text":"Prediction and observation meet in the same workflow.","textPreview":"Prediction and observation meet in the same workflow.","textChars":53,"textLines":1,"bbox":[676,494,496,54]}
+{"kind":"shape","id":"sh/idwvax0j","slide":2,"bbox":[652,566,520,56]}
+{"kind":"textbox","id":"sh/hs3ehsjy","slide":2,"text":"Analogy to spacecraft thermal control, not a vacuum simulation","textPreview":"Analogy to spacecraft thermal control, not a vacuum simulation","textChars":62,"textLines":1,"bbox":[674,580,480,28]}
+{"kind":"image","id":"im/jupwnilw","slide":2,"name":"","geometry":"roundRect","alt":"stage1-theory-safety.png","bbox":[52,148,555,440]}
+{"kind":"notes","id":"nt/e67zxe","slide":2,"text":"Suggested timing: 0:45\n\nFrame the laboratory as an engineering analogy. The ice bath emphasizes conduction and convection, while a real spacesuit in vacuum relies heavily on radiation control and active thermal management. Avoid claiming that the setup reproduces space.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- Engineering Project Report, Sections 1 and 2\n- SPHERE Mission Control overview"}
+{"kind":"slide","id":"sl/bb50cj","slide":3,"title":"FINAL PRESENTATION","textShapes":12}
+{"kind":"textbox","id":"sh/q547ytkv","slide":3,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/d8fq9oj6","slide":3,"text":"One project connects experiment, software and assessment","textPreview":"One project connects experiment, software and assessment","textChars":56,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/c76p0j2l","slide":3,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/3id83e14","slide":3,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/2h47u9kj","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/4jmpwj2p","slide":3,"text":"DELIVERABLE SUITE","textPreview":"DELIVERABLE SUITE","textChars":17,"textLines":1,"bbox":[802,155,320,22]}
+{"kind":"shape","id":"sh/fet8zel8","slide":3,"bbox":[802,202,8,8]}
+{"kind":"textbox","id":"sh/udk7q9kn","slide":3,"text":"Mission Control browser application","textPreview":"Mission Control browser application","textChars":35,"textLines":1,"bbox":[826,194,361,55]}
+{"kind":"shape","id":"sh/wjedwjix","slide":3,"bbox":[802,261,8,8]}
+{"kind":"textbox","id":"sh/xknupoj2","slide":3,"text":"Student and teacher manuals","textPreview":"Student and teacher manuals","textChars":27,"textLines":1,"bbox":[826,253,361,55]}
+{"kind":"shape","id":"sh/ahcvu90r","slide":3,"bbox":[802,320,8,8]}
+{"kind":"textbox","id":"sh/vilcne1c","slide":3,"text":"Illustrated experimental SOP","textPreview":"Illustrated experimental SOP","textChars":28,"textLines":1,"bbox":[826,312,361,55]}
+{"kind":"shape","id":"sh/8fudsz2l","slide":3,"bbox":[802,379,8,8]}
+{"kind":"textbox","id":"sh/9g3ul4j6","slide":3,"text":"Two-page task sheet","textPreview":"Two-page task sheet","textChars":19,"textLines":1,"bbox":[826,371,361,55]}
+{"kind":"shape","id":"sh/mtcvqpkf","slide":3,"bbox":[802,438,8,8]}
+{"kind":"textbox","id":"sh/nulcju10","slide":3,"text":"Revision flashcards","textPreview":"Revision flashcards","textChars":19,"textLines":1,"bbox":[826,430,361,55]}
+{"kind":"shape","id":"sh/sbyd43ip","slide":3,"bbox":[802,497,8,8]}
+{"kind":"textbox","id":"sh/tc7ex8ja","slide":3,"text":"Unified ten-question assessment","textPreview":"Unified ten-question assessment","textChars":31,"textLines":1,"bbox":[826,489,361,55]}
+{"kind":"textbox","id":"sh/183uhobe","slide":3,"text":"The same settings and terminology now appear across every learning resource.","textPreview":"The same settings and terminology now appear across every learning resource.","textChars":76,"textLines":1,"bbox":[802,566,378,64]}
+{"kind":"image","id":"im/4n6p0rmx","slide":3,"name":"","geometry":"roundRect","alt":"01-overview.png","bbox":[52,150,700,425]}
+{"kind":"notes","id":"nt/bb50cj","slide":3,"text":"Suggested timing: 0:45\n\nExplain that the strongest project outcome is integration. Students move from theory to assembly, prediction, measurement, analysis and assessment without changing tools or terminology.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- README.md\n- index.html\n- student_manual.html\n- teacher_manual.html"}
+{"kind":"slide","id":"sl/7eqcbc","slide":4,"title":"FINAL PRESENTATION","textShapes":18}
+{"kind":"textbox","id":"sh/vy18jeps","slide":4,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/gzapcjqd","slide":4,"text":"Learning objectives and classroom constraints","textPreview":"Learning objectives and classroom constraints","textChars":45,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/h03qlo7y","slide":4,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/i1c7et8j","slide":4,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/32l8nyp4","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/43upg3q9","slide":4,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[60,154,55,46]}
+{"kind":"textbox","id":"sh/543qp87u","slide":4,"text":"Heat-transfer mechanisms","textPreview":"Heat-transfer mechanisms","textChars":24,"textLines":1,"bbox":[130,154,335,34]}
+{"kind":"textbox","id":"sh/q5crid8f","slide":4,"text":"Distinguish conduction, convection and radiation in the test system.","textPreview":"Distinguish conduction, convection and radiation in the test system.","textChars":68,"textLines":1,"bbox":[470,154,700,54]}
+{"kind":"shape","id":"sh/r6l8ryp0","slide":4,"bbox":[60,224,1110,1]}
+{"kind":"textbox","id":"sh/vulc7m5g","slide":4,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[60,257,55,46]}
+{"kind":"textbox","id":"sh/utcbyhov","slide":4,"text":"Newton cooling model","textPreview":"Newton cooling model","textChars":20,"textLines":1,"bbox":[130,257,335,34]}
+{"kind":"textbox","id":"sh/hw3u9cnm","slide":4,"text":"Interpret the effective cooling constant and calculate a reference curve.","textPreview":"Interpret the effective cooling constant and calculate a reference curve.","textChars":73,"textLines":1,"bbox":[470,257,700,54]}
+{"kind":"shape","id":"sh/gvut0r61","slide":4,"bbox":[60,327,1110,1]}
+{"kind":"textbox","id":"sh/761c32pk","slide":4,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[60,360,55,46]}
+{"kind":"textbox","id":"sh/65sbuxoz","slide":4,"text":"Experimental evidence","textPreview":"Experimental evidence","textChars":21,"textLines":1,"bbox":[130,360,335,34]}
+{"kind":"textbox","id":"sh/t83u5c7q","slide":4,"text":"Collect a controlled 16-point temperature history and plot it.","textPreview":"Collect a controlled 16-point temperature history and plot it.","textChars":62,"textLines":1,"bbox":[470,360,700,54]}
+{"kind":"shape","id":"sh/87atw765","slide":4,"bbox":[60,430,1110,1]}
+{"kind":"textbox","id":"sh/r25cf65o","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[60,463,55,46]}
+{"kind":"textbox","id":"sh/q1wv61o3","slide":4,"text":"Model evaluation","textPreview":"Model evaluation","textChars":16,"textLines":1,"bbox":[130,463,335,34]}
+{"kind":"textbox","id":"sh/2xgfy58b","slide":4,"text":"Use residuals and MAE to explain agreement and uncertainty.","textPreview":"Use residuals and MAE to explain agreement and uncertainty.","textChars":59,"textLines":1,"bbox":[470,463,700,54]}
+{"kind":"shape","id":"sh/ny9w7apw","slide":4,"bbox":[60,533,1110,1]}
+{"kind":"shape","id":"sh/ojix0vqh","slide":4,"bbox":[60,575,1110,62]}
+{"kind":"textbox","id":"sh/pkre9072","slide":4,"text":"Class format","textPreview":"Class format","textChars":12,"textLines":1,"bbox":[82,590,150,26]}
+{"kind":"textbox","id":"sh/al0f258n","slide":4,"text":"Four groups in parallel  ·  55–70 minutes  ·  15-minute measurement interval  ·  Reusable hardware","textPreview":"Four groups in parallel  ·  55–70 minutes  ·  15-minute measurement interval  ·  Reusable hardware","textChars":98,"textLines":1,"bbox":[230,588,910,30]}
+{"kind":"notes","id":"nt/7eqcbc","slide":4,"text":"Suggested timing: 0:40\n\nConnect each learning objective to an observable student action. The complete classroom run takes about 55 to 70 minutes, although the final presentation summarizes it in under 15 minutes.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- README.md\n- Engineering Project Report, Section 1"}
+{"kind":"slide","id":"sl/2tdhvh","slide":5,"title":"FINAL PRESENTATION","textShapes":14}
+{"kind":"textbox","id":"sh/mxszipo3","slide":5,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/90jit47e","slide":5,"text":"Experimental hardware and boundary conditions","textPreview":"Experimental hardware and boundary conditions","textChars":45,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/8zahkz6t","slide":5,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/zah0napc","slide":5,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/y98ze58r","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/0bahgfqx","slide":5,"text":"VERIFIED SETTINGS","textPreview":"VERIFIED SETTINGS","textChars":17,"textLines":1,"bbox":[820,155,340,22]}
+{"kind":"textbox","id":"sh/b6h0japg","slide":5,"text":"100 mL","textPreview":"100 mL","textChars":6,"textLines":1,"bbox":[820,196,160,34]}
+{"kind":"textbox","id":"sh/q58za58v","slide":5,"text":"wide-mouth glass thermal core","textPreview":"wide-mouth glass thermal core","textChars":29,"textLines":1,"bbox":[820,234,350,38]}
+{"kind":"textbox","id":"sh/wr29wfu1","slide":5,"text":"≈80 °C","textPreview":"≈80 °C","textChars":6,"textLines":1,"bbox":[820,282,160,34]}
+{"kind":"textbox","id":"sh/xsvqpkv6","slide":5,"text":"initial water temperature; record actual T₀","textPreview":"initial water temperature; record actual T₀","textChars":43,"textLines":1,"bbox":[820,320,350,38]}
+{"kind":"textbox","id":"sh/apkru5cv","slide":5,"text":"Measured","textPreview":"Measured","textChars":8,"textLines":1,"bbox":[820,368,160,34]}
+{"kind":"textbox","id":"sh/bqt8nadg","slide":5,"text":"ice-water bath temperature Tenv","textPreview":"ice-water bath temperature Tenv","textChars":31,"textLines":1,"bbox":[820,406,350,38]}
+{"kind":"textbox","id":"sh/on29svup","slide":5,"text":"1 minute","textPreview":"1 minute","textChars":8,"textLines":1,"bbox":[820,454,160,34]}
+{"kind":"textbox","id":"sh/9obql0va","slide":5,"text":"sampling from t = 0 through 15","textPreview":"sampling from t = 0 through 15","textChars":30,"textLines":1,"bbox":[820,492,350,38]}
+{"kind":"shape","id":"sh/m1k7qlwj","slide":5,"bbox":[820,552,350,66]}
+{"kind":"textbox","id":"sh/n2t8jqd4","slide":5,"text":"Four matched cores allow parallel classroom testing","textPreview":"Four matched cores allow parallel classroom testing","textChars":51,"textLines":1,"bbox":[842,568,315,36]}
+{"kind":"image","id":"im/kbipw729","slide":5,"name":"","geometry":"roundRect","alt":"setup.jpg","bbox":[52,150,720,440]}
+{"kind":"notes","id":"nt/2tdhvh","slide":5,"text":"Suggested timing: 0:45\n\nPoint out the separate bath probe, the centered core probe and the need for consistent immersion depth. The apparatus is deliberately simple, reusable and browser-independent at the sensing stage.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- Engineering Project Report, Sections 3 and 10\n- Thermal_Insulation_SOP.docx"}
+{"kind":"slide","id":"sl/6uhh95","slide":6,"title":"FINAL PRESENTATION","textShapes":17}
+{"kind":"textbox","id":"sh/bex0j6d8","slide":6,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/cf6hsbet","slide":6,"text":"Four controlled insulation configurations","textPreview":"Four controlled insulation configurations","textChars":41,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/dgfilgve","slide":6,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/2pozm1wr","slide":6,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/3ax0f6dc","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/pcfihwv2","slide":6,"text":"Bare control","textPreview":"Bare control","textChars":12,"textLines":1,"bbox":[52,514,270,32]}
+{"kind":"textbox","id":"sh/el4zihwf","slide":6,"text":"k = 0.150 min⁻¹","textPreview":"k = 0.150 min⁻¹","textChars":15,"textLines":1,"bbox":[52,551,270,26]}
+{"kind":"textbox","id":"sh/fmd0bmd0","slide":6,"text":"Reference heat loss","textPreview":"Reference heat loss","textChars":19,"textLines":1,"bbox":[52,582,270,28]}
+{"kind":"textbox","id":"sh/614ripg3","slide":6,"text":"Bubble wrap","textPreview":"Bubble wrap","textChars":11,"textLines":1,"bbox":[352,514,270,32]}
+{"kind":"textbox","id":"sh/t4fqt4ze","slide":6,"text":"k = 0.040 min⁻¹","textPreview":"k = 0.040 min⁻¹","textChars":15,"textLines":1,"bbox":[352,551,270,26]}
+{"kind":"textbox","id":"sh/s369kzyt","slide":6,"text":"Trapped air cells","textPreview":"Trapped air cells","textChars":17,"textLines":1,"bbox":[352,582,270,28]}
+{"kind":"textbox","id":"sh/e5orm9gz","slide":6,"text":"Mylar only","textPreview":"Mylar only","textChars":10,"textLines":1,"bbox":[652,514,270,32]}
+{"kind":"textbox","id":"sh/18fqx4zq","slide":6,"text":"k = 0.121 min⁻¹","textPreview":"k = 0.121 min⁻¹","textChars":15,"textLines":1,"bbox":[652,551,270,26]}
+{"kind":"textbox","id":"sh/g769ojy5","slide":6,"text":"Reflective layer","textPreview":"Reflective layer","textChars":16,"textLines":1,"bbox":[652,582,270,28]}
+{"kind":"textbox","id":"sh/u9k7a5gv","slide":6,"text":"Full MLI","textPreview":"Full MLI","textChars":8,"textLines":1,"bbox":[952,514,270,32]}
+{"kind":"textbox","id":"sh/ypsbid0j","slide":6,"text":"k = 0.015 min⁻¹","textPreview":"k = 0.015 min⁻¹","textChars":15,"textLines":1,"bbox":[952,551,270,26]}
+{"kind":"textbox","id":"sh/zq1cri1o","slide":6,"text":"Cotton + bubble + Mylar","textPreview":"Cotton + bubble + Mylar","textChars":23,"textLines":1,"bbox":[952,582,270,28]}
+{"kind":"textbox","id":"sh/0ratkni9","slide":6,"text":"Reference coefficients are educational system settings, not material conductivities.","textPreview":"Reference coefficients are educational system settings, not material conductivities.","textChars":84,"textLines":1,"bbox":[52,632,1160,28]}
+{"kind":"image","id":"im/54b2tw7y","slide":6,"name":"","geometry":"roundRect","alt":"barecapsule.jpeg","bbox":[52,148,270,350]}
+{"kind":"image","id":"im/gvyt8zqx","slide":6,"name":"","geometry":"roundRect","alt":"bubblewrap-only.png","bbox":[352,148,270,350]}
+{"kind":"image","id":"im/sryt4fql","slide":6,"name":"","geometry":"roundRect","alt":"Onlymylar.jpg","bbox":[652,148,270,350]}
+{"kind":"image","id":"im/43e90fqp","slide":6,"name":"","geometry":"roundRect","alt":"full-mli.png","bbox":[952,148,270,350]}
+{"kind":"notes","id":"nt/6uhh95","slide":6,"text":"Suggested timing: 0:50\n\nDescribe the physical construction and keep the distinction between effective system coefficient k and material thermal conductivity λ. The current verified Mylar setting is 0.121 min⁻¹.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- app.js, modelConstants\n- Student Manual, test configurations\n- Engineering Project Report, Section 3"}
+{"kind":"slide","id":"sl/w6qslo","slide":7,"title":"FINAL PRESENTATION","textShapes":15}
+{"kind":"textbox","id":"sh/upc72poj","slide":7,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/hsn6d47a","slide":7,"text":"Thermodynamic framework","textPreview":"Thermodynamic framework","textChars":23,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/wrep4z6p","slide":7,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/3u58fep0","slide":7,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/itw769of","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"shape","id":"sh/4vep8j6l","slide":7,"bbox":[790,140,428,150]}
+{"kind":"textbox","id":"sh/rip8jepc","slide":7,"text":"Newton cooling model","textPreview":"Newton cooling model","textChars":20,"textLines":1,"bbox":[816,160,370,30]}
+{"kind":"textbox","id":"sh/s3axczup","slide":7,"text":"Smaller k means slower approach to the bath temperature","textPreview":"Smaller k means slower approach to the bath temperature","textChars":55,"textLines":1,"bbox":[816,258,370,25]}
+{"kind":"textbox","id":"sh/d4jy54va","slide":7,"text":"CONDUCTION","textPreview":"CONDUCTION","textChars":10,"textLines":1,"bbox":[52,470,180,26]}
+{"kind":"textbox","id":"sh/q18fapcj","slide":7,"text":"Direct contact through glass, water and solid layers","textPreview":"Direct contact through glass, water and solid layers","textChars":52,"textLines":1,"bbox":[235,470,475,38]}
+{"kind":"textbox","id":"sh/r2hg3ud4","slide":7,"text":"Cotton and interfaces add resistance","textPreview":"Cotton and interfaces add resistance","textChars":36,"textLines":1,"bbox":[750,470,460,38]}
+{"kind":"textbox","id":"sh/07axgju1","slide":7,"text":"CONVECTION","textPreview":"CONVECTION","textChars":10,"textLines":1,"bbox":[52,532,180,26]}
+{"kind":"textbox","id":"sh/18jy9ov6","slide":7,"text":"Fluid movement in the bath and gaps","textPreview":"Fluid movement in the bath and gaps","textChars":35,"textLines":1,"bbox":[235,532,475,38]}
+{"kind":"textbox","id":"sh/e5sfe9cv","slide":7,"text":"Sealed bubble cells restrict circulation","textPreview":"Sealed bubble cells restrict circulation","textChars":40,"textLines":1,"bbox":[750,532,460,38]}
+{"kind":"textbox","id":"sh/f61g7edg","slide":7,"text":"RADIATION","textPreview":"RADIATION","textChars":9,"textLines":1,"bbox":[52,594,180,26]}
+{"kind":"textbox","id":"sh/obuhkjux","slide":7,"text":"Infrared exchange between surfaces","textPreview":"Infrared exchange between surfaces","textChars":34,"textLines":1,"bbox":[235,594,475,38]}
+{"kind":"textbox","id":"sh/9w3ydovi","slide":7,"text":"Mylar reduces radiative exchange","textPreview":"Mylar reduces radiative exchange","textChars":32,"textLines":1,"bbox":[750,594,460,38]}
+{"kind":"image","id":"im/wry1o3ix","slide":7,"name":"","geometry":"roundRect","alt":"hardware-schematic.png","bbox":[52,140,700,305]}
+{"kind":"image","id":"im/fmtk72hw","slide":7,"name":"","geometry":"roundRect","alt":"newton.png","bbox":[808,199,390,72]}
+{"kind":"notes","id":"nt/w6qslo","slide":7,"text":"Suggested timing: 1:00\n\nExplain the model as a lumped-parameter approximation. The effective k captures geometry, thermal mass, the boundary and every heat-loss path. It must not be presented as the thermal conductivity of cotton, bubble wrap or Mylar.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- Engineering Project Report, Section 2\n- README.md, Engineering model"}
+{"kind":"slide","id":"sl/c43bc5","slide":8,"title":"FINAL PRESENTATION","textShapes":25}
+{"kind":"textbox","id":"sh/0b2tsvm1","slide":8,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/fa9czq5g","slide":8,"text":"Controlled method and safety-critical checks","textPreview":"Controlled method and safety-critical checks","textChars":44,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/e90bql4v","slide":8,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/d8raxgna","slide":8,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/s7itobmp","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/r69svq54","slide":8,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[52,155,70,50]}
+{"kind":"textbox","id":"sh/q50bml4j","slide":8,"text":"PREPARE","textPreview":"PREPARE","textChars":7,"textLines":1,"bbox":[122,159,195,28]}
+{"kind":"textbox","id":"sh/x4vu9kne","slide":8,"text":"Measure Tenv, label conditions, leak-test the cores","textPreview":"Measure Tenv, label conditions, leak-test the cores","textChars":51,"textLines":1,"bbox":[52,214,260,82]}
+{"kind":"shape","id":"sh/c3mt0fm9","slide":8,"bbox":[322,180,25,3]}
+{"kind":"textbox","id":"sh/2tk3il8b","slide":8,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[352,155,70,50]}
+{"kind":"textbox","id":"sh/3ut4bqpw","slide":8,"text":"CONDITION","textPreview":"CONDITION","textChars":9,"textLines":1,"bbox":[422,159,195,28]}
+{"kind":"textbox","id":"sh/ov2lkbqh","slide":8,"text":"Fill 100 mL near 80 °C and record the actual T₀","textPreview":"Fill 100 mL near 80 °C and record the actual T₀","textChars":47,"textLines":1,"bbox":[352,214,260,82]}
+{"kind":"shape","id":"sh/pwbmdg72","slide":8,"bbox":[622,180,25,3]}
+{"kind":"textbox","id":"sh/ep03e18f","slide":8,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[652,155,70,50]}
+{"kind":"textbox","id":"sh/fq9476p0","slide":8,"text":"MEASURE","textPreview":"MEASURE","textChars":7,"textLines":1,"bbox":[722,159,195,28]}
+{"kind":"textbox","id":"sh/grilgbql","slide":8,"text":"Immerse consistently and log one reading each minute","textPreview":"Immerse consistently and log one reading each minute","textChars":52,"textLines":1,"bbox":[652,214,260,82]}
+{"kind":"shape","id":"sh/1srm9g7q","slide":8,"bbox":[922,180,25,3]}
+{"kind":"textbox","id":"sh/yl4nq5oj","slide":8,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[952,155,70,50]}
+{"kind":"textbox","id":"sh/zmd4jap4","slide":8,"text":"ANALYSE","textPreview":"ANALYSE","textChars":7,"textLines":1,"bbox":[1022,159,195,28]}
+{"kind":"textbox","id":"sh/v650b25g","slide":8,"text":"Compare curves, residuals, k and MAE","textPreview":"Compare curves, residuals, k and MAE","textChars":36,"textLines":1,"bbox":[952,214,260,82]}
+{"kind":"shape","id":"sh/u5wjixov","slide":8,"bbox":[52,320,1160,1]}
+{"kind":"textbox","id":"sh/hsnidsnm","slide":8,"text":"FAIR-TEST CONTROLS","textPreview":"FAIR-TEST CONTROLS","textChars":18,"textLines":1,"bbox":[52,345,300,24]}
+{"kind":"shape","id":"sh/w7e1k761","slide":8,"bbox":[52,388,8,8]}
+{"kind":"textbox","id":"sh/jup0f25s","slide":8,"text":"Same jar geometry, water volume, probe depth and immersion location","textPreview":"Same jar geometry, water volume, probe depth and immersion location","textChars":67,"textLines":1,"bbox":[76,380,641,54]}
+{"kind":"shape","id":"sh/itwjmxo7","slide":8,"bbox":[52,446,8,8]}
+{"kind":"textbox","id":"sh/5w72hcni","slide":8,"text":"Same sampling interval and documented starting-temperature tolerance","textPreview":"Same sampling interval and documented starting-temperature tolerance","textChars":68,"textLines":1,"bbox":[76,438,641,54]}
+{"kind":"shape","id":"sh/4vy1o76d","slide":8,"bbox":[52,504,8,8]}
+{"kind":"textbox","id":"sh/rypkjm5o","slide":8,"text":"Rank unequal starts by temperature drop, normalized retention or fitted k","textPreview":"Rank unequal starts by temperature drop, normalized retention or fitted k","textChars":73,"textLines":1,"bbox":[76,496,641,54]}
+{"kind":"shape","id":"sh/6xgjqho3","slide":8,"bbox":[770,345,440,235]}
+{"kind":"textbox","id":"sh/o3ihgr2h","slide":8,"text":"MANDATORY SAFETY","textPreview":"MANDATORY SAFETY","textChars":16,"textLines":1,"bbox":[798,368,360,28]}
+{"kind":"shape","id":"sh/p4ri9w32","slide":8,"bbox":[798,418,8,8]}
+{"kind":"textbox","id":"sh/210zehkb","slide":8,"text":"Adult handling of water near 80 °C; never use boiling water","textPreview":"Adult handling of water near 80 °C; never use boiling water","textChars":59,"textLines":1,"bbox":[822,410,358,39]}
+{"kind":"shape","id":"sh/32907mlw","slide":8,"bbox":[798,461,8,8]}
+{"kind":"textbox","id":"sh/gzyhc725","slide":8,"text":"Eye protection and heat-resistant gloves or tongs","textPreview":"Eye protection and heat-resistant gloves or tongs","textChars":49,"textLines":1,"bbox":[822,453,358,39]}
+{"kind":"shape","id":"sh/107i5c3q","slide":8,"bbox":[798,504,8,8]}
+{"kind":"textbox","id":"sh/exgzaxkf","slide":8,"text":"Stable bath below waist height; electronics stay dry","textPreview":"Stable bath below waist height; electronics stay dry","textChars":52,"textLines":1,"bbox":[822,496,358,39]}
+{"kind":"shape","id":"sh/fyp032lk","slide":8,"bbox":[798,547,8,8]}
+{"kind":"textbox","id":"sh/svyh8729","slide":8,"text":"Stop for leakage, probe movement or wet insulation","textPreview":"Stop for leakage, probe movement or wet insulation","textChars":50,"textLines":1,"bbox":[822,539,358,39]}
+{"kind":"notes","id":"nt/c43bc5","slide":8,"text":"Suggested timing: 1:00\n\nPresent safety as a design requirement. An adult handles hot water, every capsule is leak-tested, and only the metal probe enters water. Mention that the appendix contains the complete 12-step procedure.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- Engineering Project Report, Sections 4 and 10\n- Thermal Insulation SOP, Safety and Control Requirements"}
+{"kind":"slide","id":"sl/gcum7d","slide":9,"title":"FINAL PRESENTATION","textShapes":17}
+{"kind":"textbox","id":"sh/v2pc3yt8","slide":9,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/w3ydw3ut","slide":9,"text":"Mission Control links prediction with measurement","textPreview":"Mission Control links prediction with measurement","textChars":49,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/ho7u58by","slide":9,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/mxwbqtcb","slide":9,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/7y5czytw","slide":9,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/907u18b2","slide":9,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[780,157,40,34]}
+{"kind":"textbox","id":"sh/ytwbmtcf","slide":9,"text":"Select a configuration","textPreview":"Select a configuration","textChars":22,"textLines":1,"bbox":[832,157,355,30]}
+{"kind":"textbox","id":"sh/zu5cvet0","slide":9,"text":"Load its reference k value.","textPreview":"Load its reference k value.","textChars":27,"textLines":1,"bbox":[832,191,350,40]}
+{"kind":"textbox","id":"sh/7ut832hk","slide":9,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[780,258,40,34]}
+{"kind":"textbox","id":"sh/6t07axgz","slide":9,"text":"Set the boundary","textPreview":"Set the boundary","textChars":16,"textLines":1,"bbox":[832,258,355,30]}
+{"kind":"textbox","id":"sh/twbq5szq","slide":9,"text":"Enter measured T₀ and Tenv.","textPreview":"Enter measured T₀ and Tenv.","textChars":27,"textLines":1,"bbox":[832,292,350,40]}
+{"kind":"textbox","id":"sh/8v2pc7y5","slide":9,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[780,359,40,34]}
+{"kind":"textbox","id":"sh/fit872hw","slide":9,"text":"Generate the prediction","textPreview":"Generate the prediction","textChars":23,"textLines":1,"bbox":[832,359,355,30]}
+{"kind":"textbox","id":"sh/uxk7exgb","slide":9,"text":"Create a 0–15 minute cooling curve.","textPreview":"Create a 0–15 minute cooling curve.","textChars":35,"textLines":1,"bbox":[832,393,350,40]}
+{"kind":"textbox","id":"sh/hkbq9czm","slide":9,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[780,460,40,34]}
+{"kind":"textbox","id":"sh/gj2pg7y1","slide":9,"text":"Enter observations","textPreview":"Enter observations","textChars":18,"textLines":1,"bbox":[832,460,355,30]}
+{"kind":"textbox","id":"sh/b29ovihc","slide":9,"text":"Overlay telemetry and calculate MAE.","textPreview":"Overlay telemetry and calculate MAE.","textChars":36,"textLines":1,"bbox":[832,494,350,40]}
+{"kind":"textbox","id":"sh/a1g72dgr","slide":9,"text":"Manual entry keeps the student involved in the act of measurement.","textPreview":"Manual entry keeps the student involved in the act of measurement.","textChars":66,"textLines":1,"bbox":[780,583,400,56]}
+{"kind":"image","id":"im/lorulonu","slide":9,"name":"","geometry":"roundRect","alt":"03-simulator-mli.png","bbox":[52,150,680,425]}
+{"kind":"notes","id":"nt/gcum7d","slide":9,"text":"Suggested timing: 0:50\n\nExplain the closed loop. The website calculates the model but does not automate the thermometer. Students still observe and enter every value, then receive immediate visual and numerical feedback.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- index.html\n- app.js\n- Engineering Project Report, Section 6"}
+{"kind":"slide","id":"sl/e0ivdn","slide":10,"title":"FINAL PRESENTATION","textShapes":13}
+{"kind":"textbox","id":"sh/qd8fy5g7","slide":10,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/dgzy90fy","slide":10,"text":"Live demonstration: prediction to evaluation","textPreview":"Live demonstration: prediction to evaluation","textChars":44,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/cfqh0vyd","slide":10,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/zi1gbax4","slide":10,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/ehsz25gj","slide":10,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/fmxgz6hk","slide":10,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[62,535,32,32]}
+{"kind":"textbox","id":"sh/ulofqlgz","slide":10,"text":"Choose Full MLI and confirm k = 0.015 min⁻¹","textPreview":"Choose Full MLI and confirm k = 0.015 min⁻¹","textChars":43,"textLines":1,"bbox":[101,530,240,80]}
+{"kind":"textbox","id":"sh/4n650zq9","slide":10,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[354,535,32,32]}
+{"kind":"textbox","id":"sh/5oz694re","slide":10,"text":"Run the 80 °C / 0 °C / 15 min prediction","textPreview":"Run the 80 °C / 0 °C / 15 min prediction","textChars":40,"textLines":1,"bbox":[393,530,240,80]}
+{"kind":"textbox","id":"sh/ilonyp83","slide":10,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[646,535,32,32]}
+{"kind":"textbox","id":"sh/3mxo7u9o","slide":10,"text":"Open Measurements and show the worked telemetry overlay","textPreview":"Open Measurements and show the worked telemetry overlay","textChars":55,"textLines":1,"bbox":[685,530,240,80]}
+{"kind":"textbox","id":"sh/sbq54zq5","slide":10,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[938,535,32,32]}
+{"kind":"textbox","id":"sh/dcz6d4rq","slide":10,"text":"Read the 0.98 °C MAE and discuss one residual","textPreview":"Read the 0.98 °C MAE and discuss one residual","textChars":45,"textLines":1,"bbox":[977,530,240,80]}
+{"kind":"textbox","id":"sh/qp8n298z","slide":10,"text":"If the browser or CDN assets fail, present these two verified screenshots and continue.","textPreview":"If the browser or CDN assets fail, present these two verified screenshots and continue.","textChars":87,"textLines":1,"bbox":[52,631,1150,30]}
+{"kind":"image","id":"im/gbmd4b2l","slide":10,"name":"","geometry":"roundRect","alt":"03-simulator-mli.png","bbox":[52,150,555,350]}
+{"kind":"image","id":"im/hcvuxw36","slide":10,"name":"","geometry":"roundRect","alt":"04-telemetry-mli.png","bbox":[632,150,596,350]}
+{"kind":"notes","id":"nt/e0ivdn","slide":10,"text":"Suggested timing: 2:00–3:00\n\nDEMO SCRIPT\n1. Open Simulator. Select Multilayer assembly. Confirm T₀ = 80 °C, Tenv = 0 °C and 15 minutes.\n2. Run the model and point to T(15) = 63.9 °C.\n3. Open Measurements. Load or show the supplied full-MLI series. Point to 16/16 points and MAE = 0.98 °C.\n4. Explain that residuals change sign because the measured curve does not follow one perfect exponential.\n\nFallback: remain on this slide if Chart.js, KaTeX or web fonts do not load. The screenshots preserve the exact demonstration state.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- SPHERE Mission Control local website\n- Worked telemetry from Engineering Project Report, Section 8"}
+{"kind":"slide","id":"sl/jxqxam","slide":11,"title":"FINAL PRESENTATION","textShapes":14}
+{"kind":"textbox","id":"sh/pc36xkvu","slide":11,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/29c725c3","slide":11,"text":"Reference model separates the four expected cooling rates","textPreview":"Reference model separates the four expected cooling rates","textChars":57,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/3alovado","slide":11,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/g7up0vux","slide":11,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/1836t0vi","slide":11,"text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/f6lorqds","slide":11,"text":"MODEL T₁₅","textPreview":"MODEL T₁₅","textChars":9,"textLines":1,"bbox":[915,155,280,22]}
+{"kind":"textbox","id":"sh/s3a5wvu1","slide":11,"text":"Bare","textPreview":"Bare","textChars":4,"textLines":1,"bbox":[915,195,150,26]}
+{"kind":"textbox","id":"sh/t4j6p0vm","slide":11,"text":"8.4 °C","textPreview":"8.4 °C","textChars":6,"textLines":1,"bbox":[1080,192,115,32]}
+{"kind":"shape","id":"sh/tkvm1wva","slide":11,"bbox":[915,236,280,1]}
+{"kind":"textbox","id":"sh/sjm5srep","slide":11,"text":"Bubble","textPreview":"Bubble","textChars":6,"textLines":1,"bbox":[915,282,150,26]}
+{"kind":"textbox","id":"sh/rid4zmdk","slide":11,"text":"43.9 °C","textPreview":"43.9 °C","textChars":7,"textLines":1,"bbox":[1080,279,115,32]}
+{"kind":"shape","id":"sh/6hk3qhwz","slide":11,"bbox":[915,323,280,1]}
+{"kind":"textbox","id":"sh/5gbmxcve","slide":11,"text":"Mylar","textPreview":"Mylar","textChars":5,"textLines":1,"bbox":[915,369,150,26]}
+{"kind":"textbox","id":"sh/4f2lo7et","slide":11,"text":"13.0 °C","textPreview":"13.0 °C","textChars":7,"textLines":1,"bbox":[1080,366,115,32]}
+{"kind":"shape","id":"sh/jet4vmd8","slide":11,"bbox":[915,410,280,1]}
+{"kind":"textbox","id":"sh/itk3mhwn","slide":11,"text":"Full MLI","textPreview":"Full MLI","textChars":8,"textLines":1,"bbox":[915,456,150,26]}
+{"kind":"textbox","id":"sh/hsbmtcv2","slide":11,"text":"63.9 °C","textPreview":"63.9 °C","textChars":7,"textLines":1,"bbox":[1080,453,115,32]}
+{"kind":"shape","id":"sh/wr2lk7ex","slide":11,"bbox":[915,497,280,1]}
+{"kind":"textbox","id":"sh/876dwbqp","slide":11,"text":"Assumptions: T₀ = 80 °C and Tenv = 0 °C","textPreview":"Assumptions: T₀ = 80 °C and Tenv = 0 °C","textChars":39,"textLines":1,"bbox":[915,555,280,54]}
+{"kind":"chart","id":"ch/qd03ipwf","slide":11,"name":"","chartType":"line","bbox":[52,145,820,470]}
+{"kind":"notes","id":"nt/jxqxam","slide":11,"text":"Suggested timing: 0:55\n\nUse the chart to establish the expected ranking under one common starting point and boundary. State clearly that the coefficients are teaching references that require calibration for a new geometry or build.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- app.js, modelConstants\n- Engineering Project Report, Section 7"}
+{"kind":"slide","id":"sl/4sex8j","slide":12,"title":"FINAL PRESENTATION","textShapes":17}
+{"kind":"textbox","id":"sh/kfudwfup","slide":12,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/julw3ad4","slide":12,"text":"The worked example shows the full MLI retaining the most heat","textPreview":"The worked example shows the full MLI retaining the most heat","textChars":61,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/itsvu5cj","slide":12,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/tk3e9kv6","slide":12,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/sjud0ful","slide":12,"text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/6hcvypcf","slide":12,"text":"Full MLI","textPreview":"Full MLI","textChars":8,"textLines":1,"bbox":[885,162,135,26]}
+{"kind":"textbox","id":"sh/9ojux0v2","slide":12,"text":"14.9 °C drop","textPreview":"14.9 °C drop","textChars":12,"textLines":1,"bbox":[1020,162,190,26]}
+{"kind":"textbox","id":"sh/onadovuh","slide":12,"text":"74.1% retained","textPreview":"74.1% retained","textChars":14,"textLines":1,"bbox":[885,197,325,24]}
+{"kind":"shape","id":"sh/a1of654f","slide":12,"bbox":[885,232,325,1]}
+{"kind":"textbox","id":"sh/b2xwfa50","slide":12,"text":"Bubble","textPreview":"Bubble","textChars":6,"textLines":1,"bbox":[885,254,135,26]}
+{"kind":"textbox","id":"sh/w36x8fm5","slide":12,"text":"30.0 °C drop","textPreview":"30.0 °C drop","textChars":12,"textLines":1,"bbox":[1020,254,190,26]}
+{"kind":"textbox","id":"sh/x4fehknq","slide":12,"text":"52.1% retained","textPreview":"52.1% retained","textChars":14,"textLines":1,"bbox":[885,289,325,24]}
+{"kind":"shape","id":"sh/y58fap4b","slide":12,"bbox":[885,324,325,1]}
+{"kind":"textbox","id":"sh/j6hwju5w","slide":12,"text":"Bare","textPreview":"Bare","textChars":4,"textLines":1,"bbox":[885,346,135,26]}
+{"kind":"textbox","id":"sh/k7qxcfmh","slide":12,"text":"44.9 °C drop","textPreview":"44.9 °C drop","textChars":12,"textLines":1,"bbox":[1020,346,190,26]}
+{"kind":"textbox","id":"sh/l8zelkn2","slide":12,"text":"25.3% retained","textPreview":"25.3% retained","textChars":14,"textLines":1,"bbox":[885,381,325,24]}
+{"kind":"shape","id":"sh/698fep4n","slide":12,"bbox":[885,416,325,1]}
+{"kind":"textbox","id":"sh/7ahgnu5s","slide":12,"text":"Mylar","textPreview":"Mylar","textChars":5,"textLines":1,"bbox":[885,438,135,26]}
+{"kind":"textbox","id":"sh/3e1wvu10","slide":12,"text":"47.2 °C drop","textPreview":"47.2 °C drop","textChars":12,"textLines":1,"bbox":[1020,438,190,26]}
+{"kind":"textbox","id":"sh/idsv2pkf","slide":12,"text":"22.0% retained","textPreview":"22.0% retained","textChars":14,"textLines":1,"bbox":[885,473,325,24]}
+{"kind":"shape","id":"sh/p0jex4j6","slide":12,"bbox":[885,508,325,1]}
+{"kind":"shape","id":"sh/4zad4z2l","slide":12,"bbox":[885,545,325,72]}
+{"kind":"textbox","id":"sh/vahwru14","slide":12,"text":"Worked example only. Repeated measurements are required for validation.","textPreview":"Worked example only. Repeated measurements are required for validation.","textChars":71,"textLines":1,"bbox":[905,560,285,42]}
+{"kind":"chart","id":"ch/7m5wna5c","slide":12,"name":"","chartType":"line","bbox":[52,145,790,475]}
+{"kind":"notes","id":"nt/4sex8j","slide":12,"text":"Suggested timing: 1:10\n\nCompare temperature drop rather than final temperature alone because the four trials started at different values. The full MLI produced the smallest drop. Bubble wrap ranked second. The example is illustrative and does not replace repeated trials.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- Engineering Project Report, Section 8\n- Thermal Insulation SOP, complete observed series"}
+{"kind":"slide","id":"sl/m12cmc","slide":13,"title":"FINAL PRESENTATION","textShapes":13}
+{"kind":"textbox","id":"sh/xczatsjq","slide":13,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/a98ryxkf","slide":13,"text":"Boundary conditions explain the weak Mylar-only result","textPreview":"Boundary conditions explain the weak Mylar-only result","textChars":54,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/vahsri10","slide":13,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/kfq947ih","slide":13,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/5gjaxcj2","slide":13,"text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/jehsv21w","slide":13,"text":"WHAT THE DATA SUPPORT","textPreview":"WHAT THE DATA SUPPORT","textChars":21,"textLines":1,"bbox":[485,154,330,22]}
+{"kind":"shape","id":"sh/0j69s32d","slide":13,"bbox":[485,198,8,8]}
+{"kind":"textbox","id":"sh/lkfal8ji","slide":13,"text":"The layered package produced the smallest measured temperature drop.","textPreview":"The layered package produced the smallest measured temperature drop.","textChars":68,"textLines":1,"bbox":[509,190,656,60]}
+{"kind":"shape","id":"sh/lkv2p8zi","slide":13,"bbox":[485,262,8,8]}
+{"kind":"textbox","id":"sh/kjmlg3yx","slide":13,"text":"Bubble wrap provided useful resistance through intact air cells.","textPreview":"Bubble wrap provided useful resistance through intact air cells.","textChars":64,"textLines":1,"bbox":[509,254,656,60]}
+{"kind":"shape","id":"sh/zidknyhc","slide":13,"bbox":[485,326,8,8]}
+{"kind":"textbox","id":"sh/yx43etgr","slide":13,"text":"The observed Mylar curve strongly disagreed with its reference model.","textPreview":"The observed Mylar curve strongly disagreed with its reference model.","textChars":69,"textLines":1,"bbox":[509,318,656,60]}
+{"kind":"textbox","id":"sh/9of2t8ze","slide":13,"text":"WHY MYLAR CAN FAIL HERE","textPreview":"WHY MYLAR CAN FAIL HERE","textChars":23,"textLines":1,"bbox":[485,390,330,22]}
+{"kind":"shape","id":"sh/8n6lk3yt","slide":13,"bbox":[485,431,8,8]}
+{"kind":"textbox","id":"sh/7mxkryho","slide":13,"text":"Reflective foil targets infrared exchange, which matters strongly in vacuum.","textPreview":"Reflective foil targets infrared exchange, which matters strongly in vacuum.","textChars":76,"textLines":1,"bbox":[509,423,656,50]}
+{"kind":"shape","id":"sh/ml43idg3","slide":13,"bbox":[485,485,8,8]}
+{"kind":"textbox","id":"sh/hsf2xszq","slide":13,"text":"Direct liquid contact and leakage can dominate the classroom water bath.","textPreview":"Direct liquid contact and leakage can dominate the classroom water bath.","textChars":72,"textLines":1,"bbox":[509,477,656,50]}
+{"kind":"shape","id":"sh/wr6lony5","slide":13,"bbox":[485,539,8,8]}
+{"kind":"textbox","id":"sh/gve5kr6h","slide":13,"text":"One weak run does not prove reflective insulation is ineffective in space.","textPreview":"One weak run does not prove reflective insulation is ineffective in space.","textChars":74,"textLines":1,"bbox":[509,531,656,50]}
+{"kind":"textbox","id":"sh/hwnmtw7m","slide":13,"text":"Main uncertainties: probe position, neck seal, thermal stratification, bath warming, immersion depth and layer compression","textPreview":"Main uncertainties: probe position, neck seal, thermal stratification, bath warming, immersion depth and layer compression","textChars":122,"textLines":1,"bbox":[52,612,1120,38]}
+{"kind":"image","id":"im/3yd0v69g","slide":13,"name":"","geometry":"roundRect","alt":"full-mli-parts.png","bbox":[52,150,380,400]}
+{"kind":"notes","id":"nt/m12cmc","slide":13,"text":"Suggested timing: 1:00\n\nUse the Mylar result to demonstrate engineering interpretation. The correct conclusion concerns the boundary and construction, not a universal property of reflective insulation. Name two or three uncertainty sources and explain their direction of influence.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- Engineering Project Report, Section 9"}
+{"kind":"slide","id":"sl/vz45s4","slide":14,"title":"FINAL PRESENTATION","textShapes":15}
+{"kind":"textbox","id":"sh/ahgf2tc3","slide":14,"text":"FINAL PRESENTATION","textPreview":"FINAL PRESENTATION","textChars":18,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/xkrex8vu","slide":14,"text":"SPHERE delivers a complete theory-to-evidence learning loop","textPreview":"SPHERE delivers a complete theory-to-evidence learning loop","textChars":59,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/cjix43u9","slide":14,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/nepwryds","slide":14,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/2dgfytc7","slide":14,"text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/ofyx03ux","slide":14,"text":"PROJECT OUTCOME","textPreview":"PROJECT OUTCOME","textChars":15,"textLines":1,"bbox":[700,154,300,22]}
+{"kind":"textbox","id":"sh/fqpwnedg","slide":14,"text":"Students predict, build, measure and critique the same thermal system.","textPreview":"Students predict, build, measure and critique the same thermal system.","textChars":70,"textLines":1,"bbox":[700,190,480,82]}
+{"kind":"shape","id":"sh/epwfu9cv","slide":14,"bbox":[700,308,8,8]}
+{"kind":"textbox","id":"sh/cbmxcn69","slide":14,"text":"Aligned website, manuals, SOP, worksheet and assessment","textPreview":"Aligned website, manuals, SOP, worksheet and assessment","textChars":55,"textLines":1,"bbox":[724,300,456,56]}
+{"kind":"shape","id":"sh/dcvy5snu","slide":14,"bbox":[700,368,8,8]}
+{"kind":"textbox","id":"sh/q94fado3","slide":14,"text":"Reusable apparatus with no native software installation","textPreview":"Reusable apparatus with no native software installation","textChars":55,"textLines":1,"bbox":[724,360,456,56]}
+{"kind":"shape","id":"sh/radg3i5o","slide":14,"bbox":[700,428,8,8]}
+{"kind":"textbox","id":"sh/472x836x","slide":14,"text":"Clear separation between teaching models and measured evidence","textPreview":"Clear separation between teaching models and measured evidence","textChars":62,"textLines":1,"bbox":[724,420,456,56]}
+{"kind":"shape","id":"sh/p8vy187i","slide":14,"bbox":[52,520,1160,1]}
+{"kind":"textbox","id":"sh/2lkf6to7","slide":14,"text":"CONTRIBUTIONS","textPreview":"CONTRIBUTIONS","textChars":13,"textLines":1,"bbox":[52,544,160,22]}
+{"kind":"textbox","id":"sh/3mtgzypc","slide":14,"text":"Piyath Vithanage","textPreview":"Piyath Vithanage","textChars":16,"textLines":1,"bbox":[52,578,240,24]}
+{"kind":"textbox","id":"sh/836hk76h","slide":14,"text":"Website, integration, model and telemetry graphs, data visualisation","textPreview":"Website, integration, model and telemetry graphs, data visualisation","textChars":68,"textLines":1,"bbox":[52,608,510,38]}
+{"kind":"textbox","id":"sh/94fydcn2","slide":14,"text":"Dilan Fernando","textPreview":"Dilan Fernando","textChars":14,"textLines":1,"bbox":[610,578,220,24]}
+{"kind":"textbox","id":"sh/h0byxsf6","slide":14,"text":"Thermodynamics, experiment, analysis, documentation and project integration","textPreview":"Thermodynamics, experiment, analysis, documentation and project integration","textChars":75,"textLines":1,"bbox":[610,608,540,38]}
+{"kind":"textbox","id":"sh/wz2x4nyl","slide":14,"text":"Elio Krollpfeiffer and Nuhansee Migelhewage remain listed as project team members in the current repository and learning materials.","textPreview":"Elio Krollpfeiffer and Nuhansee Migelhewage remain listed as project team members in the current repository and learning materials.","textChars":131,"textLines":1,"bbox":[52,655,1110,28]}
+{"kind":"image","id":"im/4jqp8z61","slide":14,"name":"","geometry":"roundRect","alt":"preflight-thermal-lab.png","bbox":[52,148,605,338]}
+{"kind":"notes","id":"nt/vz45s4","slide":14,"text":"Suggested timing: 0:50\n\nClose on the integration outcome. State the current contribution attribution exactly as documented. Invite questions on the experiment, model, website or classroom implementation.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- Engineering Project Report, Sections 11 and 12\n- README.md"}
+{"kind":"slide","id":"sl/3fv4zo","slide":15,"title":"APPENDIX","textShapes":5}
+{"kind":"textbox","id":"sh/y14byt8r","slide":15,"text":"APPENDIX","textPreview":"APPENDIX","textChars":8,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/54vu9ori","slide":15,"text":"Appendix: complete apparatus list","textPreview":"Appendix: complete apparatus list","textChars":33,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/k3mt0jqx","slide":15,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/76xcbyp8","slide":15,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/654b2t83","slide":15,"text":"15","textPreview":"15","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/s76t43qt","slide":15,"text":"Exact cost depends on local sourcing. The older €35.20 estimate remains an unverified draft procurement figure.","textPreview":"Exact cost depends on local sourcing. The older €35.20 estimate remains an unverified draft procurement figure.","textChars":111,"textLines":1,"bbox":[52,640,1176,30]}
+{"kind":"table","id":"tb/cja5grq9","slide":15,"name":"","rows":9,"cols":3,"preview":"Quantity | Item | Function","bbox":[52,145,1176,475]}
+{"kind":"notes","id":"nt/3fv4zo","slide":15,"text":"Suggested timing: Backup\n\nUse this slide only if the audience asks about kit contents, reuse or feasibility.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- Engineering Project Report, Section 10\n- Thermal Insulation SOP, Hardware Checklist"}
+{"kind":"slide","id":"sl/4rcj4p","slide":16,"title":"APPENDIX","textShapes":28}
+{"kind":"textbox","id":"sh/na1s7u5g","slide":16,"text":"APPENDIX","textPreview":"APPENDIX","textChars":8,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/8batgz61","slide":16,"text":"Appendix: 12-step operating procedure","textPreview":"Appendix: 12-step operating procedure","textChars":37,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/9cja94nm","slide":16,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/adsbi9o7","slide":16,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/ve1sbu5s","slide":16,"text":"16","textPreview":"16","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/wfutkz6x","slide":16,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[52,145,50,30]}
+{"kind":"textbox","id":"sh/x03ad4ni","slide":16,"text":"Prepare a stable, dry work area.","textPreview":"Prepare a stable, dry work area.","textChars":32,"textLines":1,"bbox":[110,145,515,55]}
+{"kind":"shape","id":"sh/i1cbm9o3","slide":16,"bbox":[52,207,560,1]}
+{"kind":"textbox","id":"sh/j2lcfe5o","slide":16,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[52,227,50,30]}
+{"kind":"textbox","id":"sh/ba98jaxo","slide":16,"text":"Measure and record the bath temperature.","textPreview":"Measure and record the bath temperature.","textChars":40,"textLines":1,"bbox":[110,227,515,55]}
+{"kind":"shape","id":"sh/a907q5w3","slide":16,"bbox":[52,289,560,1]}
+{"kind":"textbox","id":"sh/xcrql0fu","slide":16,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[52,309,50,30]}
+{"kind":"textbox","id":"sh/wbipsfe9","slide":16,"text":"Label the four test conditions.","textPreview":"Label the four test conditions.","textChars":31,"textLines":1,"bbox":[110,309,515,55]}
+{"kind":"shape","id":"sh/nmpofqxs","slide":16,"bbox":[52,371,560,1]}
+{"kind":"textbox","id":"sh/mlg7mlw7","slide":16,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[52,391,50,30]}
+{"kind":"textbox","id":"sh/98rqh0fi","slide":16,"text":"Build each package without compressing its layers.","textPreview":"Build each package without compressing its layers.","textChars":50,"textLines":1,"bbox":[110,391,515,55]}
+{"kind":"shape","id":"sh/o7ipovex","slide":16,"bbox":[52,453,560,1]}
+{"kind":"textbox","id":"sh/7it8ruxw","slide":16,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[52,473,50,30]}
+{"kind":"textbox","id":"sh/6hk7ypwb","slide":16,"text":"Prepare water near 80 °C under adult supervision.","textPreview":"Prepare water near 80 °C under adult supervision.","textChars":49,"textLines":1,"bbox":[110,473,515,55]}
+{"kind":"shape","id":"sh/2x4bqtgj","slide":16,"bbox":[52,535,560,1]}
+{"kind":"textbox","id":"sh/3yxsjyh4","slide":16,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[52,555,50,30]}
+{"kind":"textbox","id":"sh/4z6ts3yp","slide":16,"text":"Condition the thermal core to 80 ± 2 °C.","textPreview":"Condition the thermal core to 80 ± 2 °C.","textChars":40,"textLines":1,"bbox":[110,555,515,55]}
+{"kind":"shape","id":"sh/p0faloza","slide":16,"bbox":[52,617,560,1]}
+{"kind":"textbox","id":"sh/q1obutgv","slide":16,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[652,145,50,30]}
+{"kind":"textbox","id":"sh/r2xsnyh0","slide":16,"text":"Transfer with gloves or tongs; keep probe depth fixed.","textPreview":"Transfer with gloves or tongs; keep probe depth fixed.","textChars":54,"textLines":1,"bbox":[710,145,515,55]}
+{"kind":"shape","id":"sh/c36tw3yl","slide":16,"bbox":[652,207,560,1]}
+{"kind":"textbox","id":"sh/d4fap8z6","slide":16,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[652,227,50,30]}
+{"kind":"textbox","id":"sh/65kri9gb","slide":16,"text":"Start timing immediately and record T₀.","textPreview":"Start timing immediately and record T₀.","textChars":39,"textLines":1,"bbox":[710,227,515,55]}
+{"kind":"shape","id":"sh/76dsbehw","slide":16,"bbox":[652,289,560,1]}
+{"kind":"textbox","id":"sh/90jehcje","slide":16,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[652,309,50,30]}
+{"kind":"textbox","id":"sh/ozado7it","slide":16,"text":"Record one temperature every minute through t = 15.","textPreview":"Record one temperature every minute through t = 15.","textChars":51,"textLines":1,"bbox":[710,309,515,55]}
+{"kind":"shape","id":"sh/ny1wf218","slide":16,"bbox":[652,371,560,1]}
+{"kind":"textbox","id":"sh/mxsvmx03","slide":16,"text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[652,391,50,30]}
+{"kind":"textbox","id":"sh/xo3elcjq","slide":16,"text":"Repeat with the same geometry, mass and method.","textPreview":"Repeat with the same geometry, mass and method.","textChars":47,"textLines":1,"bbox":[710,391,515,55]}
+{"kind":"shape","id":"sh/wnads7i5","slide":16,"bbox":[652,453,560,1]}
+{"kind":"textbox","id":"sh/b21wjm1k","slide":16,"text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[652,473,50,30]}
+{"kind":"textbox","id":"sh/a1svqh0z","slide":16,"text":"Calculate drop, residuals, MAE and fitted k as required.","textPreview":"Calculate drop, residuals, MAE and fitted k as required.","textChars":56,"textLines":1,"bbox":[710,473,515,55]}
+{"kind":"shape","id":"sh/dszu9sj6","slide":16,"bbox":[652,535,560,1]}
+{"kind":"textbox","id":"sh/crqdgnil","slide":16,"text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[652,555,50,30]}
+{"kind":"textbox","id":"sh/gzyp4f6l","slide":16,"text":"Cool, dry and store all equipment safely.","textPreview":"Cool, dry and store all equipment safely.","textChars":41,"textLines":1,"bbox":[710,555,515,55]}
+{"kind":"shape","id":"sh/107qdk76","slide":16,"bbox":[652,617,560,1]}
+{"kind":"notes","id":"nt/4rcj4p","slide":16,"text":"Suggested timing: Backup\n\nThis is the condensed presenter version of the complete SOP. Emphasize steps 5–7 when discussing hot-water handling.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- Thermal_Insulation_SOP.docx\n- Experimental_Toolkit_Thermal_Insulation_SOP_Illustrated.docx"}
+{"kind":"slide","id":"sl/fjeuv7","slide":17,"title":"APPENDIX","textShapes":2}
+{"kind":"textbox","id":"sh/dc7e903m","slide":17,"text":"APPENDIX","textPreview":"APPENDIX","textChars":8,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/q9gfy5kv","slide":17,"text":"Appendix: complete observed temperature series","textPreview":"Appendix: complete observed temperature series","textChars":46,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/rapw7alg","slide":17,"bbox":[52,112,1176,1]}
+{"kind":"table","id":"tb/dwfel8z2","slide":17,"name":"","rows":17,"cols":5,"preview":"Time (min) | Full MLI (°C) | Bubble (°C) | Mylar (°C) | Bare (°C)","bbox":[90,140,1100,492]}
+{"kind":"notes","id":"nt/fjeuv7","slide":17,"text":"Suggested timing: Backup\n\nUse this slide to answer questions about individual readings or to verify the plotted series.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- Engineering Project Report, Section 8\n- Thermal Insulation SOP, Table 7"}
+{"kind":"slide","id":"sl/v1u7mh","slide":18,"title":"APPENDIX","textShapes":13}
+{"kind":"textbox","id":"sh/mlob2twj","slide":18,"text":"APPENDIX","textPreview":"APPENDIX","textChars":8,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/9ofudovu","slide":18,"text":"Appendix: model agreement and fitted cooling constant","textPreview":"Appendix: model agreement and fitted cooling constant","textChars":53,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/8n6t4je9","slide":18,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/zids7eds","slide":18,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/yx4by9w7","slide":18,"text":"18","textPreview":"18","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/lkva9ovy","slide":18,"text":"Residual at point i","textPreview":"Residual at point i","textChars":19,"textLines":1,"bbox":[52,150,260,30]}
+{"kind":"textbox","id":"sh/buds3edw","slide":18,"text":"Shows the signed difference at one timestamp","textPreview":"Shows the signed difference at one timestamp","textChars":44,"textLines":1,"bbox":[855,150,355,52]}
+{"kind":"shape","id":"sh/qt4bu9wb","slide":18,"bbox":[52,226,1158,1]}
+{"kind":"textbox","id":"sh/4z61szm9","slide":18,"text":"Mean absolute error","textPreview":"Mean absolute error","textChars":19,"textLines":1,"bbox":[52,262,260,30]}
+{"kind":"textbox","id":"sh/ix4jqp43","slide":18,"text":"Summarizes the typical absolute temperature error","textPreview":"Summarizes the typical absolute temperature error","textChars":49,"textLines":1,"bbox":[855,262,355,52]}
+{"kind":"shape","id":"sh/3yd0julo","slide":18,"bbox":[52,338,1158,1]}
+{"kind":"textbox","id":"sh/gbmhofmx","slide":18,"text":"Fitted cooling constant","textPreview":"Fitted cooling constant","textChars":23,"textLines":1,"bbox":[52,374,260,30]}
+{"kind":"textbox","id":"sh/u94zmp47","slide":18,"text":"Valid only when the ratio is positive and the boundary is stable","textPreview":"Valid only when the ratio is positive and the boundary is stable","textChars":64,"textLines":1,"bbox":[855,374,355,52]}
+{"kind":"shape","id":"sh/vad0fulc","slide":18,"bbox":[52,450,1158,1]}
+{"kind":"textbox","id":"sh/07q10j2h","slide":18,"text":"Normalized heat retained","textPreview":"Normalized heat retained","textChars":24,"textLines":1,"bbox":[52,486,260,30]}
+{"kind":"textbox","id":"sh/pcbaxkru","slide":18,"text":"Supports comparison when starting temperatures differ","textPreview":"Supports comparison when starting temperatures differ","textChars":53,"textLines":1,"bbox":[855,486,355,52]}
+{"kind":"shape","id":"sh/ob29ofq9","slide":18,"bbox":[52,562,1158,1]}
+{"kind":"shape","id":"sh/nat8va9o","slide":18,"bbox":[52,615,1158,48]}
+{"kind":"textbox","id":"sh/29krmp83","slide":18,"text":"The Mission Control full-MLI screenshot uses the supplied 16-point series and reports MAE = 0.98 °C against the 80/0 °C reference curve.","textPreview":"The Mission Control full-MLI screenshot uses the supplied 16-point series and reports MAE = 0.98 °C against the 80/0 °C reference curve.","textChars":136,"textLines":1,"bbox":[72,626,1115,26]}
+{"kind":"image","id":"im/xg3i9oz2","slide":18,"name":"","geometry":"roundRect","alt":"residual.png","bbox":[325,136,500,70]}
+{"kind":"image","id":"im/ut43mhg3","slide":18,"name":"","geometry":"roundRect","alt":"mae.png","bbox":[325,248,390,88]}
+{"kind":"image","id":"im/6pk3ixg7","slide":18,"name":"","geometry":"roundRect","alt":"fitted-k.png","bbox":[325,360,430,88]}
+{"kind":"image","id":"im/ylk3edgb","slide":18,"name":"","geometry":"roundRect","alt":"retained.png","bbox":[325,472,450,82]}
+{"kind":"notes","id":"nt/v1u7mh","slide":18,"text":"Suggested timing: Backup\n\nExplain why MAE is easier to interpret than signed average error: positive and negative residuals cannot cancel. A fitted k is a system-level estimate for the tested boundary and geometry.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- README.md\n- Engineering Project Report, Section 9\n- app.js, telemetry calculation"}
+{"kind":"slide","id":"sl/5p2bo7","slide":19,"title":"APPENDIX","textShapes":12}
+{"kind":"textbox","id":"sh/japs3elg","slide":19,"text":"APPENDIX","textPreview":"APPENDIX","textChars":8,"textLines":1,"bbox":[52,25,320,20]}
+{"kind":"textbox","id":"sh/4bytwzm1","slide":19,"text":"Appendix: unified assessment and classroom guidance","textPreview":"Appendix: unified assessment and classroom guidance","textChars":51,"textLines":1,"bbox":[52,48,1120,58]}
+{"kind":"shape","id":"sh/5wra5436","slide":19,"bbox":[52,112,1176,1]}
+{"kind":"textbox","id":"sh/u5gbqp4j","slide":19,"text":"SPHERE THERMAL INSULATION LABORATORY","textPreview":"SPHERE THERMAL INSULATION LABORATORY","textChars":36,"textLines":1,"bbox":[52,690,480,16]}
+{"kind":"textbox","id":"sh/v6pszu54","slide":19,"text":"19","textPreview":"19","textChars":2,"textLines":1,"bbox":[1180,688,48,18]}
+{"kind":"textbox","id":"sh/h87a143a","slide":19,"text":"TEN ALIGNED QUESTIONS","textPreview":"TEN ALIGNED QUESTIONS","textChars":21,"textLines":1,"bbox":[760,150,350,22]}
+{"kind":"shape","id":"sh/e10b2t43","slide":19,"bbox":[760,198,8,8]}
+{"kind":"textbox","id":"sh/f29cbylo","slide":19,"text":"Student Task Sheet: Inquiries 1–10","textPreview":"Student Task Sheet: Inquiries 1–10","textChars":34,"textLines":1,"bbox":[784,190,406,55]}
+{"kind":"shape","id":"sh/7et8nmx0","slide":19,"bbox":[760,257,8,8]}
+{"kind":"textbox","id":"sh/mdk7uhgf","slide":19,"text":"Mission Control: Questions 1–10","textPreview":"Mission Control: Questions 1–10","textChars":31,"textLines":1,"bbox":[784,249,406,55]}
+{"kind":"shape","id":"sh/9gbqpwfq","slide":19,"bbox":[760,316,8,8]}
+{"kind":"textbox","id":"sh/8f2pwry5","slide":19,"text":"Teacher Manual: complete solution key","textPreview":"Teacher Manual: complete solution key","textChars":37,"textLines":1,"bbox":[784,308,406,55]}
+{"kind":"shape","id":"sh/vit8r6xw","slide":19,"bbox":[760,375,8,8]}
+{"kind":"textbox","id":"sh/uhk7y1gb","slide":19,"text":"Nine multiple-choice items auto-score online","textPreview":"Nine multiple-choice items auto-score online","textChars":44,"textLines":1,"bbox":[784,367,406,55]}
+{"kind":"shape","id":"sh/hkvqtwf2","slide":19,"bbox":[760,434,8,8]}
+{"kind":"textbox","id":"sh/wj2p0byh","slide":19,"text":"Question 4 requires instructor review","textPreview":"Question 4 requires instructor review","textChars":37,"textLines":1,"bbox":[784,426,406,55]}
+{"kind":"shape","id":"sh/j6d8v6xs","slide":19,"bbox":[760,510,430,92]}
+{"kind":"textbox","id":"sh/i547m1gn","slide":19,"text":"Assessment focuses on mechanism, modelling, fair testing, uncertainty and spacesuit engineering trade-offs.","textPreview":"Assessment focuses on mechanism, modelling, fair testing, uncertainty and spacesuit engineering trade-offs.","textChars":107,"textLines":1,"bbox":[784,528,384,58]}
+{"kind":"textbox","id":"sh/e1obu50v","slide":19,"text":"Safety disclosure: the activity does not certify materials for aerospace, pressure-vessel, fire-protection or personal-protective use.","textPreview":"Safety disclosure: the activity does not certify materials for aerospace, pressure-vessel, fire-protection or personal-protective use.","textChars":134,"textLines":1,"bbox":[52,620,1138,44]}
+{"kind":"image","id":"im/583218ni","slide":19,"name":"","geometry":"roundRect","alt":"05-question-sheet.png","bbox":[52,145,660,410]}
+{"kind":"notes","id":"nt/5p2bo7","slide":19,"text":"Suggested timing: Backup\n\nUse this slide for questions about marking and learning verification. Question 4 remains open response because students must identify plausible physical causes of model deviation.\n\nHandoff cue: Pause for the next speaker or section when the final point lands.\n\nSources:\n- Teacher Manual, Assessment Guide\n- index.html, Question Sheet\n- README.md"}

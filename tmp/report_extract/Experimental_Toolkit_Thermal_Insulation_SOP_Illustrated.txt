@@ -1,0 +1,171 @@
+Experimental Toolkit Procedure - Thermal Insulation and Cooling Rates for Spacecraft Thermal Protection
+GENERAL INFORMATION
+SHORT EXPERIMENT DESCRIPTION
+This classroom experiment compares how four passive insulation configurations slow the cooling of an identical heated thermal core: a bare control, bubble wrap, a reflective Mylar layer, and a full multilayer insulation (MLI) package made from cotton, bubble wrap, and Mylar. Students collect one temperature reading per minute for 15 minutes, compare the measured curves with Newtonian cooling predictions, and connect conduction, convection, and radiation to spacecraft thermal-control design.
+Recommended class format: four groups working in parallel. Expected duration: approximately 55–70 minutes, including setup, a 15-minute measurement run, and post-processing.
+LEARNING OBJECTIVES
+Distinguish conduction, convection, and thermal radiation in a practical system.
+Explain why trapped air and layered insulation can reduce heat transfer.
+Collect a controlled time series and compare observed and predicted cooling curves.
+Evaluate why material choice alone is insufficient when gaps, compression, or inconsistent probe placement introduce experimental error.
+HARDWARE CHECKLIST
+From the school / students:
+Included in the toolkit / prepared for each group:
+SAFETY AND CONTROL REQUIREMENTS
+HOT-WATER HAZARD. Water near 80 °C can cause serious scalds. An adult must prepare the bath and handle the heated core with gloves or tongs. Keep the bucket below waist height on a stable surface. Never use boiling water, never point a sealed hot container toward a person, and never immerse electrical displays, connectors, or power supplies.
+Use only heat-safe, undamaged containers. Do not test pressurized or completely sealed containers unless they are designed for hot liquids.
+Keep all electronics and cables dry; only the intended metal probe may contact the water.
+Use identical starting temperature, water mass, probe depth, ambient location, and measurement interval for fair comparison.
+Stop the test if a probe slips, insulation becomes wet, a container leaks, or the starting temperature is outside the agreed tolerance.
+TEST CONFIGURATIONS
+Optional extension. A cotton-only configuration may be added as a fifth trial. The supplied teaching model lists cotton as an intermediate solution, while the attached physical telemetry focuses on bare, bubble, Mylar-only, and full MLI configurations.
+Fair-test rule. When starting temperatures differ, do not rank insulation by final temperature alone. Compare temperature drop, normalized heat retained above ambient, or a fitted value of k.
+ILLUSTRATED SETUP
+Prepare and verify the hot-water station
+Figure 1. Water-bath temperature is checked with a separate probe before conditioning the thermal core.
+Figure 2. Bare thermal core in the bath. Keep the probe centered and at a repeatable depth.
+BUILD THE INSULATION PACKAGES
+Bubble-wrap configuration
+Wrap the core with two even layers of bubble wrap. Close the neck around the probe, but do not crush the air pockets. Use the same overlap and tape position throughout the trial.
+Figure 3. Bubble-wrap-only capsule with the probe secured at the neck.
+Mylar-only configuration
+Apply one complete reflective layer with the shiny surface outward. Seal the neck carefully. A loose opening allows warm air to escape and can overwhelm the benefit of the radiation shield.
+Figure 4. Mylar-only capsule. The reflective layer is visible around the full body.
+FULL MULTILAYER INSULATION (MLI)
+Build the full package from the core outward: a uniform cotton layer, two layers of bubble wrap, and a reflective Mylar outer layer. Secure each layer independently so that the outer band does not compress the insulation. Close the neck around the probe to limit convective leakage.
+Figure 4. Full multi layer capsule with the probe secured at the neck.
+Place cotton evenly around the dry core; avoid thick folds.
+Add bubble wrap with consistent overlap and intact air cells.
+Finish with Mylar, shiny side outward, and close the neck.
+Check that the probe tip remains at the same central depth used for the other configurations.
+Figure 5. Multilayer test package during measurement; the reflective layer and sealed probe opening are visible.
+Model coefficients supplied with the teaching tool
+Figure 6. Approximate Newtonian cooling coefficients used by the teaching model.
+Interpret with care. The coefficient panel is a model reference, not a guaranteed result. Actual cooling depends on ambient temperature, core size, water mass, probe position, compression, drafts, and the quality of the neck seal.
+PROCEDURE
+Complete the following steps for each insulation condition. Groups may work in parallel if all groups have identical equipment and the same ambient environment.
+DATA RECORDING AND CALCULATION
+Record temperature at 0, 1, 2, …, 15 minutes. Do not substitute readings taken at irregular times without recording the actual timestamps.
+Temperature drop: ΔTdrop = T₀ − T₁₅
+Newtonian cooling model: T(t) = Tenv + (T₀ − Tenv)e^(−kt)
+Estimated cooling coefficient: k = −ln[(Tt − Tenv)/(T₀ − Tenv)] / t
+Sum of Absolute Errors: Sum |ΔT| = Σ |Tphysical(t) − Tpredicted(t)|
+Average Telemetry Error: Avg Error = (Sum |ΔT|) / 15
+Thermal Correlation Score (%): Score = 100 − (Avg Error × 5)
+Use temperatures in degrees Celsius and time in minutes, so k is reported in min⁻¹. Crew Correlation Performance Ratings: A+ (≥ 95%), A (≥ 90%), B (≥ 80%), C (≥ 70%), Re-calibrate (< 70%).
+Environmental boundary calibration (Tenv). If the classroom ice bath warms above 0 °C (e.g. to 4.5 °C or 5 °C) during extended testing, measure the actual bath temperature with a DS18B20 probe and enter that exact Tenv value into Mission Control to preserve Digital Twin model accuracy.
+REFERENCE OBSERVATIONS FROM THE ATTACHED TEST
+The following values were transcribed from the supplied 16-point telemetry screenshots. They are included as a worked example and should not replace student measurements.
+*Heat retained is calculated relative to a 20 °C ambient reference: (T₁₅−20)/(T₀−20) × 100. Values are rounded.
+Complete observed temperature series
+Worked-example interpretation. Full MLI retained the most heat (62.7 °C at 15 min), followed by bubble wrap (52.6 °C). The bare and Mylar-only samples reached 35.2 °C and 33.3 °C. The unusually weak Mylar-only result and 3% dashboard correlation indicate a construction or control issue—such as convective leakage—not a universal failure of reflective insulation.
+PREDICTION–OBSERVATION GRAPHS
+Figure 7. Full MLI: 93% dashboard correlation and high stability.
+Figure 8. Bubble wrap: 83% dashboard correlation and moderate isolation.
+RESULT GRAPHS (CONTINUED)
+Figure 9. Mylar-only layer: 3% dashboard correlation; the panel flags convective leakage.
+Figure 10. Bare control: 94% dashboard correlation and high stability of the fitted model.
+EXPERIMENT POST-PROCESSING
+Student analysis
+Plot all four measured curves on the same axes using identical scales.
+Calculate ΔTdrop and estimate k for each configuration.
+Rank the configurations using a normalized measure that accounts for different starting temperatures.
+Identify at least two possible sources of uncertainty and explain the direction in which each could change the result.
+Compare the physical outcome with the model, then explain any disagreement using heat-transfer mechanisms rather than simply calling it an error.
+Class discussion prompts
+Why can a reflective layer work well in vacuum but perform poorly in air when warm air can escape?
+Why should bubble wrap and cotton not be tightly compressed?
+Which variables must be controlled before comparing two cooling coefficients?
+How is spacecraft multilayer insulation similar to—and different from—the classroom package?
+INSTRUCTOR PHYSICS SOLUTIONS & SPACESUIT ENGINEERING INSIGHTS
+Q1: Thermal Radiation vs Conduction in Liquid —  Mylar reflects infrared radiation, which dominates heat transfer in space vacuum. In an ice-water bath, liquid conduction is extremely rapid. Thin Mylar conducts heat directly to surrounding water unless paired with an inner insulating layer (cotton or bubble wrap) to block conduction.
+Q2: Physical Meaning of Cooling Constant (k) —  A smaller k value represents a superior thermal insulator. In T(t) = Tenv + (T₀ − Tenv)e^(−kt), as k approaches 0, e^(−kt) remains close to 1.0, preserving core temperature and delaying thermal dissipation.
+Q3: Multi-Layer Insulation (MLI) Synergy —  Full MLI combines three complementary barriers: cotton traps stationary air pockets to block conduction; bubble wrap creates sealed air chambers to suppress convection; and metallic Mylar reflects thermal radiation back into the core.
+Q4: Discrepancy Sources between Physical and Digital Twin —  Key sources: (1) Temperature probe tip touching PET jar wall instead of hanging in water center; (2) Incomplete PG7 gland nut tightening causing cold water seepage; (3) Thermal stratification inside the unmixed water jar; (4) Ice bath warming above 0 °C.
+Q5: Environmental Boundary Calibration —  Measure actual ice bath temperature with a calibrated probe and enter that value (e.g. Tenv = 4.5 °C) into Mission Control so the Digital Twin simulation accurately mirrors physical laboratory boundary conditions.
+Q6: Water Volume & Heat Capacity Scaling —  Doubling water volume from 100 ml to 200 ml doubles total thermal mass (Q = m · c · ΔT). Holding surface area constant, the temperature drop per minute becomes slower, resulting in a smaller effective decay constant k.
+Q7: EVA Spacesuit Engineering Trade-Offs —  Adding excessive insulation layers in space suits increases mass, bulk, and joint stiffness, severely restricting astronaut mobility during Extravehicular Activities (EVAs). Trapped metabolic heat also requires heavy active Liquid Cooling and Ventilation Garment (LCVG) loops.
+Q8: Thermal Correlation Score Optimization —  Crews optimize telemetry correlation scores (95%+) by: hand-tightening the PG7 gland dome nut to clamp the neoprene seal; centering the probe tip; swirling the capsule gently to eliminate thermal gradients; and standardizing timestamps.
+Acceptance checklist
+Teacher note. This experiment demonstrates comparative thermal behavior under classroom conditions. It does not certify any material for aerospace, pressure-vessel, fire-protection, or personal-protective use.
+
+[TABLE 1]
+Author | Timon Karl-Heinz Schwarz
+Version number | 1
+Last edited on | 24-July-2026
+
+[TABLE 2]
+Qty. | Item | Purpose / requirement
+1 | Heat-safe bucket or deep container | Used as a water bath and secondary containment.
+1 | Kettle or other supervised hot-water source | Teacher/adult use only.
+2+ | Digital probe thermometers | One for the thermal core; one to verify the water bath.
+1 | Timer or stopwatch | Must display one-minute intervals.
+1 | Heat-resistant gloves or tongs | Required for handling the heated core.
+— | Towels and a stable dry surface | Keep water away from electronic equipment.
+
+[TABLE 3]
+Qty. | Item | Purpose / requirement
+4 / 1 | Identical thermal core / glass jar with probe access | Use the same water mass, container, and probe depth for every condition.
+1 set | Cotton or soft fibrous wrap | Inner conductive barrier for the full MLI package.
+1 roll | Bubble wrap | Convective/conductive shield; do not crush the bubbles.
+1 sheet | Reflective Mylar or emergency blanket | Radiation shield and outer layer of the full MLI package.
+— | Tape and elastic bands | Secure layers without compressing them.
+1 each | Worksheet / lab report | Hypothesis, raw data, calculations, and evaluation.
+
+[TABLE 4]
+Configuration | Theoretical k (min⁻¹) | Construction | Main heat-transfer control | Expected behavior
+Bare core (control) | k ≈ 0.150 | Uninsulated 100ml PET core jar; identical probe depth and container. | Reference for natural fluid conduction, convection, and radiation. | Fast cooling (T₁₅ ≈ 8.4–23.3 °C).
+Cotton wrap layer | k ≈ 0.080 | Single uniform cotton/fibrous wrap around core. | Traps stationary air pockets to reduce conductive heat transfer. | Intermediate cooling (T₁₅ ≈ 24.1 °C).
+Bubble wrap layer | k ≈ 0.040 | Two uniform layers; close the neck without crushing the bubbles. | Sealed air chambers suppress fluid convection currents. | Moderate heat retention (T₁₅ ≈ 52.6 °C).
+Mylar reflective foil | k ≈ 0.040 | One reflective layer with shiny face outward; secure neck. | Reflects infrared electromagnetic thermal radiation. | Highly sensitive to convective air leaks; weak in direct liquid bath.
+Full MLI package | k ≈ 0.015 | Cotton inner layer + Bubble wrap + Mylar reflective outer layer. | Combines conduction, convection, and radiation control. | Best heat retention (T₁₅ ≈ 63.9 °C).
+
+[TABLE 5]
+Step | Action | Notes | Duration | Check
+1 | Prepare a stable, dry work area. | Keep the hot-water station separate from laptops, power banks, and cables. | 2 min. | 
+2 | Measure the ambient temperature. | Record room temperature once before the first trial and again if the room changes noticeably. | 1 min. | 
+3 | Label the four test conditions. | Bare, Bubble, Mylar, and Full MLI. Use identical cores or reuse the same core after returning it to the same starting condition. | 2 min. | 
+4 | Build each insulation package. | Keep material area, probe position, and neck closure consistent. Do not compress the bubble or cotton layers. | 8 min. | 
+5 | Prepare the hot-water bath. | Teacher/adult only: target approximately 80 °C. Confirm with a separate bath thermometer. | 5 min. | 
+6 | Condition the thermal core. | Heat the core until its central probe reading is stable and within 80 ± 2 °C. | 3–5 min. | 
+7 | Transfer the core to the dry test station. | Use gloves or tongs. Wipe external water away. Keep the probe at the same depth for every condition. | < 30 s | 
+8 | Start the timer and record T₀. | Start timing immediately after transfer. If T₀ is outside the agreed tolerance, recondition and repeat. | A few seconds | 
+9 | Record temperature every minute. | Take 16 readings from 0 through 15 min. Do not touch, move, unwrap, or shade the sample during the run. | 15 min. | 
+10 | Repeat for all four conditions. | Use the same room position, container, water mass, timing interval, and measurement method. | As needed | 
+11 | Enter observations in the telemetry sheet. | Calculate temperature drop, retained temperature, model variance, and—if used—the correlation score. | 5 min. | 
+12 | Cool, dry, and store the equipment. | Do not remove insulation until the core is safe to handle. Empty water only at a sink. | 5 min. | 
+
+[TABLE 6]
+Condition | T₀ (°C) | T₁₅ (°C) | Drop (°C) | Heat retained* | Dashboard score | Grade
+Full MLI | 77.6 | 62.7 | 14.9 | 74.1 | 93% | A
+Bubble wrap | 82.6 | 52.6 | 30.0 | 52.1 | 83% | B
+Bare control | 80.1 | 35.2 | 44.9 | 25.3 | 94% | A
+Mylar only | 80.5 | 33.3 | 47.2 | 22.0 | 3% | F
+
+[TABLE 7]
+Time (min) | Full MLI (°C) | Bubble (°C) | Mylar (°C) | Bare (°C)
+0 | 77.6 | 82.6 | 80.5 | 80.1
+1 | 76.6 | 79.0 | 68.6 | 73.9
+2 | 76.1 | 75.2 | 61.8 | 66.0
+3 | 75.6 | 72.5 | 55.8 | 59.9
+4 | 75.1 | 70.0 | 51.3 | 54.5
+5 | 74.5 | 67.9 | 47.8 | 50.1
+6 | 73.9 | 65.6 | 44.9 | 47.1
+7 | 73.5 | 64.0 | 42.5 | 44.6
+8 | 72.1 | 62.3 | 40.6 | 42.5
+9 | 70.6 | 60.6 | 38.9 | 40.9
+10 | 69.7 | 58.9 | 38.1 | 39.5
+11 | 68.5 | 57.5 | 36.3 | 38.2
+12 | 67.4 | 56.1 | 35.5 | 37.3
+13 | 65.8 | 54.8 | 34.6 | 36.5
+14 | 64.1 | 53.7 | 33.9 | 35.8
+15 | 62.7 | 52.6 | 33.3 | 35.2
+
+[TABLE 8]
+Check | Completion criterion
+ | All four conditions used the same core, water mass, probe depth, and recording interval.
+ | Every trial includes 16 time–temperature pairs from 0 through 15 minutes.
+ | Ambient temperature and starting-temperature tolerance are documented.
+ | Graphs have units, labels, a legend, and an equal time axis.
+ | Conclusions distinguish material performance from build quality and experimental uncertainty.
+ | All hot equipment has cooled, been dried, and been stored safely.

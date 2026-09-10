@@ -291,6 +291,12 @@
           <div style="text-align: center; margin: 20px 0;">
             <svg viewBox="0 0 820 220"
               style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 10px; width: 100%; height: auto; max-height: 220px; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
+              <defs>
+                <marker id="heat-flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6"
+                  markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#f97316" />
+                </marker>
+              </defs>
               <!-- Conduction Section -->
               <rect x="15" y="15" width="250" height="190" rx="8" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.5" />
               <circle cx="50" cy="45" r="16" fill="rgba(2, 132, 199, 0.15)" stroke="#0284c7" stroke-width="1.5" />
@@ -309,7 +315,8 @@
                 <circle cx="80" cy="20" r="10" fill="#fbbf24" />
                 <circle cx="110" cy="20" r="10" fill="#38bdf8" />
                 <circle cx="140" cy="20" r="10" fill="#0284c7" />
-                <path d="M 20 40 L 140 40" stroke="#f97316" stroke-width="2" marker-end="url(#arrow)"
+                <path d="M 20 40 L 140 40" stroke="#f97316" stroke-width="2"
+                  marker-end="url(#heat-flow-arrow)"
                   stroke-dasharray="3,3" />
                 <text x="80" y="60" text-anchor="middle" font-size="9" font-family="sans-serif" fill="#475569">Molecular
                   Vibration Waves</text>
@@ -501,7 +508,7 @@
               <span class="visual-guide-title" style="color: #0369a1; font-size: 0.95rem; font-weight: 800;"><i
                   data-lucide="cpu"></i> VISUAL GUIDE: CAPSULE CROSS-SECTION &amp; HARDWARE ANATOMY</span>
               <span class="visual-guide-badge"
-                style="background: #e0f2fe; color: #0284c7; border-color: #bae6fd; font-weight: 800;">DIAGRAM 1.0</span>
+                style="background: #e0f2fe; color: #0284c7; border-color: #bae6fd; font-weight: 800;">DIAGRAM 1.1</span>
             </div>
 
             <svg viewBox="0 0 880 370"
@@ -511,9 +518,13 @@
               <text x="35" y="38" fill="#0369a1" font-family="sans-serif" font-size="11" font-weight="bold"
                 letter-spacing="0.5">EXTERNAL ENVIRONMENT: 0.0°C ICE BATH SINK (T_env = 0.0°C)</text>
 
-              <!-- Outer Thermal Protection System (TPS Wrap) -->
-              <rect x="355" y="98" width="170" height="200" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"
-                stroke-dasharray="5,3" />
+              <!-- Layered Thermal Protection System (TPS Wrap) -->
+              <rect x="350" y="94" width="180" height="208" rx="14" fill="#fffbeb" stroke="#f59e0b"
+                stroke-width="2" stroke-dasharray="5,3" />
+              <rect x="357" y="99" width="166" height="201" rx="12" fill="#ecfdf5" stroke="#10b981"
+                stroke-width="1.5" stroke-dasharray="2,3" />
+              <rect x="364" y="103" width="152" height="195" rx="10" fill="#fff7ed" stroke="#fb923c"
+                stroke-width="1.4" />
 
               <!-- Glass Jar Chamber Body -->
               <rect x="370" y="105" width="140" height="190" rx="8" fill="#ffffff" stroke="#0284c7"
@@ -531,9 +542,15 @@
               <!-- Airtight Threaded Jar Lid -->
               <rect x="364" y="85" width="152" height="22" rx="4" fill="#0f172a" stroke="#334155" stroke-width="2" />
 
-              <!-- Sensor Lead Wire -->
-              <path d="M 440 15 L 440 52" stroke="#d97706" stroke-width="3" fill="none" />
-              <path d="M 440 85 L 440 220" stroke="#d97706" stroke-width="3" fill="none" />
+              <!-- Digital thermometer and continuous sensor lead wire -->
+              <rect x="408" y="48" width="64" height="34" rx="6" fill="#0f172a" stroke="#d97706"
+                stroke-width="2" />
+              <rect x="417" y="55" width="46" height="16" rx="2" fill="#cffafe" stroke="#0891b2"
+                stroke-width="1" />
+              <text x="440" y="67" fill="#0e7490" font-family="monospace" font-size="10" font-weight="bold"
+                text-anchor="middle">80.0°</text>
+              <circle cx="440" cy="76" r="2" fill="#10b981" />
+              <path d="M 440 82 L 440 220" stroke="#d97706" stroke-width="3" fill="none" />
 
               <!-- Stainless-steel thermometer probe tip -->
               <rect x="432" y="220" width="16" height="32" rx="3" fill="#475569" stroke="#0f172a" stroke-width="2" />
@@ -541,28 +558,28 @@
 
               <!-- ================= LEFT CALLOUTS (text-anchor="end") ================= -->
               <!-- 1. Probe lead and lid opening -->
-              <text x="250" y="64" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
+              <text x="250" y="68" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
                 text-anchor="end">Thermometer Probe Lead</text>
-              <text x="250" y="78" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Passes
+              <text x="250" y="82" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Passes
                 through prepared lid opening</text>
-              <line x1="260" y1="68" x2="440" y2="68" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3" />
-              <circle cx="440" cy="68" r="3.5" fill="#0284c7" />
+              <line x1="260" y1="72" x2="408" y2="72" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3" />
+              <circle cx="408" cy="72" r="3.5" fill="#0284c7" />
 
               <!-- 2. Threaded Jar Lid -->
-              <text x="250" y="124" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
+              <text x="250" y="104" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
                 text-anchor="end">Threaded Capsule Lid</text>
-              <text x="250" y="138" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Airtight
+              <text x="250" y="118" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Airtight
                 mechanical closure</text>
-              <line x1="260" y1="96" x2="364" y2="96" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="3,3" />
-              <circle cx="364" cy="96" r="3.5" fill="#0f172a" />
+              <line x1="260" y1="100" x2="364" y2="100" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="3,3" />
+              <circle cx="364" cy="100" r="3.5" fill="#0f172a" />
 
               <!-- 3. Thermal Insulation Wrap (TPS) -->
               <text x="250" y="194" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
                 text-anchor="end">Thermal Insulation Wrap (TPS)</text>
               <text x="250" y="208" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="end">Cotton +
                 Bubble + Mylar barrier</text>
-              <line x1="260" y1="198" x2="355" y2="198" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,3" />
-              <circle cx="355" cy="198" r="3.5" fill="#f59e0b" />
+              <line x1="260" y1="198" x2="350" y2="198" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,3" />
+              <circle cx="350" cy="198" r="3.5" fill="#f59e0b" />
 
               <!-- 4. Hot Core Liquid -->
               <text x="250" y="264" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
@@ -574,12 +591,12 @@
 
               <!-- ================= RIGHT CALLOUTS (text-anchor="start") ================= -->
               <!-- 1. Digital thermometer -->
-              <text x="630" y="44" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
+              <text x="630" y="60" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
                 text-anchor="start">Digital Thermometer</text>
-              <text x="630" y="58" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">Direct
+              <text x="630" y="74" fill="#475569" font-family="sans-serif" font-size="9" text-anchor="start">Direct
                 temperature readout</text>
-              <line x1="440" y1="36" x2="620" y2="36" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3" />
-              <circle cx="440" cy="36" r="3.5" fill="#d97706" />
+              <line x1="472" y1="64" x2="620" y2="64" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3" />
+              <circle cx="472" cy="64" r="3.5" fill="#d97706" />
 
               <!-- 2. Glass Capsule Outer Shell -->
               <text x="630" y="124" fill="#0f172a" font-family="sans-serif" font-size="11" font-weight="bold"
@@ -1647,28 +1664,26 @@
             </div>
           </div>
           <p style="margin-bottom: 20px;">
-            Complete this 10-item online knowledge check after the laboratory trial. It aligns directly with the
-            10-inquiry
-            student task sheet (Inquiries 1–10) and the complete solution key in the Teacher Manual. Nine
-            multiple-choice questions are auto-scored; Question 4 requires instructor review and is excluded from the
-            automatic percentage.
+            Complete this 10-item online knowledge check together as a group after the laboratory trial. It aligns directly with the
+            10-inquiry student task sheet (Inquiries 1–10) and the complete solution key in the Teacher Manual. All 10
+            answers are included in the displayed result.
           </p>
 
-          <!-- Crew Info Block -->
+          <!-- Group Info Block -->
           <div
             style="background: #f1f5f9; padding: 18px; border-radius: 10px; border: 1px solid #cbd5e1; margin-bottom: 25px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
             <div>
-              <label for="quiz-student-name"
-                style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">STUDENT
+              <label for="quiz-group-name"
+                style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">GROUP
                 NAME:</label>
-              <input type="text" id="quiz-student-name" placeholder="Enter student name..." class="hud-input"
-                style="background: #fff; color: #0f172a; border-color: #cbd5e1;">
+              <input type="text" id="quiz-group-name" placeholder="Enter group name..." class="hud-input" required
+                maxlength="50" style="background: #fff; color: #0f172a; border-color: #cbd5e1;">
             </div>
             <div>
-              <label for="quiz-team-id"
-                style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">TEAM
+              <label for="quiz-group-id"
+                style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">GROUP
                 ID:</label>
-              <input type="text" id="quiz-team-id" placeholder="e.g. ALPHA-01" class="hud-input"
+              <input type="text" id="quiz-group-id" placeholder="e.g. GROUP-01" class="hud-input" maxlength="50"
                 style="background: #fff; color: #0f172a; border-color: #cbd5e1;">
             </div>
             <div>
@@ -1772,8 +1787,7 @@
               <label class="sr-only" for="q4-text">Explanation of experimental uncertainty</label>
               <textarea class="quiz-textarea" id="q4-text"
                 placeholder="Write your explanation here (e.g., sensor positioning near glass wall, ice melting, non-uniform water mixing)..."></textarea>
-              <p style="margin-top: 8px; font-size: 0.85rem; color: #64748b;">Instructor-reviewed response; not included
-                in the automatic percentage.</p>
+              <p style="margin-top: 8px; font-size: 0.85rem; color: #64748b;">Enter a response of at least 10 characters.</p>
               <div class="quiz-feedback" id="q4-feedback"></div>
             </div>
 
@@ -1936,7 +1950,6 @@
             <div style="font-family: var(--font-hud); font-size: 0.9rem; color: #94a3b8; letter-spacing: 0.1em;">
               EVALUATION RESULT</div>
             <div class="score-number" id="quiz-score-percent">0%</div>
-            <div class="score-badge" id="quiz-score-badge">GRADE: F</div>
             <p id="quiz-score-summary" style="margin-top: 15px; font-size: 0.9rem; color: #e2e8f0;"></p>
           </div>
 
@@ -1944,10 +1957,13 @@
           <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
             <button type="button" class="btn-hud btn-orange" id="btn-grade-quiz"
               style="flex: 2; min-width: 200px; padding: 14px;">
-              <i data-lucide="check-square"></i> GRADE MY RESPONSES
+              <i data-lucide="check-square"></i> CHECK GROUP RESPONSES
             </button>
             <button type="button" class="btn-hud btn-outline" id="btn-reset-quiz" style="flex: 1; min-width: 140px;">
               <i data-lucide="rotate-ccw"></i> RESET RESPONSES
+            </button>
+            <button type="button" class="btn-hud btn-outline" id="btn-open-leaderboard" style="flex: 1; min-width: 160px;">
+              <i data-lucide="trophy"></i> LEADERBOARD
             </button>
           </div>
 
@@ -2013,6 +2029,30 @@
     </div>
   </div>
 
+  <!-- Shared quiz leaderboard -->
+  <div id="leaderboard-modal-overlay" class="modal-overlay" style="display: none;" role="dialog"
+    aria-modal="true" aria-labelledby="leaderboard-modal-title">
+    <div class="modal-card leaderboard-modal-card">
+      <div class="modal-header">
+        <div class="modal-title glow-orange" id="leaderboard-modal-title">
+          <i data-lucide="trophy"></i>
+          <span>QUIZ LEADERBOARD</span>
+        </div>
+        <button type="button" class="btn-close-modal" id="btn-close-leaderboard" aria-label="Close leaderboard">&times;</button>
+      </div>
+      <p class="modal-desc" id="leaderboard-status">Loading shared scores…</p>
+      <div class="leaderboard-table-wrap">
+        <table class="leaderboard-table">
+          <thead>
+            <tr><th>#</th><th>Group</th><th>Group ID</th><th>Score</th></tr>
+          </thead>
+          <tbody id="leaderboard-rows"></tbody>
+        </table>
+        <p id="leaderboard-empty" class="leaderboard-empty">No scores yet. Grade a response to add the first result.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Custom Alert Toast notification -->
   <div class="hud-notification" id="hud-notification">
     <div id="notif-icon-box"
@@ -2021,6 +2061,7 @@
   </div>
 
   <!-- App Main Javascript Code -->
+  <script src="leaderboard-config.js"></script>
   <script src="app.js"></script>
 </body>
 

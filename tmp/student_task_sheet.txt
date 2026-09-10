@@ -1,0 +1,200 @@
+  EXPERIMENTAL DATA LOG • THERMAL INSULATION
+SPACESUIT THERMAL SHIELDING KIT                                                                                                              PAGE 1 OF 3
+STUDENT LABORATORY TASK SHEET & EXPERIMENTAL REGISTER
+
+
+  STUDENT NAME(S):                                                      TEAM / TEST IDENTIFIER:
+
+
+  DATE / LABORATORY PERIOD:                                             ASSIGNED TPS CONFIGURATION:
+                                                                        [ ] A: Bare   [ ] B: Bubble wrap   [ ] C: Mylar   [ ] D: MLI Composite
+
+
+PART A. EXPERIMENTAL TEMPERATURE LOG (0 TO 15 MIN)                                                                                        60s INTERVALS
+
+
+   ELAPSED                                                                                                 OBSERVER FIELD NOTES & BOUNDARY
+                  OBSERVED TEMP ( T obs )      MODEL TEMP ( T model )       RESIDUAL ∣ΔT ∣ ( ∘ C )
+     TIME                                                                                                               STATUS
+                                         ​                          ​
+
+
+
+
+                                                                                                             Capsule submerged; ice bath boundary
+     0 min                    80.0∘ C                  80.0∘ C                        0.0∘ C
+                                                                                                                          verified.
+     1 min                                                                                                 Check immersion depth and probe position.
+     2 min
+     3 min
+     4 min
+                                                                                                             Mid-phase checkpoint; verify ice slurry
+     5 min
+                                                                                                                           volume.
+     6 min
+     7 min
+     8 min                                                                                                     Record any change in bath condition.
+     9 min
+                                                                                                           Check for leakage or probe contact with the
+     10 min
+                                                                                                                              wall.
+     11 min
+     12 min
+     13 min
+     14 min
+     15 min                                                                                                  Final reading; record bath temperature.
+
+
+
+
+SPACESUIT THERMAL SHIELDING KIT • STUDENT TASK SHEET                      PART A: TELEMETRY LOGGING REGISTER                                     PAGE 1 OF 3
+  HIGH-PRECISION GRAPH WORKBOOK • PORTRAIT PAGE
+SPACESUIT THERMAL SHIELDING KIT                                                                                                        PAGE 2 OF 3
+PART B. THERMAL COOLING CURVE GRAPH GRID (0 TO 15 MINUTES)
+
+PART B. EXPERIMENTAL VS THEORETICAL COOLING CURVES                                                  EMPIRICAL DATA (•) VS REFERENCE MODEL (---)
+
+Plotting Instructions: Plot observed temperature readings (Tobs ) as solid points (∙) and connect them with a smooth line. Plot the theoretical
+reference model (Tmodel ) as a dashed curve (—). Use the 1-minute grid divisions for accurate coordinate plotting.
+                                       ​
+
+
+
+
+                                                 THERMAL DECAY COOLING CURVE WORKBOOK TEMPLATE (0–15 MIN)
+                      80°C
+
+
+
+                      70°C
+
+
+
+
+                      60°C
+
+
+
+
+   TEMPERATURE (°C)
+                      50°C
+
+
+
+
+                      40°C
+
+
+
+
+                      30°C
+
+
+
+
+                      20°C
+
+
+
+
+                      10°C
+
+
+
+
+                      0°C
+                             0m   1m       2m   3m    4m    5m     6m     7m     8m      9m      10m      11m     12m      13m     14m      15m
+                                                                    ELAPSED TIME (MINUTES)
+
+
+
+
+SPACESUIT THERMAL SHIELDING KIT • STUDENT TASK SHEET                     PART B: HIGH-PRECISION GRAPH WORKBOOK TEMPLATE                  PAGE 2 OF 3
+  MODEL AGREEMENT • TECHNICAL ANALYSIS
+SPACESUIT THERMAL SHIELDING KIT                                                                                                                               PAGE 3 OF 3
+RESIDUAL, ERROR & UNCERTAINTY ANALYSIS
+
+PART C. QUANTITATIVE RESIDUAL & ERROR ANALYSIS                                                                                                     STATISTICAL EVALUATION
+
+
+  1. Sum of Absolute Residuals:         ∑ ∣ΔT ∣ = ∑ ∣Tobs − Tmodel ∣     ​        ​                                                    ∑ ∣ΔT ∣ =                       ∘
+                                                                                                                                                                           C
+
+  2. Mean Absolute Error (MAE):          MAE = n1 ∑ni=1 ∣Tobs,i − Tmodel,i ∣
+                                                        ​            ​       ​         ​
+                                                                                                                                         MAE =                         ∘
+                                                                                                                                                                           C
+  3. Interpretation: Compare MAE with the thermometer accuracy and variation between repeated                                 Number of observations:
+  measurements.
+     MODEL-AGREEMENT RESULT:                          MAE = __________ ∘ C                  [ ] uncertainty discussed                   [ ] model assumptions discussed
+
+
+PART D. POST-FLIGHT SCIENTIFIC INQUIRIES & ANALYSIS                                                                                                      10 CORE CONCEPTS
+
+
+  Inquiry 1: Radiant Barriers vs. Direct Conduction                                          Inquiry 2: Understanding the Decay Constant (k)
+  Reflective film can reduce radiative exchange when it faces a suitable gap.                In Newton's Law T (t) = Tenv + (T0 − Tenv )e−kt , does a smaller k value
+  Why may it provide limited insulation when placed directly in ice water without
+                                                                                                                          ​        ​        ​
+
+
+
+
+  a low-conductivity air or fibre spacer?                                                    mean better or worse insulation? Explain how k controls the cooling speed.
+
+
+
+
+  Inquiry 3: Why Multi-Layer Insulation (MLI) Works                                          Inquiry 4: Real-World Experimental Factors
+  Why can the multilayer configuration reduce the cooling rate relative to a                 What physical factors in the lab might cause your sensor readings to drift
+  single layer? Discuss trapped air, fluid motion, radiation and interfacial                 away from the computer simulation? Name at least two specific factors (e.g.
+  resistance.                                                                                sensor depth, stirring, seal leaks).
+
+
+
+
+  Inquiry 5: Ice Bath Temperature Drift                                                      Inquiry 6: Effect of Capsule Water Volume
+  If the ice bath warms up from 0.0∘ C to 4.5∘ C during your 15-minute run, how              If you doubled the water volume from 100 mL to 200 mL, how would that
+  should you update the environment temperature Tenv in Mission Control so
+                                                            ​                                extra thermal mass (Q = mcp ΔT ) change the cooling rate and the value of k
+                                                                                                                              ​
+
+
+
+
+  the model stays accurate?                                                                  ?
+
+
+
+
+  Inquiry 7: Spacesuit Design Trade-Offs                                                     Inquiry 8: Specific Heat Capacity & Fluid Response
+  Why can engineers not simply add an unlimited number of insulation layers to               If water (cp ≈ 4184 J/(kg ⋅ K)) were replaced with a liquid of lower specific
+  an EVA spacesuit? Discuss joint mobility, suit mass/bulk, and body heat
+                                                                                                        ​
+
+
+
+
+                                                                                             heat capacity keeping mass identical, how would the cooling rate change?
+  buildup.
+
+
+
+
+  Inquiry 9: Asymptotic Boundary Limits (t → ∞)                                              Inquiry 10: Telemetry Anomaly Diagnostics & MAE
+  According to Newton's Law T (t) = Tenv + (T0 − Tenv )e−kt , what                           If measured capsule temperature drops significantly faster than predicted,
+                                                                                             what physical anomaly is the most plausible explanation, and how can MAE be
+                                           ​      ​              ​
+
+
+
+
+  temperature value does the capsule approach asymptotically as time t → ∞?                  reduced?
+
+
+
+
+  STUDENT SIGNATURE:                                            INSTRUCTOR VALIDATION:                                  EVALUATION SCORE:                            / 100
+
+SPACESUIT THERMAL SHIELDING KIT • STUDENT TASK SHEET                         PART C & PART D: ANALYSIS & REFLECTION       END OF EXPERIMENTAL WORKBOOK (PAGE 3 OF 3)
+
