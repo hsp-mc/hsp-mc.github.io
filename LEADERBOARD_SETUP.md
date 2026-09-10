@@ -11,9 +11,9 @@ Supabase service-role key in this project. The included database rules let
 students read and submit scores, but do not let them edit or delete shared
 scores.
 
-The database retains the original `student` and `team` column names for
-backward compatibility. The website uses these fields as Group Name and Group
-ID, respectively, and displays only the group terminology.
+The database retains its original columns for backward compatibility. The
+website stores the group name in `student`; the legacy `team` field is no
+longer collected or displayed.
 
 If Supabase cannot be reached or has not been configured, the website falls
 back to the browser-local leaderboard automatically.

@@ -1680,17 +1680,10 @@
                 maxlength="50" style="background: #fff; color: #0f172a; border-color: #cbd5e1;">
             </div>
             <div>
-              <label for="quiz-group-id"
-                style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">GROUP
-                ID:</label>
-              <input type="text" id="quiz-group-id" placeholder="e.g. GROUP-01" class="hud-input" maxlength="50"
-                style="background: #fff; color: #0f172a; border-color: #cbd5e1;">
-            </div>
-            <div>
               <label for="quiz-date"
                 style="font-family: var(--font-sans); font-size: 0.75rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">LAB
                 DATE:</label>
-              <input type="text" id="quiz-date" placeholder="YYYY-MM-DD" class="hud-input"
+              <input type="date" id="quiz-date" class="hud-input"
                 style="background: #fff; color: #0f172a; border-color: #cbd5e1;">
             </div>
           </div>
@@ -1873,7 +1866,7 @@
             <div class="quiz-card" data-q="8">
               <div class="quiz-q-num">QUESTION 08 // SPECIFIC HEAT CAPACITY</div>
               <div class="quiz-question-text">
-                As a theoretical comparison only, consider replacing water ($c \approx 4184\text{ J/(kg·K)}$) with a
+                As a theoretical comparison only, consider replacing water (<em>c</em> ≈ 4184 J/(kg·K)) with a
                 liquid of lower specific heat capacity while keeping mass and heat-transfer conditions unchanged. How
                 would the temperature response change?
               </div>
@@ -2044,7 +2037,7 @@
       <div class="leaderboard-table-wrap">
         <table class="leaderboard-table">
           <thead>
-            <tr><th>#</th><th>Group</th><th>Group ID</th><th>Score</th></tr>
+            <tr><th>#</th><th>Group</th><th>Score</th></tr>
           </thead>
           <tbody id="leaderboard-rows"></tbody>
         </table>

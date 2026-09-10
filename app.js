@@ -1658,6 +1658,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function initQuizEngine() {
     const btnGradeQuiz = document.getElementById('btn-grade-quiz');
     const btnResetQuiz = document.getElementById('btn-reset-quiz');
+    const labDateInput = document.getElementById('quiz-date');
     const scoreBanner = document.getElementById('quiz-score-banner');
     const scorePercentEl = document.getElementById('quiz-score-percent');
     const scoreSummaryEl = document.getElementById('quiz-score-summary');
@@ -1679,6 +1680,13 @@ document.addEventListener('DOMContentLoaded', () => {
       !supabaseUrl.includes('YOUR_') &&
       !supabasePublicKey.includes('YOUR_')
     );
+
+    // Pre-fill the laboratory date using the visitor's local calendar date.
+    if (labDateInput && !labDateInput.value) {
+      const now = new Date();
+      const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60_000);
+      labDateInput.value = localDate.toISOString().slice(0, 10);
+    }
 
     function supabaseHeaders(extraHeaders = {}) {
       const headers = { apikey: supabasePublicKey, ...extraHeaders };
@@ -1707,11 +1715,16 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         const saved = JSON.parse(localStorage.getItem(leaderboardStorageKey) || '[]');
         if (!Array.isArray(saved)) return [];
-        return saved.map(entry => ({
-          ...entry,
-          groupName: entry.groupName || entry.student || 'Unnamed Group',
-          groupId: entry.groupId || entry.team || ''
-        }));
+        return saved.map(entry => {
+          const groupName = entry.groupName || entry.student || 'Unnamed Group';
+          const labDate = entry.labDate || entry.lab_date || '';
+          return {
+            ...entry,
+            identity: `${groupName.toLowerCase()}|${labDate}`,
+            groupName,
+            labDate
+          };
+        });
       } catch (error) {
         return [];
       }
@@ -1729,7 +1742,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       rankedEntries.forEach((entry, index) => {
         const row = document.createElement('tr');
-        [index + 1, entry.groupName, entry.groupId || '—', `${entry.correct}/10 (${entry.percentage}%)`]
+        [index + 1, entry.groupName, `${entry.correct}/10 (${entry.percentage}%)`]
           .forEach(value => {
             const cell = document.createElement('td');
             cell.textContent = value;
@@ -1750,7 +1763,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         const response = await fetch(
-          `${supabaseUrl}/rest/v1/quiz_scores?select=student,team,lab_date,correct,percentage,created_at&order=percentage.desc,created_at.asc&limit=100`,
+          `${supabaseUrl}/rest/v1/quiz_scores?select=student,lab_date,correct,percentage,created_at&order=percentage.desc,created_at.asc&limit=100`,
           {
             headers: supabaseHeaders()
           }
@@ -1763,12 +1776,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const identities = new Set();
 
         sharedEntries.forEach(entry => {
-          const identity = `${entry.student.toLowerCase()}|${(entry.team || '').toLowerCase()}|${entry.lab_date || ''}`;
+          const identity = `${entry.student.toLowerCase()}|${entry.lab_date || ''}`;
           if (identities.has(identity)) return;
           identities.add(identity);
           uniqueEntries.push({
             groupName: entry.student,
-            groupId: entry.team || '',
             correct: entry.correct,
             percentage: entry.percentage,
             savedAt: Date.parse(entry.created_at) || 0
@@ -1798,15 +1810,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function saveLeaderboardEntry(correct, percentage) {
       const groupName = document.getElementById('quiz-group-name')?.value.trim() || '';
-      const groupId = document.getElementById('quiz-group-id')?.value.trim() || '';
       const labDate = document.getElementById('quiz-date')?.value.trim() || '';
-      const identity = `${groupName.toLowerCase()}|${groupId.toLowerCase()}|${labDate}`;
+      const identity = `${groupName.toLowerCase()}|${labDate}`;
       const entries = getLeaderboard().filter(entry => entry.identity !== identity);
 
       entries.push({
         identity,
         groupName,
-        groupId,
         labDate,
         correct,
         percentage,
@@ -1829,9 +1839,8 @@ document.addEventListener('DOMContentLoaded', () => {
             Prefer: 'return=minimal'
           }),
           body: JSON.stringify({
-            // Existing database field names are retained for compatibility.
+            // The existing database field name is retained for compatibility.
             student: groupName,
-            team: groupId,
             lab_date: labDate,
             correct,
             percentage
