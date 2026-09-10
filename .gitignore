@@ -17,5 +17,14 @@ Thumbs.db
 Experimental_Toolkit_Thermal_Insulation_SOP_Illustrated.docx
 Project_Draft_Updated.docx
 
-# Generated PDF working files
-/tmp/pdfs/
+# Generated working files
+/tmp/
+/.chart-data-*/
+/.codex-ppt-build/
+
+# Generated LaTeX sources/intermediates (keep final PDFs)
+/output/pdf/*.aux
+/output/pdf/*.log
+/output/pdf/*.out
+/output/pdf/*.tex
+/output/pdf/*.toc
