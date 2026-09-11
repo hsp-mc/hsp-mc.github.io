@@ -162,8 +162,9 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px solid var(--dark-navy);
-      padding-bottom: 10px;
-      margin-bottom: 15px;
+      padding-top: 6px;
+      padding-bottom: 12px;
+      margin-bottom: 18px;
     }
 
     .brand-badge {
@@ -177,6 +178,8 @@
       border-radius: 50px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 6px;
     }
 
     .sheet-title {
@@ -184,7 +187,7 @@
       font-size: 1.45rem;
       font-weight: 900;
       color: var(--text-heading);
-      margin: 0;
+      margin: 4px 0 3px 0;
       letter-spacing: 0.02em;
       text-transform: uppercase;
     }
@@ -196,6 +199,7 @@
       color: var(--primary-blue);
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      margin-top: 3px;
     }
 
     .page-number-tag {
@@ -546,6 +550,30 @@
       }
     }
 
+    .landscape-graph-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 640px;
+      margin-top: 6px;
+      margin-bottom: 6px;
+      overflow: hidden;
+    }
+
+    .landscape-graph-inner {
+      width: 660px;
+      height: 480px;
+      transform: rotate(-90deg);
+      transform-origin: center center;
+      flex: 0 0 auto;
+    }
+
+    .landscape-graph-inner svg {
+      width: 100%;
+      height: 100%;
+    }
+
     /* ==========================================================================
        SPACIOUS 5-PAGE PRINT STYLES (A4 PORTRAIT)
        ========================================================================== */
@@ -602,30 +630,27 @@
         break-after: auto !important;
       }
 
-      .sheet-page + .sheet-page {
+      .sheet-page+.sheet-page {
         page-break-before: always !important;
         break-before: page !important;
       }
 
       .page-header {
-        margin-bottom: 6pt !important;
-        padding-bottom: 4pt !important;
-        padding-right: 86pt !important;
-        position: relative !important;
+        margin-top: 4pt !important;
+        margin-bottom: 10pt !important;
+        padding-bottom: 6pt !important;
       }
 
-      .page-header > div:first-child {
+      .page-header>div:first-child {
         flex: 1 1 auto !important;
         min-width: 0 !important;
         overflow: hidden !important;
       }
 
-      .page-header > div:last-child {
-        position: absolute !important;
-        right: 0 !important;
-        top: 14pt !important;
+      .page-header>div:last-child {
+        flex: 0 0 auto !important;
         min-width: 70pt !important;
-        margin: 0 !important;
+        margin-left: 12pt !important;
         z-index: 2 !important;
       }
 
@@ -636,16 +661,21 @@
       .brand-badge {
         font-size: 6.5pt !important;
         padding: 2pt 8pt !important;
+        margin-bottom: 3pt !important;
+        display: inline-block !important;
       }
 
       .sheet-title {
         font-size: 1.08rem !important;
         letter-spacing: 0 !important;
+        margin-top: 2pt !important;
+        margin-bottom: 2pt !important;
         white-space: nowrap !important;
       }
 
       .sheet-sub {
         font-size: 0.75rem !important;
+        margin-top: 2pt !important;
       }
 
       .meta-grid {
@@ -705,6 +735,30 @@
       .graph-container svg {
         width: 100% !important;
         max-height: 540px !important;
+      }
+
+      .landscape-graph-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: 228mm !important;
+        max-height: 228mm !important;
+        margin-top: 2pt !important;
+        overflow: hidden !important;
+      }
+
+      .landscape-graph-inner {
+        width: 226mm !important;
+        height: 172mm !important;
+        transform: rotate(-90deg) !important;
+        transform-origin: center center !important;
+        flex: 0 0 auto !important;
+      }
+
+      .landscape-graph-inner svg {
+        width: 100% !important;
+        height: 100% !important;
       }
 
       .calc-box {
@@ -783,7 +837,7 @@
         padding-top: 4pt !important;
         font-size: 6pt !important;
         display: grid !important;
-        grid-template-columns: 1fr 1fr 92pt !important;
+        grid-template-columns: 1.2fr 1fr 1.4fr !important;
         column-gap: 8pt !important;
         align-items: end !important;
         width: 100% !important;
@@ -801,6 +855,18 @@
         position: relative !important;
         z-index: 2 !important;
         background: #ffffff !important;
+      }
+
+      #sheet-page-5 .page-header {
+        padding-right: 86pt !important;
+        position: relative !important;
+      }
+
+      #sheet-page-5 .page-header>div:last-child {
+        position: absolute !important;
+        right: 0 !important;
+        top: 14pt !important;
+        margin: 0 !important;
       }
     }
   </style>
@@ -828,7 +894,7 @@
     <!-- ==========================================================================
          PAGE 1: METADATA, TELEMETRY LOGGING TABLE & COORDINATE GRAPH GRID
          ========================================================================== -->
-        <!-- ==========================================================================
+    <!-- ==========================================================================
          PAGE 1: METADATA & TELEMETRY LOGGING TABLE (0 TO 15 MIN)
          ========================================================================== -->
     <div class="sheet-page" id="sheet-page-1">
@@ -1007,7 +1073,7 @@
 
       <!-- Page 1 Footer -->
       <footer class="page-footer">
-        <span>SPACESUIT THERMAL SHIELDING KIT &bull; STUDENT TASK SHEET</span>
+        <span>SPHERE &bull; STUDENT TASK SHEET</span>
         <span>PART A: TELEMETRY LOGGING REGISTER</span>
         <span>PAGE 1 OF 5</span>
       </footer>
@@ -1021,7 +1087,7 @@
         <!-- Page 2 Header -->
         <header class="page-header">
           <div>
-            <span class="brand-badge">HIGH-PRECISION GRAPH WORKBOOK &bull; PORTRAIT PAGE</span>
+            <span class="brand-badge">HIGH-PRECISION GRAPH WORKBOOK &bull; EXPANDED GRAPH</span>
             <h1 class="sheet-title">Spacesuit Thermal Shielding Kit</h1>
             <div class="sheet-sub">PART B. THERMAL COOLING CURVE GRAPH GRID (0 TO 15 MINUTES)</div>
           </div>
@@ -1035,70 +1101,95 @@
           <span class="tag">EMPIRICAL DATA (•) VS REFERENCE MODEL (---)</span>
         </div>
 
-        <div class="graph-instructions" style="margin-bottom: 12px; font-size: 0.92rem;">
-          <strong>Plotting Instructions:</strong> Plot observed temperature readings ($T_{\text{obs}}$) as solid points ($\bullet$) and connect them with a smooth line. Plot the theoretical reference model ($T_{\text{model}}$) as a dashed curve ($\text{---}$). Use the 1-minute grid divisions for accurate coordinate plotting.
+        <div class="graph-instructions" style="margin-bottom: 6px; font-size: 0.88rem;">
+          <strong>Plotting Instructions:</strong> Turn sheet 90° clockwise to plot. Plot observed temperature readings ($T_{\text{obs}}$) as solid points ($\bullet$) and connect them with a smooth line. Plot the theoretical reference model ($T_{\text{model}}$) as a dashed curve ($\text{---}$).
         </div>
 
-        <div class="graph-container">
-          <svg viewBox="0 0 740 460"
-            style="background: #ffffff; border: 2px solid var(--dark-navy); border-radius: 8px; width: 100%; height: auto; max-height: 460px;">
-            <defs>
-              <pattern id="grid-minor-p2" width="10.83" height="9.75" patternUnits="userSpaceOnUse">
-                <path d="M 10.83 0 L 0 0 0 9.75" fill="none" stroke="#f1f5f9" stroke-width="0.5" />
-              </pattern>
-              <pattern id="grid-major-p2" width="43.33" height="48.75" patternUnits="userSpaceOnUse">
-                <rect width="43.33" height="48.75" fill="url(#grid-minor-p2)" />
-                <path d="M 43.33 0 L 0 0 0 48.75" fill="none" stroke="#cbd5e1" stroke-width="1.2" />
-              </pattern>
-            </defs>
+        <div class="landscape-graph-wrapper">
+          <div class="landscape-graph-inner">
+            <svg viewBox="0 0 980 720"
+              style="background: #ffffff; border: 2px solid var(--dark-navy); border-radius: 8px; width: 100%; height: 100%;">
+              <defs>
+                <pattern id="grid-minor-p2" width="11.8" height="16" patternUnits="userSpaceOnUse">
+                  <path d="M 11.8 0 L 0 0 0 16" fill="none" stroke="#f1f5f9" stroke-width="0.5" />
+                </pattern>
+                <pattern id="grid-major-p2" width="59" height="80" patternUnits="userSpaceOnUse">
+                  <rect width="59" height="80" fill="url(#grid-minor-p2)" />
+                  <path d="M 59 0 L 0 0 0 80" fill="none" stroke="#cbd5e1" stroke-width="1.2" />
+                </pattern>
+              </defs>
 
-            <!-- Title Header inside SVG -->
-            <text x="385" y="20" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0f172a">
-              THERMAL DECAY COOLING CURVE WORKBOOK TEMPLATE (0–15 MIN)
-            </text>
+              <!-- Graph Grid Area (885px wide by 640px high) -->
+              <rect x="70" y="20" width="885" height="640" fill="url(#grid-major-p2)" stroke="#0f172a"
+                stroke-width="2.5" />
 
-            <!-- Graph Grid Area (650px wide by 390px high) -->
-            <rect x="65" y="30" width="650" height="390" fill="url(#grid-major-p2)" stroke="#0f172a" stroke-width="2" />
+              <!-- Y-Axis Labels (0°C to 80°C at 80px intervals) -->
+              <text x="58" y="24" text-anchor="end" font-size="11" font-family="sans-serif" font-weight="bold"
+                fill="#0f172a">80°C</text>
+              <text x="58" y="104" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">70°C</text>
+              <text x="58" y="184" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">60°C</text>
+              <text x="58" y="264" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">50°C</text>
+              <text x="58" y="344" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#0284c7">40°C</text>
+              <text x="58" y="424" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">30°C</text>
+              <text x="58" y="504" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">20°C</text>
+              <text x="58" y="584" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">10°C</text>
+              <text x="58" y="664" text-anchor="end" font-size="11" font-family="sans-serif" font-weight="bold"
+                fill="#0f172a">0°C</text>
 
-            <!-- Y-Axis Labels (0°C to 80°C at 48.75px intervals) -->
-            <text x="54" y="34" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">80°C</text>
-            <text x="54" y="83" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">70°C</text>
-            <text x="54" y="131" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">60°C</text>
-            <text x="54" y="180" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">50°C</text>
-            <text x="54" y="229" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#0284c7">40°C</text>
-            <text x="54" y="278" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">30°C</text>
-            <text x="54" y="326" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">20°C</text>
-            <text x="54" y="375" text-anchor="end" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">10°C</text>
-            <text x="54" y="424" text-anchor="end" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">0°C</text>
+              <text x="20" y="340" text-anchor="middle" font-size="13" font-family="sans-serif" font-weight="bold"
+                fill="#0f172a" transform="rotate(-90 20 340)">TEMPERATURE (°C)</text>
 
-            <text x="18" y="225" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold" fill="#0f172a" transform="rotate(-90 18 225)">TEMPERATURE (°C)</text>
+              <!-- X-Axis Labels (0m to 15m at 59px intervals) -->
+              <text x="70" y="684" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold"
+                fill="#0f172a">0m</text>
+              <text x="129" y="684" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">1m</text>
+              <text x="188" y="684" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">2m</text>
+              <text x="247" y="684" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">3m</text>
+              <text x="306" y="684" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">4m</text>
+              <text x="365" y="684" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold"
+                fill="#0284c7">5m</text>
+              <text x="424" y="684" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">6m</text>
+              <text x="483" y="684" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">7m</text>
+              <text x="542" y="684" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">8m</text>
+              <text x="601" y="684" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">9m</text>
+              <text x="660" y="684" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold"
+                fill="#0284c7">10m</text>
+              <text x="719" y="684" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">11m</text>
+              <text x="778" y="684" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">12m</text>
+              <text x="837" y="684" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">13m</text>
+              <text x="896" y="684" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold"
+                fill="#334155">14m</text>
+              <text x="955" y="684" text-anchor="middle" font-size="11" font-family="sans-serif" font-weight="bold"
+                fill="#0f172a">15m</text>
 
-            <!-- X-Axis Labels (0m to 15m at 43.33px intervals) -->
-            <text x="65" y="442" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">0m</text>
-            <text x="108" y="442" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">1m</text>
-            <text x="152" y="442" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">2m</text>
-            <text x="195" y="442" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">3m</text>
-            <text x="238" y="442" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">4m</text>
-            <text x="282" y="442" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0284c7">5m</text>
-            <text x="325" y="442" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">6m</text>
-            <text x="368" y="442" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">7m</text>
-            <text x="412" y="442" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">8m</text>
-            <text x="455" y="442" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">9m</text>
-            <text x="498" y="442" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0284c7">10m</text>
-            <text x="542" y="442" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">11m</text>
-            <text x="585" y="442" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">12m</text>
-            <text x="628" y="442" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">13m</text>
-            <text x="672" y="442" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="bold" fill="#334155">14m</text>
-            <text x="715" y="442" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">15m</text>
-
-            <text x="390" y="455" text-anchor="middle" font-size="10" font-family="sans-serif" font-weight="bold" fill="#0f172a">ELAPSED TIME (MINUTES)</text>
-          </svg>
+              <text x="512" y="708" text-anchor="middle" font-size="12" font-family="sans-serif" font-weight="bold"
+                fill="#0f172a">ELAPSED TIME (MINUTES)</text>
+            </svg>
+          </div>
         </div>
       </div>
 
       <!-- Page 2 Footer -->
       <footer class="page-footer">
-        <span>SPACESUIT THERMAL SHIELDING KIT &bull; STUDENT TASK SHEET</span>
+        <span>SPHERE &bull; STUDENT TASK SHEET</span>
         <span>PART B: HIGH-PRECISION GRAPH WORKBOOK TEMPLATE</span>
         <span>PAGE 2 OF 5</span>
       </footer>
@@ -1152,14 +1243,17 @@
           </div>
         </div>
 
-        <div style="margin-top: 18pt; border: 1.5px dashed var(--border-dark); border-radius: 8px; min-height: 360pt; padding: 14pt;">
-          <div class="q-title" style="font-size: 10pt; margin-bottom: 8pt;">CALCULATION WORKING AND ERROR DISCUSSION</div>
-          <div class="q-desc" style="font-size: 8.5pt;">Show residual calculations, MAE working, uncertainty sources, and any model assumptions used in your analysis.</div>
+        <div
+          style="margin-top: 18pt; border: 1.5px dashed var(--border-dark); border-radius: 8px; min-height: 360pt; padding: 14pt;">
+          <div class="q-title" style="font-size: 10pt; margin-bottom: 8pt;">CALCULATION WORKING AND ERROR DISCUSSION
+          </div>
+          <div class="q-desc" style="font-size: 8.5pt;">Show residual calculations, MAE working, uncertainty sources,
+            and any model assumptions used in your analysis.</div>
         </div>
       </div>
 
       <footer class="page-footer">
-        <span>SPACESUIT THERMAL SHIELDING KIT &bull; STUDENT TASK SHEET</span>
+        <span>SPHERE &bull; STUDENT TASK SHEET</span>
         <span>PART C: CALCULATIONS &amp; MODEL AGREEMENT</span>
         <span>PAGE 3 OF 5</span>
       </footer>
@@ -1252,7 +1346,7 @@
       </div>
 
       <footer class="page-footer">
-        <span>SPACESUIT THERMAL SHIELDING KIT &bull; STUDENT TASK SHEET</span>
+        <span>SPHERE &bull; STUDENT TASK SHEET</span>
         <span>PART D: WRITTEN RESPONSES Q1-Q5</span>
         <span>PAGE 4 OF 5</span>
       </footer>
@@ -1298,7 +1392,8 @@
             <div>
               <div class="q-title">Q7: Spacesuit Design Trade-Offs</div>
               <div class="q-desc">
-                Why can engineers not simply add an unlimited number of insulation layers to an EVA spacesuit? Discuss joint mobility, suit mass/bulk, and body heat buildup.
+                Why can engineers not simply add an unlimited number of insulation layers to an EVA spacesuit? Discuss
+                joint mobility, suit mass/bulk, and body heat buildup.
               </div>
             </div>
             <div class="q-answer-space"></div>
@@ -1309,7 +1404,8 @@
             <div>
               <div class="q-title">Q8: Specific Heat Capacity &amp; Fluid Response</div>
               <div class="q-desc">
-                If water ($c_p \approx 4184\text{ J/(kg}\cdot\text{K)}$) were replaced with a liquid of lower specific heat capacity keeping mass identical, how would the cooling rate change?
+                If water ($c_p \approx 4184\text{ J/(kg}\cdot\text{K)}$) were replaced with a liquid of lower specific
+                heat capacity keeping mass identical, how would the cooling rate change?
               </div>
             </div>
             <div class="q-answer-space"></div>
@@ -1320,7 +1416,8 @@
             <div>
               <div class="q-title">Q9: Asymptotic Boundary Limits ($t \to \infty$)</div>
               <div class="q-desc">
-                According to Newton's Law $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$, what temperature value does the capsule approach asymptotically as time $t \to \infty$?
+                According to Newton's Law $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$, what temperature
+                value does the capsule approach asymptotically as time $t \to \infty$?
               </div>
             </div>
             <div class="q-answer-space"></div>
@@ -1331,7 +1428,8 @@
             <div>
               <div class="q-title">Q10: Telemetry Anomaly Diagnostics &amp; MAE</div>
               <div class="q-desc">
-                If measured capsule temperature drops significantly faster than predicted, what physical anomaly is the most plausible explanation, and how can MAE be reduced?
+                If measured capsule temperature drops significantly faster than predicted, what physical anomaly is the
+                most plausible explanation, and how can MAE be reduced?
               </div>
             </div>
             <div class="q-answer-space"></div>
@@ -1351,7 +1449,7 @@
         </div>
 
         <footer class="page-footer">
-          <span>SPACESUIT THERMAL SHIELDING KIT &bull; STUDENT TASK SHEET</span>
+          <span>SPHERE &bull; STUDENT TASK SHEET</span>
           <span>PART D: WRITTEN RESPONSES Q6-Q10</span>
           <span>END OF EXPERIMENTAL WORKBOOK (PAGE 5 OF 5)</span>
         </footer>
