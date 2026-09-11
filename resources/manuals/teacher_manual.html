@@ -86,6 +86,21 @@
       margin-bottom: 40px;
     }
 
+    .website-guide-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 24px;
+    }
+
+    .website-guide-grid h3 {
+      margin-top: 0;
+    }
+
+    .website-guide-grid ol,
+    .website-guide-grid ul {
+      margin-bottom: 0;
+    }
+
     /* Sticky Navigation Bar */
     .doc-nav {
       position: sticky;
@@ -412,6 +427,11 @@
       margin: 24px 0;
     }
 
+    .prediction-graphs-block {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
     .graph-card {
       background: #ffffff;
       border: 1px solid var(--border-color);
@@ -440,10 +460,10 @@
     .solution-item {
       background: transparent;
       border: none;
-      border-bottom: 1px dashed var(--border-color);
+      border-left: 3px solid #cbd5e1;
       border-radius: 0;
-      padding: 8px 0;
-      margin-bottom: 8px;
+      padding: 8px 0 8px 14px;
+      margin-bottom: 10px;
     }
 
     .solution-item:last-child {
@@ -453,22 +473,31 @@
     .solution-title {
       font-weight: 700;
       color: var(--dark-navy);
-      font-size: 0.93rem;
-      margin-bottom: 3px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1rem;
+      line-height: 1.35;
+      margin-bottom: 4px;
     }
 
     .solution-body {
       color: var(--text-body);
-      font-size: 0.88rem;
-      line-height: 1.45;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .solution-body > strong:first-child {
+      font-variant: small-caps;
+      letter-spacing: 0.025em;
     }
 
     .grading-note {
       display: block;
       font-style: italic;
       color: var(--text-subtle);
-      font-size: 0.82rem;
-      margin-top: 2px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.8rem;
+      margin-top: 4px;
     }
 
     .doc-footer {
@@ -729,10 +758,10 @@
         break-inside: avoid;
         page-break-inside: avoid;
         border: none !important;
-        border-bottom: 1pt dashed #cbd5e1 !important;
+        border-left: 2pt solid #cbd5e1 !important;
         background: transparent !important;
         margin-bottom: 6pt !important;
-        padding: 4pt 0 !important;
+        padding: 5pt 0 5pt 10pt !important;
       }
 
       .styled-table {
@@ -790,13 +819,37 @@
       }
 
       #section-5 .answer-key-card {
-        padding: 12pt !important;
-        margin: 10pt 0 16pt !important;
+        padding: 0 !important;
+        margin: 4pt 0 8pt !important;
       }
 
       #section-5 .solution-item {
-        padding: 10pt !important;
-        margin-bottom: 8pt !important;
+        padding: 2pt 0 2pt 6pt !important;
+        margin-bottom: 2pt !important;
+        border-left-width: 1.5pt !important;
+      }
+
+      #section-5 > p {
+        font-size: 7.2pt !important;
+        line-height: 1.25 !important;
+        margin-bottom: 4pt !important;
+      }
+
+      #section-5 .solution-title {
+        font-size: 8.2pt !important;
+        line-height: 1.2 !important;
+        margin-bottom: 1pt !important;
+      }
+
+      #section-5 .solution-body {
+        font-size: 7.1pt !important;
+        line-height: 1.24 !important;
+      }
+
+      #section-5 .grading-note {
+        font-size: 6.6pt !important;
+        line-height: 1.18 !important;
+        margin-top: 1pt !important;
       }
 
       #section-5 .q7-solution {
@@ -814,6 +867,22 @@
         break-inside: auto;
         page-break-inside: auto;
         margin-bottom: 12pt !important;
+      }
+
+      #section-7 {
+        break-before: page;
+        page-break-before: always;
+      }
+
+      .website-guide-grid {
+        grid-template-columns: 1.35fr 1fr !important;
+        gap: 16pt !important;
+      }
+
+      .website-guide-grid li {
+        font-size: 9pt !important;
+        line-height: 1.4 !important;
+        margin-bottom: 4pt !important;
       }
 
       .doc-footer {
@@ -1104,7 +1173,11 @@
       </table>
 
       <!-- 4 SEPARATE REFERENCE-MODEL PREDICTION GRAPHS -->
+      <div class="prediction-graphs-block">
       <h3 style="margin-top: 24px; margin-bottom: 12px;"><i data-lucide="line-chart"></i> INDIVIDUAL PREDICTION CURVES ($T_0=80.0^\circ\text{C}$, $T_{\text{env}}=0.0^\circ\text{C}$)</h3>
+      <p style="margin-bottom: 12px;">
+        These four color-matched plots mirror the prediction graphs in the Student Manual, allowing teachers and students to discuss the same curves, cooling constants and 15-minute endpoint temperatures.
+      </p>
       <div class="graphs-grid">
         <!-- Graph A -->
         <div class="graph-card">
@@ -1225,7 +1298,7 @@
 
         <!-- Graph D -->
         <div class="graph-card">
-          <div style="font-weight:700; font-size:0.88rem; color:#7e22ce; margin-bottom:6px;">
+          <div style="font-weight:700; font-size:0.78rem; color:#7e22ce; margin-bottom:6px; white-space:nowrap;">
             D. MULTILAYER ASSEMBLY ($k \approx 0.015\text{ min}^{-1}$)
           </div>
           <svg viewBox="0 0 380 200" role="img" aria-label="Graph for Multilayer Assembly">
@@ -1263,22 +1336,23 @@
         </div>
       </div>
 
-      <p><strong>Custom mode:</strong> Mission Control also provides an adjustable $k$ value for inquiry work. It is not shown as a fixed reference curve because its prediction changes with the instructor's selected value. <strong>Optional extension:</strong> A cotton-only configuration may be added as a fifth physical trial when time permits.</p>
+      <p><strong>Custom mode:</strong> Mission Control also provides an adjustable $k$ value for question-based exploration. It is not shown as a fixed reference curve because its prediction changes with the instructor's selected value. <strong>Optional extension:</strong> A cotton-only configuration may be added as a fifth physical trial when time permits.</p>
+      </div>
     </section>
 
     <!-- SECTION 5: OFFICIAL QUESTION SHEET SOLUTIONS KEY (Q1 - Q10) -->
     <section class="doc-section" id="section-5">
-      <h2><i data-lucide="check-circle-2"></i> 5. OFFICIAL SOLUTIONS &amp; TEACHER ANSWER KEY</h2>
+      <h2><i data-lucide="check-circle-2"></i> 5. OFFICIAL Q&amp;A AND TEACHER ANSWER KEY</h2>
       
       <p style="margin-bottom: 14px; font-size: 0.92rem; color: var(--text-subtle);">
-        This solution key covers all ten evaluation questions aligned across the Student Task Sheet (Inquiries 1–10) and the online Mission Control Question Sheet (Questions 1–10). Nine multiple-choice questions are auto-scored on the website; Question 4 requires instructor review and is excluded from the automatic percentage.
-        <strong>Online answer key:</strong> Q1: B, Q2: B, Q3: A, Q4: Instructor Review, Q5: B, Q6: A, Q7: A, Q8: A, Q9: B, Q10: A.
+        This solution key covers all ten evaluation questions aligned across the Student Task Sheet (Questions 1–10) and the online Mission Control Quiz (Questions 1–10). The task sheet uses written responses so students can explain their reasoning, while the online quiz presents the same high-school concepts as automatically scored multiple-choice questions.
+        <strong>Online answer key:</strong> Q1: B, Q2: B, Q3: A, Q4: A, Q5: B, Q6: A, Q7: A, Q8: A, Q9: B, Q10: A.
       </p>
 
       <div class="answer-key-compact" id="solutions-key">
         <!-- Q1 Solution -->
         <div class="solution-item">
-          <div class="solution-title">Question 1: Radiant Barriers vs. Direct Conduction (Inquiry 1 / Online Q1 [Key: B])</div>
+          <div class="solution-title">Q1: Radiant Barriers vs. Direct Conduction</div>
           <div class="solution-body">
             <strong>Sample answer:</strong> Reflective film reduces radiative heat exchange, but has negligible thickness and provides limited resistance to conduction when in direct contact with the capsule and ice water. A low-conductivity spacer (cotton or trapped air) is required to block conductive heat flow.
             <span class="grading-note">Marking guidance: Award credit for distinguishing radiative reflection from conductive resistance.</span>
@@ -1287,7 +1361,7 @@
 
         <!-- Q2 Solution -->
         <div class="solution-item">
-          <div class="solution-title">Question 2: Understanding the Decay Constant ($k$) (Inquiry 2 / Online Q2 [Key: B])</div>
+          <div class="solution-title">Q2: Understanding the Decay Constant ($k$)</div>
           <div class="solution-body">
             <strong>Sample answer:</strong> Within Newton's Law of Cooling ($T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$), a smaller fitted decay constant $k$ ($\text{min}^{-1}$) signifies a slower exponential approach to ambient temperature, indicating superior thermal insulation performance.
             <span class="grading-note">Marking guidance: Award credit for connecting smaller $k$ to slower cooling rate and better insulation.</span>
@@ -1296,7 +1370,7 @@
 
         <!-- Q3 Solution -->
         <div class="solution-item">
-          <div class="solution-title">Question 3: Why Multi-Layer Insulation (MLI) Works (Inquiry 3 / Online Q3 [Key: A])</div>
+          <div class="solution-title">Q3: Why Multi-Layer Insulation (MLI) Works</div>
           <div class="solution-body">
             <strong>Sample answer:</strong> The multilayer assembly combines complementary thermal mechanisms: cotton traps air to block conduction; bubble wrap seals air cells to limit fluid convection; and reflective film reduces radiative exchange, while layer interfaces add contact resistance ($k \approx 0.015\text{ min}^{-1}$).
             <span class="grading-note">Marking guidance: Look for mention of trapped air, reduced convection, radiation reduction, and interfacial resistance.</span>
@@ -1305,7 +1379,7 @@
 
         <!-- Q4 Solution -->
         <div class="solution-item">
-          <div class="solution-title">Question 4: Real-World Experimental Factors &amp; Residuals (Inquiry 4 / Online Q4 [Instructor Review])</div>
+          <div class="solution-title">Q4: Real-World Experimental Factors &amp; Residuals</div>
           <div class="solution-body">
             <strong>Sample answer (Accept any two):</strong>
             (1) Thermometer sensor tip touching cold capsule wall instead of water center.
@@ -1318,7 +1392,7 @@
 
         <!-- Q5 Solution -->
         <div class="solution-item">
-          <div class="solution-title">Question 5: Ice Bath Temperature Drift &amp; Calibration (Inquiry 5 / Online Q5 [Key: B])</div>
+          <div class="solution-title">Q5: Ice Bath Temperature Drift &amp; Calibration</div>
           <div class="solution-body">
             <strong>Sample answer:</strong> Measure the actual ice-water bath temperature (e.g. $T_{\text{env}} = 4.5^\circ\text{C}$) and update the $T_{\text{env}}$ input field in Mission Control so the software recalculates the theoretical reference curve for actual classroom conditions.
             <span class="grading-note">Marking guidance: Award credit for specifying that $T_{\text{env}}$ must be updated in the software.</span>
@@ -1327,7 +1401,7 @@
 
         <!-- Q6 Solution -->
         <div class="solution-item">
-          <div class="solution-title">Question 6: Effect of Capsule Water Volume / Thermal Mass (Inquiry 6 / Online Q6 [Key: A])</div>
+          <div class="solution-title">Q6: Effect of Capsule Water Volume / Thermal Mass</div>
           <div class="solution-body">
             <strong>Sample answer:</strong> Doubling water volume ($100\text{ mL} \to 200\text{ mL}$) doubles thermal mass ($Q = m \cdot c_p \cdot \Delta T$). With twice as much heat energy to dissipate across roughly equal surface area, the capsule cools <strong>more slowly</strong>, and the fitted cooling constant <strong>$k$ decreases</strong>.
             <span class="grading-note">Marking guidance: Award credit for noting that cooling is slower and fitted $k$ decreases.</span>
@@ -1336,7 +1410,7 @@
 
         <!-- Q7 Solution -->
         <div class="solution-item">
-          <div class="solution-title">Question 7: Spacesuit Design Trade-Offs &amp; Vacuum Mechanics (Online Q7 [Key: A])</div>
+          <div class="solution-title">Q7: Spacesuit Design Trade-Offs</div>
           <div class="solution-body">
             <strong>Sample answer:</strong> Adding unlimited insulation layers increases suit mass, bulk, and stiffness, severely restricting astronaut joint mobility. Additionally, astronaut metabolic heat must be rejected to prevent dangerous heat buildup inside the suit.
             <span class="grading-note">Marking guidance: Accept joint flexibility/mobility restrictions, suit mass/bulk, or metabolic heat dissipation issues.</span>
@@ -1345,7 +1419,7 @@
 
         <!-- Q8 Solution -->
         <div class="solution-item">
-          <div class="solution-title">Question 8: Specific Heat Capacity &amp; Fluid Response (Online Q8 [Key: A])</div>
+          <div class="solution-title">Q8: Specific Heat Capacity &amp; Fluid Response</div>
           <div class="solution-body">
             <strong>Sample answer:</strong> Replacing water ($c_p \approx 4184\text{ J/(kg}\cdot\text{K)}$) with a liquid of lower specific heat capacity means the liquid stores less thermal energy per degree. Under equal heat transfer conditions, the lower-capacity liquid exhibits a faster temperature decrease.
             <span class="grading-note">Marking guidance: Look for explanation that lower heat capacity results in faster temperature drop.</span>
@@ -1354,7 +1428,7 @@
 
         <!-- Q9 Solution -->
         <div class="solution-item">
-          <div class="solution-title">Question 9: Asymptotic Boundary Limits ($t \to \infty$) (Online Q9 [Key: B])</div>
+          <div class="solution-title">Q9: Asymptotic Boundary Limits ($t \to \infty$)</div>
           <div class="solution-body">
             <strong>Sample answer:</strong> According to Newton's Law of Cooling ($T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$), as time approaches infinity ($t \to \infty$), the exponential term $e^{-kt} \to 0$, so capsule temperature $T(t)$ approaches the environmental bath temperature $T_{\text{env}}$ asymptotically.
             <span class="grading-note">Marking guidance: Award credit for identifying $T_{\text{env}}$ as the asymptotic limit.</span>
@@ -1363,7 +1437,7 @@
 
         <!-- Q10 Solution -->
         <div class="solution-item">
-          <div class="solution-title">Question 10: Telemetry Anomaly Diagnostics &amp; MAE Reduction (Online Q10 [Key: A])</div>
+          <div class="solution-title">Q10: Telemetry Anomaly Diagnostics &amp; MAE Reduction</div>
           <div class="solution-body">
             <strong>Sample answer:</strong> A rapid temperature drop faster than predicted indicates cold water leakage into the capsule or vigorous fluid motion enhancing forced convection. To reduce Mean Absolute Error (MAE), maintain consistent probe placement near liquid center, seal lids thoroughly, and log temperatures at exact 60-second intervals ($\text{MAE} = \frac{1}{n}\sum_{i=1}^n |T_{\text{obs},i} - T_{\text{model},i}|$).
             <span class="grading-note">Marking guidance: Award credit for identifying fluid leakage or forced convection, and listing key procedural controls for MAE reduction.</span>
@@ -1406,6 +1480,39 @@
           </tr>
         </tbody>
       </table>
+    </section>
+
+    <!-- SECTION 7: WEBSITE INSTRUCTIONS -->
+    <section class="doc-section" id="section-7">
+      <h2><i data-lucide="monitor"></i> 7. WEBSITE INSTRUCTIONS</h2>
+      <p>Open <a href="https://hsp-mc.github.io/"><strong>Mission Control</strong></a>. The top menu contains Overview,
+        Assembly, Simulator, Measurements, Study &amp; Flashcards, and Quiz; on smaller screens these appear under
+        <strong>Menu</strong>.</p>
+
+      <div class="website-guide-grid">
+        <div>
+          <h3>Guide the experiment</h3>
+          <ol>
+            <li>Assign one insulation configuration per team and have students review <strong>Overview</strong>, <strong>Assembly</strong> and the safety rules.</li>
+            <li>In <strong>Simulator</strong>, students select their configuration, enter the measured start and bath temperatures, set the duration, and choose <strong>Run Mathematical Simulation</strong>.</li>
+            <li>In <strong>Measurements</strong>, press <strong>Start</strong> when the capsule enters the bath. Students log minute 0 and each later reading with <strong>Add Data Point</strong>.</li>
+            <li>Monitor probe position, immersion depth, bath temperature and exact timing. A duplicate time updates the existing reading; the row delete control removes an error.</li>
+            <li>Use the model-versus-measurement graph, residuals and MAE for discussion, then select <strong>Print Logbook</strong> before clearing data.</li>
+            <li>For repeat trials, change one independent variable only and keep water volume, start temperature, bath conditions, probe position and timing controlled.</li>
+          </ol>
+        </div>
+
+        <div>
+          <h3>Run the quiz</h3>
+          <ul>
+            <li>Use one device and one unique team name per group; add the lab date.</li>
+            <li>Choose <strong>Start Challenge</strong>. The quiz has 10 questions at 30 seconds each; correct, faster answers receive more points.</li>
+            <li>Teams select an option and choose <strong>Lock In Answer</strong>. Round standings appear between questions; the final screen includes the leaderboard and answer review.</li>
+            <li>Use the review with Section 5 for feedback. Choose <strong>Restart</strong> for a new attempt.</li>
+            <li>If shared leaderboard sync is unavailable, results remain local to that browser/device. Do not treat speed points as the sole assessment grade.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- FOOTER -->

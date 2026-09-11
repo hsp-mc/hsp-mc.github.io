@@ -21,8 +21,8 @@
 
   <style>
     /* ==========================================================================
-       SPHERE MISSION CONTROL: 2-PAGE STUDENT TASK SHEET & GRAPH WORKBOOK
-       Optimized specifically for exact 2-Page A4 / Letter PDF Printing
+       SPHERE MISSION CONTROL: 5-PAGE STUDENT TASK SHEET & GRAPH WORKBOOK
+       Optimized for spacious A4 classroom printing
        ========================================================================== */
 
     :root {
@@ -547,7 +547,7 @@
     }
 
     /* ==========================================================================
-       STRICT 3-PAGE PRINT STYLES (A4 PORTRAIT)
+       SPACIOUS 5-PAGE PRINT STYLES (A4 PORTRAIT)
        ========================================================================== */
     @media print {
       @page {
@@ -588,12 +588,12 @@
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        page-break-after: always !important;
-        break-after: page !important;
+        page-break-after: auto !important;
+        break-after: auto !important;
         page-break-inside: avoid !important;
         break-inside: avoid !important;
-        height: 275mm !important;
-        max-height: 277mm !important;
+        height: 281mm !important;
+        max-height: 281mm !important;
         overflow: hidden !important;
       }
 
@@ -602,9 +602,35 @@
         break-after: auto !important;
       }
 
+      .sheet-page + .sheet-page {
+        page-break-before: always !important;
+        break-before: page !important;
+      }
+
       .page-header {
         margin-bottom: 6pt !important;
         padding-bottom: 4pt !important;
+        padding-right: 86pt !important;
+        position: relative !important;
+      }
+
+      .page-header > div:first-child {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+      }
+
+      .page-header > div:last-child {
+        position: absolute !important;
+        right: 0 !important;
+        top: 14pt !important;
+        min-width: 70pt !important;
+        margin: 0 !important;
+        z-index: 2 !important;
+      }
+
+      .page-number-tag {
+        white-space: nowrap !important;
       }
 
       .brand-badge {
@@ -613,7 +639,9 @@
       }
 
       .sheet-title {
-        font-size: 1.25rem !important;
+        font-size: 1.08rem !important;
+        letter-spacing: 0 !important;
+        white-space: nowrap !important;
       }
 
       .sheet-sub {
@@ -664,9 +692,9 @@
 
       .logging-table td {
         border: 1pt solid #cbd5e1 !important;
-        padding: 2pt 4pt !important;
-        font-size: 7.2pt !important;
-        height: 15pt !important;
+        padding: 4pt 5pt !important;
+        font-size: 7.6pt !important;
+        height: 24pt !important;
       }
 
       .graph-container {
@@ -676,7 +704,7 @@
 
       .graph-container svg {
         width: 100% !important;
-        max-height: 440px !important;
+        max-height: 540px !important;
       }
 
       .calc-box {
@@ -708,35 +736,35 @@
       }
 
       .questions-grid {
-        gap: 5pt !important;
+        gap: 8pt !important;
         margin-bottom: 6pt !important;
         display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-columns: 1fr !important;
         width: 100% !important;
       }
 
       .q-card {
         border: 1pt solid #cbd5e1 !important;
         border-left: 3pt solid #0284c7 !important;
-        padding: 4pt 6pt !important;
+        padding: 7pt 9pt !important;
         box-sizing: border-box !important;
       }
 
       .q-title {
-        font-size: 7.5pt !important;
-        margin-bottom: 2pt !important;
+        font-size: 8.5pt !important;
+        margin-bottom: 3pt !important;
       }
 
       .q-desc {
-        font-size: 6.8pt !important;
-        line-height: 1.2 !important;
-        margin-bottom: 3pt !important;
+        font-size: 7.8pt !important;
+        line-height: 1.3 !important;
+        margin-bottom: 5pt !important;
       }
 
       .q-answer-space {
         background: #ffffff !important;
         border: 1pt dashed #94a3b8 !important;
-        height: 20pt !important;
+        height: 58pt !important;
       }
 
       .sign-box {
@@ -753,10 +781,26 @@
       .page-footer {
         margin-top: 6pt !important;
         padding-top: 4pt !important;
-        font-size: 6.5pt !important;
-        display: flex !important;
-        justify-content: space-between !important;
+        font-size: 6pt !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 92pt !important;
+        column-gap: 8pt !important;
+        align-items: end !important;
         width: 100% !important;
+      }
+
+      .page-footer span:nth-child(2) {
+        text-align: center !important;
+        min-width: 0 !important;
+        overflow: hidden !important;
+      }
+
+      .page-footer span:last-child {
+        text-align: right !important;
+        white-space: nowrap !important;
+        position: relative !important;
+        z-index: 2 !important;
+        background: #ffffff !important;
       }
     }
   </style>
@@ -797,7 +841,7 @@
             <div class="sheet-sub">STUDENT LABORATORY TASK SHEET &amp; EXPERIMENTAL REGISTER</div>
           </div>
           <div style="text-align: right;">
-            <span class="page-number-tag">PAGE 1 OF 3</span>
+            <span class="page-number-tag">PAGE 1 OF 5</span>
           </div>
         </header>
 
@@ -965,7 +1009,7 @@
       <footer class="page-footer">
         <span>SPACESUIT THERMAL SHIELDING KIT &bull; STUDENT TASK SHEET</span>
         <span>PART A: TELEMETRY LOGGING REGISTER</span>
-        <span>PAGE 1 OF 3</span>
+        <span>PAGE 1 OF 5</span>
       </footer>
     </div>
 
@@ -982,7 +1026,7 @@
             <div class="sheet-sub">PART B. THERMAL COOLING CURVE GRAPH GRID (0 TO 15 MINUTES)</div>
           </div>
           <div style="text-align: right;">
-            <span class="page-number-tag">PAGE 2 OF 3</span>
+            <span class="page-number-tag">PAGE 2 OF 5</span>
           </div>
         </header>
 
@@ -1056,12 +1100,12 @@
       <footer class="page-footer">
         <span>SPACESUIT THERMAL SHIELDING KIT &bull; STUDENT TASK SHEET</span>
         <span>PART B: HIGH-PRECISION GRAPH WORKBOOK TEMPLATE</span>
-        <span>PAGE 2 OF 3</span>
+        <span>PAGE 2 OF 5</span>
       </footer>
     </div>
 
     <!-- ==========================================================================
-         PAGE 3: CALCULATIONS & LAB REFLECTION QUESTIONS (Q1 - Q6)
+         PAGE 3: CALCULATIONS
          ========================================================================== -->
     <div class="sheet-page" id="sheet-page-3">
       <div>
@@ -1073,7 +1117,7 @@
             <div class="sheet-sub">RESIDUAL, ERROR &amp; UNCERTAINTY ANALYSIS</div>
           </div>
           <div style="text-align: right;">
-            <span class="page-number-tag">PAGE 3 OF 3</span>
+            <span class="page-number-tag">PAGE 3 OF 5</span>
           </div>
         </header>
 
@@ -1108,17 +1152,46 @@
           </div>
         </div>
 
+        <div style="margin-top: 18pt; border: 1.5px dashed var(--border-dark); border-radius: 8px; min-height: 360pt; padding: 14pt;">
+          <div class="q-title" style="font-size: 10pt; margin-bottom: 8pt;">CALCULATION WORKING AND ERROR DISCUSSION</div>
+          <div class="q-desc" style="font-size: 8.5pt;">Show residual calculations, MAE working, uncertainty sources, and any model assumptions used in your analysis.</div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <span>SPACESUIT THERMAL SHIELDING KIT &bull; STUDENT TASK SHEET</span>
+        <span>PART C: CALCULATIONS &amp; MODEL AGREEMENT</span>
+        <span>PAGE 3 OF 5</span>
+      </footer>
+    </div>
+
+    <!-- ==========================================================================
+         PAGE 4: QUESTIONS Q1 - Q5
+         ========================================================================== -->
+    <div class="sheet-page" id="sheet-page-4">
+      <div>
+        <header class="page-header">
+          <div>
+            <span class="brand-badge">POST-FLIGHT ANALYSIS &bull; QUESTIONS Q1-Q5</span>
+            <h1 class="sheet-title">Spacesuit Thermal Shielding Kit</h1>
+            <div class="sheet-sub">SCIENTIFIC REASONING AND WRITTEN RESPONSES</div>
+          </div>
+          <div style="text-align: right;">
+            <span class="page-number-tag">PAGE 4 OF 5</span>
+          </div>
+        </header>
+
         <!-- Part D: Questions Grid (Q1 - Q10) -->
         <div class="section-head">
-          <span>PART D. POST-FLIGHT SCIENTIFIC INQUIRIES &amp; ANALYSIS</span>
-          <span class="tag">10 CORE CONCEPTS</span>
+          <span>PART D. POST-FLIGHT SCIENTIFIC QUESTIONS &amp; ANALYSIS</span>
+          <span class="tag">Q1-Q5</span>
         </div>
 
         <div class="questions-grid">
           <!-- Q1 -->
           <div class="q-card">
             <div>
-              <div class="q-title">Inquiry 1: Radiant Barriers vs. Direct Conduction</div>
+              <div class="q-title">Q1: Radiant Barriers vs. Direct Conduction</div>
               <div class="q-desc">
                 Reflective film can reduce radiative exchange when it faces a suitable gap. Why may it provide limited
                 insulation when placed directly in ice water without a low-conductivity air or fibre spacer?
@@ -1130,7 +1203,7 @@
           <!-- Q2 -->
           <div class="q-card">
             <div>
-              <div class="q-title">Inquiry 2: Understanding the Decay Constant ($k$)</div>
+              <div class="q-title">Q2: Understanding the Decay Constant ($k$)</div>
               <div class="q-desc">
                 In Newton's Law $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$, does a smaller $k$ value mean
                 better or worse insulation? Explain how $k$ controls the cooling speed.
@@ -1142,7 +1215,7 @@
           <!-- Q3 -->
           <div class="q-card">
             <div>
-              <div class="q-title">Inquiry 3: Why Multi-Layer Insulation (MLI) Works</div>
+              <div class="q-title">Q3: Why Multi-Layer Insulation (MLI) Works</div>
               <div class="q-desc">
                 Why can the multilayer configuration reduce the cooling rate relative to a single layer? Discuss trapped
                 air, fluid motion, radiation and interfacial resistance.
@@ -1154,7 +1227,7 @@
           <!-- Q4 -->
           <div class="q-card">
             <div>
-              <div class="q-title">Inquiry 4: Real-World Experimental Factors</div>
+              <div class="q-title">Q4: Real-World Experimental Factors</div>
               <div class="q-desc">
                 What physical factors in the lab might cause your sensor readings to drift away from the computer
                 simulation? Name at least two specific factors (e.g. sensor depth, stirring, seal leaks).
@@ -1166,7 +1239,7 @@
           <!-- Q5 -->
           <div class="q-card">
             <div>
-              <div class="q-title">Inquiry 5: Ice Bath Temperature Drift</div>
+              <div class="q-title">Q5: Ice Bath Temperature Drift</div>
               <div class="q-desc">
                 If the ice bath warms up from $0.0^\circ\text{C}$ to $4.5^\circ\text{C}$ during your 15-minute run, how
                 should you update the environment temperature $T_{\text{env}}$ in Mission Control so the model stays
@@ -1175,11 +1248,43 @@
             </div>
             <div class="q-answer-space"></div>
           </div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <span>SPACESUIT THERMAL SHIELDING KIT &bull; STUDENT TASK SHEET</span>
+        <span>PART D: WRITTEN RESPONSES Q1-Q5</span>
+        <span>PAGE 4 OF 5</span>
+      </footer>
+    </div>
+
+    <!-- ==========================================================================
+         PAGE 5: QUESTIONS Q6 - Q10
+         ========================================================================== -->
+    <div class="sheet-page" id="sheet-page-5">
+      <div>
+        <header class="page-header">
+          <div>
+            <span class="brand-badge">POST-FLIGHT ANALYSIS &bull; QUESTIONS Q6-Q10</span>
+            <h1 class="sheet-title">Spacesuit Thermal Shielding Kit</h1>
+            <div class="sheet-sub">SCIENTIFIC REASONING AND WRITTEN RESPONSES</div>
+          </div>
+          <div style="text-align: right;">
+            <span class="page-number-tag">PAGE 5 OF 5</span>
+          </div>
+        </header>
+
+        <div class="section-head">
+          <span>PART D. POST-FLIGHT SCIENTIFIC QUESTIONS &amp; ANALYSIS</span>
+          <span class="tag">Q6-Q10</span>
+        </div>
+
+        <div class="questions-grid">
 
           <!-- Q6 -->
           <div class="q-card">
             <div>
-              <div class="q-title">Inquiry 6: Effect of Capsule Water Volume</div>
+              <div class="q-title">Q6: Effect of Capsule Water Volume</div>
               <div class="q-desc">
                 If you doubled the water volume from $100\text{ mL}$ to $200\text{ mL}$, how would that extra thermal
                 mass ($Q = mc_p\Delta T$) change the cooling rate and the value of $k$?
@@ -1191,7 +1296,7 @@
           <!-- Q7 -->
           <div class="q-card">
             <div>
-              <div class="q-title">Inquiry 7: Spacesuit Design Trade-Offs</div>
+              <div class="q-title">Q7: Spacesuit Design Trade-Offs</div>
               <div class="q-desc">
                 Why can engineers not simply add an unlimited number of insulation layers to an EVA spacesuit? Discuss joint mobility, suit mass/bulk, and body heat buildup.
               </div>
@@ -1202,7 +1307,7 @@
           <!-- Q8 -->
           <div class="q-card">
             <div>
-              <div class="q-title">Inquiry 8: Specific Heat Capacity &amp; Fluid Response</div>
+              <div class="q-title">Q8: Specific Heat Capacity &amp; Fluid Response</div>
               <div class="q-desc">
                 If water ($c_p \approx 4184\text{ J/(kg}\cdot\text{K)}$) were replaced with a liquid of lower specific heat capacity keeping mass identical, how would the cooling rate change?
               </div>
@@ -1213,7 +1318,7 @@
           <!-- Q9 -->
           <div class="q-card">
             <div>
-              <div class="q-title">Inquiry 9: Asymptotic Boundary Limits ($t \to \infty$)</div>
+              <div class="q-title">Q9: Asymptotic Boundary Limits ($t \to \infty$)</div>
               <div class="q-desc">
                 According to Newton's Law $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})e^{-kt}$, what temperature value does the capsule approach asymptotically as time $t \to \infty$?
               </div>
@@ -1224,7 +1329,7 @@
           <!-- Q10 -->
           <div class="q-card">
             <div>
-              <div class="q-title">Inquiry 10: Telemetry Anomaly Diagnostics &amp; MAE</div>
+              <div class="q-title">Q10: Telemetry Anomaly Diagnostics &amp; MAE</div>
               <div class="q-desc">
                 If measured capsule temperature drops significantly faster than predicted, what physical anomaly is the most plausible explanation, and how can MAE be reduced?
               </div>
@@ -1234,7 +1339,7 @@
         </div>
       </div>
 
-      <!-- Page 3 Footer & Sign-off -->
+      <!-- Page 5 Footer & Sign-off -->
       <div>
         <div
           style="background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 8px 14px; border-radius: 6px; margin-bottom: 8px;">
@@ -1247,8 +1352,8 @@
 
         <footer class="page-footer">
           <span>SPACESUIT THERMAL SHIELDING KIT &bull; STUDENT TASK SHEET</span>
-          <span>PART C &amp; PART D: ANALYSIS &amp; REFLECTION</span>
-          <span>END OF EXPERIMENTAL WORKBOOK (PAGE 3 OF 3)</span>
+          <span>PART D: WRITTEN RESPONSES Q6-Q10</span>
+          <span>END OF EXPERIMENTAL WORKBOOK (PAGE 5 OF 5)</span>
         </footer>
       </div>
     </div>

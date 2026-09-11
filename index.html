@@ -9,7 +9,7 @@
   <meta name="description"
     content="Spacesuit Thermal Shielding Kit: an interactive SPHERE laboratory combining Newton cooling predictions with experimental temperature measurements.">
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=quiz-9">
   <!-- KaTeX for Beautiful Math Formula Rendering -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -1710,8 +1710,7 @@
             <div class="quiz-card" data-q="1">
               <div class="quiz-q-num">QUESTION 01 // HEAT TRANSFER MECHANISMS</div>
               <div class="quiz-question-text">
-                Why does a reflective film reduce radiative heat transfer in vacuum but still require a low-conductivity
-                spacer when used in direct contact with a cold water bath?
+                Why does reflective film still need a low-conductivity spacer when the capsule is placed in an ice-water bath?
               </div>
               <div class="quiz-options-group">
                 <label class="quiz-option-label">
@@ -1728,7 +1727,7 @@
                   <span>C) Cotton generates internal electrical heat when wet.</span>
                 </label>
                 <label class="quiz-option-label">
-                  <input type="radio" name="worksheet-q1" value="B-alt">
+                  <input type="radio" name="worksheet-q1" value="D">
                   <span>D) Ice water reflects radiation back into the capsule.</span>
                 </label>
               </div>
@@ -1739,9 +1738,7 @@
             <div class="quiz-card" data-q="2">
               <div class="quiz-q-num">QUESTION 02 // DECAY COEFFICIENT INTERPRETATION</div>
               <div class="quiz-question-text">
-                In Newton's Law of Cooling equation $$T(t) = T_{\text{env}} + (T_0 - T_{\text{env}}) \cdot e^{-kt}$$,
-                what does a
-                <strong>smaller $k$ constant</strong> signify for space suit thermal envelope design?
+                In Newton's law of cooling, what does a smaller cooling constant <em>k</em> mean?
               </div>
               <div class="quiz-options-group">
                 <label class="quiz-option-label">
@@ -1757,6 +1754,10 @@
                   <input type="radio" name="worksheet-q2" value="C">
                   <span>C) The environmental ice bath temperature is increasing.</span>
                 </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="worksheet-q2" value="D">
+                  <span>D) The constant changes only the graph label and has no effect on the predicted temperature.</span>
+                </label>
               </div>
               <div class="quiz-feedback" id="q2-feedback"></div>
             </div>
@@ -1765,8 +1766,7 @@
             <div class="quiz-card" data-q="3">
               <div class="quiz-q-num">QUESTION 03 // MULTILAYER TEST ASSEMBLY</div>
               <div class="quiz-question-text">
-                Why does the assumed reference model predict that the combined cotton, bubble-wrap and reflective-film
-                configuration retains a higher temperature after $15\text{ minutes}$ than a single-layer configuration?
+                Why should the multilayer capsule retain more heat after 15 minutes than a single-layer capsule?
               </div>
               <div class="quiz-options-group">
                 <label class="quiz-option-label">
@@ -1782,6 +1782,10 @@
                   <input type="radio" name="worksheet-q3" value="C">
                   <span>C) Bubble wrap absorbs water and increases capsule heat capacity.</span>
                 </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="worksheet-q3" value="D">
+                  <span>D) Reflective film lowers the ice-bath temperature below its measured value.</span>
+                </label>
               </div>
               <div class="quiz-feedback" id="q3-feedback"></div>
             </div>
@@ -1790,12 +1794,26 @@
             <div class="quiz-card" data-q="4">
               <div class="quiz-q-num">QUESTION 04 // MODEL RESIDUALS</div>
               <div class="quiz-question-text">
-                State two physical reasons why measured temperatures may deviate from the analytical reference curve.
+                Which pair of physical effects could make measured temperatures differ from the analytical reference curve?
               </div>
-              <label class="sr-only" for="q4-text">Explanation of experimental uncertainty</label>
-              <textarea class="quiz-textarea" id="q4-text"
-                placeholder="Write your explanation here (e.g., sensor positioning near glass wall, ice melting, non-uniform water mixing)..."></textarea>
-              <p style="margin-top: 8px; font-size: 0.85rem; color: #64748b;">Enter a response of at least 10 characters.</p>
+              <div class="quiz-options-group">
+                <label class="quiz-option-label">
+                  <input type="radio" name="worksheet-q4" value="A">
+                  <span>A) Probe position near the glass wall and changes in bath temperature as the ice melts.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="worksheet-q4" value="B">
+                  <span>B) The cooling equation rounds every temperature to zero and the probe adds heat automatically.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="worksheet-q4" value="C">
+                  <span>C) Reflective film generates heat and the capsule loses mass during every reading.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="worksheet-q4" value="D">
+                  <span>D) Water becomes a perfect insulator after one minute and stops exchanging heat.</span>
+                </label>
+              </div>
               <div class="quiz-feedback" id="q4-feedback"></div>
             </div>
 
@@ -1803,24 +1821,24 @@
             <div class="quiz-card" data-q="5">
               <div class="quiz-q-num">QUESTION 05 // CLASSROOM CALIBRATION</div>
               <div class="quiz-question-text">
-                If your ice bath melts slightly on a warm afternoon and its temperature rises from $0.0^\circ\text{C}$
-                to $4.5^\circ\text{C}$, how
-                should you adjust your Mission Control simulator variables?
+                The ice bath warms from 0.0 °C to 4.5 °C. Which simulator input should you change?
               </div>
               <div class="quiz-options-group">
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q5" value="A">
-                  <span>A) Change initial hot water temperature ($T_0$) to $4.5^\circ\text{C}$.</span>
+                  <span>A) Set the initial capsule temperature (T₀) to 4.5 °C.</span>
                 </label>
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q5" value="B">
-                  <span>B) Change environmental temperature ($T_{\text{env}}$) input to $4.5^\circ\text{C}$ in the
-                    simulator to update the
-                    analytical reference model.</span>
+                  <span>B) Set the bath/environment temperature (Tenv) to 4.5 °C.</span>
                 </label>
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q5" value="C">
-                  <span>C) Ignore the temperature change because ice water is always $0^\circ\text{C}$.</span>
+                  <span>C) Leave the inputs unchanged because an ice bath is always 0 °C.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="worksheet-q5" value="D">
+                  <span>D) Increase k until the model reaches 4.5 °C at the end of the test.</span>
                 </label>
               </div>
               <div class="quiz-feedback" id="q5-feedback"></div>
@@ -1830,24 +1848,26 @@
             <div class="quiz-card" data-q="6">
               <div class="quiz-q-num">QUESTION 06 // EFFECT OF CAPSULE WATER VOLUME</div>
               <div class="quiz-question-text">
-                If you double the hot water volume inside the capsule from $100\text{ mL}$ to $200\text{ mL}$, how does
-                that extra thermal mass ($Q = m \cdot c_p \cdot \Delta T$) change the cooling rate and the fitted value
-                of $k$?
+                If the capsule's water volume doubles from 100 mL to 200 mL, how should its cooling response change?
               </div>
               <div class="quiz-options-group">
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q6" value="A">
                   <span>A) The larger volume holds twice the thermal energy, so it cools more slowly and the fitted
-                    cooling constant $k$ decreases.</span>
+                    cooling constant k decreases.</span>
                 </label>
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q6" value="B">
                   <span>B) The larger volume cools faster because higher mass accelerates heat flow, increasing
-                    $k$.</span>
+                    k.</span>
                 </label>
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q6" value="C">
-                  <span>C) The water volume has no effect on cooling rate or $k$.</span>
+                  <span>C) The water volume has no effect on cooling rate or k.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="worksheet-q6" value="D">
+                  <span>D) Doubling the water volume exactly doubles k because the capsule contains more energy.</span>
                 </label>
               </div>
               <div class="quiz-feedback" id="q6-feedback"></div>
@@ -1855,23 +1875,27 @@
 
             <!-- Question 7 -->
             <div class="quiz-card" data-q="7">
-              <div class="quiz-q-num">QUESTION 07 // VACUUM &amp; FLUID MECHANICS</div>
+              <div class="quiz-q-num">QUESTION 07 // SPACESUIT DESIGN TRADE-OFFS</div>
               <div class="quiz-question-text">
-                Why is external convective heat transfer absent in the idealised vacuum surrounding a spacecraft?
+                Why can engineers not simply add an unlimited number of insulation layers to an EVA spacesuit?
               </div>
               <div class="quiz-options-group">
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q7" value="A">
-                  <span>A) Deep space has no fluid medium (gas or liquid molecules) to form convective circulation
-                    currents.</span>
+                  <span>A) Extra layers increase mass, bulk and stiffness, restrict movement, and can trap too much body
+                    heat.</span>
                 </label>
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q7" value="B">
-                  <span>B) Solar gravity locks all atoms in fixed positions.</span>
+                  <span>B) Any layer beyond the first immediately melts in sunlight.</span>
                 </label>
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q7" value="C">
-                  <span>C) Space suits operate at negative Kelvin temperatures.</span>
+                  <span>C) Additional insulation always makes the suit lighter and easier to bend.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="worksheet-q7" value="D">
+                  <span>D) Astronauts do not produce body heat during an EVA.</span>
                 </label>
               </div>
               <div class="quiz-feedback" id="q7-feedback"></div>
@@ -1881,9 +1905,7 @@
             <div class="quiz-card" data-q="8">
               <div class="quiz-q-num">QUESTION 08 // SPECIFIC HEAT CAPACITY</div>
               <div class="quiz-question-text">
-                As a theoretical comparison only, consider replacing water (<em>c</em> ≈ 4184 J/(kg·K)) with a
-                liquid of lower specific heat capacity while keeping mass and heat-transfer conditions unchanged. How
-                would the temperature response change?
+                With mass and heat-transfer conditions unchanged, how would a liquid with lower specific heat capacity cool?
               </div>
               <div class="quiz-options-group">
                 <label class="quiz-option-label">
@@ -1898,6 +1920,10 @@
                   <input type="radio" name="worksheet-q8" value="C">
                   <span>C) The cooling rate would remain identical.</span>
                 </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="worksheet-q8" value="D">
+                  <span>D) Its temperature would drop instantly, then follow the same curve as water.</span>
+                </label>
               </div>
               <div class="quiz-feedback" id="q8-feedback"></div>
             </div>
@@ -1906,21 +1932,24 @@
             <div class="quiz-card" data-q="9">
               <div class="quiz-q-num">QUESTION 09 // ASYMPTOTIC BOUNDARY LIMITS</div>
               <div class="quiz-question-text">
-                According to Newton's Law of Cooling, as time approaches infinity ($t \to \infty$), what temperature
-                value does $T(t)$ approach asymptotically?
+                In Newton's law of cooling, which temperature does the capsule approach over a very long time?
               </div>
               <div class="quiz-options-group">
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q9" value="A">
-                  <span>A) Absolute Zero ($0\text{ Kelvin}$).</span>
+                  <span>A) Absolute zero (0 K).</span>
                 </label>
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q9" value="B">
-                  <span>B) Environmental Temperature ($T_{\text{env}}$).</span>
+                  <span>B) The environmental temperature (Tenv).</span>
                 </label>
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q9" value="C">
-                  <span>C) Initial Capsule Temperature ($T_0$).</span>
+                  <span>C) The initial capsule temperature (T₀).</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="worksheet-q9" value="D">
+                  <span>D) The average of T₀ and Tenv.</span>
                 </label>
               </div>
               <div class="quiz-feedback" id="q9-feedback"></div>
@@ -1931,21 +1960,25 @@
               <div class="quiz-q-num">QUESTION 10 // TELEMETRY ANOMALY DIAGNOSTICS</div>
               <div class="quiz-question-text">
                 If the measured capsule temperature decreases significantly faster than the analytical model predicts,
-                which observation is the most plausible explanation?
+                which explanation and procedure would best identify the problem and reduce MAE?
               </div>
               <div class="quiz-options-group">
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q10" value="A">
                   <span>A) Unwanted water leakage occurred into the capsule or excess fluid stirring increased forced
-                    convection.</span>
+                    convection; reseal the lid, centre the probe, and record readings at exact time intervals.</span>
                 </label>
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q10" value="B">
-                  <span>B) The ice bath was warmer than expected.</span>
+                  <span>B) The ice bath was warmer than expected; move the probe against the capsule wall.</span>
                 </label>
                 <label class="quiz-option-label">
                   <input type="radio" name="worksheet-q10" value="C">
-                  <span>C) The classroom lost atmospheric pressure.</span>
+                  <span>C) The classroom lost atmospheric pressure; take readings at random times.</span>
+                </label>
+                <label class="quiz-option-label">
+                  <input type="radio" name="worksheet-q10" value="D">
+                  <span>D) The insulation was more effective than expected; loosen the lid to match the model.</span>
                 </label>
               </div>
               <div class="quiz-feedback" id="q10-feedback"></div>
@@ -1953,13 +1986,26 @@
 
           </div>
 
-          <!-- Quiz Score Banner -->
-          <div class="quiz-score-banner" id="quiz-score-banner">
+          <!-- Final standings and answer review -->
+          <div class="quiz-score-banner quiz-final-screen" id="quiz-score-banner">
             <div class="quiz-result-kicker">MISSION COMPLETE</div>
-            <div class="quiz-result-group" id="quiz-result-group">QUIZ RESULT</div>
-            <div class="score-number" id="quiz-score-percent">0%</div>
-            <div class="quiz-result-points"><span id="quiz-final-points">0</span> POINTS</div>
-            <p id="quiz-score-summary"></p>
+            <h2>Final standings</h2>
+            <div class="leaderboard-podium" id="quiz-final-podium" aria-label="Final top three teams"></div>
+            <div class="leaderboard-full-heading">
+              <span>FULL LEADERBOARD</span>
+              <span>ALL TEAMS</span>
+            </div>
+            <div class="leaderboard-table-wrap">
+              <table class="leaderboard-table">
+                <thead><tr><th>Place</th><th>Team</th><th>Score</th></tr></thead>
+                <tbody id="quiz-final-leaderboard-rows"></tbody>
+              </table>
+              <p id="quiz-final-leaderboard-empty" class="leaderboard-empty">No scores yet.</p>
+            </div>
+            <div class="quiz-answer-review" id="quiz-answer-review"></div>
+            <button type="button" class="quiz-final-leaderboard-button" id="btn-final-restart">
+              <i data-lucide="rotate-ccw"></i> PLAY AGAIN
+            </button>
           </div>
 
           <!-- Quiz Action Buttons -->
@@ -2047,6 +2093,10 @@
         <button type="button" class="btn-close-modal" id="btn-close-leaderboard" aria-label="Close leaderboard">&times;</button>
       </div>
       <p class="modal-desc" id="leaderboard-status">Loading shared scores…</p>
+      <div class="leaderboard-full-heading">
+        <span>LIVE STANDINGS</span>
+        <span>ALL TEAMS</span>
+      </div>
       <div class="leaderboard-table-wrap">
         <table class="leaderboard-table">
           <thead>
@@ -2070,8 +2120,8 @@
   </div>
 
   <!-- App Main Javascript Code -->
-  <script src="leaderboard-config.js"></script>
-  <script src="app.js"></script>
+  <script src="leaderboard-config.js?v=quiz-9"></script>
+  <script src="app.js?v=quiz-9"></script>
 </body>
 
 </html>

@@ -87,6 +87,21 @@
       margin-bottom: 40px;
     }
 
+    .website-guide-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 24px;
+    }
+
+    .website-guide-grid h3 {
+      margin-top: 0;
+    }
+
+    .website-guide-grid ol,
+    .website-guide-grid ul {
+      margin-bottom: 0;
+    }
+
     /* Sticky Navigation Bar */
     .doc-nav {
       position: sticky;
@@ -1198,9 +1213,7 @@
       }
 
       .graphs-grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 12pt !important;
+        display: block !important;
         break-inside: auto !important;
         page-break-inside: auto !important;
       }
@@ -1211,11 +1224,22 @@
         padding: 6pt !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
+        margin-top: 0 !important;
       }
 
       .graphs-grid .graph-card + .graph-card {
         break-before: page !important;
         page-break-before: always !important;
+        margin-top: 0 !important;
+      }
+
+      /* Chromium can fragment the third generated graph at the page edge; this
+         restores a visible top rule and breathing room on that page. */
+      .graphs-grid .graph-card:nth-child(n+3)::before {
+        content: "";
+        display: block;
+        border-top: 1pt solid #cbd5e1;
+        margin: 0 0 9pt;
       }
 
       .curve-point-row {
@@ -1227,6 +1251,22 @@
       #section-6 {
         break-before: page !important;
         page-break-before: always !important;
+      }
+
+      #section-7 {
+        break-before: page !important;
+        page-break-before: always !important;
+      }
+
+      .website-guide-grid {
+        grid-template-columns: 1.35fr 1fr !important;
+        gap: 16pt !important;
+      }
+
+      .website-guide-grid li {
+        font-size: 9pt !important;
+        line-height: 1.4 !important;
+        margin-bottom: 4pt !important;
       }
 
       .solution-item {
@@ -2522,26 +2562,26 @@
     <section class="doc-section" id="section-6">
       <h2><i data-lucide="key-round"></i> 6. SOLUTION KEY</h2>
       <p class="solution-intro">
-        Use this section after completing the Student Task Sheet. The model answers correspond to Inquiries 1-10 and
+        Use this section after completing the Student Task Sheet. The model answers correspond to Questions 1-10 and
         explain the physical reasoning expected in a complete response.
       </p>
 
       <div class="solution-item">
-        <h3>Question 1: Radiant Barriers vs Direct Conduction</h3>
+        <h3>Q1: Radiant Barriers vs Direct Conduction</h3>
         <p><strong>Answer:</strong> Reflective film reduces radiative heat exchange, but it is very thin and provides
           little resistance to conduction when it touches the capsule and ice water directly. A low-conductivity
           spacer such as cotton or trapped air is needed to interrupt the conductive heat-flow path.</p>
       </div>
 
       <div class="solution-item">
-        <h3>Question 2: Understanding the Decay Constant k</h3>
+        <h3>Q2: Understanding the Decay Constant k</h3>
         <p><strong>Answer:</strong> A smaller fitted value of $k$ means better insulation under otherwise identical
           conditions. In $T(t)=T_{\text{env}}+(T_0-T_{\text{env}})e^{-kt}$, a smaller $k$ makes the exponential term
           decrease more slowly, so the capsule approaches the bath temperature more gradually.</p>
       </div>
 
       <div class="solution-item">
-        <h3>Question 3: Why Multilayer Insulation Works</h3>
+        <h3>Q3: Why Multilayer Insulation Works</h3>
         <p><strong>Answer:</strong> The layers act through complementary mechanisms. Cotton traps air and reduces
           conduction, bubble wrap limits fluid motion and convection, and Mylar reduces radiative exchange. The
           interfaces between layers also add contact resistance, producing the smallest reference cooling constant
@@ -2549,53 +2589,85 @@
       </div>
 
       <div class="solution-item">
-        <h3>Question 4: Real World Experimental Factors</h3>
+        <h3>Q4: Real World Experimental Factors</h3>
         <p><strong>Answer:</strong> Any two plausible factors include the probe touching the colder capsule wall,
           leakage through an incomplete lid seal, the ice bath warming above its assumed temperature, inconsistent
           immersion depth, delayed timing, or internal thermal stratification when the capsule water is not mixed.</p>
       </div>
 
       <div class="solution-item">
-        <h3>Question 5: Ice Bath Temperature Drift</h3>
+        <h3>Q5: Ice Bath Temperature Drift</h3>
         <p><strong>Answer:</strong> Measure the actual bath temperature and change $T_{\text{env}}$ in Mission Control
           from $0.0^\circ\text{C}$ to the measured value, such as $4.5^\circ\text{C}$. Recalculate the theoretical curve
           using that updated boundary temperature.</p>
       </div>
 
       <div class="solution-item">
-        <h3>Question 6: Effect of Capsule Water Volume</h3>
+        <h3>Q6: Effect of Capsule Water Volume</h3>
         <p><strong>Answer:</strong> Increasing the water volume from 100 mL to 200 mL approximately doubles the thermal
           mass because $Q=mc_p\Delta T$. With more stored energy and roughly the same external area, the capsule cools
           more slowly and the fitted effective value of $k$ decreases.</p>
       </div>
 
       <div class="solution-item">
-        <h3>Question 7: Spacesuit Design Trade Offs</h3>
+        <h3>Q7: Spacesuit Design Trade Offs</h3>
         <p><strong>Answer:</strong> Unlimited layers would increase mass, bulk and stiffness, restricting astronaut joint
           movement. A suit must also reject metabolic heat; excessive insulation without controlled heat removal could
           cause dangerous heat buildup.</p>
       </div>
 
       <div class="solution-item">
-        <h3>Question 8: Specific Heat Capacity and Fluid Response</h3>
+        <h3>Q8: Specific Heat Capacity and Fluid Response</h3>
         <p><strong>Answer:</strong> A liquid with lower specific heat capacity stores less thermal energy for the same
           mass and temperature rise. Under the same heat-transfer conditions, its temperature falls faster than the
           temperature of water.</p>
       </div>
 
       <div class="solution-item">
-        <h3>Question 9: Asymptotic Boundary Limit</h3>
+        <h3>Q9: Asymptotic Boundary Limit</h3>
         <p><strong>Answer:</strong> As $t \to \infty$, $e^{-kt} \to 0$. Therefore $T(t)$ approaches
           $T_{\text{env}}$, which is the bath temperature. For the nominal reference case, the asymptotic temperature
           is $0.0^\circ\text{C}$.</p>
       </div>
 
       <div class="solution-item">
-        <h3>Question 10: Telemetry Anomaly Diagnostics and MAE</h3>
+        <h3>Q10: Telemetry Anomaly Diagnostics and MAE</h3>
         <p><strong>Answer:</strong> A temperature drop much faster than predicted most strongly suggests cold-water
           leakage into the capsule or extra fluid motion that increases convection. Reduce MAE by sealing the lid,
           centring the probe, keeping immersion depth and bath temperature consistent, and recording at exact
           60-second intervals.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section class="doc-section" id="section-7">
+      <h2><i data-lucide="monitor"></i> 7. WEBSITE INSTRUCTIONS</h2>
+      <p>Open <a href="https://hsp-mc.github.io/"><strong>Mission Control</strong></a>. Use the top menu - or <strong>Menu</strong>
+        on a phone - to move between Overview, Assembly, Simulator, Measurements, Study &amp; Flashcards, and Quiz.</p>
+
+      <div class="website-guide-grid">
+        <div>
+          <h3>Run an experiment</h3>
+          <ol>
+            <li>Read <strong>Overview</strong> and <strong>Assembly</strong>, follow the safety rules, and build the assigned insulation configuration.</li>
+            <li>In <strong>Simulator</strong>, select the same insulation scheme. Enter the measured start and bath temperatures, set the duration, and choose <strong>Run Mathematical Simulation</strong>.</li>
+            <li>Open <strong>Measurements</strong>. Put the capsule in the ice bath and press <strong>Start</strong> at the same time.</li>
+            <li>At minute 0 and every minute afterwards, enter elapsed time and observed temperature, then choose <strong>Add Data Point</strong>. A repeated time updates that reading.</li>
+            <li>Use the comparison graph, differences and MAE to judge how closely the experiment matches the model. Delete an incorrect row if needed, then choose <strong>Print Logbook</strong>.</li>
+            <li>For another trial, change only one variable, record what changed, and use <strong>Clear Measurements</strong> only after saving the first result.</li>
+          </ol>
+        </div>
+
+        <div>
+          <h3>Complete the quiz</h3>
+          <ul>
+            <li>Review <strong>Study &amp; Flashcards</strong>, then open <strong>Quiz</strong>.</li>
+            <li>Enter a unique team name and the lab date, then choose <strong>Start Challenge</strong>.</li>
+            <li>Answer all 10 questions. Each round lasts 30 seconds; select an answer and choose <strong>Lock In Answer</strong>. Correct, faster answers earn more points.</li>
+            <li>Check the round standings and continue. The final screen shows the score, leaderboard and correct-answer review.</li>
+            <li>Use <strong>Restart</strong> for another attempt. If live sync is unavailable, the score is saved only on that device.</li>
+          </ul>
+        </div>
       </div>
     </section>
 

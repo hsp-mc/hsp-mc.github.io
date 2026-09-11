@@ -252,6 +252,17 @@ document.addEventListener('DOMContentLoaded', () => {
     playTone(380, 'triangle', 0.25, 0.10);
     setTimeout(() => playTone(280, 'triangle', 0.25, 0.10), 130);
   }
+  function playLeaderboardSound() {
+    playTone(440, 'triangle', 0.12, 0.07);
+    setTimeout(() => playTone(660, 'triangle', 0.18, 0.07), 90);
+  }
+  function playCountdownSound(isFinalBeat = false) {
+    playTone(isFinalBeat ? 980 : 720, 'sine', isFinalBeat ? 0.18 : 0.08, 0.06);
+  }
+  function playQuestionTransitionSound() {
+    playTone(560, 'sine', 0.08, 0.05);
+    setTimeout(() => playTone(760, 'sine', 0.12, 0.05), 70);
+  }
 
   // Sync button visuals to the current state.audio.isEnabled value
   function syncAudioButton() {
@@ -266,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
   }
 
-  // Audio Toggle — this is the ONLY place we call unlockAndStart
+  // Audio toggle is one of the user gestures that can unlock the sound engine.
   if (elements.btnToggleAudio) {
     elements.btnToggleAudio.addEventListener('click', () => {
       state.audio.isEnabled = !state.audio.isEnabled;
@@ -1670,10 +1681,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const quizLivePoints = document.getElementById('quiz-live-points');
     const quizTimer = document.getElementById('quiz-timer');
     const scoreBanner = document.getElementById('quiz-score-banner');
-    const scorePercentEl = document.getElementById('quiz-score-percent');
-    const scoreSummaryEl = document.getElementById('quiz-score-summary');
-    const quizFinalPoints = document.getElementById('quiz-final-points');
-    const quizResultGroup = document.getElementById('quiz-result-group');
+    const finalPodium = document.getElementById('quiz-final-podium');
+    const finalLeaderboardRows = document.getElementById('quiz-final-leaderboard-rows');
+    const finalLeaderboardEmpty = document.getElementById('quiz-final-leaderboard-empty');
+    const quizAnswerReview = document.getElementById('quiz-answer-review');
+    const btnFinalRestart = document.getElementById('btn-final-restart');
     const btnOpenLeaderboard = document.getElementById('btn-open-leaderboard');
     const leaderboardOverlay = document.getElementById('leaderboard-modal-overlay');
     const btnCloseLeaderboard = document.getElementById('btn-close-leaderboard');
@@ -1717,6 +1729,7 @@ document.addEventListener('DOMContentLoaded', () => {
       q1: 'B',
       q2: 'B',
       q3: 'A',
+      q4: 'A',
       q5: 'B',
       q6: 'A',
       q7: 'A',
@@ -1744,40 +1757,82 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    function renderLeaderboardEntries(entries) {
-      if (!leaderboardRows || !leaderboardEmpty) return;
-
-      const rankedEntries = entries
+    function getRankedEntries(entries) {
+      return [...entries]
         .sort((a, b) => (b.points || 0) - (a.points || 0) || b.percentage - a.percentage || b.savedAt - a.savedAt)
         .slice(0, 20);
+    }
 
-      leaderboardRows.replaceChildren();
-      leaderboardEmpty.style.display = rankedEntries.length ? 'none' : 'block';
+    function renderPodium(rankedEntries, targetPodium) {
+      if (!targetPodium) return;
+      targetPodium.replaceChildren();
+      const podiumOrder = [rankedEntries[1], rankedEntries[0], rankedEntries[2]];
+      podiumOrder.forEach((entry, podiumIndex) => {
+        if (!entry) return;
+        const rank = podiumIndex === 0 ? 2 : podiumIndex === 1 ? 1 : 3;
+        const card = document.createElement('div');
+        card.className = `leaderboard-podium-card rank-${rank}`;
+
+        const stars = document.createElement('div');
+        stars.className = 'leaderboard-podium-stars';
+        stars.setAttribute('aria-hidden', 'true');
+        stars.textContent = rank === 1 ? '★ ★ ★' : rank === 2 ? '★ ★' : '★';
+
+        const medal = document.createElement('div');
+        medal.className = 'leaderboard-podium-medal';
+        medal.textContent = String(rank);
+
+        const name = document.createElement('strong');
+        name.textContent = entry.groupName;
+
+        const score = document.createElement('span');
+        score.textContent = entry.points
+          ? `${entry.points.toLocaleString()} pts`
+          : `${entry.correct}/10 (${entry.percentage}%)`;
+
+        card.append(stars, medal, name, score);
+        targetPodium.appendChild(card);
+      });
+    }
+
+    function renderLeaderboardEntries(entries, targets = {}) {
+      const targetRows = targets.rows || leaderboardRows;
+      const targetEmpty = targets.empty || leaderboardEmpty;
+      if (!targetRows || !targetEmpty) return [];
+
+      const rankedEntries = getRankedEntries(entries);
+
+      targetRows.replaceChildren();
+      targetEmpty.style.display = rankedEntries.length ? 'none' : 'block';
+      renderPodium(rankedEntries, targets.podium);
 
       rankedEntries.forEach((entry, index) => {
         const row = document.createElement('tr');
-        [index + 1, entry.groupName, entry.points ? `${entry.points.toLocaleString()} pts` : `${entry.correct}/10 (${entry.percentage}%)`]
+        const rank = index + 1;
+        const rankLabel = rank === 1 ? '1st' : rank === 2 ? '2nd' : rank === 3 ? '3rd' : `${rank}th`;
+        [rankLabel, entry.groupName, entry.points ? `${entry.points.toLocaleString()} pts` : `${entry.correct}/10 (${entry.percentage}%)`]
           .forEach(value => {
             const cell = document.createElement('td');
             cell.textContent = value;
             row.appendChild(cell);
           });
-        leaderboardRows.appendChild(row);
+        targetRows.appendChild(row);
       });
+
+      return rankedEntries;
     }
 
-    async function renderLeaderboard() {
+    async function renderLeaderboard(targets = {}) {
       if (!sharedLeaderboardEnabled) {
         if (leaderboardStatus) leaderboardStatus.textContent = 'Local mode: add the Supabase details to enable multi-device sync.';
-        renderLeaderboardEntries(getLeaderboard());
-        return;
+        return renderLeaderboardEntries(getLeaderboard(), targets);
       }
 
       if (leaderboardStatus) leaderboardStatus.textContent = 'Loading shared scores…';
 
       try {
         const response = await fetch(
-          `${supabaseUrl}/rest/v1/quiz_scores?select=student,team,lab_date,correct,percentage,created_at&order=percentage.desc,created_at.asc&limit=100`,
+          `${supabaseUrl}/rest/v1/quiz_scores?select=student,team,lab_date,correct,percentage,created_at&order=percentage.desc,created_at.desc&limit=100`,
           {
             headers: supabaseHeaders()
           }
@@ -1795,6 +1850,7 @@ document.addEventListener('DOMContentLoaded', () => {
           identities.add(identity);
           uniqueEntries.push({
             groupName: entry.student,
+            labDate: entry.lab_date || '',
             correct: entry.correct,
             percentage: entry.percentage,
             points: Number.parseInt(entry.team, 10) || entry.correct * 1000,
@@ -1803,17 +1859,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (leaderboardStatus) leaderboardStatus.textContent = 'Live scores synced across classroom devices.';
-        renderLeaderboardEntries(uniqueEntries);
+        return renderLeaderboardEntries(uniqueEntries, targets);
       } catch (error) {
         console.warn('Unable to load shared leaderboard:', error);
         if (leaderboardStatus) leaderboardStatus.textContent = 'Sync unavailable. Showing scores saved on this device.';
-        renderLeaderboardEntries(getLeaderboard());
+        return renderLeaderboardEntries(getLeaderboard(), targets);
       }
     }
 
     function openLeaderboard(roundMode = false) {
       if (!leaderboardOverlay) return;
       renderLeaderboard();
+      roundLeaderboardActive = roundMode;
       if (leaderboardTitle) {
         leaderboardTitle.querySelector('span').textContent = roundMode
           ? `ROUND ${currentQuestion + 1} STANDINGS`
@@ -1821,16 +1878,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (btnLeaderboardContinue) {
         btnLeaderboardContinue.hidden = !roundMode;
-        btnLeaderboardContinue.innerHTML = currentQuestion === quizCards.length - 1
-          ? 'SEE QUIZ RESULT <i data-lucide="trophy"></i>'
-          : 'CONTINUE TO NEXT QUESTION <i data-lucide="arrow-right"></i>';
       }
       leaderboardOverlay.style.display = 'flex';
       if (typeof lucide !== 'undefined') lucide.createIcons();
-      (roundMode ? btnLeaderboardContinue : btnCloseLeaderboard)?.focus();
+      btnCloseLeaderboard?.focus({ preventScroll: true });
+      playLeaderboardSound();
+      if (roundMode) startLeaderboardCountdown();
+      else clearLeaderboardCountdown();
     }
 
     function closeLeaderboard() {
+      clearLeaderboardCountdown();
+      roundLeaderboardActive = false;
       if (leaderboardOverlay) leaderboardOverlay.style.display = 'none';
     }
 
@@ -1901,6 +1960,42 @@ document.addEventListener('DOMContentLoaded', () => {
     let questionTimerId = null;
     let answerLocked = false;
     let gameFinished = false;
+    let answerResults = [];
+    let leaderboardCountdownId = null;
+    let roundLeaderboardActive = false;
+
+    function clearLeaderboardCountdown() {
+      if (leaderboardCountdownId) window.clearInterval(leaderboardCountdownId);
+      leaderboardCountdownId = null;
+    }
+
+    function updateLeaderboardCountdown(seconds) {
+      if (!btnLeaderboardContinue) return;
+      btnLeaderboardContinue.innerHTML = `NEXT QUESTION IN <strong>${seconds}</strong> <i data-lucide="arrow-right"></i>`;
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function advanceFromLeaderboard() {
+      clearLeaderboardCountdown();
+      closeLeaderboard();
+      playQuestionTransitionSound();
+      showQuestion(currentQuestion + 1);
+    }
+
+    function startLeaderboardCountdown() {
+      clearLeaderboardCountdown();
+      let seconds = 4;
+      updateLeaderboardCountdown(seconds);
+      leaderboardCountdownId = window.setInterval(() => {
+        seconds -= 1;
+        updateLeaderboardCountdown(Math.max(seconds, 0));
+        if (seconds > 0 && seconds <= 3) playCountdownSound(false);
+        if (seconds <= 0) {
+          playCountdownSound(true);
+          advanceFromLeaderboard();
+        }
+      }, 1000);
+    }
 
     function setGameButton(label, icon) {
       btnGradeQuiz.innerHTML = `<i data-lucide="${icon}"></i> ${label}`;
@@ -1944,9 +2039,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function currentAnswerIsCorrect() {
       const questionNumber = currentQuestion + 1;
-      if (questionNumber === 4) {
-        return (document.getElementById('q4-text')?.value.trim().length || 0) >= 10;
-      }
       const selected = document.querySelector(`input[name="worksheet-q${questionNumber}"]:checked`);
       return Boolean(selected && selected.value === answerKey[`q${questionNumber}`]);
     }
@@ -1958,22 +2050,23 @@ document.addEventListener('DOMContentLoaded', () => {
       labels.forEach(label => {
         const input = label.querySelector('input');
         input.disabled = true;
-        if (input.value === answerKey[`q${questionNumber}`]) label.classList.add('is-correct');
-        if (input.checked && !wasCorrect) label.classList.add('is-wrong');
+        if (input.checked) label.classList.add(wasCorrect ? 'is-correct' : 'is-wrong');
       });
       const textarea = card.querySelector('textarea');
       if (textarea) textarea.disabled = true;
       feedback.className = `quiz-feedback ${wasCorrect ? 'correct' : 'incorrect'}`;
-      feedback.textContent = timedOut ? 'Time is up — no points this round.' : wasCorrect ? 'Correct — speed bonus added!' : 'Not quite — get ready for the next one.';
+      feedback.textContent = timedOut
+        ? 'Time is up — the correct answer will be shown in the final review.'
+        : wasCorrect
+          ? 'Answer locked — speed bonus added!'
+          : 'Answer locked — check the correct answer in the final review.';
     }
 
     async function lockCurrentAnswer(timedOut = false) {
       if (answerLocked) return;
       const card = quizCards[currentQuestion];
       const questionNumber = currentQuestion + 1;
-      const hasResponse = questionNumber === 4
-        ? Boolean(document.getElementById('q4-text')?.value.trim())
-        : Boolean(document.querySelector(`input[name="worksheet-q${questionNumber}"]:checked`));
+      const hasResponse = Boolean(document.querySelector(`input[name="worksheet-q${questionNumber}"]:checked`));
       if (!hasResponse && !timedOut) {
         showNotification('Choose an answer before locking it in.', 'error');
         return;
@@ -1982,6 +2075,16 @@ document.addEventListener('DOMContentLoaded', () => {
       answerLocked = true;
       stopQuestionTimer();
       const wasCorrect = !timedOut && currentAnswerIsCorrect();
+      const correctInput = card.querySelector(`input[value="${answerKey[`q${questionNumber}`]}"]`);
+      const selectedInput = card.querySelector('input:checked');
+      answerResults[currentQuestion] = {
+        questionNumber,
+        wasCorrect,
+        questionText: card.querySelector('.quiz-question-text')?.textContent.replace(/\s+/g, ' ').trim() || '',
+        selectedValue: selectedInput?.value || '',
+        correctValue: answerKey[`q${questionNumber}`],
+        correctText: correctInput?.closest('.quiz-option-label')?.querySelector('span')?.textContent.trim() || ''
+      };
       if (wasCorrect) {
         correctCount += 1;
         gamePoints += 600 + Math.round((secondsRemaining / 30) * 400);
@@ -1994,25 +2097,94 @@ document.addEventListener('DOMContentLoaded', () => {
       setGameButton('VIEW ROUND STANDINGS', 'trophy');
       const roundPercentage = correctCount * 10;
       await saveLeaderboardEntry(correctCount, roundPercentage, gamePoints);
-      openLeaderboard(true);
+      if (currentQuestion === quizCards.length - 1) finishQuiz();
+      else openLeaderboard(true);
     }
 
-    function finishQuiz() {
+    function renderAnswerReview(target = quizAnswerReview) {
+      if (!target) return;
+      target.replaceChildren();
+      const heading = document.createElement('h3');
+      heading.textContent = 'Correct answer review';
+      target.appendChild(heading);
+
+      const list = document.createElement('ol');
+      answerResults.forEach(result => {
+        const item = document.createElement('li');
+        item.className = result.wasCorrect ? 'is-correct' : 'is-missed';
+        const status = document.createElement('span');
+        status.className = 'quiz-review-status';
+        status.textContent = result.wasCorrect ? '✓' : '→';
+        const content = document.createElement('div');
+        content.className = 'quiz-review-content';
+        const question = document.createElement('strong');
+        question.textContent = `Question ${result.questionNumber}: ${result.questionText}`;
+        const answer = document.createElement('span');
+        answer.textContent = `Correct answer: ${result.correctText}`;
+        content.append(question, answer);
+        item.append(status, content);
+        list.appendChild(item);
+      });
+      target.appendChild(list);
+    }
+
+    function setWinnerEffects(isWinner) {
+      if (!scoreBanner) return;
+      scoreBanner.classList.toggle('is-winner', isWinner);
+      scoreBanner.querySelector('.quiz-winner-effects')?.remove();
+      if (!isWinner) return;
+
+      const effects = document.createElement('div');
+      effects.className = 'quiz-winner-effects';
+      effects.setAttribute('aria-hidden', 'true');
+      const colors = ['#ffd43b', '#22d3ee', '#fb7185', '#a3e635', '#c084fc'];
+      for (let index = 0; index < 36; index += 1) {
+        const particle = document.createElement('i');
+        particle.style.setProperty('--winner-left', `${(index * 37) % 101}%`);
+        particle.style.setProperty('--winner-delay', `${(index % 9) * 0.12}s`);
+        particle.style.setProperty('--winner-duration', `${2.4 + (index % 5) * 0.28}s`);
+        particle.style.setProperty('--winner-color', colors[index % colors.length]);
+        particle.style.setProperty('--winner-spin', `${180 + (index % 4) * 90}deg`);
+        effects.appendChild(particle);
+      }
+      scoreBanner.prepend(effects);
+    }
+
+    async function finishQuiz() {
       stopQuestionTimer();
+      clearLeaderboardCountdown();
       gameFinished = true;
-      const percentage = Math.round((correctCount / quizCards.length) * 100);
-      const incorrectCount = quizCards.length - correctCount;
-      const groupName = document.getElementById('quiz-group-name').value.trim();
-      scorePercentEl.textContent = `${percentage}%`;
-      quizFinalPoints.textContent = gamePoints.toLocaleString();
-      quizResultGroup.textContent = groupName;
-      scoreSummaryEl.textContent = `${correctCount} correct · ${incorrectCount} missed · Score submitted to the leaderboard.`;
       quizGameBoard.hidden = true;
       quizPlayHud.hidden = true;
+      quizGameActions.hidden = true;
       scoreBanner.classList.add('show');
-      setGameButton('PLAY AGAIN', 'rotate-ccw');
-      saveLeaderboardEntry(correctCount, percentage, gamePoints);
-      showNotification(`${groupName}: ${gamePoints.toLocaleString()} points!`, percentage >= 80 ? 'success' : 'info');
+      renderAnswerReview(quizAnswerReview);
+
+      const rankedEntries = await renderLeaderboard({
+        rows: finalLeaderboardRows,
+        empty: finalLeaderboardEmpty,
+        podium: finalPodium
+      });
+      const groupName = document.getElementById('quiz-group-name')?.value.trim() || '';
+      const labDate = document.getElementById('quiz-date')?.value.trim() || '';
+      const winner = rankedEntries?.[0];
+      const isWinner = Boolean(
+        winner &&
+        winner.groupName.toLowerCase() === groupName.toLowerCase() &&
+        (!winner.labDate || winner.labDate === labDate)
+      );
+      setWinnerEffects(isWinner);
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      scoreBanner.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        block: 'start'
+      });
+      playSuccessSound();
+      setTimeout(playLeaderboardSound, 180);
+      showNotification(
+        isWinner ? `${groupName} takes 1st place!` : `${groupName}: ${gamePoints.toLocaleString()} points!`,
+        isWinner ? 'success' : 'info'
+      );
     }
 
     function resetQuiz(showLobby = true) {
@@ -2022,6 +2194,7 @@ document.addEventListener('DOMContentLoaded', () => {
       gamePoints = 0;
       answerLocked = false;
       gameFinished = false;
+      answerResults = [];
       document.querySelectorAll('#student-quiz-form input[type="radio"]').forEach(input => {
         input.checked = false;
         input.disabled = false;
@@ -2037,6 +2210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         feedback.textContent = '';
       });
       scoreBanner.classList.remove('show');
+      setWinnerEffects(false);
       quizLobby.hidden = !showLobby;
       quizPlayHud.hidden = showLobby;
       quizGameBoard.hidden = showLobby;
@@ -2056,8 +2230,9 @@ document.addEventListener('DOMContentLoaded', () => {
         quizPlayHud.hidden = false;
         quizGameBoard.hidden = false;
         quizGameActions.hidden = false;
+        unlockAndStart();
         showQuestion(0);
-        playEpochSound();
+        setTimeout(playEpochSound, 60);
       });
     }
 
@@ -2074,13 +2249,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (btnLeaderboardContinue) {
-      btnLeaderboardContinue.addEventListener('click', () => {
-        closeLeaderboard();
-        if (currentQuestion === quizCards.length - 1) finishQuiz();
-        else showQuestion(currentQuestion + 1);
-      });
+      btnLeaderboardContinue.addEventListener('click', advanceFromLeaderboard);
     }
 
+    if (btnFinalRestart) btnFinalRestart.addEventListener('click', () => resetQuiz(true));
     if (btnResetQuiz) btnResetQuiz.addEventListener('click', () => resetQuiz(true));
   }
 

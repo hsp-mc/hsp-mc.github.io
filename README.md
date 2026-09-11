@@ -96,7 +96,7 @@ The supplied cooling constants are educational reference values. Repeated measur
 | Laboratory task sheet | [Web](resources/worksheets/student_task_sheet.html) | [PDF](resources/worksheets/student_task_sheet.pdf) |
 | Revision flashcards | [Web](resources/flashcards/flashcards.html) | [PDF](resources/flashcards/SPHERE_Mission_Control_Flashcards.pdf) |
 
-The learning materials share one ten-question assessment framework: ten printable inquiries, ten online evaluation questions and a complete instructor solution key. Nine online multiple-choice items are scored automatically; Question 4 requires instructor review.
+The learning materials share one high-school ten-question assessment framework: ten printable written-response questions, ten aligned online multiple-choice questions and complete student and instructor solution keys. All ten online questions are scored automatically.
 
 ## Run locally
 
