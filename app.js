@@ -1407,7 +1407,6 @@ document.addEventListener('DOMContentLoaded', () => {
       showNotification("Preliminary Assessment Passed", "success");
       playSuccessSound();
       
-      localStorage.setItem('sphere_quiz_certified', 'true');
     } else {
       elements.quizStatusBadge.textContent = "STATUS: REVIEW REQUIRED";
       elements.quizStatusBadge.style.backgroundColor = "rgba(244, 63, 94, 0.1)";
@@ -1430,21 +1429,22 @@ document.addEventListener('DOMContentLoaded', () => {
     elements.btnSubmitQuiz.addEventListener('click', evaluateQuiz);
   }
 
-  // Restore pre-flight quiz certification status on load
+  // Start each page load with a fresh, unanswered concept check.
   function restoreQuizStatus() {
-    // A certification result may persist between visits, but the quiz must
-    // always open unanswered so students make a fresh attempt themselves.
     document.querySelectorAll('input[name^="preflight-q"]').forEach((input) => {
       input.checked = false;
     });
 
-    const cachedQuiz = localStorage.getItem('sphere_quiz_certified');
-    if (cachedQuiz === 'true' && elements.quizStatusBadge) {
-      elements.quizStatusBadge.textContent = "STATUS: CONCEPT CHECK PASSED";
-      elements.quizStatusBadge.style.backgroundColor = "rgba(16, 185, 129, 0.1)";
-      elements.quizStatusBadge.style.borderColor = "var(--green)";
-      elements.quizStatusBadge.style.color = "var(--green)";
-      elements.quizStatusBadge.classList.add('glow-green');
+    // Remove the legacy persisted result. Restoring it while clearing the
+    // answers made an unanswered quiz appear to have passed.
+    localStorage.removeItem('sphere_quiz_certified');
+
+    if (elements.quizStatusBadge) {
+      elements.quizStatusBadge.textContent = "STATUS: PENDING EVALUATION";
+      elements.quizStatusBadge.style.backgroundColor = "rgba(255,255,255,0.02)";
+      elements.quizStatusBadge.style.borderColor = "rgba(255,255,255,0.06)";
+      elements.quizStatusBadge.style.color = "var(--text-dimmed)";
+      elements.quizStatusBadge.classList.remove('glow-green');
     }
   }
 
