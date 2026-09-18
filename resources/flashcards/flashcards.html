@@ -548,6 +548,7 @@
         color: #000000 !important;
         padding: 0 !important;
         margin: 0 !important;
+        zoom: 0.9;
       }
 
       .no-print, .doc-nav, .hero-banner {
@@ -567,17 +568,28 @@
         padding: 4px 6px !important;
         margin: 0 !important;
         box-shadow: none !important;
-        page-break-after: always !important;
-        break-after: page !important;
-        height: 98vh !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-      }
-
-      .sheet-page:last-child {
         page-break-after: auto !important;
         break-after: auto !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid-page !important;
+        height: auto !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+      }
+
+      .sheet-page + .sheet-page {
+        page-break-before: always !important;
+        break-before: page !important;
+      }
+
+      .page-header {
+        margin-bottom: 10px !important;
+      }
+
+      .cards-grid {
+        gap: 10px !important;
       }
 
       .cutout-card {
@@ -587,7 +599,11 @@
       }
 
       .card-dual-body {
-        min-height: 180px !important;
+        min-height: 160px !important;
+      }
+
+      .card-half {
+        padding: 8px 10px !important;
       }
 
       .card-half.front {

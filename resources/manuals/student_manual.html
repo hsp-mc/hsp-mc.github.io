@@ -937,6 +937,171 @@
       border-top: 1px solid var(--border-color);
     }
 
+    /* Safety precautions and risk assessment */
+    .safety-overview {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      margin: 20px 0 24px;
+      align-items: stretch;
+    }
+
+    .safety-photo {
+      margin: 0;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .safety-photo img {
+      display: block;
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .safety-photo figcaption {
+      padding: 9px 12px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .safety-checklist {
+      border: 2px solid #0f172a;
+      border-radius: 10px;
+      padding: 18px 20px;
+      background: #f8fafc;
+    }
+
+    .safety-checklist h3 {
+      margin-top: 0;
+      color: #0f172a;
+    }
+
+    .safety-checklist ul {
+      margin-bottom: 0;
+      padding-left: 20px;
+    }
+
+    .safety-sign-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 18px 0 24px;
+    }
+
+    .safety-sign {
+      min-height: 150px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 10px;
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .safety-sign svg {
+      display: block;
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 7px;
+    }
+
+    .safety-sign strong {
+      display: block;
+      color: var(--text-heading);
+      font-size: 0.82rem;
+      line-height: 1.25;
+    }
+
+    .safety-sign span {
+      display: block;
+      margin-top: 3px;
+      color: var(--text-muted);
+      font-size: 0.74rem;
+      line-height: 1.35;
+    }
+
+    .risk-key {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 8px 0 14px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .risk-key span {
+      border-radius: 5px;
+      padding: 4px 8px;
+      border: 1px solid currentColor;
+    }
+
+    .risk-low { color: #047857; background: #ecfdf5; }
+    .risk-medium { color: #a16207; background: #fefce8; }
+    .risk-high { color: #b91c1c; background: #fef2f2; }
+
+    .risk-table th:nth-child(1) { width: 19%; }
+    .risk-table th:nth-child(2) { width: 14%; }
+    .risk-table th:nth-child(3) { width: 51%; }
+    .risk-table th:nth-child(4) { width: 16%; }
+    .risk-table td:nth-child(1),
+    .risk-table td:nth-child(3) { text-align: left; }
+
+    .risk-badge {
+      display: inline-block;
+      min-width: 58px;
+      border-radius: 5px;
+      padding: 3px 6px;
+      border: 1px solid currentColor;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .emergency-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+      counter-reset: emergency-step;
+    }
+
+    .emergency-step {
+      position: relative;
+      padding: 13px 11px 12px 42px;
+      border: 1.5px solid #fca5a5;
+      border-radius: 8px;
+      background: #fff7f7;
+      color: var(--text-body);
+      font-size: 0.8rem;
+      line-height: 1.4;
+      counter-increment: emergency-step;
+    }
+
+    .emergency-step::before {
+      content: counter(emergency-step);
+      position: absolute;
+      left: 10px;
+      top: 12px;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #b91c1c;
+      color: #ffffff;
+      font-weight: 800;
+    }
+
     @media screen and (max-width: 700px) {
 
       html,
@@ -1016,7 +1181,10 @@
       .insulation-grid,
       .meta-fill-grid,
       .flashcard-grid,
-      .graphs-grid {
+      .graphs-grid,
+      .safety-overview,
+      .safety-sign-grid,
+      .emergency-steps {
         grid-template-columns: 1fr;
       }
 
@@ -1158,7 +1326,9 @@
       }
 
       #section-1,
-      .hardware-assembly-start,
+      #section-safety,
+      #risk-assessment-start,
+      #section-2,
       .setup-photos-box,
       #section-3,
       .mli-breakdown-box,
@@ -1179,6 +1349,95 @@
         box-shadow: none !important;
         padding: 10pt !important;
         margin-bottom: 12pt !important;
+      }
+
+      .safety-overview {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10pt !important;
+        break-inside: avoid !important;
+      }
+
+      .safety-photo img {
+        height: 128pt !important;
+      }
+
+      .safety-checklist {
+        padding: 9pt 11pt !important;
+      }
+
+      .safety-checklist h3 {
+        margin-top: 0 !important;
+      }
+
+      .safety-checklist li,
+      .safety-photo figcaption {
+        font-size: 8pt !important;
+        line-height: 1.35 !important;
+      }
+
+      .safety-sign-grid {
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 5pt !important;
+        break-inside: avoid !important;
+      }
+
+      .safety-sign {
+        min-height: 84pt !important;
+        padding: 6pt 3pt !important;
+      }
+
+      .safety-sign svg {
+        width: 40pt !important;
+        height: 40pt !important;
+        margin-bottom: 3pt !important;
+      }
+
+      .safety-sign strong {
+        font-size: 6.8pt !important;
+      }
+
+      .safety-sign span {
+        font-size: 6.1pt !important;
+        line-height: 1.25 !important;
+      }
+
+      .risk-key {
+        font-size: 7pt !important;
+        margin-bottom: 6pt !important;
+      }
+
+      .risk-table {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+        margin: 8pt 0 !important;
+      }
+
+      .risk-table tr {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      .risk-table th,
+      .risk-table td {
+        font-size: 7.2pt !important;
+        line-height: 1.3 !important;
+        padding: 5pt !important;
+      }
+
+      .risk-badge {
+        min-width: 42pt !important;
+        font-size: 6.5pt !important;
+      }
+
+      .emergency-steps {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 6pt !important;
+        break-inside: avoid !important;
+      }
+
+      .emergency-step {
+        padding: 7pt 5pt 7pt 28pt !important;
+        font-size: 7.2pt !important;
       }
 
       .workflow-img-wrap {
@@ -1467,6 +1726,158 @@
         color: #1e293b !important;
       }
 
+      /* Keep the opening hardware table and equipment overview together on page 6. */
+      #section-2 > p:first-of-type {
+        margin: 0 0 5pt !important;
+      }
+
+      #section-2 .styled-table {
+        margin: 6pt 0 !important;
+      }
+
+      #section-2 .styled-table th {
+        padding: 5pt 6pt !important;
+        font-size: 7.7pt !important;
+      }
+
+      #section-2 .styled-table td {
+        padding: 4pt 6pt !important;
+        font-size: 7.8pt !important;
+        line-height: 1.25 !important;
+      }
+
+      #section-2 .hardware-assembly-start {
+        margin: 9pt 0 4pt !important;
+        font-size: 11pt !important;
+      }
+
+      #section-2 .hardware-assembly-start + p {
+        margin: 0 0 7pt !important;
+        font-size: 8.6pt !important;
+        line-height: 1.35 !important;
+      }
+
+      #section-2 .equipment-showcase-box {
+        padding: 10pt !important;
+        margin: 7pt 0 0 !important;
+        border-width: 1pt !important;
+        box-shadow: none !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      #section-2 .equipment-showcase-box > div:first-child {
+        margin-bottom: 6pt !important;
+        font-size: 10pt !important;
+      }
+
+      #section-2 .equipment-showcase-box > div:nth-child(2) {
+        margin-bottom: 6pt !important;
+      }
+
+      #section-2 .equipment-showcase-box div[style*="height: 480px"] {
+        height: 315pt !important;
+        max-height: 315pt !important;
+        padding: 6pt !important;
+      }
+
+      #section-2 .equipment-showcase-box div[style*="font-family: var(--font-mono)"] {
+        margin-top: 4pt !important;
+        font-size: 8pt !important;
+      }
+
+      #section-2 .equipment-showcase-box h4 {
+        margin: 4pt 0 4pt !important;
+        font-size: 9.5pt !important;
+      }
+
+      #section-2 .equipment-showcase-box p {
+        margin: 0 0 4pt !important;
+        font-size: 8.4pt !important;
+        line-height: 1.3 !important;
+      }
+
+      #section-2 .equipment-showcase-box ul {
+        margin: 0 !important;
+        padding-left: 16pt !important;
+        font-size: 8.3pt !important;
+        line-height: 1.28 !important;
+      }
+
+      #section-2 .equipment-showcase-box li {
+        margin-bottom: 2pt !important;
+        font-size: 8.3pt !important;
+        line-height: 1.28 !important;
+      }
+
+      /* Fit the complete six-stage practical workflow on one printed page. */
+      #section-5 {
+        margin-bottom: 0 !important;
+      }
+
+      #section-5 > h2 {
+        margin-bottom: 6pt !important;
+      }
+
+      #section-5 > div[style*="text-align: center"] {
+        margin: 0 0 5pt !important;
+      }
+
+      #section-5 > div[style*="text-align: center"] > svg {
+        width: 100% !important;
+        height: 72pt !important;
+        padding: 0 !important;
+      }
+
+      #section-5 > div[style*="text-align: center"] > div {
+        margin-top: 2pt !important;
+        font-size: 6.8pt !important;
+      }
+
+      #section-5 > div[style*="margin-top: 25px"] {
+        margin-top: 4pt !important;
+      }
+
+      #section-5 .workflow-step-card {
+        grid-template-columns: 102pt 1fr !important;
+        gap: 8pt !important;
+        padding: 7pt 8pt !important;
+        margin-bottom: 5pt !important;
+        border-width: 0.8pt !important;
+        border-radius: 6pt !important;
+      }
+
+      #section-5 .workflow-img-wrap {
+        height: 72pt !important;
+        padding: 3pt !important;
+        border-width: 0.8pt !important;
+        border-radius: 4pt !important;
+      }
+
+      #section-5 .workflow-step-badge {
+        gap: 3pt !important;
+        padding: 2pt 6pt !important;
+        margin-bottom: 2pt !important;
+        font-size: 6.8pt !important;
+        line-height: 1.1 !important;
+      }
+
+      #section-5 .workflow-step-title {
+        margin: 0 0 2pt !important;
+        font-size: 8.8pt !important;
+        line-height: 1.15 !important;
+      }
+
+      #section-5 .workflow-step-desc {
+        margin: 0 !important;
+        font-size: 7.6pt !important;
+        line-height: 1.2 !important;
+      }
+
+      #section-5 .workflow-step-desc .katex {
+        font-size: 0.92em !important;
+      }
+
       .doc-footer {
         break-inside: avoid;
         page-break-inside: avoid;
@@ -1663,7 +2074,7 @@
             Follow Manual First
           </div>
           <p style="font-size: 0.84rem; margin: 0; color: #334155; line-height: 1.45;">
-            Read Sections 1–4 of this manual. Review Newton's Law of Cooling, heat transfer mechanisms (conduction,
+            Read Sections 1–5 of this manual. Review Newton's Law of Cooling, heat transfer mechanisms (conduction,
             convection, radiation), and experimental safety SOP before handling hot water.
           </p>
         </div>
@@ -1798,8 +2209,175 @@
     </section>
 
     <!-- SECTION 2 -->
+    <section class="doc-section" id="section-safety">
+      <h2><i data-lucide="shield-alert"></i> 2. SAFETY PRECAUTIONS &amp; RISK ASSESSMENT</h2>
+      <p>
+        This experiment combines hot water, glassware, an ice-water bath and electrical equipment. Complete the
+        checks below before starting. Work only under teacher or laboratory-supervisor instruction, and stop the
+        experiment immediately if the setup is unstable, leaking, cracked or unsafe.
+      </p>
+
+      <div class="callout-box" style="border-left-color: #b91c1c; background: #fef2f2; border-color: #fca5a5;">
+        <strong style="color: #991b1b;">Stop-work rule:</strong>
+        Do not lift, pour or immerse the hot capsule until the supervisor confirms that eye protection is worn, the
+        lid and probe are secure, the work area is dry, and electrical devices are outside the splash zone.
+      </div>
+
+      <div class="safety-overview">
+        <figure class="safety-photo">
+          <img src="../../images/stage1-theory-safety.png"
+            alt="Student reviewing laboratory safety instructions before the thermal experiment">
+          <figcaption>PRE-FLIGHT SAFETY REVIEW: READ THE PROCEDURE, CHECK PPE AND INSPECT THE APPARATUS.</figcaption>
+        </figure>
+        <div class="safety-checklist">
+          <h3>Personal protective equipment and conduct</h3>
+          <ul>
+            <li>Wear splash-resistant safety goggles and closed shoes.</li>
+            <li>Use heat-resistant gloves when handling the hot jar, lid or probe.</li>
+            <li>Tie back long hair and secure loose sleeves, jewellery and cables.</li>
+            <li>Keep bags and stools away from the work route and ice-bath area.</li>
+            <li>Carry glassware with two hands; never use chipped or cracked glass.</li>
+            <li>Do not eat, drink, run or engage in horseplay in the laboratory.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Safety sign guide</h3>
+      <div class="safety-sign-grid" aria-label="Laboratory safety signs">
+        <div class="safety-sign">
+          <svg viewBox="0 0 100 100" role="img" aria-label="Warning hot liquid">
+            <path d="M50 6 L95 88 H5 Z" fill="#facc15" stroke="#111827" stroke-width="5"/>
+            <path d="M33 63 C25 55 39 48 31 39 M50 63 C42 55 56 48 48 39 M67 63 C59 55 73 48 65 39"
+              fill="none" stroke="#111827" stroke-width="5" stroke-linecap="round"/>
+            <path d="M25 72 H75" stroke="#111827" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <strong>Hot liquid</strong><span>Scald and hot-glass hazard</span>
+        </div>
+        <div class="safety-sign">
+          <svg viewBox="0 0 100 100" role="img" aria-label="Eye protection required">
+            <circle cx="50" cy="50" r="45" fill="#2563eb" stroke="#ffffff" stroke-width="3"/>
+            <path d="M18 43 H32 L38 58 H55 L62 43 H82" fill="none" stroke="#ffffff" stroke-width="6"
+              stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M33 43 H59 M22 43 L17 36 M78 43 L83 36" fill="none" stroke="#ffffff" stroke-width="5"
+              stroke-linecap="round"/>
+          </svg>
+          <strong>Eye protection</strong><span>Goggles must be worn</span>
+        </div>
+        <div class="safety-sign">
+          <svg viewBox="0 0 100 100" role="img" aria-label="Protective gloves required">
+            <circle cx="50" cy="50" r="45" fill="#2563eb" stroke="#ffffff" stroke-width="3"/>
+            <path d="M32 67 L29 48 C28 43 35 42 37 47 L39 54 L39 31 C39 25 47 25 47 31 L47 48 L49 26
+              C50 21 57 22 57 27 L56 48 L60 31 C61 26 68 28 67 33 L64 51 L68 41 C70 36 77 40 74 45 L67 64
+              C63 73 55 78 45 77 Z" fill="#ffffff"/>
+          </svg>
+          <strong>Protective gloves</strong><span>Use for hot components</span>
+        </div>
+        <div class="safety-sign">
+          <svg viewBox="0 0 100 100" role="img" aria-label="Warning fragile glass">
+            <path d="M50 6 L95 88 H5 Z" fill="#facc15" stroke="#111827" stroke-width="5"/>
+            <path d="M40 31 H60 L57 50 L67 73 H33 L43 50 Z" fill="none" stroke="#111827" stroke-width="4"
+              stroke-linejoin="round"/>
+            <path d="M50 31 L45 44 L55 50 L48 60" fill="none" stroke="#111827" stroke-width="3"/>
+          </svg>
+          <strong>Fragile glass</strong><span>Inspect before use</span>
+        </div>
+        <div class="safety-sign">
+          <svg viewBox="0 0 100 100" role="img" aria-label="Warning slippery surface">
+            <path d="M50 6 L95 88 H5 Z" fill="#facc15" stroke="#111827" stroke-width="5"/>
+            <circle cx="55" cy="31" r="6" fill="#111827"/>
+            <path d="M51 40 L43 55 L56 61 L68 73 M45 52 L31 57 M51 43 L66 50 M42 71 H24 M63 78 H81"
+              fill="none" stroke="#111827" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <strong>Slippery surface</strong><span>Wipe spills immediately</span>
+        </div>
+        <div class="safety-sign">
+          <svg viewBox="0 0 100 100" role="img" aria-label="Warning electrical hazard">
+            <path d="M50 6 L95 88 H5 Z" fill="#facc15" stroke="#111827" stroke-width="5"/>
+            <path d="M55 25 L35 56 H49 L43 77 L68 45 H54 Z" fill="#111827"/>
+          </svg>
+          <strong>Electrical hazard</strong><span>Keep devices dry</span>
+        </div>
+      </div>
+
+      <h3 id="risk-assessment-start">Risk assessment</h3>
+      <p>
+        Risk is judged before and after controls using likelihood and severity. The teacher remains responsible for
+        the local risk assessment, room-specific emergency arrangements and deciding whether students may proceed.
+      </p>
+      <div class="risk-key" aria-label="Risk rating key">
+        <span class="risk-low">LOW: routine controls</span>
+        <span class="risk-medium">MEDIUM: supervisor check required</span>
+        <span class="risk-high">HIGH: do not proceed until reduced</span>
+      </div>
+      <div class="table-scroll">
+        <table class="styled-table risk-table">
+          <thead>
+            <tr>
+              <th>HAZARD</th>
+              <th>RISK BEFORE CONTROLS</th>
+              <th>CONTROL MEASURES</th>
+              <th>RESIDUAL RISK</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Hot water and hot glass</strong><br>Burns or scalds</td>
+              <td><span class="risk-badge risk-high">High</span></td>
+              <td>Teacher prepares or supervises the hot water. Wear goggles and heat-resistant gloves; use a stable tray,
+                fill only to the specified $100\text{ mL}$, secure the lid and allow components to cool before dismantling.</td>
+              <td><span class="risk-badge risk-low">Low</span></td>
+            </tr>
+            <tr>
+              <td><strong>Glass jar or thermometer</strong><br>Cuts from breakage</td>
+              <td><span class="risk-badge risk-high">High</span></td>
+              <td>Inspect for cracks and chips. Carry with two hands, keep away from bench edges and never force the probe.
+                Do not touch broken glass; alert the supervisor for safe clean-up.</td>
+              <td><span class="risk-badge risk-low">Low</span></td>
+            </tr>
+            <tr>
+              <td><strong>Water or ice spill</strong><br>Slip, splash or unstable apparatus</td>
+              <td><span class="risk-badge risk-medium">Medium</span></td>
+              <td>Use a tray, keep the bath below its maximum fill line and lower the capsule slowly. Stop work, warn others
+                and wipe spills immediately using the laboratory procedure.</td>
+              <td><span class="risk-badge risk-low">Low</span></td>
+            </tr>
+            <tr>
+              <td><strong>Electricity near water</strong><br>Electric shock or equipment damage</td>
+              <td><span class="risk-badge risk-high">High</span></td>
+              <td>Keep computers, power supplies, plugs and extension leads outside the splash zone. Dry hands before
+                touching controls. If liquid reaches electrical equipment, do not touch it; alert the supervisor.</td>
+              <td><span class="risk-badge risk-low">Low</span></td>
+            </tr>
+            <tr>
+              <td><strong>Probe lead and loose items</strong><br>Snagging, trip or tipped apparatus</td>
+              <td><span class="risk-badge risk-medium">Medium</span></td>
+              <td>Route the probe lead away from walkways, secure the bath and jar, and keep bags and stools clear. One
+                student moves the capsule while another watches the cable and timer.</td>
+              <td><span class="risk-badge risk-low">Low</span></td>
+            </tr>
+            <tr>
+              <td><strong>Foil, tape and fibres</strong><br>Sharp edges or irritation</td>
+              <td><span class="risk-badge risk-medium">Medium</span></td>
+              <td>Fold foil edges inward, use scissors correctly and avoid touching the face. Wash hands after handling
+                insulation materials and report skin or eye irritation.</td>
+              <td><span class="risk-badge risk-low">Low</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>If something goes wrong</h3>
+      <div class="emergency-steps">
+        <div class="emergency-step"><strong>Stop.</strong> Put down the apparatus if safe and switch off the activity.</div>
+        <div class="emergency-step"><strong>Warn.</strong> Tell the teacher or laboratory supervisor immediately.</div>
+        <div class="emergency-step"><strong>Protect.</strong> Keep others away from hot water, broken glass, spills and live equipment.</div>
+        <div class="emergency-step"><strong>Respond.</strong> Follow the site first-aid procedure. Cool a burn under cool running water for at least 20 minutes; do not use ice.</div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
     <section class="doc-section" id="section-2">
-      <h2><i data-lucide="wrench"></i> 2. HARDWARE SETUP &amp; SCHEMATIC</h2>
+      <h2><i data-lucide="wrench"></i> 3. HARDWARE SETUP &amp; SCHEMATIC</h2>
       <p>
         Assemble a sealed test capsule suitable for controlled immersion:
       </p>
@@ -1930,9 +2508,9 @@
       </div>
     </section>
 
-    <!-- SECTION 3 -->
+    <!-- SECTION 4 -->
     <section class="doc-section" id="section-3">
-      <h2><i data-lucide="layers"></i> 3. THE 4 INSULATION CONFIGURATIONS</h2>
+      <h2><i data-lucide="layers"></i> 4. THE 4 INSULATION CONFIGURATIONS</h2>
       <p>
         Each team tests one of four configurations under the same nominal boundary conditions ($T_0 =
         80.0^\circ\text{C}, T_{\text{env}} = 0.0^\circ\text{C}$):
@@ -2071,9 +2649,9 @@
       </div>
     </section>
 
-    <!-- SECTION 4 -->
+    <!-- SECTION 5 -->
     <section class="doc-section" id="section-4">
-      <h2><i data-lucide="line-chart"></i> 4. THE PHYSICS: NEWTON'S LAW OF COOLING</h2>
+      <h2><i data-lucide="line-chart"></i> 5. THE PHYSICS: NEWTON'S LAW OF COOLING</h2>
       <p>
         Heat always flows from warmer objects to cooler surroundings. Over 300 years ago, Sir Isaac Newton discovered
         that the rate at which an object cools is proportional to the temperature difference between the object and its
@@ -2366,9 +2944,9 @@
       </div>
     </section>
 
-    <!-- SECTION 5 -->
+    <!-- SECTION 6 -->
     <section class="doc-section" id="section-5">
-      <h2><i data-lucide="play-circle"></i> 5. STEP-BY-STEP LAB WORKFLOW</h2>
+      <h2><i data-lucide="play-circle"></i> 6. STEP-BY-STEP LAB WORKFLOW</h2>
 
       <!-- FIGURE 5 SVG: 6-STAGE WORKFLOW FLOWCHART -->
       <div style="text-align: center; margin: 20px 0 30px 0;">
@@ -2446,7 +3024,7 @@
             </div>
             <h4 class="workflow-step-title">1. Review Physics Theory &amp; Pass Pre-Flight Quiz</h4>
             <p class="workflow-step-desc">
-              Before handling hot water, review Sections 1–4 of this manual. Understand Newton's Law of Cooling ($T(t) =
+              Before handling hot water, review Sections 1–5 of this manual. Understand Newton's Law of Cooling ($T(t) =
               T_{\text{env}} + (T_0 - T_{\text{env}}) e^{-kt}$), heat transfer mechanisms (conduction, convection,
               radiation), and experimental safety SOP. Ensure thermal safety gloves and protective eyewear are equipped.
             </p>
@@ -2558,9 +3136,9 @@
       </div>
     </section>
 
-    <!-- SECTION 6 -->
+    <!-- SECTION 7 -->
     <section class="doc-section" id="section-6">
-      <h2><i data-lucide="key-round"></i> 6. SOLUTION KEY</h2>
+      <h2><i data-lucide="key-round"></i> 7. SOLUTION KEY</h2>
       <p class="solution-intro">
         Use this section after completing the Student Task Sheet. The model answers correspond to Questions 1-10 and
         explain the physical reasoning expected in a complete response.
@@ -2639,9 +3217,9 @@
       </div>
     </section>
 
-    <!-- SECTION 7 -->
+    <!-- SECTION 8 -->
     <section class="doc-section" id="section-7">
-      <h2><i data-lucide="monitor"></i> 7. WEBSITE INSTRUCTIONS</h2>
+      <h2><i data-lucide="monitor"></i> 8. WEBSITE INSTRUCTIONS</h2>
       <p>Open <a href="https://hsp-mc.github.io/"><strong>Mission Control</strong></a>. Use the top menu - or <strong>Menu</strong>
         on a phone - to move between Overview, Assembly, Simulator, Measurements, Study &amp; Flashcards, and Quiz.</p>
 
