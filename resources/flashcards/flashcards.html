@@ -330,7 +330,7 @@
 
     /* Front side (Question & Prompt) */
     .card-half {
-      padding: 12px 14px;
+      padding: 13px 15px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -338,8 +338,42 @@
     }
 
     .card-half.front {
-      background: #ffffff;
+      background: linear-gradient(135deg, #eef6ff 0%, #f8fbff 100%);
       border-right: 1.5px dotted #0284c7;
+      box-shadow: inset 5px 0 0 #075985;
+    }
+
+    .card-half.front .card-title,
+    .card-half.front .card-prompt {
+      color: #0f172a;
+    }
+
+    .card-half.front .card-footer-strip {
+      color: #475569;
+      border-top-color: #bfdbfe;
+    }
+
+    .card-half.front .hole-punch-guide {
+      border-color: #60a5fa;
+    }
+
+    .card-half > div:first-child {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .card-half > div:first-child > * {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .card-half.front .card-prompt {
+      background: #ffffff;
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid #0284c7;
+      border-radius: 6px;
+      padding: 8px 9px;
     }
 
 
@@ -348,12 +382,32 @@
       background: linear-gradient(to bottom, #f0fdf4, #ffffff);
     }
 
+    .card-half.back .card-answer {
+      background: rgba(255, 255, 255, 0.82);
+      border-left: 4px solid #10b981;
+      border-radius: 5px;
+      padding: 7px 9px;
+    }
+
+    .card-half.back:has(.formula-callout) .card-answer {
+      background: transparent;
+      border-left: 0;
+      border-radius: 0;
+      padding: 0;
+    }
+
     /* Card Top Meta */
     .card-meta {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 6px;
+      padding-bottom: 7px;
+      margin-bottom: 0;
+      border-bottom: 1px solid #dbeafe;
+    }
+
+    .card-half.back .card-meta {
+      border-bottom-color: #d1fae5;
     }
 
     .card-id {
@@ -397,7 +451,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 6px;
+      margin-bottom: 0;
     }
 
     .card-icon {
@@ -483,8 +537,8 @@
       justify-content: space-between;
       align-items: center;
       border-top: 1px solid #e2e8f0;
-      padding-top: 4px;
-      margin-top: 4px;
+      padding-top: 6px;
+      margin-top: 7px;
       font-size: 0.65rem;
       font-family: var(--font-mono);
       color: #64748b;
@@ -548,7 +602,8 @@
         color: #000000 !important;
         padding: 0 !important;
         margin: 0 !important;
-        zoom: 0.9;
+        /* Keep physical dimensions predictable; scaling left unused page space. */
+        zoom: 1;
       }
 
       .no-print, .doc-nav, .hero-banner {
@@ -572,11 +627,14 @@
         break-after: auto !important;
         page-break-inside: avoid !important;
         break-inside: avoid-page !important;
-        height: auto !important;
-        min-height: 0 !important;
+        /* A4 height (297 mm) minus the 8 mm top and bottom page margins. */
+        height: 281mm !important;
+        min-height: 281mm !important;
+        max-height: 281mm !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: flex-start !important;
+        overflow: hidden !important;
       }
 
       .sheet-page + .sheet-page {
@@ -585,29 +643,101 @@
       }
 
       .page-header {
-        margin-bottom: 10px !important;
+        flex: 0 0 auto !important;
+        margin-bottom: 2.5mm !important;
       }
 
       .cards-grid {
-        gap: 10px !important;
+        display: grid !important;
+        grid-template-rows: repeat(4, minmax(0, 1fr)) !important;
+        gap: 2.5mm !important;
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
       }
 
       .cutout-card {
         border: 1px dashed #475569 !important;
         page-break-inside: avoid !important;
         break-inside: avoid !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        overflow: visible !important;
       }
 
       .card-dual-body {
-        min-height: 160px !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
       }
 
       .card-half {
+        min-height: 0 !important;
         padding: 8px 10px !important;
+      }
+
+      .card-half > div:first-child {
+        gap: 6px !important;
+      }
+
+      .card-header-line {
+        margin-bottom: 0 !important;
+      }
+
+      .card-meta {
+        padding-bottom: 4px !important;
+        margin-bottom: 0 !important;
+      }
+
+      .card-prompt,
+      .card-answer {
+        font-size: 0.76rem !important;
+        line-height: 1.28 !important;
+        margin-bottom: 0 !important;
+      }
+
+      .card-half.front .card-prompt {
+        padding: 6px 7px !important;
+      }
+
+      .card-half.back .card-answer {
+        padding: 5px 7px !important;
+      }
+
+      .formula-callout {
+        padding: 3px 6px !important;
+        margin: 0 !important;
+        font-size: 0.74rem !important;
+      }
+
+      .formula-callout .katex-display {
+        margin: 0.2em 0 !important;
+      }
+
+      .card-half.back:has(.formula-callout) > div:first-child {
+        gap: 4px !important;
+      }
+
+      .card-half.back:has(.formula-callout) .card-answer {
+        font-size: 0.72rem !important;
+        line-height: 1.22 !important;
+      }
+
+      .card-footer-strip {
+        margin-top: 4px !important;
+        padding-top: 4px !important;
+      }
+
+      .card-half.back .card-footer-strip {
+        margin-top: 3px !important;
       }
 
       .card-half.front {
         border-right: 1.5px dotted #0284c7 !important;
+      }
+
+      .page-footer {
+        flex: 0 0 auto !important;
+        margin-top: 2.5mm !important;
       }
     }
   </style>
