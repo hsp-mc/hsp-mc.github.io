@@ -89,7 +89,7 @@ The supplied cooling constants are educational reference values. Repeated measur
 
 | Resource | Web version | Printable version |
 | :--- | :---: | :---: |
-| Interactive laboratory | [`index.html`](index.html) | — |
+| Interactive laboratory | [Web](index.html) | — |
 | Student manual | [Web](resources/manuals/student_manual.html) | [PDF](resources/manuals/SPHERE_Mission_Control_Student_Manual.pdf) |
 | Teacher manual and marking guide | [Web](resources/manuals/teacher_manual.html) | [PDF](resources/manuals/SPHERE_Mission_Control_Teacher_Manual.pdf) |
 | Laboratory task sheet | [Web](resources/worksheets/student_task_sheet.html) | [PDF](resources/worksheets/student_task_sheet.pdf) |
