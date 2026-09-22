@@ -19,8 +19,15 @@ Project_Draft_Updated.docx
 
 # Generated working files
 /tmp/
+/.tmp.driveupload/
+/.build/
+/.qa_*/
 /.chart-data-*/
 /.codex-ppt-build/
+__pycache__/
+*.py[cod]
+*.log
+Icon?
 
 # Generated LaTeX sources/intermediates (keep final PDFs)
 /output/pdf/*.aux
