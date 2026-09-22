@@ -8,7 +8,6 @@
 
 [![Open Laboratory](https://img.shields.io/badge/OPEN_LABORATORY-0284C7?style=for-the-badge&logo=rocket&logoColor=white)](https://hsp-mc.github.io/)
 [![Engineering Education](https://img.shields.io/badge/ENGINEERING-EDUCATION-2563EB?style=for-the-badge)](#learning-outcomes)
-[![Safety Critical](https://img.shields.io/badge/HOT_WATER-SUPERVISION_REQUIRED-D97706?style=for-the-badge)](#safety)
 
 ![Spacesuit Thermal Shielding Kit cover](images/project-cover.png)
 
