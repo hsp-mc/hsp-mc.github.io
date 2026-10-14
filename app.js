@@ -1514,69 +1514,75 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8. Interactive 3D Flashcard Study Hub Engine
   // ==========================================================================
   function initFlashcardsHub() {
-    const cards = document.querySelectorAll('.flashcard');
+    const cards = Array.from(document.querySelectorAll('.flashcard'));
     const filterBtns = document.querySelectorAll('#flashcard-filter-group .btn-filter');
     const flippedBadge = document.getElementById('flipped-count-badge');
-    const btnFlipAll = document.getElementById('btn-flip-all');
-    const btnResetFlashcards = document.getElementById('btn-reset-flashcards');
-
+    const prev = document.getElementById('flashcard-prev');
+    const next = document.getElementById('flashcard-next');
+    const flip = document.getElementById('flashcard-flip');
+    const position = document.getElementById('flashcard-position');
+    const topic = document.getElementById('flashcard-topic');
+    let filtered = cards;
+    let current = 0;
     if (!cards.length) return;
 
-    function updateFlippedCount() {
-      const flippedCount = document.querySelectorAll('.flashcard.flipped').length;
-      if (flippedBadge) {
-        flippedBadge.textContent = `FLIPPED: ${flippedCount} / ${cards.length}`;
-      }
+    function renderDeck() {
+      cards.forEach(card => { card.hidden = card !== filtered[current]; });
+      const card = filtered[current];
+      const isFlipped = card?.classList.contains('flipped') || false;
+      position.textContent = `Card ${current + 1} of ${filtered.length}`;
+      prev.disabled = current === 0;
+      next.disabled = current === filtered.length - 1;
+      flip.textContent = isFlipped ? 'Show question' : 'Flip card';
+      flip.setAttribute('aria-pressed', String(isFlipped));
+      cards.forEach(item => {
+        const flipped = item.classList.contains('flipped');
+        item.querySelector('.flashcard-front').setAttribute('aria-hidden', String(flipped));
+        item.querySelector('.flashcard-back').setAttribute('aria-hidden', String(!flipped));
+        item.setAttribute('aria-label', flipped ? 'Answer. Activate to show question' : 'Question. Activate to show answer');
+      });
+      if (flippedBadge) flippedBadge.textContent = `FLIPPED: ${cards.filter(c => c.classList.contains('flipped')).length} / ${cards.length}`;
     }
-
-    // Toggle card flip on click
+    function toggleCard() {
+      filtered[current]?.classList.toggle('flipped');
+      renderDeck();
+      playClickSound();
+    }
+    function move(delta) {
+      current = Math.max(0, Math.min(filtered.length - 1, current + delta));
+      filtered[current]?.classList.remove('flipped');
+      renderDeck();
+    }
     cards.forEach(card => {
-      card.addEventListener('click', () => {
-        card.classList.toggle('flipped');
-        updateFlippedCount();
-        playClickSound();
+      card.setAttribute('role', 'button');
+      card.tabIndex = 0;
+      card.addEventListener('click', toggleCard);
+      card.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggleCard(); }
+        if (event.key === 'ArrowRight') { event.preventDefault(); move(1); filtered[current].focus({preventScroll: true}); }
+        if (event.key === 'ArrowLeft') { event.preventDefault(); move(-1); filtered[current].focus({preventScroll: true}); }
       });
     });
-
-    // Category Filtering
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.getAttribute('data-filter');
-
-        cards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
+    prev.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+    flip.addEventListener('click', toggleCard);
+    filterBtns.forEach(btn => btn.addEventListener('click', () => {
+      filterBtns.forEach(b => { b.classList.toggle('active', b === btn); b.setAttribute('aria-pressed', String(b === btn)); });
+      const filter = btn.getAttribute('data-filter');
+      topic.value = filter;
+      filtered = cards.filter(card => filter === 'all' || card.dataset.category === filter);
+      current = 0;
+      filtered[0]?.classList.remove('flipped');
+      renderDeck();
+    }));
+    topic.addEventListener('change', () => {
+      Array.from(filterBtns).find(btn => btn.dataset.filter === topic.value)?.click();
     });
-
-    // Flip All
-    if (btnFlipAll) {
-      btnFlipAll.addEventListener('click', () => {
-        cards.forEach(card => card.classList.add('flipped'));
-        updateFlippedCount();
-        playSuccessSound();
-      });
-    }
-
-    // Reset Deck
-    if (btnResetFlashcards) {
-      btnResetFlashcards.addEventListener('click', () => {
-        cards.forEach(card => {
-          card.classList.remove('flipped');
-          card.style.display = 'block';
-        });
-        filterBtns.forEach(b => b.classList.remove('active'));
-        if (filterBtns[0]) filterBtns[0].classList.add('active');
-        updateFlippedCount();
-        playClickSound();
-      });
-    }
+    document.getElementById('btn-reset-flashcards')?.addEventListener('click', () => {
+      cards.forEach(card => card.classList.remove('flipped'));
+      filterBtns[0].click();
+    });
+    renderDeck();
 
     // ==========================================================================
     // Interactive K-Value Calculator Logic
@@ -2293,4 +2299,81 @@ document.addEventListener('DOMContentLoaded', () => {
   loadFromLocalStorage();
   
   logToConsole("SYS: Spacesuit Thermal Shielding Kit interface ready.");
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.getElementById('assembly-slider');
+  if (!slider) return;
+  const slides = Array.from(slider.querySelectorAll('figure'));
+  const prev = document.getElementById('assembly-prev');
+  const next = document.getElementById('assembly-next');
+  const status = document.getElementById('assembly-slide-status');
+  const tabs = document.getElementById('assembly-step-tabs');
+  const titles = ['Safety', 'Prediction', 'Capsule', 'Ice bath', 'Measurements', 'Results'];
+  let current = 0;
+  const buttons = slides.map((slide, index) => {
+    slide.setAttribute('role', 'group');
+    slide.setAttribute('aria-roledescription', 'slide');
+    slide.setAttribute('aria-label', `Step ${index + 1} of ${slides.length}: ${titles[index]}`);
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = `${String(index + 1).padStart(2, '0')} ${titles[index]}`;
+    button.addEventListener('click', () => go(index));
+    tabs.append(button);
+    return button;
+  });
+  function update() {
+    prev.disabled = current === 0;
+    next.disabled = current === slides.length - 1;
+    status.textContent = `Step ${current + 1} of ${slides.length}`;
+    buttons.forEach((button, index) => {
+      if (index === current) button.setAttribute('aria-current', 'step');
+      else button.removeAttribute('aria-current');
+    });
+  }
+  function go(index) {
+    current = Math.max(0, Math.min(slides.length - 1, index));
+    slider.scrollTo({ left: slides[current].offsetLeft - slides[0].offsetLeft,
+      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    update();
+  }
+  prev.addEventListener('click', () => go(current - 1));
+  next.addEventListener('click', () => go(current + 1));
+  slider.addEventListener('keydown', event => {
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      event.preventDefault(); go(current + (event.key === 'ArrowRight' ? 1 : -1));
+    }
+  });
+  slider.addEventListener('scroll', () => {
+    let closest = 0, distance = Infinity;
+    slides.forEach((slide, index) => {
+      const delta = Math.abs(slide.offsetLeft - slides[0].offsetLeft - slider.scrollLeft);
+      if (delta < distance) { closest = index; distance = delta; }
+    });
+    if (closest !== current) { current = closest; update(); }
+  }, {passive: true});
+  let resizeFrame;
+  new ResizeObserver(() => {
+    cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(() => {
+      if (slider.clientWidth) slider.scrollTo({left: slides[current].offsetLeft - slides[0].offsetLeft, behavior: 'instant'});
+    });
+  }).observe(slider);
+  update();
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('layer-stack-grid');
+  if (!grid) return;
+  grid.querySelectorAll('.layer-bars-container').forEach(stack => {
+    stack.querySelectorAll('.layer-bar').forEach((bar, index) => {
+      bar.style.setProperty('--layer-order', index);
+    });
+  });
+  const observer = new IntersectionObserver(entries => {
+    grid.classList.toggle('is-layer-active', entries[0].isIntersecting);
+  }, { threshold: 0.12 });
+  observer.observe(grid);
 });

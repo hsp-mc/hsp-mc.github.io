@@ -12,7 +12,7 @@
   <meta name="description"
     content="Spacesuit Thermal Shielding Kit: an interactive SPHERE laboratory combining Newton cooling predictions with experimental temperature measurements.">
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=polish-2">
+  <link rel="stylesheet" href="styles.css?v=layers-6">
   <!-- KaTeX for Beautiful Math Formula Rendering -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -155,6 +155,8 @@
               model.
             </p>
 
+            <details class="compact-overview-details">
+              <summary>Experiment background &amp; learning outcomes</summary>
             <p class="briefing-text">
               The project provides a simplified study of thermal resistance, experimental uncertainty and model
               validation. It is inspired by multilayer thermal-control systems, but the ice-water bath is a terrestrial
@@ -176,6 +178,8 @@
               <strong>Learning outcomes:</strong> Apply lumped-parameter heat-transfer modelling, construct a controlled
               test article, acquire temperature data and evaluate model limitations.
             </p>
+
+            </details>
 
             <div class="briefing-lab-actions" aria-label="Laboratory tools">
               <button type="button" class="btn-hud workflow-nav-btn" data-target="assembly"><i data-lucide="settings"></i> ASSEMBLY INSTRUCTIONS</button>
@@ -518,11 +522,10 @@
       <section id="assembly" class="view-section">
         <div class="hud-panel">
           <div class="panel-header">
-            <span class="panel-title"><i data-lucide="book-open"></i> EXPERIMENT SETUP &amp; HARDWARE SCHEMATIC</span>
+            <span class="panel-title"><i data-lucide="book-open"></i> CAPSULE ASSEMBLY &amp; TEST</span>
             <span class="panel-meta">LABORATORY PROCEDURE</span>
           </div>
 
-          <h2 class="glow-cyan" style="margin-bottom: 20px; font-size: 1.4rem;">HOW TO BUILD YOUR INSULATED CAPSULE</h2>
           <p class="briefing-text" style="margin-bottom: 25px;">
             Follow the illustrated procedure to assemble and leak-test the capsule. The water bath provides a controlled
             terrestrial boundary condition; it does not reproduce the radiative environment of space.
@@ -537,8 +540,14 @@
           <!-- Animated illustrations of the complete practical workflow -->
           <div class="assembly-illustrations" aria-labelledby="assembly-illustrations-title">
             <h2 id="assembly-illustrations-title" class="glow-cyan">STEP-BY-STEP EXPERIMENT WORKFLOW</h2>
-            <p class="briefing-text">Follow these six illustrated stages using the digital probe thermometers. The figures loop automatically.</p>
-            <div class="assembly-illustration-grid">
+            <p class="briefing-text">Browse the six illustrated stages with Previous and Next, or swipe on your phone. Each illustration is animated.</p>
+            <div class="assembly-slider-controls" aria-label="Experiment steps">
+              <button type="button" class="btn-hud btn-outline" id="assembly-prev" aria-label="Previous experiment step">← Previous</button>
+              <span id="assembly-slide-status" role="status">Step 1 of 6</span>
+              <button type="button" class="btn-hud btn-outline" id="assembly-next" aria-label="Next experiment step">Next →</button>
+            </div>
+            <div class="assembly-step-tabs" id="assembly-step-tabs" aria-label="Choose an experiment step"></div>
+            <div class="assembly-illustration-grid" id="assembly-slider" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Step-by-step experiment workflow">
               <figure class="assembly-illustration">
                 <picture>
                   <source media="print" srcset="images/experiment-workflow/01-safety-and-equipment.png">
@@ -558,14 +567,14 @@
                   <source media="print" srcset="images/experiment-workflow/03-prepare-capsule.png">
                   <img src="images/experiment-workflow/03-prepare-capsule.svg" alt="Step 3: Prepare the capsule" width="1536" height="1152" loading="lazy" decoding="async">
                 </picture>
-                <figcaption>Prepare 100 mL of water at approximately 80°C under adult supervision.</figcaption>
+                <figcaption><strong>Prepare the capsule:</strong> Add 100 mL of water at approximately 80°C under instructor supervision. Insert the probe through the lid with its tip in the water; seal and leak-test the container. Apply the assigned insulation with consistent thickness and coverage, and record the layer sequence, gaps and compression.</figcaption>
               </figure>
               <figure class="assembly-illustration">
                 <picture>
                   <source media="print" srcset="images/experiment-workflow/04-start-ice-bath.png">
                   <img src="images/experiment-workflow/04-start-ice-bath.svg" alt="Step 4: Start the ice-bath test" width="1536" height="1152" loading="lazy" decoding="async">
                 </picture>
-                <figcaption>Measure the bath temperature and start timing as the capsule enters the ice bath.</figcaption>
+                <figcaption>Measure the actual bath temperature. Place the insulated capsule in the ice-water bath, start the timer, and record the initial capsule temperature at minute 0.</figcaption>
               </figure>
               <figure class="assembly-illustration">
                 <picture>
@@ -583,6 +592,8 @@
               </figure>
             </div>
           </div>
+          <details class="assembly-reference">
+            <summary>Hardware reference: capsule cross-section &amp; probe placement</summary>
           <!-- VISUAL HARDWARE ANATOMY SCHEMATIC (Pixel-Perfect Alignment & Correct Naming) -->
           <div class="visual-guide-box"
             style="background: #ffffff; border: 2px solid #0284c7; border-radius: 12px; padding: 24px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(2, 132, 199, 0.08);">
@@ -725,60 +736,14 @@
             </div>
           </div>
 
-          <!-- 4-STEP ILLUSTRATED WORKFLOW -->
-          <div class="hardware-step-grid">
-            <!-- Step 1 -->
-            <div class="step-card">
-              <div class="step-number">01</div>
-              <div class="step-content">
-                <h3 class="step-title">PREPARE THE WATER CONTAINER</h3>
-                <p class="step-desc">
-                  Add $100\text{ mL}$ of water at $80^\circ\text{C}$ using suitable heat-resistant handling equipment.
-                </p>
-                <span class="step-badge">$100\text{ mL}$ GLASS CORE // $80^\circ\text{C}$ TARGET</span>
-              </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="step-card">
-              <div class="step-number">02</div>
-              <div class="step-content">
-                <h3 class="step-title">INSERT THE TEMPERATURE PROBE</h3>
-                <p class="step-desc">
-                  Insert the thermometer probe through the lid opening and ensure the container is sealed properly.
-                  This helps prevent leaks during the experiment.</p>
-                <span class="step-badge">CENTRE PROBE // SEAL &amp; LEAK-TEST</span>
-              </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="step-card">
-              <div class="step-number">03</div>
-              <div class="step-content">
-                <h3 class="step-title">ADD INSULATION MATERIALS</h3>
-                <p class="step-desc">Apply the assigned configuration with consistent thickness and coverage. Record
-                  the material sequence and any gaps or compression.</p>
-                <span class="step-badge">DOCUMENT LAYER CONFIGURATION</span>
-              </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="step-card">
-              <div class="step-number">04</div>
-              <div class="step-content">
-                <h3 class="step-title">START THE COOLING TEST</h3>
-                <p class="step-desc">Place the insulated container into the ice-water bath and begin recording
-                  temperature measurements.</p>
-                <span class="step-badge">ICE BATH TEST</span>
-              </div>
-            </div>
-          </div>
+          </details>
 
           <!-- 4 INSULATION CONFIGURATIONS VISUAL LAYER STACK MATRIX -->
-          <h2 class="glow-cyan" style="margin-top: 35px; margin-bottom: 15px; font-size: 1.1rem;"><i
-              data-lucide="layers"></i> VISUAL GUIDE: 4 TESTED INSULATION LAYER STACKS</h2>
-
-          <div class="layer-stack-card-grid">
+          <div class="layer-stack-heading">
+            <h2 class="glow-cyan"><i data-lucide="layers"></i> VISUAL GUIDE: 4 TESTED INSULATION LAYER STACKS</h2>
+          </div>
+          <p class="layer-animation-note">Layers build from the water core outward. Moving markers illustrate outward heat transfer; they are not a simulation of cooling rates.</p>
+          <div class="layer-stack-card-grid" id="layer-stack-grid">
             <!-- Config A -->
             <div class="layer-stack-card"
               style="background: #ffffff; border: 1.5px solid rgba(239, 68, 68, 0.4); box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
@@ -858,6 +823,8 @@
           <p class="step-desc" style="margin-top: 12px;"><strong>Optional extension:</strong> Add a fifth cotton-only
             trial to investigate the contribution of the inner fibrous layer.</p>
 
+          <details class="assembly-reference">
+            <summary>Material reference: how the insulation layers affect heat transfer</summary>
           <!-- Material Science Breakdown Panel (Educational Layer) -->
           <h2 class="glow-cyan" style="margin-top: 35px; margin-bottom: 15px; font-size: 1.1rem;"><i
               data-lucide="graduation-cap"></i> HEAT-TRANSFER MECHANISMS IN THE TEST ASSEMBLY</h2>
@@ -914,6 +881,7 @@
               </div>
             </div>
           </div>
+          </details>
         </div>
       </section>
 
@@ -1251,7 +1219,16 @@
           <!-- Study Filter & Action Bar -->
           <div class="flashcards-header-bar"
             style="background: #f8fafc; padding: 12px 18px; border-radius: 14px; border: 1px solid #cbd5e1;">
-            <div class="filter-btn-group" id="flashcard-filter-group">
+            <label class="flashcard-topic-label" for="flashcard-topic">Topic
+              <select id="flashcard-topic" class="hud-select" aria-label="Flashcard topic">
+                <option value="all">All concepts</option>
+                <option value="thermo">Newton’s law</option>
+                <option value="radiation">Radiation &amp; Mylar</option>
+                <option value="mli">MLI spacesuits</option>
+                <option value="twin">Reference model</option>
+              </select>
+            </label>
+            <div class="filter-btn-group" id="flashcard-filter-group" hidden>
               <button type="button" class="btn-filter active" data-filter="all">ALL CONCEPTS</button>
               <button type="button" class="btn-filter" data-filter="thermo">NEWTON'S LAW</button>
               <button type="button" class="btn-filter" data-filter="radiation">RADIATION &amp; MYLAR</button>
@@ -1260,11 +1237,7 @@
             </div>
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
               <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #0284c7; font-weight: bold;"
-                id="flipped-count-badge">FLIPPED: 0 / 16</span>
-              <button type="button" class="btn-hud" id="btn-flip-all"
-                style="width: auto; padding: 6px 14px; font-size: 0.78rem; border-radius: 20px;">
-                <i data-lucide="rotate-cw"></i> FLIP ALL
-              </button>
+                id="flipped-count-badge" hidden>FLIPPED: 0 / 16</span>
               <a href="resources/flashcards/SPHERE_Mission_Control_Flashcards.pdf" target="_blank" rel="noopener" class="btn-hud btn-outline"
                 style="width: auto; padding: 6px 14px; font-size: 0.78rem; border-radius: 20px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                 <i data-lucide="printer"></i> FLASHCARDS (PDF)
@@ -1276,6 +1249,12 @@
             </div>
           </div>
 
+          <div class="flashcard-deck-controls" aria-label="Flashcard controls">
+            <button type="button" class="btn-hud btn-outline" id="flashcard-prev">← Previous</button>
+            <span id="flashcard-position" role="status">Card 1 of 16</span>
+            <button type="button" class="btn-hud" id="flashcard-flip" aria-pressed="false">Flip card</button>
+            <button type="button" class="btn-hud btn-outline" id="flashcard-next">Next →</button>
+          </div>
           <!-- 3D Flashcard Deck Grid (16 Cards) -->
           <div class="flashcard-grid" id="main-flashcard-grid">
             <!-- Card 1 -->
@@ -1620,6 +1599,8 @@
             </div>
           </div>
 
+          <details class="study-practice-details">
+            <summary>Cooling-constant calculator &amp; worked practice</summary>
           <!-- ==================== INTERACTIVE THERMODYNAMIC CALCULATOR WIDGET ==================== -->
           <div
             style="margin-top: 35px; background: #f8fafc; padding: 24px; border-radius: 18px; border: 2px solid #cbd5e1;">
@@ -1776,6 +1757,7 @@
 
           </div>
 
+          </details>
         </div>
       </section>
 
@@ -2265,7 +2247,7 @@
 
   <!-- App Main Javascript Code -->
   <script defer src="leaderboard-config.js?v=quiz-9"></script>
-  <script defer src="app.js?v=polish-2"></script>
+  <script defer src="app.js?v=layers-6"></script>
 </body>
 
 </html>
