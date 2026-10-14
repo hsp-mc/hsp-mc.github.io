@@ -103,7 +103,7 @@ Clone the repository and start a static web server from the project directory:
 
 ```bash
 git clone https://github.com/hsp-mc/hsp-mc.github.io.git
-cd hsp-mc.github.io
+cd hsp-mc.github.io/website
 python3 -m http.server 8000
 ```
 

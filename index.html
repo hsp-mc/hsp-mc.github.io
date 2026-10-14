@@ -5,23 +5,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SPHERE | Spacesuit Thermal Shielding Kit</title>
+  <!-- Lightweight entrance: renders before third-party libraries load. -->
+  <link rel="stylesheet" href="loading.css?v=3">
+  <script src="loading.js?v=2"></script>
   <!-- SEO & Description -->
   <meta name="description"
     content="Spacesuit Thermal Shielding Kit: an interactive SPHERE laboratory combining Newton cooling predictions with experimental temperature measurements.">
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=quiz-9">
+  <link rel="stylesheet" href="styles.css?v=polish-2">
   <!-- KaTeX for Beautiful Math Formula Rendering -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
   <script defer src="katex-init.js"></script>
   <!-- Chart.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
+  <div class="site-loader" id="site-loader" role="status" aria-label="Loading SPHERE">
+    <div class="site-loader-core" aria-hidden="true">
+      <div class="site-loader-orbit">
+        <span class="site-loader-flightpath">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="m21 12-8-3V3.5a1.5 1.5 0 0 0-3 0V9l-8 3v2l8-1v5l-3 2v1l4.5-1 4.5 1v-1l-3-2v-5l8 1v-2Z"/></svg>
+        </span>
+        <span class="site-loader-satellitepath">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="m9 9 6 6m-7-4 3-3 5 5-3 3-5-5Zm-5-1 4-4 3 3-4 4-3-3Zm11 8 4-4 3 3-4 4-3-3ZM15 3a6 6 0 0 1 6 6m-6-3a3 3 0 0 1 3 3"/></svg>
+        </span>
+        <span class="site-loader-ring"></span>
+        <span class="site-loader-ring site-loader-ring-inner"></span>
+        <svg class="site-loader-mark" viewBox="0 0 48 48" fill="none">
+          <path d="M24 5c-7 7-10 15-8 25l8 5 8-5c2-10-1-18-8-25Z" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="24" cy="19" r="4" stroke="currentColor" stroke-width="1.4"/>
+          <path d="m16 23-6 7v8l7-6m15-9 6 7v8l-7-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="site-loader-flame" d="M21 36Q20 41 24 46Q28 41 27 36" fill="#7de4ff" fill-opacity="0.65"/>
+        </svg>
+      </div>
+      <div class="site-loader-brand">SPHERE</div>
+      <div class="site-loader-caption">INITIALISING MISSION CONTROL</div>
+      <div class="site-loader-track"><span></span></div>
+      <div class="site-loader-footer"><span></span> SYSTEMS COMING ONLINE</div>
+    </div>
+  </div>
 
   <!-- Master Telemetry HUD Wrapper -->
   <div class="hud-wrapper">
@@ -113,7 +140,7 @@
       <!-- ==================== TAB 1: MISSION BRIEFING ==================== -->
       <section id="briefing" class="view-section active">
         <div class="briefing-hero">
-          <div class="hud-panel">
+          <div class="hud-panel briefing-project-panel">
             <div class="panel-header">
               <span class="panel-title"><i data-lucide="info"></i> PROJECT OVERVIEW</span>
             </div>
@@ -150,6 +177,11 @@
               test article, acquire temperature data and evaluate model limitations.
             </p>
 
+            <div class="briefing-lab-actions" aria-label="Laboratory tools">
+              <button type="button" class="btn-hud workflow-nav-btn" data-target="assembly"><i data-lucide="settings"></i> ASSEMBLY INSTRUCTIONS</button>
+              <button type="button" class="btn-hud btn-outline workflow-nav-btn" data-target="simulator"><i data-lucide="activity"></i> COOLING MODEL</button>
+            </div>
+
             <div
               style="margin-top: 15px; padding-top: 15px; border-top: 1px dashed rgba(255,255,255,0.08); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dimmed);">
               DEVELOPED BY:<br>
@@ -162,6 +194,7 @@
           <div class="space-suit-visualizer">
 
             <img src="images/astronaut.png" alt="Astronaut performing EVA mission" class="hero-astronaut">
+            <div class="briefing-image-caption"><span class="briefing-image-dot"></span> SPACESUIT THERMAL PROTECTION<span>Engineering inspiration</span></div>
 
           </div>
 
@@ -183,7 +216,7 @@
 
           <div class="workflow-grid">
             <!-- Step 1 -->
-            <div class="workflow-step-card workflow-nav-btn" data-target="briefing">
+            <div class="workflow-step-card workflow-nav-btn" role="button" tabindex="0" data-target="briefing">
               <div>
                 <div class="step-card-top">
                   <span class="workflow-stage-pill">STAGE 1</span>
@@ -197,7 +230,7 @@
             </div>
 
             <!-- Step 2 -->
-            <div class="workflow-step-card workflow-nav-btn" data-target="assembly">
+            <div class="workflow-step-card workflow-nav-btn" role="button" tabindex="0" data-target="assembly">
               <div>
                 <div class="step-card-top">
                   <span class="workflow-stage-pill">STAGE 2</span>
@@ -211,7 +244,7 @@
             </div>
 
             <!-- Step 3 -->
-            <div class="workflow-step-card workflow-nav-btn" data-target="simulator">
+            <div class="workflow-step-card workflow-nav-btn" role="button" tabindex="0" data-target="simulator">
               <div>
                 <div class="step-card-top">
                   <span class="workflow-stage-pill">STAGE 3</span>
@@ -226,7 +259,7 @@
             </div>
 
             <!-- Step 4 -->
-            <div class="workflow-step-card workflow-nav-btn" data-target="telemetry">
+            <div class="workflow-step-card workflow-nav-btn" role="button" tabindex="0" data-target="telemetry">
               <div>
                 <div class="step-card-top">
                   <span class="workflow-stage-pill">STAGE 4</span>
@@ -241,7 +274,7 @@
             </div>
 
             <!-- Step 5 -->
-            <div class="workflow-step-card workflow-nav-btn" data-target="study">
+            <div class="workflow-step-card workflow-nav-btn" role="button" tabindex="0" data-target="study">
               <div>
                 <div class="step-card-top">
                   <span class="workflow-stage-pill">STAGE 5</span>
@@ -255,7 +288,7 @@
             </div>
 
             <!-- Step 6 -->
-            <div class="workflow-step-card workflow-nav-btn" data-target="questions">
+            <div class="workflow-step-card workflow-nav-btn" role="button" tabindex="0" data-target="questions">
               <div>
                 <div class="step-card-top">
                   <span class="workflow-stage-pill">STAGE 6</span>
@@ -501,6 +534,55 @@
             immersion. Follow the host institution's risk assessment.
           </p>
 
+          <!-- Animated illustrations of the complete practical workflow -->
+          <div class="assembly-illustrations" aria-labelledby="assembly-illustrations-title">
+            <h2 id="assembly-illustrations-title" class="glow-cyan">STEP-BY-STEP EXPERIMENT WORKFLOW</h2>
+            <p class="briefing-text">Follow these six illustrated stages using the digital probe thermometers. The figures loop automatically.</p>
+            <div class="assembly-illustration-grid">
+              <figure class="assembly-illustration">
+                <picture>
+                  <source media="print" srcset="images/experiment-workflow/01-safety-and-equipment.png">
+                  <img src="images/experiment-workflow/01-safety-and-equipment.svg" alt="Step 1: Review safety" width="1536" height="1152" loading="lazy" decoding="async">
+                </picture>
+                <figcaption>Check the equipment, eye protection and heat-resistant gloves.</figcaption>
+              </figure>
+              <figure class="assembly-illustration">
+                <picture>
+                  <source media="print" srcset="images/experiment-workflow/02-simulation-prediction.png">
+                  <img src="images/experiment-workflow/02-simulation-prediction.svg" alt="Step 2: Predict cooling" width="1536" height="1152" loading="lazy" decoding="async">
+                </picture>
+                <figcaption>Select your insulation and predict the cooling curve.</figcaption>
+              </figure>
+              <figure class="assembly-illustration">
+                <picture>
+                  <source media="print" srcset="images/experiment-workflow/03-prepare-capsule.png">
+                  <img src="images/experiment-workflow/03-prepare-capsule.svg" alt="Step 3: Prepare the capsule" width="1536" height="1152" loading="lazy" decoding="async">
+                </picture>
+                <figcaption>Prepare 100 mL of water at approximately 80°C under adult supervision.</figcaption>
+              </figure>
+              <figure class="assembly-illustration">
+                <picture>
+                  <source media="print" srcset="images/experiment-workflow/04-start-ice-bath.png">
+                  <img src="images/experiment-workflow/04-start-ice-bath.svg" alt="Step 4: Start the ice-bath test" width="1536" height="1152" loading="lazy" decoding="async">
+                </picture>
+                <figcaption>Measure the bath temperature and start timing as the capsule enters the ice bath.</figcaption>
+              </figure>
+              <figure class="assembly-illustration">
+                <picture>
+                  <source media="print" srcset="images/experiment-workflow/05-record-temperatures.png">
+                  <img src="images/experiment-workflow/05-record-temperatures.svg" alt="Step 5: Record every minute" width="1536" height="1152" loading="lazy" decoding="async">
+                </picture>
+                <figcaption>Record at minute 0 and every minute through 15 minutes: 16 readings.</figcaption>
+              </figure>
+              <figure class="assembly-illustration">
+                <picture>
+                  <source media="print" srcset="images/experiment-workflow/06-compare-and-clean-up.png">
+                  <img src="images/experiment-workflow/06-compare-and-clean-up.svg?v=2" alt="Step 6: Compare results" width="1536" height="1152" loading="lazy" decoding="async">
+                </picture>
+                <figcaption>Compare measured and predicted cooling, then cool, dry and store the equipment.</figcaption>
+              </figure>
+            </div>
+          </div>
           <!-- VISUAL HARDWARE ANATOMY SCHEMATIC (Pixel-Perfect Alignment & Correct Naming) -->
           <div class="visual-guide-box"
             style="background: #ffffff; border: 2px solid #0284c7; border-radius: 12px; padding: 24px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(2, 132, 199, 0.08);">
@@ -2182,8 +2264,8 @@
   </div>
 
   <!-- App Main Javascript Code -->
-  <script src="leaderboard-config.js?v=quiz-9"></script>
-  <script src="app.js?v=quiz-9"></script>
+  <script defer src="leaderboard-config.js?v=quiz-9"></script>
+  <script defer src="app.js?v=polish-2"></script>
 </body>
 
 </html>

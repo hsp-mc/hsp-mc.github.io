@@ -719,6 +719,35 @@ h1, h2, h3, h4, h5, h6 {
 #node-flow { top: 15%; left: 15%; color: var(--orange); }
 
 /* Tab 2: Assembly Step-by-Step Card Flow */
+/* Standalone animated workflow images in Assembly. */
+.assembly-illustrations { margin: 30px 0; }
+.assembly-illustrations h2 { margin-bottom: 12px; font-size: 1.15rem; }
+.assembly-illustration-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 20px;
+}
+.assembly-illustration {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid #d5e4ee;
+  border-radius: 12px;
+  background: #fff;
+}
+.assembly-illustration picture { display: block; }
+.assembly-illustration img { display: block; width: 100%; height: auto; }
+.assembly-illustration figcaption {
+  padding: 15px 18px;
+  color: #334155;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  border-top: 1px solid #e2e8f0;
+}
+@media (max-width: 767px) {
+  .assembly-illustration-grid { grid-template-columns: 1fr; gap: 18px; }
+}
+
 .hardware-step-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -3892,4 +3921,104 @@ h1, h2, h3, h4, h5, h6 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Readability refinement: retain the original HUD, palette and layout. */
+body { -webkit-font-smoothing: antialiased; }
+.hud-header.compact-hud-header { gap: 14px; padding: 16px 20px; }
+.hud-header-top { gap: 16px; padding-bottom: 12px; }
+.logo-text span { font-size: 0.7rem; letter-spacing: 0.12em; line-height: 1.6; }
+.header-utilities { gap: 14px; }
+.deliverable-btn { font-size: 0.8rem; min-height: 44px; padding: 9px 12px; }
+.btn-audio-compact, .clock-ticker { min-height: 44px; font-size: 0.75rem; }
+.nav-tab { min-height: 44px; padding: 10px 14px; font-size: 0.8rem; letter-spacing: 0.025em; }
+.hud-panel, .hud-panel-light { padding: 28px; }
+.panel-header { gap: 12px; flex-wrap: wrap; padding-bottom: 14px; margin-bottom: 22px; }
+.panel-meta { font-size: 0.75rem; line-height: 1.6; letter-spacing: 0.04em; }
+.briefing-lead { font-size: 1.12rem; line-height: 1.8; margin-bottom: 20px; }
+.briefing-text { font-size: 1rem; line-height: 1.75; margin-bottom: 20px; }
+.lab-workflow-container { padding: 24px; }
+.workflow-header { gap: 14px; padding-bottom: 16px; margin-bottom: 20px; }
+.workflow-subtitle { font-size: 0.9rem; line-height: 1.65; margin-top: 4px; }
+.workflow-grid { gap: 18px; }
+.workflow-step-card { padding: 20px; }
+.step-title { font-size: 1rem; line-height: 1.5; }
+.step-desc { font-size: 0.9rem; line-height: 1.7; }
+.step-action-tag { font-size: 0.78rem; line-height: 1.6; }
+.btn-hud { min-height: 44px; font-size: 0.86rem; padding: 10px 14px; }
+.hud-input, .hud-select { min-height: 44px; line-height: 1.5; }
+button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #38bdf8; outline-offset: 3px; }
+@media (min-width: 769px) and (max-width: 1000px) {
+  .hud-nav { flex-wrap: wrap; overflow: visible; }
+  .nav-tab { flex: 1 1 auto; justify-content: center; }
+}
+@media (max-width: 768px) {
+  .hud-header.compact-hud-header { padding: 16px; gap: 14px; }
+  .hud-panel, .hud-panel-light, .lab-workflow-container, .visual-guide-box, .quiz-card { padding: 20px; }
+  .panel-title { font-size: 1rem; line-height: 1.5; }
+  .panel-header { margin-bottom: 18px; padding-bottom: 12px; }
+  .logo-text span { font-size: 0.62rem; letter-spacing: 0.05em; }
+  .deliverable-btn { min-height: 44px; font-size: 0.75rem; padding: 9px 10px; }
+  .clock-ticker, .btn-audio-compact { min-height: 44px; font-size: 0.72rem; }
+  .mobile-menu-toggle { min-height: 46px; font-size: 0.8rem; }
+  .nav-tab { min-height: 44px; font-size: 0.76rem; padding: 10px; }
+  .btn-hud { min-height: 44px; font-size: 0.85rem; padding: 10px 12px; }
+  .hud-input, .hud-select { font-size: 1rem; }
+  .briefing-lead { font-size: 1.05rem; }
+  .briefing-text { font-size: 0.98rem; }
+  .workflow-step-card { padding: 18px; }
+  .hud-grid, .briefing-hero, .hardware-step-grid, .telemetry-dashboard-layout, .quiz-wrapper { gap: 18px; }
+}
+@media (max-width: 380px) {
+  .logo-container { flex-wrap: wrap; }
+  .header-status-pill { margin-left: 0; }
+}
+@media (max-width: 768px) {
+  .deliverables-hub { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; gap: 6px; overflow: visible; padding-bottom: 0; }
+  .deliverable-btn { min-width: 0; white-space: normal; line-height: 1.45; text-align: center; justify-content: center; font-size: 0.7rem; padding: 8px 6px; }
+  .header-telemetry-tools .clock-ticker, .header-telemetry-tools .btn-audio-compact { flex: 1 1 0; min-width: 0; justify-content: center; }
+}
+
+/* Visual polish within the original SPHERE design system. */
+.hud-header.compact-hud-header {
+  background: linear-gradient(120deg, #172238 0%, #0f172a 80%);
+  border-color: #315575;
+  box-shadow: 0 10px 24px #0f172a20, inset 0 1px 0 #ffffff08;
+}
+.logo-icon { box-shadow: 0 4px 12px #0284c730; }
+.logo-text h1 { text-shadow: 0 0 10px #ffffff12; }
+.hud-panel { border-color: #d5e0ea; box-shadow: 0 4px 8px #0f172a04, 0 14px 32px #0f172a09; }
+.hud-panel:hover { border-color: #a4c6df; box-shadow: 0 8px 26px #0f172a0f; }
+.hud-panel::before { height: 3px; }
+.panel-header { border-bottom: 1px solid #dce5ed; }
+.panel-title { letter-spacing: 0.01em; }
+.briefing-project-panel .briefing-lead { border-left: 3px solid #38a6d7; padding-left: 16px; }
+.briefing-project-panel .briefing-text { color: #405166; }
+.briefing-lab-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 26px; }
+.briefing-lab-actions .btn-hud { font-size: 0.78rem; letter-spacing: 0.025em; gap: 8px; }
+.briefing-lab-actions svg { width: 16px; height: 16px; flex-shrink: 0; }
+.briefing-hero .space-suit-visualizer { border: 1px solid #b7c9d9; box-shadow: 0 12px 32px #0f172a12; }
+.briefing-image-caption { position: absolute; bottom: 0; left: 0; right: 0; z-index: 3; padding: 32px 18px 16px; background: linear-gradient(transparent, #06101cef); color: #e2eef7; font: 500 0.72rem/1.6 var(--font-mono); letter-spacing: 0.04em; pointer-events: none; }
+.briefing-image-caption > span:last-child { display: block; color: #a6bfd2; font: 400 0.8rem/1.6 var(--font-sans); letter-spacing: 0; margin-left: 14px; }
+.briefing-image-dot { display: inline-block; width: 5px; height: 5px; margin-right: 8px; border-radius: 50%; background: #7dd3fc; box-shadow: 0 0 8px #7dd3fc60; }
+.lab-workflow-container { border: 1px solid #d5e0ea; border-radius: 14px; box-shadow: 0 8px 24px #0f172a08; }
+.workflow-step-card { border-radius: 12px; background: linear-gradient(145deg, #fff, #f8fafc); border: 1px solid #dce5ed; box-shadow: 0 2px 4px #0f172a03; transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease; }
+.workflow-stage-pill { padding: 5px 10px; font-size: 0.75rem; background: #edf6fc; border: 1px solid #d4e9f6; }
+.step-card-top { margin-bottom: 14px; }
+.step-action-tag { border-top: 1px solid #e2e8f0; padding-top: 12px; margin-top: 16px; }
+.hud-input, .hud-select { border-width: 1px; border-color: #b8c8d8; background: #fcfdff; }
+.btn-hud { border-radius: 9px; }
+@media (hover: hover) {
+  .btn-hud:hover { box-shadow: 0 5px 14px #0284c724; }
+  .workflow-step-card:hover { background: #fff; border-color: #7bb4d8; box-shadow: 0 8px 20px #0284c714; }
+}
+@media (max-width: 768px) {
+  .briefing-lab-actions .btn-hud { flex: 1 1 160px; justify-content: center; }
+  .briefing-image-caption { padding-inline: 14px; font-size: 0.65rem; }
+}
+@media (prefers-reduced-motion: reduce) { .workflow-step-card { transition: none; } .workflow-step-card:hover { transform: none; } }
+.workflow-step-card:focus-visible { outline: 2px solid #0284c7; outline-offset: 4px; }
+@media (min-width: 768px) {
+  .briefing-hero { align-items: start; }
+  .briefing-hero .space-suit-visualizer { margin-top: 0; height: clamp(350px, 38vw, 490px); }
 }

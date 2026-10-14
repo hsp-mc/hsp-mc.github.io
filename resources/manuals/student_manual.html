@@ -1887,6 +1887,17 @@
         color: #475569 !important;
       }
     }
+
+    /* Animated workflow figures: wider on screen, static pictures when printed. */
+    @media screen {
+      #section-5 .workflow-step-card { grid-template-columns: 44% 1fr; }
+      #section-5 .workflow-img-wrap { height: auto; aspect-ratio: 4 / 3; padding: 0; }
+      #section-5 .workflow-img-wrap picture { display: block; width: 100%; }
+      #section-5 .workflow-step-img { width: 100%; height: auto; }
+    }
+    @media screen and (max-width: 760px) {
+      #section-5 .workflow-step-card { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 
@@ -3016,7 +3027,10 @@
         <!-- STEP 1 CARD -->
         <div class="workflow-step-card">
           <div class="workflow-img-wrap">
-            <img src="../../images/stage1-theory-safety.png" alt="Physics Theory &amp; Lab Safety SOP Setup" class="workflow-step-img">
+            <picture>
+              <source media="print" srcset="../../images/experiment-workflow/01-safety-and-equipment.png">
+              <img src="../../images/experiment-workflow/01-safety-and-equipment.svg" alt="Physics Theory &amp; Lab Safety SOP Setup" class="workflow-step-img" loading="lazy">
+            </picture>
           </div>
           <div>
             <div class="workflow-step-badge" style="background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc;">
@@ -3034,8 +3048,10 @@
         <!-- STEP 2 CARD -->
         <div class="workflow-step-card">
           <div class="workflow-img-wrap">
-            <img src="../../images/website-setting up.PNG" alt="Mission Control Console Web Simulator Setup"
-              class="workflow-step-img">
+            <picture>
+              <source media="print" srcset="../../images/experiment-workflow/02-simulation-prediction.png">
+              <img src="../../images/experiment-workflow/02-simulation-prediction.svg" alt="Mission Control Console Web Simulator Setup" class="workflow-step-img" loading="lazy">
+            </picture>
           </div>
           <div>
             <div class="workflow-step-badge" style="background: #f0f9ff; color: #0284c7; border: 1px solid #7dd3fc;">
@@ -3055,8 +3071,10 @@
         <!-- STEP 3 CARD -->
         <div class="workflow-step-card">
           <div class="workflow-img-wrap">
-            <img src="../../images/input temp.jpg" alt="Filling 100 mL Water Core and Recording Baseline Initial Temperature"
-              class="workflow-step-img">
+            <picture>
+              <source media="print" srcset="../../images/experiment-workflow/03-prepare-capsule.png">
+              <img src="../../images/experiment-workflow/03-prepare-capsule.svg" alt="Filling 100 mL Water Core and Recording Baseline Initial Temperature" class="workflow-step-img" loading="lazy">
+            </picture>
           </div>
           <div>
             <div class="workflow-step-badge" style="background: #fffbeb; color: #b45309; border: 1px solid #fcd34d;">
@@ -3075,8 +3093,10 @@
         <!-- STEP 4 CARD -->
         <div class="workflow-step-card">
           <div class="workflow-img-wrap">
-            <img src="../../images/bathwater-0temp.jpg" alt="Immersing Capsule into 0°C Ice Water Bath"
-              class="workflow-step-img">
+            <picture>
+              <source media="print" srcset="../../images/experiment-workflow/04-start-ice-bath.png">
+              <img src="../../images/experiment-workflow/04-start-ice-bath.svg" alt="Immersing Capsule into 0°C Ice Water Bath" class="workflow-step-img" loading="lazy">
+            </picture>
           </div>
           <div>
             <div class="workflow-step-badge" style="background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc;">
@@ -3095,7 +3115,10 @@
         <!-- STEP 5 CARD -->
         <div class="workflow-step-card">
           <div class="workflow-img-wrap">
-            <img src="../../images/working.jpg" alt="Active 15-Minute Temperature Measurement Run" class="workflow-step-img">
+            <picture>
+              <source media="print" srcset="../../images/experiment-workflow/05-record-temperatures.png">
+              <img src="../../images/experiment-workflow/05-record-temperatures.svg" alt="Active 15-Minute Temperature Measurement Run" class="workflow-step-img" loading="lazy">
+            </picture>
           </div>
           <div>
             <div class="workflow-step-badge" style="background: #eef2ff; color: #4338ca; border: 1px solid #a5b4fc;">
@@ -3115,8 +3138,10 @@
         <!-- STEP 6 CARD -->
         <div class="workflow-step-card">
           <div class="workflow-img-wrap">
-            <img src="../../images/predicted-curve.png"
-              alt="Mission Control Console Predicted Cooling Curve & Residual Analysis" class="workflow-step-img">
+            <picture>
+              <source media="print" srcset="../../images/experiment-workflow/06-compare-and-clean-up.png">
+              <img src="../../images/experiment-workflow/06-compare-and-clean-up.svg?v=2" alt="Mission Control Console Predicted Cooling Curve & Residual Analysis" class="workflow-step-img" loading="lazy">
+            </picture>
           </div>
           <div>
             <div class="workflow-step-badge" style="background: #ecfdf5; color: #047857; border: 1px solid #6ee7b7;">

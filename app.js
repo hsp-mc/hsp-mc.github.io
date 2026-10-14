@@ -509,6 +509,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Attach workflow pipeline buttons
   document.querySelectorAll('.workflow-nav-btn').forEach(btn => {
+    if (btn.getAttribute('role') === 'button') {
+      btn.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          btn.click();
+        }
+      });
+    }
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       playClickSound();
